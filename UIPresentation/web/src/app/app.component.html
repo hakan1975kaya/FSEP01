@@ -37,7 +37,7 @@
       <!--Menu Bar-->
       <div class="col-md-2">
         <ul *ngIf="isLogin" class="nav navbar-nav">
-          <h4>FSEP</h4>
+          <h4>FSEP 01</h4>
           <ul class="list-group" *ngFor=" let  menu of  menus">
             <li class="list-group-item btn" style="text-align:left; padding: left 6px;" value="menu.id"
               [ngStyle]="{'background-color':menu.id == selectedMenuId ? '#54B4D3' : '#757575' ,'display':menu.path | menuPipe }">

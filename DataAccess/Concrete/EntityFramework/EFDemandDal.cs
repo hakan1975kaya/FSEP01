@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EFDemandDal:EFEntityRepositoryBase<FSEPContext,Demand>,IDemandDal
+    public class EFDemandDal:EFEntityRepositoryBase<FSEP01Context,Demand>,IDemandDal
     {
 
     }

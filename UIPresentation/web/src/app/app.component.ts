@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     private alertifyService: AlertifyService,
     private router: Router) { }
 
-  title = 'ASAŞ FSEP';
+  title = 'ASAŞ FSEP 01';
   isLogin!: boolean
   decodeToken!: DecodeToken
   registrationNumber!: string

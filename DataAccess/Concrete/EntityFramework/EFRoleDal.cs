@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EFRoleDal:EFEntityRepositoryBase<FSEPContext,Role>,IRoleDal
+    public class EFRoleDal:EFEntityRepositoryBase<FSEP01Context,Role>,IRoleDal
     {
 
     }

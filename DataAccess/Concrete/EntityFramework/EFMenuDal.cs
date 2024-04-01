@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EFMenuDal:EFEntityRepositoryBase<FSEPContext,Menu>,IMenuDal
+    public class EFMenuDal:EFEntityRepositoryBase<FSEP01Context,Menu>,IMenuDal
     {
     
     }
