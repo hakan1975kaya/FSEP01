@@ -1,0 +1,287 @@
+<div class="container-fluid" role="main">
+
+  <!--Title-->
+  <div class="row p-2">
+    <div class="col-md-1">
+      <i class="fa fa-users fa-2x"></i>
+    </div>
+    <div class="col-md-11">
+      <h5>Kullanıcı Tanımlama İşlemleri</h5>
+    </div>
+  </div>
+
+  <!--search-->
+  <div class="card">
+    <div class="card-body bg-secondary text-white">
+      <form [formGroup]="searchForm">
+        <div class="row pt-2">
+          <!--filter-->
+          <div class="col-md-10">
+            <div class="form-group">
+              <input class="form-control" type="text" id="filter" name="filter" formControlName="filter"
+                placeholder="Kullanıcı sicili, adı,soyadı veya tarihi..." required minlength>
+              <div *ngIf="searchForm.get('filter')?.hasError('required')&&searchForm.get('filter')?.dirty"
+                class="alert alert-danger">Arama ifadesi zorunlu</div>
+              <div *ngIf="searchForm.get('filter')?.hasError('minlength')&& searchForm.get('filter')?.dirty"
+                class="alert alert-danger">En az iki harf girmek zorundasınız</div>
+            </div>
+          </div>
+          <!--search button-->
+          <div class="col-md-1">
+            <div class="form-group">
+              <input type="button" class="btn btn-warning" id="search" name="search" value="Ara" (click)="search()"
+                [ngStyle]="{'display':'User.Search' | demandPipe}">
+            </div>
+          </div>
+          <!--clear button-->
+          <div class="col-md-1">
+            <div class="form-group">
+              <input type="button" class="btn btn-light" id="clear" name="clear" value="Temizle" (click)="clear()">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!--add new -->
+  <div class="row pt-2">
+    <div class="col-md-1">
+      <i class="fa fa-plus-square fa-2x" (click)="openUserModal()" ngbTooltip="Ekle" style="cursor: pointer;"></i>
+    </div>
+    <div class="col-md-11"></div>
+  </div>
+
+  <!--user table-->
+  <div class="row pt-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive" name="divSerach" id="divSerach">
+          <table class="table table-flush table-striped" id="tblSearch" name="tblSearch">
+            <thead>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('id')"></i>Id<i
+                  class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('id')"></i></th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('registrationName')"></i>Sicil<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('registrationName')"></i>
+              </th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('firstName')"></i>Ad<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
+                  (click)="orderAsc('firstName')"></i></th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('lastName')"></i>Soyad
+                <i class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('lastName')"></i>
+              </th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('optime')"></i>Tarih<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
+                  (click)="orderAsc('optime')"></i></th>
+              <th>İşlemler</th>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let user of users | paginate: {id:'userPagination',itemsPerPage:itemsPerPage, currentPage:currentPage}">
+                <td>{{user.id}}</td>
+                <td>{{user.registrationNumber}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.optime | date:"dd.MM.yyyy hh:mm:ss"}} </td>
+                <td>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <i class="fa fa-pencil fa-2x" (click)="openUserModal(user.id)"
+                        style="cursor: pointer;color: steelblue;"></i>
+                    </div>
+                    <div class="col-md-6">
+                      <i class="fa fa-trash fa-2x" (click)="openConfirmModal(user.id)"
+                        style="cursor: pointer;color:red"></i>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--pagination-->
+  <div class="row p-2">
+    <div class="col-md-11">
+      <pagination-controls id="userPagination" (pageChange)="currentPage = $event"></pagination-controls>
+    </div>
+    <!--export to excel pdf-->
+    <div class="col-md-1 d-flex justify-content-around">
+      <i class="fa fa-file-excel-o fa-2x" style="cursor: pointer;color: green;" (click)="exportToExcel()"
+        [ngStyle]="{'display':'User.Search' | demandPipe}"></i>
+      <i class="fa  fa-file-pdf-o fa-2x" style="cursor: pointer;color:red" (click)="exportToPdf()"
+        [ngStyle]="{'display':'User.Search' | demandPipe}"></i>
+    </div>
+  </div>
+
+  <!--userModal--->
+  <div class="modal" role="dialog" tabindex="-1" [ngStyle]="{'display':displayUserModal}">
+    <div class="modal-dialog modal-lg" role="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <!--Header-->
+        <div class="modal-header">
+          <h4 class="modal-title">Kullanıcı Ekle & Düzelt</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeUserModal()"></i>
+        </div>
+        <!--body-->
+        <div class="modal-body">
+          <form [formGroup]="userForm">
+               <!--passwordRequired-->
+               <div class="form-group">
+                <div class="form-check form-switch">
+                  <div class="row">
+                    <div class="col-md-7">
+                    </div>
+                    <div class="col-md-4">
+                      <label for="passwordRequired" class="form-label">Şifre Gerekli Mi</label>
+                    </div>
+                    <div class="col-md-1">
+                      <input type="checkbox" class="form-check-input" style="width: 60px; height: 30px;cursor: pointer;"
+                      id="passwordRequired" name="passwordRequired" formControlName="passwordRequired"
+                        (change)="setPasswordRequired($event)">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!--id-->
+            <div style="display: none;" class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="id">Id:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="id" name="id" formControlName="id"
+                    placeholder="id giriniz">
+                </div>
+              </div>
+            </div>
+            <!--registrationNumber-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="registrationNumber">Sicil:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="registrationNumber" name="userName"
+                    formControlName="registrationNumber" placeholder="Sicil giriniz..." required min max>
+                  <div
+                    *ngIf="userForm.get('registrationNumber')?.hasError('required') && userForm.get('registrationNumber')?.dirty"
+                    class="alert alert-danger">Sicil boş olamaz</div>
+                  <div
+                    *ngIf="userForm.get('registrationNumber')?.hasError('min') && userForm.get('registrationNumber')?.dirty"
+                    class="alert alert-danger">En az 2 1</div>
+                  <div
+                    *ngIf="userForm.get('registrationNumber')?.hasError('max') && userForm.get('registrationNumber')?.dirty"
+                    class="alert alert-danger">En fazla 99999</div>
+                  <div class="alert alert-danger"
+                    *ngIf="userForm.get('registrationNumber')?.hasError('pattern') && userForm.get('registrationNumber')?.dirty">
+                    Rakam olması zorunlu!</div>
+                </div>
+              </div>
+            </div>
+            <!--firstName-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="description">Ad:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="firstName" name="firstName" formControlName="firstName"
+                    placeholder="Ad giriniz..." required minlength maxlength>
+                  <div *ngIf="userForm.get('firstName')?.hasError('required') && userForm.get('firstName')?.dirty"
+                    class="alert alert-danger">Ad boş olamaz</div>
+                  <div *ngIf="userForm.get('firstName')?.hasError('minlength') && userForm.get('firstName')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div *ngIf="userForm.get('firstName')?.hasError('maxlength') && userForm.get('firstName')?.dirty"
+                    class="alert alert-danger">En fazla 50 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+            <!--lastName-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="path">Soyad:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="lastName" name="lastName" formControlName="lastName"
+                    placeholder="Soyad giriniz..." required minlength maxlength>
+                  <div *ngIf="userForm.get('lastName')?.hasError('required') && userForm.get('lastName')?.dirty"
+                    class="alert alert-danger">Soyad boş olamaz</div>
+                  <div *ngIf="userForm.get('lastName')?.hasError('minlength') && userForm.get('lastName')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div *ngIf="userForm.get('lastName')?.hasError('maxlength') && userForm.get('lastName')?.dirty"
+                    class="alert alert-danger">En fazla 50 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+            <!--password-->
+            <div *ngIf="isPasswordRequired" class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="userOrder">Şifre:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="password" id="password" name="password" formControlName="password"
+                    placeholder="Şifre giriniz..." required minlength maxlength>
+                  <div *ngIf="userForm.get('password')?.hasError('required') && userForm.get('password')?.dirty"
+                    class="alert alert-danger">Şifre boş olamaz</div>
+                  <div *ngIf="userForm.get('password')?.hasError('minlength') && userForm.get('password')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div *ngIf="userForm.get('password')?.hasError('maxlength') && userForm.get('password')?.dirty"
+                    class="alert alert-danger">En fazla 50 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!--footer-->
+        <div class="modal-footer d-flex justify-content-center">
+          <input type="button" class="btn btn-success" (click)="save()" value="Kaydet" [disabled]="!userForm.valid"
+            [ngStyle]="{'display':'User.Add' | demandPipe}" [ngStyle]="{'display':'User.Update' | demandPipe}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--confirm modal-->
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayConfirmModal}">
+    <div class="modal-dialog" role="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <div class="modal-header">
+          <h4 class="modal-title">Kullanıcı Silme Onay</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeConfirmModal()"></i>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body bg-secondary text-white">
+              <div class="row">
+                <div class="col-md-12">
+                  <h5>
+                    Silmek İstediğinizden Emin misiniz?
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer bg-secondary text-white justify-content-center">
+          <div class="row">
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-success" (click)="deleteFromConfirm()" style="cursor: pointer;"
+                [ngStyle]="{'display':'User.Delete' | demandPipe}" value="Evet">
+            </div>
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-danger" (click)="closeConfirmModal()" style="cursor: pointer;"
+                value="Hayır">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

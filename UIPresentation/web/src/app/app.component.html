@@ -1,0 +1,73 @@
+<div class="container-fluid" role="main">
+  <!--Logo items-->
+  <div class="row p-4">
+    <!--Logo-->
+    <div class="col-md-2">
+      <img class="img-fluid img-thumbnail border-0" style="width: auto; height: 50px; cursor: pointer;"
+        src="../assets/img/brand/asas.png" alt="Logo">
+    </div>
+    <!--Extra-->
+    <div class="col-md-7">
+    </div>
+    <!--user-->
+    <div class="col-md-3 " *ngIf="isLogin">
+      <div class="card border-0">
+        <div class="row">
+          <div class="col-md-3">
+            <i class="fa fa-user fa-3x" style="cursor: pointer;" aria-hidden="true"
+              (click)="resetSelectedMenuId(selectedMenuId)"
+              [routerLink]="['/user-profile']"></i>
+          </div>
+          <div class="col-md-7">
+            <div class="row fw-bold">{{registrationNumber}}</div>
+            <div class="row fw-bold">{{firstName}} {{lastName}}</div>
+          </div>
+          <div class="col-md-2">
+            <i class="fa fa-sign-out fa-2x" style="cursor: pointer;" aria-hidden="true" (click)="logOut()"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!--Body-->
+  <div class="container-fluid">
+    <div class="row">
+      <!--Menu Bar-->
+      <div class="col-md-2">
+        <ul *ngIf="isLogin" class="nav navbar-nav">
+          <h4>FSEP</h4>
+          <ul class="list-group" *ngFor=" let  menu of  menus">
+            <li class="list-group-item btn" style="text-align:left; padding: left 6px;" value="menu.id"
+              [ngStyle]="{'background-color':menu.id == selectedMenuId ? '#54B4D3' : '#757575' ,'display':menu.path | menuPipe }">
+              <div class="link-light" [routerLink]="menu.path" (click)="setMenuId(menu.id)">
+                <span>{{menu.description}}</span>
+              </div>
+            </li>
+          </ul>
+        </ul>
+      </div>
+      <!--Outlet-->
+      <div class="col-md-10">
+        <router-outlet (activate)="activateApp()"></router-outlet>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="py-5">
+    <div class="row p-4">
+      <div class="col-xl-2">
+        <div class="copyright text-center text-xl-left text-muted">
+          © 2023 ASAŞ <a href="d" class="font-weight-bold ml-1" target="_blank"></a>
+        </div>
+      </div>
+      <div class="col-xl-10">
+        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+          <li class="nav-item">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</div>

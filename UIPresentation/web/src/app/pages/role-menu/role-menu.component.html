@@ -1,0 +1,226 @@
+<div class="container-fluid" role="main">
+
+  <!--Title-->
+  <div class="row p-2">
+    <div class="col-md-1">
+      <i class="fa fa-bars fa-2x"></i>
+    </div>
+    <div class="col-md-11">
+      <h5>Rol Menü Tanımlama İşlemleri</h5>
+    </div>
+  </div>
+
+  <!--search-->
+  <div class="card">
+    <div class="card-body bg-secondary text-white">
+      <form [formGroup]="searchForm">
+        <div class="row pt-2">
+          <!--filter-->
+          <div class="col-md-10">
+            <div class="form-group">
+              <input class="form-control" type="text" id="filter" name="filter" formControlName="filter"
+                placeholder="Rol adı, menü adı, tanımı, yolu, sırası veya rol menü tarihi..." required minlength>
+              <div *ngIf="searchForm.get('filter')?.hasError('required')&&searchForm.get('filter')?.dirty"
+                class="alert alert-danger">Arama ifadesi zorunlu</div>
+              <div *ngIf="searchForm.get('filter')?.hasError('minlength')&& searchForm.get('filter')?.dirty"
+                class="alert alert-danger">En az iki harf girmek zorundasınız</div>
+            </div>
+          </div>
+          <!--search button-->
+          <div class="col-md-1">
+            <div class="form-group">
+              <input type="button" class="btn btn-warning" id="search" name="search" value="Ara" (click)="search()"
+                [ngStyle]="{'display':'RoleMenu.Search' | demandPipe}">
+            </div>
+          </div>
+          <!--clear button-->
+          <div class="col-md-1">
+            <div class="form-group">
+              <input type="button" class="btn btn-light" id="clear" name="clear" value="Temizle" (click)="clear()">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!--add new -->
+  <div class="row pt-2">
+    <div class="col-md-1">
+      <i class="fa fa-plus-square fa-2x" (click)="openRoleMenuModal()" ngbTooltip="Ekle" style="cursor: pointer;"></i>
+    </div>
+    <div class="col-md-11"></div>
+  </div>
+
+  <!--roleMenu table-->
+  <div class="row pt-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive" name="divSerach" id="divSerach">
+          <table class="table table-flush table-striped" id="tblSearch" name="tblSearch">
+            <thead>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('id')"></i>Id<i
+                  class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('id')"></i></th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('roleName')"></i>Rol
+                Adı<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('roleName')"></i>
+              </th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('menuName')"></i>Menü
+                Adı<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('menuName')"></i></th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('description')"></i>Menü Tanımı<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('description')"></i></th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('optime')"></i>Tarih<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
+                  (click)="orderAsc('optime')"></i></th>
+              <th>İşlemler</th>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let roleMenu of roleMenus | paginate: {id:'roleMenuPagination',itemsPerPage:itemsPerPage, currentPage:currentPage}">
+                <td>{{roleMenu.id}}</td>
+                <td>{{roleMenu.roleName}}</td>
+                <td>{{roleMenu.menuName}}</td>
+                <td>{{roleMenu.description}}</td>
+                <td>{{roleMenu.optime | date:"dd.MM.yyyy hh:mm:ss"}} </td>
+                <td>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <i class="fa fa-pencil fa-2x" (click)="openRoleMenuModal(roleMenu.id)"
+                        style="cursor: pointer;color: steelblue;"></i>
+                    </div>
+                    <div class="col-md-6">
+                      <i class="fa fa-trash fa-2x" (click)="openConfirmModal(roleMenu.id)"
+                        style="cursor: pointer;color:red"></i>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--pagination-->
+  <div class="row p-2">
+    <div class="col-md-11">
+      <pagination-controls id="roleMenuPagination" (pageChange)="currentPage = $event"></pagination-controls>
+    </div>
+    <!--export to excel pdf-->
+    <div class="col-md-1 d-flex justify-content-around">
+      <i class="fa fa-file-excel-o fa-2x" style="cursor: pointer;color: green;" (click)="exportToExcel()"
+        [ngStyle]="{'display':'RoleMenu.Search' | demandPipe}"></i>
+      <i class="fa  fa-file-pdf-o fa-2x" style="cursor: pointer;color:red" (click)="exportToPdf()"
+        [ngStyle]="{'display':'RoleMenu.Search' | demandPipe}"></i>
+    </div>
+  </div>
+
+  <!--roleMenuModal--->
+  <div class="modal" role="dialog" tabindex="-1" [ngStyle]="{'display':displayRoleMenuModal}">
+    <div class="modal-dialog modal-lg" role="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <!--Header-->
+        <div class="modal-header">
+          <h4 class="modal-title">Rol Menü Ekle & Düzelt</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeRoleMenuModal()"></i>
+        </div>
+        <!--body-->
+        <div class="modal-body">
+
+          <form [formGroup]="roleMenuForm">
+            <!--id-->
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-12">
+                  <input type="hidden" class="form-control" formControlName="id" id="id" name="id">
+                </div>
+              </div>
+            </div>
+
+            <!--roleId-->
+            <div class="form-group pt-4">
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="roleId" class="col-form-label">Rol :</label>
+                </div>
+                <div class="col-md-8">
+                  <select class="form-select" [(ngModel)]="roleIdDefault" formControlName="roleId" id="roleId"
+                    name="roleId" required style="cursor: pointer;">
+                    <option value='' selected disabled>Rol Seçiniz</option>
+                    <option *ngFor="let role of roles" value={{role.id}}>{{role.roleName}}</option>
+                  </select>
+                  <div class="alert alert-danger"
+                    *ngIf="roleMenuForm.get('roleId')?.hasError('required') && roleMenuForm.get('roleId')?.dirty">
+                    Rol Zorunlu!</div>
+                </div>
+              </div>
+            </div>
+
+            <!--menuId-->
+            <div class="form-group pt-4">
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="menuId" class="col-form-label">Menü:</label>
+                </div>
+                <div class="col-md-8">
+                  <select class="form-select" [(ngModel)]="menuIdDefault" formControlName="menuId" id="menuId"
+                    name="menuId" required style="cursor: pointer;">
+                    <option value='' selected disabled>Menü Seçiniz</option>
+                    <option *ngFor="let menu of menus" value={{menu.id}}>{{menu.description}}
+                    </option>
+                  </select>
+                  <div class="alert alert-danger"
+                    *ngIf="roleMenuForm.get('menu')?.hasError('required') && roleMenuForm.get('menu')?.dirty">
+                    Menü Zorunlu!</div>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <!--footer-->
+        <div class="modal-footer d-flex justify-content-center">
+          <input type="button" class="btn btn-success" (click)="save()" value="Kaydet" [disabled]="!roleMenuForm.valid"
+            [ngStyle]="{'display':'RoleMenu.Add' | demandPipe}" [ngStyle]="{'display':'RoleMenu.Update' | demandPipe}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--confirm modal-->
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayConfirmModal}">
+    <div class="modal-dialog" role="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <div class="modal-header">
+          <h4 class="modal-title">Rol Menü Silme Onay</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeConfirmModal()"></i>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body bg-secondary text-white">
+              <div class="row">
+                <div class="col-md-12">
+                  <h5>
+                    Silmek İstediğinizden Emin misiniz?
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer bg-secondary text-white justify-content-center">
+          <div class="row">
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-success" (click)="deleteFromConfirm()" style="cursor: pointer;"
+                [ngStyle]="{'display':'RoleMenu.Delete' | demandPipe}" value="Evet">
+            </div>
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-danger" (click)="closeConfirmModal()" style="cursor: pointer;"
+                value="Hayır">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

@@ -1,0 +1,234 @@
+<div class="container-fluid" role="main">
+
+  <!--Title-->
+  <div class="row p-2">
+    <div class="col-md-1">
+      <i class="fa fa-bars fa-2x"></i>
+    </div>
+    <div class="col-md-11">
+      <h5>Kullanıcı Rolü Tanımlama İşlemleri</h5>
+    </div>
+  </div>
+
+  <!--search-->
+  <div class="card">
+    <div class="card-body bg-secondary text-white">
+      <form [formGroup]="searchForm">
+        <div class="row pt-2">
+          <!--filter-->
+          <div class="col-md-10">
+            <div class="form-group">
+              <input class="form-control" type="text" id="filter" name="filter" formControlName="filter"
+                placeholder="Kullanıcı sicili,adı,sayadı,rol adı vaya kullanıcı rol tarihi..." required minlength>
+              <div *ngIf="searchForm.get('filter')?.hasError('required')&&searchForm.get('filter')?.dirty"
+                class="alert alert-danger">Arama ifadesi zorunlu</div>
+              <div *ngIf="searchForm.get('filter')?.hasError('minlength')&& searchForm.get('filter')?.dirty"
+                class="alert alert-danger">En az iki harf girmek zorundasınız</div>
+            </div>
+          </div>
+          <!--search button-->
+          <div class="col-md-1">
+            <div class="form-group">
+              <input type="button" class="btn btn-warning" id="search" name="search" value="Ara" (click)="search()"
+                [ngStyle]="{'display':'UserRole.Search' | demandPipe}">
+            </div>
+          </div>
+          <!--clear button-->
+          <div class="col-md-1">
+            <div class="form-group">
+              <input type="button" class="btn btn-light" id="clear" name="clear" value="Temizle" (click)="clear()">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!--add new -->
+  <div class="row pt-2">
+    <div class="col-md-1">
+      <i class="fa fa-plus-square fa-2x" (click)="openUserRoleModal()" ngbTooltip="Ekle" style="cursor: pointer;"></i>
+    </div>
+    <div class="col-md-11"></div>
+  </div>
+
+  <!--userRole table-->
+  <div class="row pt-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive" name="divSerach" id="divSerach">
+          <table class="table table-flush table-striped" id="tblSearch" name="tblSearch">
+            <thead>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('id')"></i>Id<i
+                  class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('id')"></i></th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('registrationNumber')"></i>Sicil<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('registrationNumber')"></i>
+              </th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('firstName')"></i>Ad<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
+                  (click)="orderAsc('firstName')"></i></th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('lastName')"></i>Soyad<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
+                  (click)="orderAsc('lastName')"></i>
+              </th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('roleName')"></i>Rol
+                Adı<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('roleName')"></i></th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('optime')"></i>Tarih<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
+                  (click)="orderAsc('optime')"></i></th>
+              <th>İşlemler</th>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let userRole of userRoles | paginate: {id:'userRolePagination',itemsPerPage:itemsPerPage, currentPage:currentPage}">
+                <td>{{userRole.id}}</td>
+                <td>{{userRole.registrationNumber}}</td>
+                <td>{{userRole.firstName}}</td>
+                <td>{{userRole.lastName}}</td>
+                <td>{{userRole.roleName}}</td>
+                <td>{{userRole.optime | date:"dd.MM.yyyy hh:mm:ss"}} </td>
+                <td>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <i class="fa fa-pencil fa-2x" (click)="openUserRoleModal(userRole.id)"
+                        style="cursor: pointer;color: steelblue;"></i>
+                    </div>
+                    <div class="col-md-6">
+                      <i class="fa fa-trash fa-2x" (click)="openConfirmModal(userRole.id)"
+                        style="cursor: pointer;color:red"></i>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--pagination-->
+  <div class="row p-2">
+    <div class="col-md-11">
+      <pagination-controls id="userRolePagination" (pageChange)="currentPage = $event"></pagination-controls>
+    </div>
+    <!--export to excel pdf-->
+    <div class="col-md-1 d-flex justify-content-around">
+      <i class="fa fa-file-excel-o fa-2x" style="cursor: pointer;color: green;" (click)="exportToExcel()"
+        [ngStyle]="{'display':'UserRole.Search' | demandPipe}"></i>
+      <i class="fa  fa-file-pdf-o fa-2x" style="cursor: pointer;color:red" (click)="exportToPdf()"
+        [ngStyle]="{'display':'UserRole.Search' | demandPipe}"></i>
+    </div>
+  </div>
+
+  <!--userRoleModal--->
+  <div class="modal" role="dialog" tabindex="-1" [ngStyle]="{'display':displayUserRoleModal}">
+    <div class="modal-dialog modal-lg" role="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <!--Header-->
+        <div class="modal-header">
+          <h4 class="modal-title">Kullanıcı Rölü Ekle & Düzelt</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeUserRoleModal()"></i>
+        </div>
+        <!--body-->
+        <div class="modal-body">
+
+          <form [formGroup]="userRoleForm">
+            <!--id-->
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-12">
+                  <input type="hidden" class="form-control" formControlName="id" id="id" name="id">
+                </div>
+              </div>
+            </div>
+
+            <!--userId-->
+            <div class="form-group pt-4">
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="userId" class="col-form-label">Kullanıcı :</label>
+                </div>
+                <div class="col-md-8">
+                  <select class="form-select" [(ngModel)]="userIdDefault" formControlName="userId" id="userId"
+                    name="userId" required style="cursor: pointer;">
+                    <option value='' selected disabled>Kullanıcı Seçiniz</option>
+                    <option *ngFor="let user of users" value={{user.id}}>
+                      {{user.registrationNumber}}-{{user.firstName}} {{user.lastName}}
+                    </option>
+                  </select>
+                  <div class="alert alert-danger"
+                    *ngIf="userRoleForm.get('userId')?.hasError('required') && userRoleForm.get('userId')?.dirty">
+                    Kullanıcı Zorunlu!</div>
+                </div>
+              </div>
+            </div>
+
+            <!--roleId-->
+            <div class="form-group pt-4">
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="roleId" class="col-form-label">Rol:</label>
+                </div>
+                <div class="col-md-8">
+                  <select class="form-select" [(ngModel)]="roleIdDefault" formControlName="roleId" id="roleId"
+                    name="roleId" required style="cursor: pointer;">
+                    <option value='' selected disabled>Rol Seçiniz</option>
+                    <option *ngFor="let role of roles" value={{role.id}}>{{role.roleName}}
+                    </option>
+                  </select>
+                  <div class="alert alert-danger"
+                    *ngIf="userRoleForm.get('roleId')?.hasError('required') && userRoleForm.get('roleId')?.dirty">
+                    Rol Zorunlu!</div>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <!--footer-->
+        <div class="modal-footer d-flex justify-content-center">
+          <input type="button" class="btn btn-success" (click)="save()" value="Kaydet" [disabled]="!userRoleForm.valid"
+            [ngStyle]="{'display':'UserRole.Add' | demandPipe}" [ngStyle]="{'display':'UserRole.Update' | demandPipe}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--confirm modal-->
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayConfirmModal}">
+    <div class="modal-dialog" role="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <div class="modal-header">
+          <h4 class="modal-title">Kullanıcı Rolü Silme Onay</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeConfirmModal()"></i>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body bg-secondary text-white">
+              <div class="row">
+                <div class="col-md-12">
+                  <h5>
+                    Silmek İstediğinizden Emin misiniz?
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer bg-secondary text-white justify-content-center">
+          <div class="row">
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-success" (click)="deleteFromConfirm()" style="cursor: pointer;"
+                [ngStyle]="{'display':'UserRole.Delete' | demandPipe}" value="Evet">
+            </div>
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-danger" (click)="closeConfirmModal()" style="cursor: pointer;"
+                value="Hayır">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

@@ -1,0 +1,267 @@
+<div class="container-fluid" role="main">
+
+  <!--Title-->
+  <div class="row p-2">
+    <div class="col-md-1">
+      <i class="fa fa-bars fa-2x"></i>
+    </div>
+    <div class="col-md-11">
+      <h5>Menu Tanımlama İşlemleri</h5>
+    </div>
+  </div>
+
+  <!--search-->
+  <div class="card">
+    <div class="card-body bg-secondary text-white">
+      <form [formGroup]="searchForm">
+        <div class="row pt-2">
+          <!--filter-->
+          <div class="col-md-10">
+            <div class="form-group">
+              <input class="form-control" type="text" id="filter" name="filter" formControlName="filter"
+                placeholder="Menu adı, tarihi, tanımı, yol veya sırası..." required minlength>
+              <div *ngIf="searchForm.get('filter')?.hasError('required')&&searchForm.get('filter')?.dirty"
+                class="alert alert-danger">Arama ifadesi zorunlu</div>
+              <div *ngIf="searchForm.get('filter')?.hasError('minlength')&& searchForm.get('filter')?.dirty"
+                class="alert alert-danger">En az iki harf girmek zorundasınız</div>
+            </div>
+          </div>
+          <!--search button-->
+          <div class="col-md-1">
+            <div class="form-group">
+              <input type="button" class="btn btn-warning" id="search" name="search" value="Ara" (click)="search()"
+                [ngStyle]="{'display':'Menu.Search' | demandPipe}">
+            </div>
+          </div>
+          <!--clear button-->
+          <div class="col-md-1">
+            <div class="form-group">
+              <input type="button" class="btn btn-light" id="clear" name="clear" value="Temizle" (click)="clear()">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!--add new -->
+  <div class="row pt-2">
+    <div class="col-md-1">
+      <i class="fa fa-plus-square fa-2x" (click)="openMenuModal()" ngbTooltip="Ekle" style="cursor: pointer;"></i>
+    </div>
+    <div class="col-md-11"></div>
+  </div>
+
+  <!--menu table-->
+  <div class="row pt-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive" name="divSerach" id="divSerach">
+          <table class="table table-flush table-striped" id="tblSearch" name="tblSearch">
+            <thead>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('id')"></i>Id<i
+                  class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('id')"></i></th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('menuName')"></i>Menu
+                Adı<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('menuName')"></i></th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('description')"></i>Menu Tanımı<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('description')"></i></th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('path')"></i>Menu
+                Yolu<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('path')"></i></th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('menuOrder')"></i>Menu Sırası<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('menuOrder')"></i></th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('optime')"></i>Tarih<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
+                  (click)="orderAsc('optime')"></i></th>
+              <th>İşlemler</th>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let menu of menus | paginate: {id:'menuPagination',itemsPerPage:itemsPerPage, currentPage:currentPage}">
+                <td>{{menu.id}}</td>
+                <td>{{menu.menuName}}</td>
+                <td>{{menu.description}}</td>
+                <td>{{menu.path}}</td>
+                <td>{{menu.menuOrder}}</td>
+                <td>{{menu.optime | date:"dd.MM.yyyy hh:mm:ss"}} </td>
+                <td>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <i class="fa fa-pencil fa-2x" (click)="openMenuModal(menu.id)"
+                        style="cursor: pointer;color: steelblue;"></i>
+                    </div>
+                    <div class="col-md-6">
+                      <i class="fa fa-trash fa-2x" (click)="openConfirmModal(menu.id)"
+                        style="cursor: pointer;color:red"></i>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--pagination-->
+  <div class="row p-2">
+    <div class="col-md-11">
+      <pagination-controls id="menuPagination" (pageChange)="currentPage = $event"></pagination-controls>
+    </div>
+    <!--export to excel pdf-->
+    <div class="col-md-1 d-flex justify-content-around">
+      <i class="fa fa-file-excel-o fa-2x" style="cursor: pointer;color: green;" (click)="exportToExcel()"
+        [ngStyle]="{'display':'Menu.Search' | demandPipe}"></i>
+      <i class="fa  fa-file-pdf-o fa-2x" style="cursor: pointer;color:red" (click)="exportToPdf()"
+        [ngStyle]="{'display':'Menu.Search' | demandPipe}"></i>
+    </div>
+  </div>
+
+  <!--menuModal--->
+  <div class="modal" role="dialog" tabindex="-1" [ngStyle]="{'display':displayMenuModal}">
+    <div class="modal-dialog modal-lg" role="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <!--Header-->
+        <div class="modal-header">
+          <h4 class="modal-title">Menu Ekle & Düzelt</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeMenuModal()"></i>
+        </div>
+        <!--body-->
+        <div class="modal-body">
+          <form [formGroup]="menuForm">
+            <!--id-->
+            <div style="display: none;" class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="id">Id:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="id" name="id" formControlName="id"
+                    placeholder="id giriniz">
+                </div>
+              </div>
+            </div>
+            <!--menuName-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="menuName">Menu Adı:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="menuName" name="menuName" formControlName="menuName"
+                    placeholder="Menu Adı giriniz..." required minlength maxlength>
+                  <div *ngIf="menuForm.get('menuName')?.hasError('required') && menuForm.get('menuName')?.dirty"
+                    class="alert alert-danger">Menu Adı boş olamaz</div>
+                  <div *ngIf="menuForm.get('menuName')?.hasError('minlength') && menuForm.get('menuName')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div *ngIf="menuForm.get('menuName')?.hasError('maxlength') && menuForm.get('menuName')?.dirty"
+                    class="alert alert-danger">En fazla 50 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+            <!--description-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="description">Menu Tanımı:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="description" name="description"
+                    formControlName="description" placeholder="Menu Tanımı giriniz..." required minlength maxlength>
+                  <div *ngIf="menuForm.get('description')?.hasError('required') && menuForm.get('description')?.dirty"
+                    class="alert alert-danger">Menu Tanımı boş olamaz</div>
+                  <div *ngIf="menuForm.get('description')?.hasError('minlength') && menuForm.get('description')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div *ngIf="menuForm.get('description')?.hasError('maxlength') && menuForm.get('description')?.dirty"
+                    class="alert alert-danger">En fazla 100 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+            <!--path-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="path">Menu Yolu:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="path" name="path" formControlName="path"
+                    placeholder="Menu Yolu giriniz..." required minlength maxlength>
+                  <div *ngIf="menuForm.get('path')?.hasError('required') && menuForm.get('path')?.dirty"
+                    class="alert alert-danger">Menu Yolu boş olamaz</div>
+                  <div *ngIf="menuForm.get('path')?.hasError('minlength') && menuForm.get('path')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div *ngIf="menuForm.get('path')?.hasError('maxlength') && menuForm.get('path')?.dirty"
+                    class="alert alert-danger">En fazla 200 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+            <!--menuOrder-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="menuOrder">Menu Sırası:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="menuOrder" name="menuOrder" formControlName="menuOrder"
+                    placeholder="Menu Sırası giriniz..." required min max pattern>
+                  <div *ngIf="menuForm.get('menuOrder')?.hasError('required') && menuForm.get('menuOrder')?.dirty"
+                    class="alert alert-danger">Menu Sırası boş olamaz</div>
+                  <div *ngIf="menuForm.get('menuOrder')?.hasError('min') && menuForm.get('menuOrder')?.dirty"
+                    class="alert alert-danger">En az 1 olabilir</div>
+                  <div *ngIf="menuForm.get('menuOrder')?.hasError('max') && menuForm.get('menuOrder')?.dirty"
+                    class="alert alert-danger">En fazla 200 olabilir</div>
+                  <div class="alert alert-danger"
+                    *ngIf="menuForm.get('menuOrder')?.hasError('pattern') && menuForm.get('menuOrder')?.dirty">
+                    Rakam olması zorunlu!</div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!--footer-->
+        <div class="modal-footer d-flex justify-content-center">
+          <input type="button" class="btn btn-success" (click)="save()" value="Kaydet" [disabled]="!menuForm.valid"
+            [ngStyle]="{'display':'Menu.Add' | demandPipe}" [ngStyle]="{'display':'Menu.Update' | demandPipe}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--confirm modal-->
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayConfirmModal}">
+    <div class="modal-dialog" role="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <div class="modal-header">
+          <h4 class="modal-title">Menü Silme Onay</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeConfirmModal()"></i>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body bg-secondary text-white">
+              <div class="row">
+                <div class="col-md-12">
+                  <h5>
+                    Silmek İstediğinizden Emin misiniz?
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer bg-secondary text-white justify-content-center">
+          <div class="row">
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-success" (click)="deleteFromConfirm()" style="cursor: pointer;"
+                [ngStyle]="{'display':'Menu.Delete' | demandPipe}" value="Evet">
+            </div>
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-danger" (click)="closeConfirmModal()" style="cursor: pointer;"
+                value="Hayır">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

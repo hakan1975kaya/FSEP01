@@ -1,0 +1,110 @@
+<div class="container-fluid" role="main">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h3>Şifre Değiştir</h3>
+          <form>
+            <!--current password-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div>
+                  <input class="form-control" type="password" id="password" name="password" formControlName="password"
+                    placeholder="Eski Şifre" required minlength maxlength>
+                  <div
+                    *ngIf="passwordChangeForm.get('password')?.hasError('required') && passwordChangeForm.get('password')?.dirty"
+                    class="alert alert-danger">Şifre boş olamaz</div>
+                  <div
+                    *ngIf="passwordChangeForm.get('password')?.hasError('minlength') && passwordChangeForm.get('password')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div
+                    *ngIf="passwordChangeForm.get('password')?.hasError('maxlength') && passwordChangeForm.get('password')?.dirty"
+                    class="alert alert-danger">En fazla 50 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+            <!--new password-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div>
+                  <input class="form-control" type="password" id="password" name="password" formControlName="password"
+                    placeholder="Yeni Şifre" required minlength maxlength>
+                  <div
+                    *ngIf="passwordChangeForm.get('password')?.hasError('required') && passwordChangeForm.get('password')?.dirty"
+                    class="alert alert-danger">Şifre boş olamaz</div>
+                  <div
+                    *ngIf="passwordChangeForm.get('password')?.hasError('minlength') && passwordChangeForm.get('password')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div
+                    *ngIf="passwordChangeForm.get('password')?.hasError('maxlength') && passwordChangeForm.get('password')?.dirty"
+                    class="alert alert-danger">En fazla 50 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+            <!--confirm new password-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div>
+                  <input class="form-control" type="password" id="password" name="password" formControlName="password"
+                    placeholder="Yeni Şifre (tekrar)" required minlength maxlength>
+                  <div
+                    *ngIf="passwordChangeForm.get('password')?.hasError('required') && passwordChangeForm.get('password')?.dirty"
+                    class="alert alert-danger">Şifre boş olamaz</div>
+                  <div
+                    *ngIf="passwordChangeForm.get('password')?.hasError('minlength') && passwordChangeForm.get('password')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div
+                    *ngIf="passwordChangeForm.get('password')?.hasError('maxlength') && passwordChangeForm.get('password')?.dirty"
+                    class="alert alert-danger">En fazla 50 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <!--change password button-->
+          <div class="d-flex justify-content-center pt-2">
+            <div class="text-center p-2">
+              <input type="button" class="btn btn-success" (click)="openConfirmModal()"
+                [disabled]="!passwordChangeForm.valid" value="Değiştir">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--confirm modal-->
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayConfirmModal}">
+    <div class="modal-dialog" role="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <div class="modal-header">
+          <h4 class="modal-title">Şifre Değişikliği Onay</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeConfirmModal()"></i>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body bg-secondary text-white">
+              <div class="row">
+                <div class="col-md-12">
+                  <h5>
+                    Şifrenizi değiştirmek istediğinize emin misiniz?
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer bg-secondary text-white justify-content-center">
+          <div class="row">
+            <div class="col-md-6">
+              <!--  <Input type="button" class="btn btn-success"  style="cursor: pointer;"
+                [ngStyle]="{'display':'Demand.Delete' | demandPipe}" value="Evet"> -->
+            </div>
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-danger" (click)="closeConfirmModal()" style="cursor: pointer;"
+                value="Hayır">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
