@@ -6,19 +6,28 @@ using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PSI.Concrete.Dtos
+namespace PSI.Dtos
 {
-    public class RequestProcessDataL22PES : IDto
+    public class ProcessStateL22PES : IDto
     {
         public TypeHeader Header { get; set; }
+        public string Eventmode { get; set; }
         public TypeTimeStamp EventTime { get; set; }
         public string LineId { get; set; }
-        public string ReqType { get; set; }
-        public string ReqCategory { get; set; }
-        public string ReqKey { get; set; }
+        public TypeProcess Process { get; set; }
         public TypeMatId MatId { get; set; }
         public string EventCode { get; set; }
-        public string Remark { get; set; }
+        public string SubLine { get; set; }
+        public decimal CountEventParameter { get; set; }
+        public TypeParameterList ParameterList { get; set; }
+        public decimal CountDefectActions { get; set; }
+        public TypeDefectActionList DefectList { get; set; }
     }
 }
+
+
+
+
+
+
 

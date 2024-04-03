@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using PLC.Abstract;
-using PLC.Helper;
+using PLC.Helper.Abstract;
 using S7.Net;
 using S7.Net.Types;
 using System;

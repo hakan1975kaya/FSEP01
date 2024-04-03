@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PLC.Helper
+namespace PLC.Helper.Abstract
 {
     public interface IPlcHelper
     {

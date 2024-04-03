@@ -9,7 +9,8 @@ using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using PLC.Abstract;
 using PLC.Concrete;
-using PLC.Helper;
+using PLC.Helper.Abstract;
+using PLC.Helper.Concrete;
 using System.Diagnostics;
 
 namespace Business.DependencyResolvers.Autofac

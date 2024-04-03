@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PSI.Concrete.Dtos
+namespace PSI.Dtos
 {
     public class TypeInputMat : IDto
     {

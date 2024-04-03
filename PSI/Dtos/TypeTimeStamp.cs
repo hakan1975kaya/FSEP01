@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static log4net.Appender.RollingFileAppender;
 
-namespace PSI.Concrete.Dtos
+namespace PSI.Dtos
 {
     public class TypeTimeStamp : IDto
     {

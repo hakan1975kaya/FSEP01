@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PLC.Dtos;
+using PLC.Helper.Abstract;
 using S7.Net;
 using S7.Net.Protocol;
 using System;
@@ -10,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PLC.Helper
+namespace PLC.Helper.Concrete
 {
     public class PlcHelper : IPlcHelper
     {
