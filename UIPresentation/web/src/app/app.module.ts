@@ -34,6 +34,7 @@ import { MenuPipe } from './pipes/menu/menu.pipe';
 import { UserRoleComponent } from './pages/user-role/user-role.component';
 import { RoleDemandComponent } from './pages/role-demand/role-demand.component';
 import { RoleMenuComponent } from './pages/role-menu/role-menu.component';
+import { PasswordChangeComponent } from './pages/password-change/password-change.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { RoleMenuComponent } from './pages/role-menu/role-menu.component';
     MenuPipe,
     UserRoleComponent,
     RoleDemandComponent,
-    RoleMenuComponent
+    RoleMenuComponent,
+    PasswordChangeComponent
   ],
   imports: [
     AppRoutingModule,

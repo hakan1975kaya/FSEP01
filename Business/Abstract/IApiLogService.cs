@@ -17,6 +17,6 @@ namespace Business.Abstract
         public Task<IResult> Delete(Guid id);
         public Task<IDataResult<ApiLog>> GetById(Guid id);
         public Task<IDataResult<List<ApiLog>>> GetAll();
-        public Task<IDataResult<List<ApiLog>>> Search(FilterDto filterDto);
+        public Task<IDataResult<List<ApiLog>>> Search(FilterDto filterDto);//
     }
 }

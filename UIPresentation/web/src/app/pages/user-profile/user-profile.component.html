@@ -1,110 +1,104 @@
-<div class="container-fluid" role="main">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card mb-3">
-        <div class="card-body">
-          <h3>Şifre Değiştir</h3>
-          <form>
-            <!--current password-->
-            <div class="form-group">
-              <div class="row pt-4">
-                <div>
-                  <input class="form-control" type="password" id="password" name="password" formControlName="password"
-                    placeholder="Eski Şifre" required minlength maxlength>
-                  <div
-                    *ngIf="passwordChangeForm.get('password')?.hasError('required') && passwordChangeForm.get('password')?.dirty"
-                    class="alert alert-danger">Şifre boş olamaz</div>
-                  <div
-                    *ngIf="passwordChangeForm.get('password')?.hasError('minlength') && passwordChangeForm.get('password')?.dirty"
-                    class="alert alert-danger">En az 2 harf olabilir</div>
-                  <div
-                    *ngIf="passwordChangeForm.get('password')?.hasError('maxlength') && passwordChangeForm.get('password')?.dirty"
-                    class="alert alert-danger">En fazla 50 harf olabilir</div>
-                </div>
-              </div>
-            </div>
-            <!--new password-->
-            <div class="form-group">
-              <div class="row pt-4">
-                <div>
-                  <input class="form-control" type="password" id="password" name="password" formControlName="password"
-                    placeholder="Yeni Şifre" required minlength maxlength>
-                  <div
-                    *ngIf="passwordChangeForm.get('password')?.hasError('required') && passwordChangeForm.get('password')?.dirty"
-                    class="alert alert-danger">Şifre boş olamaz</div>
-                  <div
-                    *ngIf="passwordChangeForm.get('password')?.hasError('minlength') && passwordChangeForm.get('password')?.dirty"
-                    class="alert alert-danger">En az 2 harf olabilir</div>
-                  <div
-                    *ngIf="passwordChangeForm.get('password')?.hasError('maxlength') && passwordChangeForm.get('password')?.dirty"
-                    class="alert alert-danger">En fazla 50 harf olabilir</div>
-                </div>
-              </div>
-            </div>
-            <!--confirm new password-->
-            <div class="form-group">
-              <div class="row pt-4">
-                <div>
-                  <input class="form-control" type="password" id="password" name="password" formControlName="password"
-                    placeholder="Yeni Şifre (tekrar)" required minlength maxlength>
-                  <div
-                    *ngIf="passwordChangeForm.get('password')?.hasError('required') && passwordChangeForm.get('password')?.dirty"
-                    class="alert alert-danger">Şifre boş olamaz</div>
-                  <div
-                    *ngIf="passwordChangeForm.get('password')?.hasError('minlength') && passwordChangeForm.get('password')?.dirty"
-                    class="alert alert-danger">En az 2 harf olabilir</div>
-                  <div
-                    *ngIf="passwordChangeForm.get('password')?.hasError('maxlength') && passwordChangeForm.get('password')?.dirty"
-                    class="alert alert-danger">En fazla 50 harf olabilir</div>
-                </div>
-              </div>
-            </div>
-          </form>
-          <!--change password button-->
-          <div class="d-flex justify-content-center pt-2">
-            <div class="text-center p-2">
-              <input type="button" class="btn btn-success" (click)="openConfirmModal()"
-                [disabled]="!passwordChangeForm.valid" value="Değiştir">
+ <!--Title-->
+ <div class="row p-2">
+  <div class="col-md-1">
+    <i class="fa fa-user-circle fa-2x"></i>
+  </div>
+  <div class="col-md-11">
+    <h5>Kullanıcı Profili</h5>
+  </div>
+</div>
+
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+  style="min-height: 400px; background-image: url(../assets/img/brand/asas.png); background-size:cover; background-position: center top;background-color:gray;">
+  <!-- Header container -->
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row pt-2">
+      <div class="col-lg-7 col-md-10">
+        <h1 class="display-2 text-white">Merhaba {{firstName}} </h1>
+        <p class="text-white mt-0 mb-5">Bu senin profil sayfan. Çalışmanızda kaydettiğiniz ilerlemeyi görebilir ve
+          projelerinizi veya atanan görevleri yönetebilirsiniz.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row pt-2">
+  <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+  <!-- Card with profile photo and registration number -->
+    <div class="card pt-2 card-profile shadow bg-secondary text-white">
+      <div class="row pt-2 justify-content-center">
+        <div class="col-lg-3 order-lg-2">
+          <div class="card-profile-image">
+            <i class="fa fa-user-circle fa-5x"></i>
+          </div>
+        </div>
+      </div>
+      <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4  pt-2 ">
+        <div class="d-flex justify-content-between">
+        </div>
+      </div>
+      <div class="card-body pt-2 pt-md-4">
+        <div class="row pt-2">
+          <div class="col">
+            <div class="card-profile-stats d-flex justify-content-center mt-md-5 pt-2">
+
             </div>
           </div>
+        </div>
+        <div class="text-center">
+          <h3>
+            {{registrationNumber}}test
+          </h3>
         </div>
       </div>
     </div>
   </div>
-
-  <!--confirm modal-->
-  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayConfirmModal}">
-    <div class="modal-dialog" role="dialog">
-      <div class="modal-content bg-secondary text-white">
-        <div class="modal-header">
-          <h4 class="modal-title">Şifre Değişikliği Onay</h4>
-          <i class="fa fa-window-close fa-2x" (click)="closeConfirmModal()"></i>
+  <div class="col-xl-8 order-xl-1">
+    <!--Account Details-->
+    <div class="card bg-secondary shadow text-white pt-2">
+      <div class="card-header border-0 pt-2">
+        <div class="row pt-2 align-items-center">
+          <div class="col-8">
+            <h3 class="mb-0">Hesabım</h3>
+          </div>
         </div>
-        <div class="modal-body">
-          <div class="card">
-            <div class="card-body bg-secondary text-white">
-              <div class="row">
-                <div class="col-md-12">
-                  <h5>
-                    Şifrenizi değiştirmek istediğinize emin misiniz?
-                  </h5>
+      </div>
+      <div class="card-body pt-2">
+        <form>
+          <h6 class="heading-small mb-4">Kullanıcı Bilgisi</h6>
+          <div class="pl-lg-4">
+            <div class="row pt-2">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="firstName">Kullanıcı Adı</label>
+                  <input type="text" id="firstName" class="form-control form-control-alternative"
+                    placeholder="Username" value="{{firstName}} {{lastName}}" readonly>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="registrationNumber">Sicil</label>
+                  <input type="text" id="registrationNumber" class="form-control form-control-alternative"
+                    placeholder="{{registrationNumber}}" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="row pt-2">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="firstName">Ad</label>
+                  <input type="text" id="firstName" class="form-control form-control-alternative" placeholder="Ad"
+                    value="{{firstName}}" readonly>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="lastName">Soyad</label>
+                  <input type="text" id="lastName" class="form-control form-control-alternative" placeholder="Soyad"
+                    value="{{lastName}}" readonly>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="modal-footer bg-secondary text-white justify-content-center">
-          <div class="row">
-            <div class="col-md-6">
-              <!--  <Input type="button" class="btn btn-success"  style="cursor: pointer;"
-                [ngStyle]="{'display':'Demand.Delete' | demandPipe}" value="Evet"> -->
-            </div>
-            <div class="col-md-6">
-              <Input type="button" class="btn btn-danger" (click)="closeConfirmModal()" style="cursor: pointer;"
-                value="Hayır">
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
-</div>

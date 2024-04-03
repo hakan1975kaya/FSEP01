@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserProfileComponent } from './user-profile.component';
 
@@ -9,14 +6,10 @@ describe('UserProfileComponent', () => {
   let component: UserProfileComponent;
   let fixture: ComponentFixture<UserProfileComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ UserProfileComponent ]
-    })
-    .compileComponents();
-  }));
-
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [UserProfileComponent]
+    });
     fixture = TestBed.createComponent(UserProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

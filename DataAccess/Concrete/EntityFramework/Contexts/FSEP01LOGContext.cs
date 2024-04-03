@@ -13,10 +13,10 @@ using Demand = Core.Entities.Concrete.Demand;
 
 namespace DataAccess.Concrete.EntityFramework.Contexts
 {
-    public class FSEPL01OGContext : DbContext
+    public class FSEP01LOGContext : DbContext
     {
         private IConfiguration _configuration;
-        public FSEPL01OGContext()
+        public FSEP01LOGContext()
         {
             _configuration = ServiceTool.ServiceProvider.GetService<IConfiguration>();
         }

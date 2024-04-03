@@ -14,9 +14,7 @@
       <div class="card border-0">
         <div class="row">
           <div class="col-md-3">
-            <i class="fa fa-user fa-3x" style="cursor: pointer;" aria-hidden="true"
-              (click)="resetSelectedMenuId(selectedMenuId)"
-              [routerLink]="['/user-profile']"></i>
+            <i class="fa fa-user fa-3x" aria-hidden="true"></i>
           </div>
           <div class="col-md-7">
             <div class="row fw-bold">{{registrationNumber}}</div>
@@ -38,11 +36,11 @@
       <div class="col-md-2">
         <ul *ngIf="isLogin" class="nav navbar-nav">
           <h4>FSEP 01</h4>
-          <ul class="list-group" *ngFor=" let  menu of  menus">
-            <li class="list-group-item btn" style="text-align:left; padding: left 6px;" value="menu.id"
-              [ngStyle]="{'background-color':menu.id == selectedMenuId ? '#54B4D3' : '#757575' ,'display':menu.path | menuPipe }">
-              <div class="link-light" [routerLink]="menu.path" (click)="setMenuId(menu.id)">
-                <span>{{menu.description}}</span>
+          <ul class="list-group" *ngFor=" let  userMenu of  userMenus">
+            <li class="list-group-item btn" style="text-align:left; padding: left 6px;" value="userMenu.id"
+              [ngStyle]="{'background-color':userMenu.id == selectedMenuId ? '#54B4D3' : '#757575' ,'display':userMenu.path | menuPipe }">
+              <div class="link-light" [routerLink]="userMenu.path" (click)="setMenuId(userMenu.id)">
+                <span>{{userMenu.description}}</span>
               </div>
             </li>
           </ul>
@@ -55,19 +53,13 @@
     </div>
   </div>
   <!-- Footer -->
-  <footer class="py-5">
-    <div class="row p-4">
-      <div class="col-xl-2">
-        <div class="copyright text-center text-xl-left text-muted">
-          © 2023 ASAŞ <a href="d" class="font-weight-bold ml-1" target="_blank"></a>
+  <div class="row p-4 d-flex justify-content-center">
+    <div class="col-md-4">
+      <footer>
+        <div class="copyright text-center">© 2024 ASAŞ
         </div>
-      </div>
-      <div class="col-xl-10">
-        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-          <li class="nav-item">
-          </li>
-        </ul>
-      </div>
+      </footer>
     </div>
-  </footer>
+  </div>
+
 </div>
