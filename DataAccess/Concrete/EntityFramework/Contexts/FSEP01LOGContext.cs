@@ -13,25 +13,19 @@ using Demand = Core.Entities.Concrete.Demand;
 
 namespace DataAccess.Concrete.EntityFramework.Contexts
 {
-    public class FSEPContext : DbContext
+    public class FSEP01LOGContext : DbContext
     {
         private IConfiguration _configuration;
-        public FSEPContext()
+        public FSEP01LOGContext()
         {
             _configuration = ServiceTool.ServiceProvider.GetService<IConfiguration>();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("FSEP"));
+            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("FSEP01LOG"));
         }
-
-        public DbSet<Demand> Demands { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
-        public DbSet<RoleDemand> RoleDemands { get; set; }
-        public DbSet<Menu> Menus { get; set; }
-        public DbSet<RoleMenu> RoleMenus { get; set; }
+        public DbSet<ApiLog> ApiLogs { get; set; }
+        public DbSet<WebLog> WebLogs { get; set; }
 
     }
 }

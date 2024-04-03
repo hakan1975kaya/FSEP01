@@ -69,7 +69,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "FSEPApi", Version = "v1.0" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "FSEP01Api", Version = "v1.0" });
     c.AddSecurityDefinition("Bearer",
         new OpenApiSecurityScheme
         {

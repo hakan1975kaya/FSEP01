@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EFApiLogDal:EFEntityRepositoryBase<FSEPLOGContext,ApiLog>,IApiLogDal
+    public class EFApiLogDal:EFEntityRepositoryBase<FSEP01LOGContext,ApiLog>,IApiLogDal
     {
 
     }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EFWebLogDal:EFEntityRepositoryBase<FSEPLOGContext,WebLog>,IWebLogDal
+    public class EFWebLogDal:EFEntityRepositoryBase<FSEP01LOGContext,WebLog>,IWebLogDal
     {
 
     }

@@ -16,6 +16,7 @@ import { UserComponent } from './pages/user/user.component';
 import { UserRoleComponent } from './pages/user-role/user-role.component';
 import { RoleDemandComponent } from './pages/role-demand/role-demand.component';
 import { RoleMenuComponent } from './pages/role-menu/role-menu.component';
+import { PasswordChangeComponent } from './pages/password-change/password-change.component';
 
 const routes: Routes = [
   { path: 'app', component: AppComponent, canActivate: [AuthenticationGuard, AuthorizationGuard] },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'user-role', component: UserRoleComponent, canActivate: [AuthenticationGuard, AuthorizationGuard] },
   { path: 'role-demand', component: RoleDemandComponent, canActivate: [AuthenticationGuard, AuthorizationGuard] },
   { path: 'role-menu', component: RoleMenuComponent, canActivate: [AuthenticationGuard, AuthorizationGuard] },
+  { path: 'password-change', component: PasswordChangeComponent, canActivate: [AuthenticationGuard, AuthorizationGuard] },
   { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
 ];
 

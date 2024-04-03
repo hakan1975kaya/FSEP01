@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EFUserDal : EFEntityRepositoryBase<FSEPContext, User>, IUserDal
+    public class EFUserDal : EFEntityRepositoryBase<FSEP01Context, User>, IUserDal
     {
         public async Task<List<Demand>> GetDemandsByUserId(Guid userId)
         {
-            using (var context = new FSEPContext())
+            using (var context = new FSEP01Context())
             {
                 var result = from u in context.Users
                              join ur in context.UserRoles on u.Id equals ur.UserId
@@ -41,7 +41,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         public async Task<List<Menu>> GetMenusByUserId(Guid userId)
         {
-            using (var context = new FSEPContext())
+            using (var context = new FSEP01Context())
             {
                 var result = from u in context.Users
                              join ur in context.UserRoles on u.Id equals ur.UserId

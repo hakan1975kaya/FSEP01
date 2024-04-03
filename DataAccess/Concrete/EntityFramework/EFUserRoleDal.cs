@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EFUserRoleDal : EFEntityRepositoryBase<FSEPContext, UserRole>, IUserRoleDal
+    public class EFUserRoleDal : EFEntityRepositoryBase<FSEP01Context, UserRole>, IUserRoleDal
     {
         public async Task<List<UserRoleDto>> Search(FilterDto filterDto)
         {
-            using (var context = new FSEPContext())
+            using (var context = new FSEP01Context())
             {
                 var data = from ur in context.UserRoles
                            join u in context.Users on ur.UserId equals u.Id
