@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PLC.Dtos
 {
-    public class PlcOptions
+    public class PLCOptions
     {
         public string IP { get; set; }
         public CpuType CpuType { get; set; }

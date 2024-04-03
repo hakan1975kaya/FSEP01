@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IPlcService
+    public interface IPLCService
     {
         public Task<IResult> MotorStart();
         public Task<IResult> MotorStop();

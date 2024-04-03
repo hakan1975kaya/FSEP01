@@ -7,7 +7,7 @@ using System.Text;
 
 namespace PLC.Abstract
 {
-    public interface IPlcDal
+    public interface IPLCDal
     {
         public object? Read(string variable);
         public object? Read(DataType dataType, int db, int startByteAdr, VarType varType, int varCount, byte bitAdr = 0);

@@ -55,9 +55,9 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<Stopwatch>();
 
-            builder.RegisterType<PlcHelper>().As<IPlcHelper>();
-            builder.RegisterType<PlcDal>().As<IPlcDal>();
-            builder.RegisterType<PlcManager>().As<IPlcService>();
+            builder.RegisterType<PLCHelper>().As<IPLCHelper>();
+            builder.RegisterType<PLCDal>().As<IPLCDal>();
+            builder.RegisterType<PLCManager>().As<IPLCService>();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

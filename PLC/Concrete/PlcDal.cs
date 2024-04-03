@@ -13,11 +13,11 @@ using System.Threading.Tasks;
 
 namespace PLC.Concrete
 {
-    public class PlcDal : IPlcDal
+    public class PLCDal : IPLCDal
     {
-        private IPlcHelper _plcHelper;
+        private IPLCHelper _plcHelper;
         private Plc _plc;
-        public PlcDal(IPlcHelper plcHelper)
+        public PLCDal(IPLCHelper plcHelper)
         {
             _plcHelper = plcHelper;
             _plc = _plcHelper.Plc();

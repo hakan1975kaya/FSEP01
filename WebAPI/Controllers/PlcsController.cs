@@ -9,8 +9,8 @@ namespace WebAPI.Controllers
     [ApiController]
     public class PlcsController : ControllerBase
     {
-        private IPlcService _plcService;
-        public PlcsController(IPlcService plcService)
+        private IPLCService _plcService;
+        public PlcsController(IPLCService plcService)
         {
 
             _plcService = plcService;

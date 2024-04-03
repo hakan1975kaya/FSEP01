@@ -9,10 +9,10 @@ using S7.Net;
 namespace Business.Concrete
 {
     [LogAspect(typeof(DatabaseLogger), Priority = 1)]
-    public class PlcManager : IPlcService
+    public class PLCManager : IPLCService
     {
-        private IPlcDal _plcDal;
-        public PlcManager(IPlcDal plcDal)
+        private IPLCDal _plcDal;
+        public PLCManager(IPLCDal plcDal)
         {
             _plcDal = plcDal;
         }

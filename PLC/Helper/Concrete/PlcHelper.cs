@@ -13,15 +13,15 @@ using System.Threading.Tasks;
 
 namespace PLC.Helper.Concrete
 {
-    public class PlcHelper : IPlcHelper
+    public class PLCHelper : IPLCHelper
     {
         private IConfiguration _configuration;
-        private PlcOptions _plcOptions;
+        private PLCOptions _plcOptions;
         private Plc _plc;
-        public PlcHelper()
+        public PLCHelper()
         {
             _configuration = ServiceTool.ServiceProvider.GetService<IConfiguration>();
-            _plcOptions = _configuration.GetSection("PlcOptions").Get<PlcOptions>();
+            _plcOptions = _configuration.GetSection("PlcOptions").Get<PLCOptions>();
             _plc = new Plc(_plcOptions.IP, TsapPair.GetDefaultTsapPair(_plcOptions.CpuType, _plcOptions.Rack, _plcOptions.Slot));
             if (!_plc.IsConnected)
             {

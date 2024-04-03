@@ -1,15 +1,13 @@
-﻿using S7.Net;
+﻿using PSI.Helper.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PLC.Helper.Abstract
+namespace PSI.Helper.Concrete
 {
-    public interface IPLCHelper
+    public class PSIHelper:IPSIHelper
     {
-        Plc Plc();
     }
 }
