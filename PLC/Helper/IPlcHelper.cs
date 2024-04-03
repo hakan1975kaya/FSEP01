@@ -1,5 +1,4 @@
-﻿using PLC.Entities;
-using S7.Net;
+﻿using S7.Net;
 using System;
 using System.Collections.Generic;
 using System.Linq;

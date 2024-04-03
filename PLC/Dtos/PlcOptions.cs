@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PLC.Entities
+namespace PLC.Dtos
 {
     public class PlcOptions
     {

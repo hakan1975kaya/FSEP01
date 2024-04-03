@@ -1,7 +1,7 @@
 ﻿using Core.Utilities.Service;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PLC.Entities;
+using PLC.Dtos;
 using S7.Net;
 using S7.Net.Protocol;
 using System;
