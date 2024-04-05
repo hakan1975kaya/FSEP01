@@ -1,11 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { DemandPipe } from './demand.pipe';
+import { ProcessStateL22PESPipe } from './ProcessStateL22PES.pipe';
 
-describe('Pipe: Demande', () => {
+describe('Pipe: ProcessStateL22PESe', () => {
   it('create an instance', () => {
-    let pipe = new DemandPipe();
+    let pipe = new ProcessStateL22PESPipe();
     expect(pipe).toBeTruthy();
   });
 });

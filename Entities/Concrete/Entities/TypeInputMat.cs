@@ -5,18 +5,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PSI.Dtos
+namespace Entities.Concrete.Entities
 {
-    public class TypeInputMat : IDto
+    public class TypeInputMat : IEntity
     {
-        public TypeMatId MatId { get; set; }
+        public Guid Id { get; set; }
+        public Guid ProdReportL22PESId { get; set; }
+        public Guid MatId { get; set; }
         public string FlagConsumed { get; set; }
         public string UsageOfInput { get; set; }
         public decimal CountInputParameter { get; set; }
-        public List<TypeParameterList> ParameterList { get; set; }
         public decimal CountInputDefects { get; set; }
-        public List<TypeDefectList> InputDefectList { get; set; }
+        public DateTime Optime { get; set; }
+        public bool IsActive { get; set; }
     }
 }
+
+
+
+
+
+
+
+
 
 

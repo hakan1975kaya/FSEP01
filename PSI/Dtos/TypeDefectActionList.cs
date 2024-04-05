@@ -11,7 +11,7 @@ namespace PSI.Dtos
     {
         public string Action { get; set; }
         public string CountDefects { get; set; }
-        public TypeDefectList OutputDefectList { get; set; }
+        public List<TypeDefectList> OutputDefectList { get; set; }
     }
 }
 

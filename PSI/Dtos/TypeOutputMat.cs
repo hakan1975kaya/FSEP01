@@ -15,9 +15,9 @@ namespace PSI.Dtos
         public TypeTimeStamp ProdEnd { get; set; }
         public decimal ProdDuration { get; set; }
         public decimal CountOutputParameter { get; set; }
-        public TypeParameterList ParameterList { get; set; }
+        public List<TypeParameterList> ParameterList { get; set; }
         public decimal CountOutputDefects { get; set; }
-        public TypeDefectList OutputDefectList { get; set; }
+        public List<TypeDefectList> OutputDefectList { get; set; }
     }
 }
 

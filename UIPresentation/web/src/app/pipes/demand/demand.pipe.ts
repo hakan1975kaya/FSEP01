@@ -3,20 +3,20 @@ import { DecodeToken } from './../../models/auth/decode-token';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'demandPipe'
+  name: 'ProcessStateL22PESPipe'
 })
-export class DemandPipe implements PipeTransform {
+export class ProcessStateL22PESPipe implements PipeTransform {
 
   constructor(private authService: AuthService) { }
 
-  transform(demandName: string): string {
+  transform(ProcessStateL22PESName: string): string {
     let decodeToken: DecodeToken = this.authService.decodeToken()
-    let demandNames: string[] = decodeToken.demandNames
+    let ProcessStateL22PESNames: string[] = decodeToken.ProcessStateL22PESNames
 
     let isAuth: boolean = false
 
-    demandNames.forEach(eachName => {
-      if (eachName == demandName) {
+    ProcessStateL22PESNames.forEach(eachName => {
+      if (eachName == ProcessStateL22PESName) {
         isAuth=true
       }
     })

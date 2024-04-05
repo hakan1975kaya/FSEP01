@@ -30,7 +30,7 @@
           <div class="col-md-1">
             <div class="form-group">
               <input type="button" class="btn btn-warning" id="search" name="search" value="Ara" (click)="search()"
-                [ngStyle]="{'display':'RoleDemand.Search' | demandPipe}">
+                [ngStyle]="{'display':'RoleProcessStateL22PES.Search' | ProcessStateL22PESPipe}">
             </div>
           </div>
           <!--clear button-->
@@ -47,12 +47,12 @@
   <!--add new -->
   <div class="row pt-2">
     <div class="col-md-1">
-      <i class="fa fa-plus-square fa-2x" (click)="openRoleDemandModal()" ngbTooltip="Ekle" style="cursor: pointer;"></i>
+      <i class="fa fa-plus-square fa-2x" (click)="openRoleProcessStateL22PESModal()" ngbTooltip="Ekle" style="cursor: pointer;"></i>
     </div>
     <div class="col-md-11"></div>
   </div>
 
-  <!--roleDemand table-->
+  <!--roleProcessStateL22PES table-->
   <div class="row pt-2">
     <div class="card">
       <div class="card-body">
@@ -65,8 +65,8 @@
                 Adı<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('roleName')"></i>
               </th>
               <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
-                  (click)="orderDesc('demandName')"></i>Yetki Adı<i class="fa fa-arrow-circle-o-up"
-                  style="cursor: pointer;" (click)="orderAsc('demandName')"></i></th>
+                  (click)="orderDesc('ProcessStateL22PESName')"></i>Yetki Adı<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('ProcessStateL22PESName')"></i></th>
               <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
                   (click)="orderDesc('optime')"></i>Tarih<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
                   (click)="orderAsc('optime')"></i></th>
@@ -74,19 +74,19 @@
             </thead>
             <tbody>
               <tr
-                *ngFor="let roleDemand of roleDemands | paginate: {id:'roleDemandPagination',itemsPerPage:itemsPerPage, currentPage:currentPage}">
-                <td>{{roleDemand.id}}</td>
-                <td>{{roleDemand.roleName}}</td>
-                <td>{{roleDemand.demandName}}</td>
-                <td>{{roleDemand.optime | date:"dd.MM.yyyy hh:mm:ss"}} </td>
+                *ngFor="let roleProcessStateL22PES of roleProcessStateL22PESs | paginate: {id:'roleProcessStateL22PESPagination',itemsPerPage:itemsPerPage, currentPage:currentPage}">
+                <td>{{roleProcessStateL22PES.id}}</td>
+                <td>{{roleProcessStateL22PES.roleName}}</td>
+                <td>{{roleProcessStateL22PES.ProcessStateL22PESName}}</td>
+                <td>{{roleProcessStateL22PES.optime | date:"dd.MM.yyyy hh:mm:ss"}} </td>
                 <td>
                   <div class="row">
                     <div class="col-md-6">
-                      <i class="fa fa-pencil fa-2x" (click)="openRoleDemandModal(roleDemand.id)"
+                      <i class="fa fa-pencil fa-2x" (click)="openRoleProcessStateL22PESModal(roleProcessStateL22PES.id)"
                         style="cursor: pointer;color: steelblue;"></i>
                     </div>
                     <div class="col-md-6">
-                      <i class="fa fa-trash fa-2x" (click)="openConfirmModal(roleDemand.id)"
+                      <i class="fa fa-trash fa-2x" (click)="openConfirmModal(roleProcessStateL22PES.id)"
                         style="cursor: pointer;color:red"></i>
                     </div>
                   </div>
@@ -101,30 +101,30 @@
   <!--pagination-->
   <div class="row p-2">
     <div class="col-md-11">
-      <pagination-controls id="roleDemandPagination" (pageChange)="currentPage = $event"></pagination-controls>
+      <pagination-controls id="roleProcessStateL22PESPagination" (pageChange)="currentPage = $event"></pagination-controls>
     </div>
     <!--export to excel pdf-->
     <div class="col-md-1 d-flex justify-content-around">
       <i class="fa fa-file-excel-o fa-2x" style="cursor: pointer;color: green;" (click)="exportToExcel()"
-        [ngStyle]="{'display':'RoleDemand.Search' | demandPipe}"></i>
+        [ngStyle]="{'display':'RoleProcessStateL22PES.Search' | ProcessStateL22PESPipe}"></i>
       <i class="fa  fa-file-pdf-o fa-2x" style="cursor: pointer;color:red" (click)="exportToPdf()"
-        [ngStyle]="{'display':'RoleDemand.Search' | demandPipe}"></i>
+        [ngStyle]="{'display':'RoleProcessStateL22PES.Search' | ProcessStateL22PESPipe}"></i>
     </div>
   </div>
 
-  <!--roleDemandModal--->
-  <div class="modal" role="dialog" tabindex="-1" [ngStyle]="{'display':displayRoleDemandModal}">
+  <!--roleProcessStateL22PESModal--->
+  <div class="modal" role="dialog" tabindex="-1" [ngStyle]="{'display':displayRoleProcessStateL22PESModal}">
     <div class="modal-dialog modal-lg" role="dialog">
       <div class="modal-content bg-secondary text-white">
         <!--Header-->
         <div class="modal-header">
           <h4 class="modal-title">Rol Yetki Ekle & Düzelt</h4>
-          <i class="fa fa-window-close fa-2x" (click)="closeRoleDemandModal()"></i>
+          <i class="fa fa-window-close fa-2x" (click)="closeRoleProcessStateL22PESModal()"></i>
         </div>
         <!--body-->
         <div class="modal-body">
 
-          <form [formGroup]="roleDemandForm">
+          <form [formGroup]="roleProcessStateL22PESForm">
             <!--id-->
             <div class="form-group">
               <div class="row">
@@ -147,27 +147,27 @@
                     <option *ngFor="let role of roles" value={{role.id}}>{{role.roleName}}</option>
                   </select>
                   <div class="alert alert-danger"
-                    *ngIf="roleDemandForm.get('roleId')?.hasError('required') && roleDemandForm.get('roleId')?.dirty">
+                    *ngIf="roleProcessStateL22PESForm.get('roleId')?.hasError('required') && roleProcessStateL22PESForm.get('roleId')?.dirty">
                     Rol Zorunlu!</div>
                 </div>
               </div>
             </div>
 
-            <!--demandId-->
+            <!--ProcessStateL22PESId-->
             <div class="form-group pt-4">
               <div class="row">
                 <div class="col-md-4">
-                  <label for="demandId" class="col-form-label">Yetki:</label>
+                  <label for="ProcessStateL22PESId" class="col-form-label">Yetki:</label>
                 </div>
                 <div class="col-md-8">
-                  <select class="form-select" [(ngModel)]="demandIdDefault" formControlName="demandId" id="demandId"
-                    name="demandId" required style="cursor: pointer;">
+                  <select class="form-select" [(ngModel)]="ProcessStateL22PESIdDefault" formControlName="ProcessStateL22PESId" id="ProcessStateL22PESId"
+                    name="ProcessStateL22PESId" required style="cursor: pointer;">
                     <option value='' selected disabled>Yetki Seçiniz</option>
-                    <option *ngFor="let demand of demands" value={{demand.id}}>{{demand.demandName}}
+                    <option *ngFor="let ProcessStateL22PES of ProcessStateL22PESs" value={{ProcessStateL22PES.id}}>{{ProcessStateL22PES.ProcessStateL22PESName}}
                     </option>
                   </select>
                   <div class="alert alert-danger"
-                    *ngIf="roleDemandForm.get('demandId')?.hasError('required') && roleDemandForm.get('demandId')?.dirty">
+                    *ngIf="roleProcessStateL22PESForm.get('ProcessStateL22PESId')?.hasError('required') && roleProcessStateL22PESForm.get('ProcessStateL22PESId')?.dirty">
                     Yetki Zorunlu!</div>
                 </div>
               </div>
@@ -178,8 +178,8 @@
         <!--footer-->
         <div class="modal-footer d-flex justify-content-center">
           <input type="button" class="btn btn-success" (click)="save()" value="Kaydet"
-            [disabled]="!roleDemandForm.valid" [ngStyle]="{'display':'RoleDemand.Add' | demandPipe}"
-            [ngStyle]="{'display':'RoleDemand.Update' | demandPipe}">
+            [disabled]="!roleProcessStateL22PESForm.valid" [ngStyle]="{'display':'RoleProcessStateL22PES.Add' | ProcessStateL22PESPipe}"
+            [ngStyle]="{'display':'RoleProcessStateL22PES.Update' | ProcessStateL22PESPipe}">
         </div>
       </div>
     </div>
@@ -210,7 +210,7 @@
           <div class="row">
             <div class="col-md-6">
               <Input type="button" class="btn btn-success" (click)="deleteFromConfirm()" style="cursor: pointer;"
-                [ngStyle]="{'display':'RoleDemand.Delete' | demandPipe}" value="Evet">
+                [ngStyle]="{'display':'RoleProcessStateL22PES.Delete' | ProcessStateL22PESPipe}" value="Evet">
             </div>
             <div class="col-md-6">
               <Input type="button" class="btn btn-danger" (click)="closeConfirmModal()" style="cursor: pointer;"
