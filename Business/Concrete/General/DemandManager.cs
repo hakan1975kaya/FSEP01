@@ -1,7 +1,6 @@
 ﻿using Business.Abstract.General;
 using Business.BusinessAspect.Autofac;
 using Business.Constants.Messages.General;
-using Business.Validators.FluentValidators.AuthValidators;
 using Business.Validators.FluentValidators.General.DemandValidators;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Logging;
