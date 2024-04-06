@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PSI.Dtos
 {
-    public class ProcessDataPES2L2:IDto
+    public class ProcessDataPES2L2 : IDto
     {
         public TypeHeader Header { get; set; }
         public TypeTimeStamp EventTime { get; set; }
@@ -15,8 +15,8 @@ namespace PSI.Dtos
         public string LineId { get; set; }
         public string LineSequenceId { get; set; }
         public decimal CountLineSeqParameter { get; set; }
+        public List<TypeParameterList> LineSeqParameterList { get; set; }
         public decimal CountProcessInstructions { get; set; }
-        public DateTime Optime { get; set; }
-        public bool IsActive { get; set; }
+        public List<TypeProcessInstructions> ProcessInstructions { get; set; }
     }
 }

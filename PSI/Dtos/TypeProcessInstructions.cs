@@ -5,15 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete.Entities.PSI
+namespace PSI.Dtos
 {
-    public class TypeProcessInstructions : IEntity
+    public class TypeProcessInstructions : IDto
     {
-        public Guid Id { get; set; }
-        public Guid InputMat { get; set; }
+        public TypeInputMat InputMat { get; set; }
         public decimal CountOutputMat { get; set; }
+        public List<TypeOutputMatTarget> OutputMatList { get; set; }
         public decimal CountProdParameter { get; set; }
-        public decimal Optime { get; set; }
-        public bool IsActive { get; set; }
+        public List<TypeParameterList> ProdParameterList { get; set; }
     }
 }

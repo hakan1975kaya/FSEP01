@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace PSI.Dtos
 {
-    public class PingL22PES:IDto
+    public class PingL22PES : IDto
     {
         public TypeHeader Header { get; set; }
-        public DateTime Optime { get; set; }
-        public bool IsActive { get; set; }
     }
 }
 
