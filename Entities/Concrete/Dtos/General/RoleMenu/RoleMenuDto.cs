@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete.Dtos.RoleMenu
+namespace Entities.Concrete.Dtos.General.RoleMenu
 {
-    public class RoleMenuDto:IDto
+    public class RoleMenuDto : IDto
     {
         public Guid Id { get; set; }
         public Guid RoleId { get; set; }

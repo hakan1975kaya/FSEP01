@@ -9,7 +9,6 @@ namespace PSI.Dtos
 {
     public class PingAckL22PES:IDto
     {
-        public Guid Id { get; set; }
         public TypeHeader Header { get; set; }
         public string TelegramSeqNo { get; set; }
         public DateTime Optime { get; set; }

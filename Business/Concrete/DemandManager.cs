@@ -11,7 +11,7 @@ using Core.Entities.Concrete;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
-using Entities.Concrete.Dtos.Genaral;
+using Entities.Concrete.Dtos.General.Genaral;
 using System.Linq;
 
 namespace Business.Concrete

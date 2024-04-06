@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete.Dtos.Auth
+namespace Entities.Concrete.Dtos.General.Genaral
 {
-    public class LoginDto:IDto
+    public class FilterDto : IDto
     {
-        public int RegistrationNumber { get; set; }
-        public string Password { get; set; }
+        public string Filter { get; set; }
     }
 }

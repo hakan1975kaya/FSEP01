@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete.Entities.WEB
+namespace Entities.Concrete.Entities.General
 {
     public class Role : IEntity
     {

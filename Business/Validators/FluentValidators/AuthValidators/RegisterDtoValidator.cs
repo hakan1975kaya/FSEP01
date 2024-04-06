@@ -1,5 +1,5 @@
 ﻿using Core.Entities.Concrete;
-using Entities.Concrete.Dtos.Auth;
+using Entities.Concrete.Dtos.General.Auth;
 using FluentValidation;
 using System;
 using System.Collections.Generic;

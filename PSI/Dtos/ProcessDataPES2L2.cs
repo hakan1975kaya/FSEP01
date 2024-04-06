@@ -9,7 +9,6 @@ namespace PSI.Dtos
 {
     public class ProcessDataPES2L2:IDto
     {
-        public Guid Id { get; set; }
         public TypeHeader Header { get; set; }
         public TypeTimeStamp EventTime { get; set; }
         public string EventCode { get; set; }

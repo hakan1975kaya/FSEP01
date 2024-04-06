@@ -11,7 +11,7 @@ using Core.Utilities.Security;
 using Core.Utilities.Security.Abstract;
 using Core.Utilities.Security.Hashing;
 using DataAccess.Abstract;
-using Entities.Concrete.Dtos.Auth;
+using Entities.Concrete.Dtos.General.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;

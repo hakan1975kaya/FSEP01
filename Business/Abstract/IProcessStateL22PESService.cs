@@ -1,6 +1,6 @@
 ﻿using Core.Entities.Concrete;
 using Core.Utilities.Results.Abstract;
-using Entities.Concrete.Dtos.Genaral;
+using Entities.Concrete.Dtos.General.Genaral;
 using Entities.Concrete.Entities.PSI;
 using System;
 using System.Collections.Generic;

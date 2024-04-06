@@ -9,9 +9,10 @@ namespace Entities.Concrete.Entities.PSI
     public class TypeProcessInstructions
     {
         public Guid Id { get; set; }
-        public string ProcessId { get; set; }
-        public string ProcessPhase { get; set; }
-        public DateTime Optime { get; set; }
+        public Guid InputMat { get; set; }
+        public decimal CountOutputMat { get; set; }
+        public decimal CountProdParameter { get; set; }
+        public decimal Optime { get; set; }
         public bool IsActive { get; set; }
     }
 }

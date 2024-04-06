@@ -1,4 +1,4 @@
-﻿using Entities.Concrete.Dtos.User;
+﻿using Entities.Concrete.Dtos.General.User;
 using FluentValidation;
 using System;
 using System.Collections.Generic;

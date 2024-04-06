@@ -1,8 +1,8 @@
 ﻿using Core.DataAccess.Concrete.EntityFramework;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework.Contexts;
-using Entities.Concrete.Dtos.Genaral;
-using Entities.Concrete.Dtos.RoleDemand;
+using Entities.Concrete.Dtos.General.Genaral;
+using Entities.Concrete.Dtos.General.RoleDemand;
 using Entities.Concrete.Entities.WEB;
 using System;
 using System.Collections.Generic;

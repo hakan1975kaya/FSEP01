@@ -1,5 +1,5 @@
 ﻿using Business.Abstract;
-using Entities.Concrete.Dtos.Auth;
+using Entities.Concrete.Dtos.General.Auth;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers

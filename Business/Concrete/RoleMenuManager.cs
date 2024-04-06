@@ -10,9 +10,9 @@ using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
-using Entities.Concrete.Dtos.Genaral;
+using Entities.Concrete.Dtos.General.Genaral;
+using Entities.Concrete.Dtos.General.RoleMenu;
 using Entities.Concrete.Dtos.RoleDemand;
-using Entities.Concrete.Dtos.RoleMenu;
 using Entities.Concrete.Entities.WEB;
 
 namespace Business.Concrete

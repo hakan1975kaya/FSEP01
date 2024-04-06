@@ -17,6 +17,7 @@ namespace PSI.Dtos
         public string ReqCategory { get; set; }
         public string ReqKey { get; set; }
         public TypeMatId MatId { get; set; }
+        public string SubLine { get; set; }
         public string EventCode { get; set; }
         public string Remark { get; set; }
     }

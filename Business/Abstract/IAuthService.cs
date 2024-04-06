@@ -1,7 +1,7 @@
 ﻿using Core.Entities.Concrete;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Security;
-using Entities.Concrete.Dtos.Auth;
+using Entities.Concrete.Dtos.General.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
