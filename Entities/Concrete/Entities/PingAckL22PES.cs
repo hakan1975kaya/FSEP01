@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete.Entities
 {
-    public class TypeMatId:IEntity
+    public class PingAckL22PES : IEntity
     {
         public Guid Id { get; set; }
-        public string GlobalId { get; set; }
-        public string LocalId { get; set; }
-        public string InternalId { get; set; }
+        public Guid Header { get; set; }
+        public string TelegramSeqNo { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
     }
 }
+

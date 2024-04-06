@@ -10,6 +10,9 @@ namespace Entities.Concrete.Entities
     public class TypeDefectList:IEntity
     {
         public Guid Id { get; set; }
+        public Guid? TypeDefectActionList { get; set; }
+        public Guid? TypeInputMat { get; set; }
+        public Guid? TypeOutputMat { get; set; }
         public string DefectCode { get; set; }
         public string DefectBlocking { get; set; }
         public string DefectSeverity { get; set; }

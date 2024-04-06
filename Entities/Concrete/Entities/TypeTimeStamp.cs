@@ -9,7 +9,7 @@ namespace Entities.Concrete.Entities
 {
     public class TypeTimeStamp : IEntity
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public DateTime TimeStamp { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }

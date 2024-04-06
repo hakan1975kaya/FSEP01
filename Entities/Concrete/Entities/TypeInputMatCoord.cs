@@ -7,13 +7,19 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete.Entities
 {
-    public class TypeMatId:IEntity
+    public class TypeInputMatCoord : IEntity
     {
         public Guid Id { get; set; }
-        public string GlobalId { get; set; }
-        public string LocalId { get; set; }
-        public string InternalId { get; set; }
+        public Guid TypeOutputMatTarget { get; set; }
+        public decimal OutputMatStartX { get; set; }
+        public decimal OutputMatEndX { get; set; }
+        public decimal OutputMatStartY { get; set; }
+        public decimal OutputMatEndY { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
     }
 }
+
+
+
+

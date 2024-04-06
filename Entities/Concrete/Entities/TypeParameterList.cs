@@ -10,9 +10,13 @@ namespace Entities.Concrete.Entities
     public class TypeParameterList:IEntity
     {
         public Guid Id { get; set; }
-        public Guid ProcessStateL22PESId { get; set; }
-        public Guid TypeInputMatId { get; set; }
-        public Guid TypeOutputMatId { get; set; }
+        public Guid? ProcessDataPES2L2 { get; set; }
+        public Guid? ProcessStateL22PES { get; set; }
+        public Guid? TypeInputMat { get; set; }
+        public Guid? TypeOutputMat { get; set; }
+        public Guid? TypeProcessInstructions { get; set; }
+        public Guid? TypeOutputMatTarget { get; set; }
+        public Guid? GeneralAckPES2L2 { get; set; }
         public string ParameterName { get; set; }
         public string ParameterValueString { get; set; }
         public decimal ParameterValueNumber { get; set; }
@@ -22,6 +26,9 @@ namespace Entities.Concrete.Entities
         public bool IsActive { get; set; }
     }
 }
+
+
+
 
 
 

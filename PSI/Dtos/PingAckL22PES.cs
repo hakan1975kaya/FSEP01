@@ -5,15 +5,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete.Entities
+namespace PSI.Dtos
 {
-    public class TypeMatId:IEntity
+    public class PingAckL22PES:IDto
     {
         public Guid Id { get; set; }
-        public string GlobalId { get; set; }
-        public string LocalId { get; set; }
-        public string InternalId { get; set; }
+        public TypeHeader Header { get; set; }
+        public string TelegramSeqNo { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
     }
 }
+
+
+
+
+
