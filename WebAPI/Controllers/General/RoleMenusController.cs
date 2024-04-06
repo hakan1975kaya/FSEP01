@@ -1,26 +1,24 @@
-﻿using Business.Abstract;
-using Core.Entities.Concrete;
+﻿using Business.Abstract.General;
 using Entities.Concrete.Dtos.General.Genaral;
-using Entities.Concrete.Entities;
-using Microsoft.AspNetCore.Http;
+using Entities.Concrete.Entities.General;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebAPI.Controllers
+namespace WebAPI.Controllers.General
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MenusController : ControllerBase
+    public class RoleMenusController : ControllerBase
     {
-        private IMenuService _menuService;
-        public MenusController(IMenuService menuService)
+        private IRoleMenuService _roleMenuService;
+        public RoleMenusController(IRoleMenuService roleMenuService)
         {
-            _menuService = menuService;
+            _roleMenuService = roleMenuService;
         }
 
         [HttpPost("add")]
-        public async Task<IActionResult> Add(Menu menu)
+        public async Task<IActionResult> Add(RoleMenu roleMenu)
         {
-            var result = await _menuService.Add(menu);
+            var result = await _roleMenuService.Add(roleMenu);
             if (result.Success)
             {
                 return Ok(result);
@@ -30,9 +28,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<IActionResult> Update(Menu menu)
+        public async Task<IActionResult> Update(RoleMenu roleMenu)
         {
-            var result = await _menuService.Update(menu);
+            var result = await _roleMenuService.Update(roleMenu);
             if (result.Success)
             {
                 return Ok(result);
@@ -44,7 +42,7 @@ namespace WebAPI.Controllers
         [HttpDelete("delete")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var result = await _menuService.Delete(id);
+            var result = await _roleMenuService.Delete(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -57,8 +55,8 @@ namespace WebAPI.Controllers
         [HttpGet("getById")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var dataResult= await _menuService.GetById(id);
-            if(dataResult.Success)
+            var dataResult = await _roleMenuService.GetById(id);
+            if (dataResult.Success)
             {
                 return Ok(dataResult);
             }
@@ -69,18 +67,19 @@ namespace WebAPI.Controllers
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAll()
         {
-            var dataResult = await _menuService.GetAll();
+            var dataResult = await _roleMenuService.GetAll();
             if (dataResult.Success)
             {
                 return Ok(dataResult);
             }
+
             return BadRequest(dataResult);
         }
 
         [HttpPost("search")]
         public async Task<IActionResult> Search(FilterDto filterDto)
         {
-            var dataResult = await _menuService.Search(filterDto);
+            var dataResult = await _roleMenuService.Search(filterDto);
             if (dataResult.Success)
             {
                 return Ok(dataResult);

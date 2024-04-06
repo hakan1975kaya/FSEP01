@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Abstract
+namespace Business.Abstract.General
 {
     public interface IDemandService
     {
@@ -15,7 +15,7 @@ namespace Business.Abstract
         public Task<IResult> Update(Demand demand);
         public Task<IResult> Delete(Guid id);
         public Task<IDataResult<Demand>> GetById(Guid id);
-        public Task<IDataResult<List<Demand>>> GetAll ();
+        public Task<IDataResult<List<Demand>>> GetAll();
         public Task<IDataResult<List<Demand>>> Search(FilterDto filterDto);
     }
 }

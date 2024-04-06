@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Abstract
+namespace Business.Abstract.General
 {
     public interface IMenuService
     {
@@ -16,7 +16,7 @@ namespace Business.Abstract
         public Task<IResult> Update(Menu menu);
         public Task<IResult> Delete(Guid id);
         public Task<IDataResult<Menu>> GetById(Guid id);
-        public Task<IDataResult<List<Menu>>> GetAll ();
+        public Task<IDataResult<List<Menu>>> GetAll();
         public Task<IDataResult<List<Menu>>> Search(FilterDto filterDto);
     }
 }

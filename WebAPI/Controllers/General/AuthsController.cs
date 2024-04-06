@@ -1,8 +1,8 @@
-﻿using Business.Abstract;
+﻿using Business.Abstract.General;
 using Entities.Concrete.Dtos.General.Auth;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebAPI.Controllers
+namespace WebAPI.Controllers.General
 {
     [Route("api/[controller]")]
     [ApiController]

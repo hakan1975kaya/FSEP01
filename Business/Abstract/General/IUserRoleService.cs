@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Abstract
+namespace Business.Abstract.General
 {
     public interface IUserRoleService
     {
@@ -16,7 +16,7 @@ namespace Business.Abstract
         public Task<IResult> Update(UserRole userRole);
         public Task<IResult> Delete(Guid id);
         public Task<IDataResult<UserRole>> GetById(Guid id);
-        public Task<IDataResult<List<UserRole>>> GetAll ();
+        public Task<IDataResult<List<UserRole>>> GetAll();
         public Task<IDataResult<List<UserRoleDto>>> Search(FilterDto filterDto);
     }
 }

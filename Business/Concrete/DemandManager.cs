@@ -1,4 +1,4 @@
-﻿using Business.Abstract;
+﻿using Business.Abstract.General;
 using Business.BusinessAspect.Autofac;
 using Business.Constants.Messages;
 using Business.Validators.FluentValidators.AuthValidators;

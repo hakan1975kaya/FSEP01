@@ -1,9 +1,9 @@
-﻿using Business.Abstract;
+﻿using Business.Abstract.PLC;
 using Core.Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebAPI.Controllers
+namespace WebAPI.Controllers.PLC
 {
     [Route("api/[controller]")]
     [ApiController]

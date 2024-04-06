@@ -16,4 +16,8 @@
     <ProjectReference Include="..\PLC\PLC.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Abstract\PSI\" />
+  </ItemGroup>
+
 </Project>

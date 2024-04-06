@@ -1,24 +1,27 @@
-﻿using Business.Abstract;
+﻿using Business.Abstract.General;
+using Core.Entities.Concrete;
 using Entities.Concrete.Dtos.General.Genaral;
-using Entities.Concrete.Entities.General;
+using Entities.Concrete.Dtos.General.User;
+using Entities.Concrete.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebAPI.Controllers
+namespace WebAPI.Controllers.General
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RoleMenusController : ControllerBase
+    public class UsersController : ControllerBase
     {
-        private IRoleMenuService _roleMenuService;
-        public RoleMenusController(IRoleMenuService roleMenuService)
+        private IUserService _userService;
+        public UsersController(IUserService userService)
         {
-            _roleMenuService = roleMenuService;
+            _userService = userService;
         }
 
         [HttpPost("add")]
-        public async Task<IActionResult> Add(RoleMenu roleMenu)
+        public async Task<IActionResult> Add(UserDto userDto)
         {
-            var result = await _roleMenuService.Add(roleMenu);
+            var result = await _userService.Add(userDto);
             if (result.Success)
             {
                 return Ok(result);
@@ -28,9 +31,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<IActionResult> Update(RoleMenu roleMenu)
+        public async Task<IActionResult> Update(UserDto userDto)
         {
-            var result = await _roleMenuService.Update(roleMenu);
+            var result = await _userService.Update(userDto);
             if (result.Success)
             {
                 return Ok(result);
@@ -42,7 +45,7 @@ namespace WebAPI.Controllers
         [HttpDelete("delete")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var result = await _roleMenuService.Delete(id);
+            var result = await _userService.Delete(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -55,8 +58,8 @@ namespace WebAPI.Controllers
         [HttpGet("getById")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var dataResult= await _roleMenuService.GetById(id);
-            if(dataResult.Success)
+            var dataResult = await _userService.GetById(id);
+            if (dataResult.Success)
             {
                 return Ok(dataResult);
             }
@@ -67,7 +70,7 @@ namespace WebAPI.Controllers
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAll()
         {
-            var dataResult = await _roleMenuService.GetAll();
+            var dataResult = await _userService.GetAll();
             if (dataResult.Success)
             {
                 return Ok(dataResult);
@@ -79,7 +82,7 @@ namespace WebAPI.Controllers
         [HttpPost("search")]
         public async Task<IActionResult> Search(FilterDto filterDto)
         {
-            var dataResult = await _roleMenuService.Search(filterDto);
+            var dataResult = await _userService.Search(filterDto);
             if (dataResult.Success)
             {
                 return Ok(dataResult);
@@ -87,6 +90,19 @@ namespace WebAPI.Controllers
 
             return BadRequest(dataResult);
         }
+
+        [HttpPost("passwordChange")]
+        public async Task<IActionResult> PasswordChange(PasswordChangeDto passwordChangeDto)
+        {
+            var result = await _userService.PasswordChange(passwordChangeDto);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
 
 
     }

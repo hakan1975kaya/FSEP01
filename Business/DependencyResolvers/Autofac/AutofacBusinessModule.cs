@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
-using Business.Abstract;
+using Business.Abstract.General;
+using Business.Abstract.PLC;
 using Business.Concrete;
 using Core.Utilities.Interceptors;
 using Core.Utilities.Security.Abstract;

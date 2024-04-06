@@ -1,24 +1,24 @@
-﻿using Business.Abstract;
+﻿using Business.Abstract.General;
 using Entities.Concrete.Dtos.General.Genaral;
 using Entities.Concrete.Entities.General;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebAPI.Controllers
+namespace WebAPI.Controllers.General
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ApiLogsController : ControllerBase
+    public class UserRolesController : ControllerBase
     {
-        private IApiLogService _apiLogService;
-        public ApiLogsController(IApiLogService apiLogService)
+        private IUserRoleService _userRoleService;
+        public UserRolesController(IUserRoleService userRoleService)
         {
-            _apiLogService = apiLogService;
+            _userRoleService = userRoleService;
         }
 
         [HttpPost("add")]
-        public async Task<IActionResult> Add(ApiLog ApiLog)
+        public async Task<IActionResult> Add(UserRole userRole)
         {
-            var result = await _apiLogService.Add(ApiLog);
+            var result = await _userRoleService.Add(userRole);
             if (result.Success)
             {
                 return Ok(result);
@@ -28,9 +28,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<IActionResult> Update(ApiLog apiLog)
+        public async Task<IActionResult> Update(UserRole userRole)
         {
-            var result = await _apiLogService.Update(apiLog);
+            var result = await _userRoleService.Update(userRole);
             if (result.Success)
             {
                 return Ok(result);
@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
         [HttpDelete("delete")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var result = await _apiLogService.Delete(id);
+            var result = await _userRoleService.Delete(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -55,8 +55,8 @@ namespace WebAPI.Controllers
         [HttpGet("getById")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var dataResult= await _apiLogService.GetById(id);
-            if(dataResult.Success)
+            var dataResult = await _userRoleService.GetById(id);
+            if (dataResult.Success)
             {
                 return Ok(dataResult);
             }
@@ -67,7 +67,7 @@ namespace WebAPI.Controllers
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAll()
         {
-            var dataResult = await _apiLogService.GetAll();
+            var dataResult = await _userRoleService.GetAll();
             if (dataResult.Success)
             {
                 return Ok(dataResult);
@@ -79,7 +79,7 @@ namespace WebAPI.Controllers
         [HttpPost("search")]
         public async Task<IActionResult> Search(FilterDto filterDto)
         {
-            var dataResult = await _apiLogService.Search(filterDto);
+            var dataResult = await _userRoleService.Search(filterDto);
             if (dataResult.Success)
             {
                 return Ok(dataResult);
@@ -87,6 +87,7 @@ namespace WebAPI.Controllers
 
             return BadRequest(dataResult);
         }
+
 
     }
 }
