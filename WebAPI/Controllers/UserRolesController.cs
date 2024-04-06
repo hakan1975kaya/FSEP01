@@ -1,7 +1,7 @@
 ﻿using Business.Abstract;
 using Core.Entities.Concrete;
 using Entities.Concrete.Dtos.Genaral;
-using Entities.Concrete.Entities;
+using Entities.Concrete.Entities.WEB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

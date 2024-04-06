@@ -12,7 +12,7 @@ using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete.Dtos.Genaral;
-using Entities.Concrete.Entities;
+using Entities.Concrete.Entities.WEB;
 
 namespace Business.Concrete
 {

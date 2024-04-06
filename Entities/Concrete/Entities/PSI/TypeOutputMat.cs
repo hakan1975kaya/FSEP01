@@ -5,26 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete.Entities
+namespace Entities.Concrete.Entities.PSI
 {
-    public class TypeInputMat : IEntity
+    public class TypeOutputMat : IEntity
     {
         public Guid Id { get; set; }
         public Guid ProdReportL22PES { get; set; }
         public Guid MatId { get; set; }
-        public string FlagConsumed { get; set; }
-        public string UsageOfInput { get; set; }
-        public decimal CountInputParameter { get; set; }
-        public decimal CountInputDefects { get; set; }
+        public string KindOfOutput { get; set; }
+        public Guid ProdStart { get; set; }
+        public Guid ProdEnd { get; set; }
+        public decimal ProdDuration { get; set; }
+        public decimal CountOutputParameter { get; set; }
+        public decimal CountOutputDefects { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
     }
 }
-
-
-
-
-
-
 
 

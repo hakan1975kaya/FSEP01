@@ -12,7 +12,7 @@ using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete.Dtos.Genaral;
-using Entities.Concrete.Entities;
+using Entities.Concrete.Entities.PSI;
 using System.Linq;
 
 namespace Business.Concrete

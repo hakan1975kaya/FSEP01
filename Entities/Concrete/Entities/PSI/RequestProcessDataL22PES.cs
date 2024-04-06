@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete.Entities
+namespace Entities.Concrete.Entities.PSI
 {
-    public class RequestProcessDataL22PES:IEntity
+    public class RequestProcessDataL22PES : IEntity
     {
         public Guid Id { get; set; }
         public Guid Header { get; set; }

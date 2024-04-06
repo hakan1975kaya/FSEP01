@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete.Entities
+namespace Entities.Concrete.Entities.WEB
 {
-    public class WebLog:IEntity
+    public class WebLog : IEntity
     {
         public Guid Id { get; set; }
         public string Detail { get; set; }

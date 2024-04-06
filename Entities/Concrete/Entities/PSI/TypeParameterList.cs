@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete.Entities
+namespace Entities.Concrete.Entities.PSI
 {
-    public class TypeParameterList:IEntity
+    public class TypeParameterList : IEntity
     {
         public Guid Id { get; set; }
         public Guid? ProcessDataPES2L2 { get; set; }

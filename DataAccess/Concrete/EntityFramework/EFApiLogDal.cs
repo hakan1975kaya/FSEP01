@@ -1,7 +1,7 @@
 ﻿using Core.DataAccess.Concrete.EntityFramework;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework.Contexts;
-using Entities.Concrete.Entities;
+using Entities.Concrete.Entities.WEB;
 using System;
 using System.Collections.Generic;
 using System.Linq;

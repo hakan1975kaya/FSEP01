@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete.Entities
+namespace Entities.Concrete.Entities.PSI
 {
-    public class TypeHeader:IEntity
+    public class TypeHeader : IEntity
     {
         public Guid Id { get; set; }
         public string TelegramType { get; set; }
