@@ -2,7 +2,8 @@
 using Autofac.Extras.DynamicProxy;
 using Business.Abstract.General;
 using Business.Abstract.PLC;
-using Business.Concrete;
+using Business.Concrete.General;
+using Business.Concrete.PLC;
 using Core.Utilities.Interceptors;
 using Core.Utilities.Security.Abstract;
 using Core.Utilities.Security.Concrete.Jwt;
