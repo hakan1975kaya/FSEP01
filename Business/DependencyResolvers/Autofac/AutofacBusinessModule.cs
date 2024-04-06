@@ -19,6 +19,7 @@ namespace Business.DependencyResolvers.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
+            //General
             builder.RegisterType<DemandManager>().As<IDemandService>();
             builder.RegisterType<EFDemandDal>().As<IDemandDal>();
 
@@ -55,9 +56,12 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<Stopwatch>();
 
+            //PLC
             builder.RegisterType<PLCHelper>().As<IPLCHelper>();
             builder.RegisterType<PLCDal>().As<IPLCDal>();
             builder.RegisterType<PLCManager>().As<IPLCService>();
+
+            //PSI
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
