@@ -1,6 +1,6 @@
 ﻿using Core.Entities.Concrete;
 using Core.Utilities.Service;
-using Entities.Concrete.Entities.WEB;
+using Entities.Concrete.Entities.General;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

@@ -8,10 +8,10 @@ using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
-using DataAccess.Abstract;
+using DataAccess.Abstract.General;
 using Entities.Concrete.Dtos.General.Genaral;
 using Entities.Concrete.Dtos.General.UserRole;
-using Entities.Concrete.Entities.WEB;
+using Entities.Concrete.Entities.General;
 
 namespace Business.Concrete
 {

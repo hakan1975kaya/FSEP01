@@ -10,7 +10,7 @@ using Core.Utilities.Results.Concrete;
 using Core.Utilities.Security;
 using Core.Utilities.Security.Abstract;
 using Core.Utilities.Security.Hashing;
-using DataAccess.Abstract;
+using DataAccess.Abstract.General;
 using Entities.Concrete.Dtos.General.Auth;
 using System;
 using System.Collections.Generic;

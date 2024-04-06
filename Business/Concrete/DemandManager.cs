@@ -10,7 +10,7 @@ using Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using Core.Entities.Concrete;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
-using DataAccess.Abstract;
+using DataAccess.Abstract.General;
 using Entities.Concrete.Dtos.General.Genaral;
 using System.Linq;
 

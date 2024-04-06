@@ -6,13 +6,11 @@ using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Logging;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
-using Core.Entities.Concrete;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
-using DataAccess.Abstract;
-using DataAccess.Concrete.EntityFramework;
+using DataAccess.Abstract.General;
 using Entities.Concrete.Dtos.General.Genaral;
-using Entities.Concrete.Entities.WEB;
+using Entities.Concrete.Entities.General;
 
 namespace Business.Concrete
 {

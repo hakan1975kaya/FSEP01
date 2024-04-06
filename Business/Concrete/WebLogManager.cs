@@ -8,9 +8,9 @@ using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
-using DataAccess.Abstract;
+using DataAccess.Abstract.General;
 using Entities.Concrete.Dtos.General.Genaral;
-using Entities.Concrete.Entities.WEB;
+using Entities.Concrete.Entities.General;
 
 namespace Business.Concrete
 {
@@ -23,7 +23,7 @@ namespace Business.Concrete
             _webLogDal = webLogDal;
         }
 
-        //[SecurityAspect("WebLog.Add", Priority = 2)]
+        [SecurityAspect("WebLog.Add", Priority = 2)]
         [ValidationAspect(typeof(WebLogValidator),Priority =3)]
         [CacheRemoveAspect("IWebLogService.Get", Priority = 4)]
         public async Task<IResult> Add(WebLog webLog)
