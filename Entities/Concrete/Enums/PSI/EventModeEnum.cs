@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete.Enums.PSI
 {
-    public enum ReceivingTelegramTypes
+    public enum EventModeEnum
     {
         none = 0,
-        RequestProcessDataL22PES = 1,//
-        ProcessStateL22PES = 2,
-        ProdReportL22PES = 3,
-        PingL22PES = 4,
-        PingAckL22PES = 5
+        AUT = 1,//Automatic event initialization-->Otomatik olay başlatma
+        MAN = 2//Manual event initialization-->Manuel olay başlatma
     }
 }
