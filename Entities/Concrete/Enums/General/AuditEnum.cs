@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete.Enums
+namespace Entities.Concrete.Enums.General
 {
     public enum AuditEnum
     {
