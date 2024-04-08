@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Concrete.EntityFramework.General
+namespace DataAccess.Concrete.EntityFramework.General.General
 {
-    public class EFApiLogDal : EFEntityRepositoryBase<FSEP01LOGContext, ApiLog>, IApiLogDal
+    public class EFWebLogDal : EFEntityRepositoryBase<FSEP01LOGContext, WebLog>, IWebLogDal
     {
 
     }

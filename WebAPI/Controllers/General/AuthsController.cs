@@ -1,4 +1,4 @@
-﻿using Business.Abstract.General;
+﻿using Business.Abstract.General.General;
 using Entities.Concrete.Dtos.General.Auth;
 using Microsoft.AspNetCore.Mvc;
 

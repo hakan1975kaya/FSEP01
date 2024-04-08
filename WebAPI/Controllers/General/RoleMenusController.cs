@@ -1,4 +1,4 @@
-﻿using Business.Abstract.General;
+﻿using Business.Abstract.General.General;
 using Entities.Concrete.Dtos.General.Genaral;
 using Entities.Concrete.Entities.General.General;
 using Microsoft.AspNetCore.Mvc;

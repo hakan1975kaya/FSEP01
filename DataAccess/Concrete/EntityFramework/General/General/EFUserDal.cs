@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Concrete.EntityFramework.General
+namespace DataAccess.Concrete.EntityFramework.General.General
 {
     public class EFUserDal : EFEntityRepositoryBase<FSEP01Context, User>, IUserDal
     {

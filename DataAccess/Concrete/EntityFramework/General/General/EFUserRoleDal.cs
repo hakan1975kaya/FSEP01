@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Concrete.EntityFramework.General
+namespace DataAccess.Concrete.EntityFramework.General.General
 {
     public class EFUserRoleDal : EFEntityRepositoryBase<FSEP01Context, UserRole>, IUserRoleDal
     {
