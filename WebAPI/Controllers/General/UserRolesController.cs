@@ -1,6 +1,6 @@
 ﻿using Business.Abstract.General;
 using Entities.Concrete.Dtos.General.Genaral;
-using Entities.Concrete.Entities.General;
+using Entities.Concrete.Entities.General.General;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.General

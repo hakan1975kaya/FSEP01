@@ -1,6 +1,6 @@
 ﻿using Core.Entities.Concrete;
 using Core.Utilities.Service;
-using Entities.Concrete.Entities.General;
+using Entities.Concrete.Entities.General.General;
 using Entities.Concrete.Entities.PSI.Telegrams;
 using Entities.Concrete.Entities.PSI.Types;
 using Microsoft.EntityFrameworkCore;

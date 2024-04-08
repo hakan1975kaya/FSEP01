@@ -1,9 +1,9 @@
 ﻿using Core.DataAccess.Concrete.EntityFramework;
-using DataAccess.Abstract.General;
+using DataAccess.Abstract.General.General;
 using DataAccess.Concrete.EntityFramework.Contexts;
 using Entities.Concrete.Dtos.General.Genaral;
 using Entities.Concrete.Dtos.General.RoleDemand;
-using Entities.Concrete.Entities.General;
+using Entities.Concrete.Entities.General.General;
 using System;
 using System.Collections.Generic;
 using System.Linq;

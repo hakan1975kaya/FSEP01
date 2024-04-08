@@ -7,7 +7,7 @@ using Business.Concrete.PLC;
 using Core.Utilities.Interceptors;
 using Core.Utilities.Security.Abstract;
 using Core.Utilities.Security.Concrete.Jwt;
-using DataAccess.Abstract.General;
+using DataAccess.Abstract.General.General;
 using DataAccess.Concrete.EntityFramework.General;
 using PLC.Abstract;
 using PLC.Concrete;
