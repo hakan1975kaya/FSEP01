@@ -30,7 +30,7 @@
           <div class="col-md-1">
             <div class="form-group">
               <input type="button" class="btn btn-warning" id="search" name="search" value="Ara" (click)="search()"
-                [ngStyle]="{'display':'ProcessStateL22PES.Search' | ProcessStateL22PESPipe}">
+                [ngStyle]="{'display':'Demand.Search' | demandPipe}">
             </div>
           </div>
           <!--clear button-->
@@ -47,12 +47,12 @@
   <!--add new -->
   <div class="row pt-2">
     <div class="col-md-1">
-      <i class="fa fa-plus-square fa-2x" (click)="openProcessStateL22PESModal()" ngbTooltip="Ekle" style="cursor: pointer;"></i>
+      <i class="fa fa-plus-square fa-2x" (click)="openDemandModal()" ngbTooltip="Ekle" style="cursor: pointer;"></i>
     </div>
     <div class="col-md-11"></div>
   </div>
 
-  <!--ProcessStateL22PES table-->
+  <!--demand table-->
   <div class="row pt-2">
     <div class="card">
       <div class="card-body">
@@ -62,8 +62,8 @@
               <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('id')"></i>Id<i
                   class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('id')"></i></th>
               <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
-                  (click)="orderDesc('ProcessStateL22PESName')"></i>Yetki Adı<i class="fa fa-arrow-circle-o-up"
-                  style="cursor: pointer;" (click)="orderAsc('ProcessStateL22PESName')"></i></th>
+                  (click)="orderDesc('demandName')"></i>Yetki Adı<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('demandName')"></i></th>
               <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
                   (click)="orderDesc('optime')"></i>Tarih<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
                   (click)="orderAsc('optime')"></i></th>
@@ -71,18 +71,18 @@
             </thead>
             <tbody>
               <tr
-                *ngFor="let ProcessStateL22PES of ProcessStateL22PESs | paginate: {id:'ProcessStateL22PESPagination',itemsPerPage:itemsPerPage, currentPage:currentPage}">
-                <td>{{ProcessStateL22PES.id}}</td>
-                <td>{{ProcessStateL22PES.ProcessStateL22PESName}}</td>
-                <td>{{ProcessStateL22PES.optime | date:"dd.MM.yyyy hh:mm:ss"}} </td>
+                *ngFor="let demand of demands | paginate: {id:'demandPagination',itemsPerPage:itemsPerPage, currentPage:currentPage}">
+                <td>{{demand.id}}</td>
+                <td>{{demand.demandName}}</td>
+                <td>{{demand.optime | date:"dd.MM.yyyy hh:mm:ss"}} </td>
                 <td>
                   <div class="row">
                     <div class="col-md-6">
-                      <i class="fa fa-pencil fa-2x" (click)="openProcessStateL22PESModal(ProcessStateL22PES.id)"
+                      <i class="fa fa-pencil fa-2x" (click)="openDemandModal(demand.id)"
                         style="cursor: pointer;color: steelblue;"></i>
                     </div>
                     <div class="col-md-6">
-                      <i class="fa fa-trash fa-2x" (click)="openConfirmModal(ProcessStateL22PES.id)"
+                      <i class="fa fa-trash fa-2x" (click)="openConfirmModal(demand.id)"
                         style="cursor: pointer;color:red"></i>
                     </div>
                   </div>
@@ -97,29 +97,29 @@
   <!--pagination-->
   <div class="row p-2">
     <div class="col-md-11">
-      <pagination-controls id="ProcessStateL22PESPagination" (pageChange)="currentPage = $event"></pagination-controls>
+      <pagination-controls id="demandPagination" (pageChange)="currentPage = $event"></pagination-controls>
     </div>
     <!--export to excel pdf-->
     <div class="col-md-1 d-flex justify-content-around">
       <i class="fa fa-file-excel-o fa-2x" style="cursor: pointer;color: green;" (click)="exportToExcel()"
-        [ngStyle]="{'display':'ProcessStateL22PES.Search' | ProcessStateL22PESPipe}"></i>
+        [ngStyle]="{'display':'Demand.Search' | demandPipe}"></i>
       <i class="fa  fa-file-pdf-o fa-2x" style="cursor: pointer;color:red" (click)="exportToPdf()"
-        [ngStyle]="{'display':'ProcessStateL22PES.Search' | ProcessStateL22PESPipe}"></i>
+        [ngStyle]="{'display':'Demand.Search' | demandPipe}"></i>
     </div>
   </div>
 
-  <!--ProcessStateL22PESModal--->
-  <div class="modal" role="dialog" tabindex="-1" [ngStyle]="{'display':displayProcessStateL22PESModal}">
+  <!--demandModal--->
+  <div class="modal" role="dialog" tabindex="-1" [ngStyle]="{'display':displayDemandModal}">
     <div class="modal-dialog modal-lg" role="dialog">
       <div class="modal-content bg-secondary text-white">
         <!--Header-->
         <div class="modal-header">
           <h4 class="modal-title">Yetki Ekle & Düzelt</h4>
-          <i class="fa fa-window-close fa-2x" (click)="closeProcessStateL22PESModal()"></i>
+          <i class="fa fa-window-close fa-2x" (click)="closeDemandModal()"></i>
         </div>
         <!--body-->
         <div class="modal-body">
-          <form [formGroup]="ProcessStateL22PESForm">
+          <form [formGroup]="demandForm">
             <!--id-->
             <div style="display: none;" class="form-group">
               <div class="row pt-4">
@@ -131,20 +131,20 @@
                 </div>
               </div>
             </div>
-            <!--ProcessStateL22PESName-->
+            <!--demandName-->
             <div class="form-group">
               <div class="row pt-4">
                 <div class="col-md-2">
-                <label class="form-label" for="ProcessStateL22PESName">Yetki Adı:</label>
+                <label class="form-label" for="demandName">Yetki Adı:</label>
                 </div>
                 <div class="col-md-10">
-                <input class="form-control" type="text" id="ProcessStateL22PESName" name="ProcessStateL22PESName" formControlName="ProcessStateL22PESName"
+                <input class="form-control" type="text" id="demandName" name="demandName" formControlName="demandName"
                   placeholder="Yetki Adı giriniz..." required minlength maxlength>
-                <div *ngIf="ProcessStateL22PESForm.get('ProcessStateL22PESName')?.hasError('required') && ProcessStateL22PESForm.get('ProcessStateL22PESName')?.dirty"
+                <div *ngIf="demandForm.get('demandName')?.hasError('required') && demandForm.get('demandName')?.dirty"
                   class="alert alert-danger">Yetki adı boş olamaz</div>
-                <div *ngIf="ProcessStateL22PESForm.get('ProcessStateL22PESName')?.hasError('minlength') && ProcessStateL22PESForm.get('ProcessStateL22PESName')?.dirty"
+                <div *ngIf="demandForm.get('demandName')?.hasError('minlength') && demandForm.get('demandName')?.dirty"
                   class="alert alert-danger">En az 2 harf olabilir</div>
-                <div *ngIf="ProcessStateL22PESForm.get('ProcessStateL22PESName')?.hasError('maxlength') && ProcessStateL22PESForm.get('ProcessStateL22PESName')?.dirty"
+                <div *ngIf="demandForm.get('demandName')?.hasError('maxlength') && demandForm.get('demandName')?.dirty"
                   class="alert alert-danger">En fazla 50 harf olabilir</div>
               </div>
               </div>
@@ -153,8 +153,8 @@
         </div>
         <!--footer-->
         <div class="modal-footer d-flex justify-content-center">
-          <input type="button" class="btn btn-success" (click)="save()" value="Kaydet" [disabled]="!ProcessStateL22PESForm.valid"
-            [ngStyle]="{'display':'ProcessStateL22PES.Add' | ProcessStateL22PESPipe}" [ngStyle]="{'display':'ProcessStateL22PES.Update' | ProcessStateL22PESPipe}">
+          <input type="button" class="btn btn-success" (click)="save()" value="Kaydet" [disabled]="!demandForm.valid"
+            [ngStyle]="{'display':'Demand.Add' | demandPipe}" [ngStyle]="{'display':'Demand.Update' | demandPipe}">
         </div>
       </div>
     </div>
@@ -185,7 +185,7 @@
           <div class="row">
             <div class="col-md-6">
               <Input type="button" class="btn btn-success" (click)="deleteFromConfirm()" style="cursor: pointer;"
-                [ngStyle]="{'display':'ProcessStateL22PES.Delete' | ProcessStateL22PESPipe}" value="Evet">
+                [ngStyle]="{'display':'Demand.Delete' | demandPipe}" value="Evet">
             </div>
             <div class="col-md-6">
               <Input type="button" class="btn btn-danger" (click)="closeConfirmModal()" style="cursor: pointer;"

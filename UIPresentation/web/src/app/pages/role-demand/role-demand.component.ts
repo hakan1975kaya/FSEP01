@@ -11,48 +11,48 @@ import { OrderTypeEnum } from 'src/app/enums/order-type-enum.enum';
 import { OrderService } from 'src/app/services/general/order.service';
 import { RoleService } from 'src/app/services/role/role.service';
 import { Role } from 'src/app/models/role/role';
-import { RoleProcessStateL22PESService } from 'src/app/services/role-ProcessStateL22PES/role-ProcessStateL22PES.service';
-import { RoleProcessStateL22PES } from 'src/app/models/role-ProcessStateL22PES/role-ProcessStateL22PES';
-import { ProcessStateL22PESService } from 'src/app/services/ProcessStateL22PES/ProcessStateL22PES.service';
-import { ProcessStateL22PES } from 'src/app/models/ProcessStateL22PES/ProcessStateL22PES';
+import { RoleDemandService } from 'src/app/services/role-demand/role-demand.service';
+import { RoleDemand } from 'src/app/models/role-demand/role-demand';
+import { DemandService } from 'src/app/services/demand/demand.service';
+import { Demand } from 'src/app/models/demand/demand';
 @Component({
-  selector: 'app-role-ProcessStateL22PES',
-  templateUrl: './role-ProcessStateL22PES.component.html',
-  styleUrls: ['./role-ProcessStateL22PES.component.css'],
-  providers: [RoleProcessStateL22PESService, RoleService, ProcessStateL22PESService],
+  selector: 'app-role-demand',
+  templateUrl: './role-demand.component.html',
+  styleUrls: ['./role-demand.component.css'],
+  providers: [RoleDemandService, RoleService, DemandService],
 })
-export class RoleProcessStateL22PESComponent implements OnInit {
+export class RoleDemandComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
-    private roleProcessStateL22PESService: RoleProcessStateL22PESService,
+    private roleDemandService: RoleDemandService,
     private roleService: RoleService,
-    private ProcessStateL22PESService: ProcessStateL22PESService,
+    private demandService: DemandService,
     private alertifyService: AlertifyService,
     private orderService: OrderService
   ) { }
 
   searchForm!: FormGroup;
   filterModel!: FilterModel;
-  roleProcessStateL22PESs!: RoleProcessStateL22PES[];
+  roleDemands!: RoleDemand[];
   roles!: Role[];
-  ProcessStateL22PESs!: ProcessStateL22PES[];
+  demands!: Demand[];
   currentPage: number = 1;
   itemsPerPage: number = 10
-  displayRoleProcessStateL22PESModal: string = 'none';
-  roleProcessStateL22PESForm!: FormGroup;
+  displayRoleDemandModal: string = 'none';
+  roleDemandForm!: FormGroup;
   saveType!: SaveTypeEnum
-  roleProcessStateL22PES!: RoleProcessStateL22PES
-  selectedRoleProcessStateL22PESId!: string
-  fileName = 'roleProcessStateL22PES';
+  roleDemand!: RoleDemand
+  selectedRoleDemandId!: string
+  fileName = 'roleDemand';
   displayConfirmModal: string = 'none';
   roleIdDefault = ''
-  ProcessStateL22PESIdDefault = ''
+  demandIdDefault = ''
 
   ngOnInit() {
     this.createSearchForm();
-    this.createRoleProcessStateL22PESForm();
+    this.createRoleDemandForm();
     this.getRoles()
-    this.getProcessStateL22PESs()
+    this.getDemands()
   }
 
   createSearchForm() {
@@ -65,11 +65,11 @@ export class RoleProcessStateL22PESComponent implements OnInit {
     if (this.searchForm.valid) {
       this.filterModel = Object.assign({}, this.searchForm.value);
       if (this.filterModel) {
-        this.roleProcessStateL22PESService.search(this.filterModel).subscribe((dataResult) => {
+        this.roleDemandService.search(this.filterModel).subscribe((dataResult) => {
           if (dataResult) {
             if (dataResult.success) {
               if (dataResult.data) {
-                this.roleProcessStateL22PESs = dataResult.data;
+                this.roleDemands = dataResult.data;
               }
             } else {
               this.alertifyService.error(dataResult.message);
@@ -81,11 +81,11 @@ export class RoleProcessStateL22PESComponent implements OnInit {
   }
 
   orderAsc(columnName: string) {
-    this.orderService.order(this.roleProcessStateL22PESs, columnName, OrderTypeEnum.Asc)
+    this.orderService.order(this.roleDemands, columnName, OrderTypeEnum.Asc)
   }
 
   orderDesc(columnName: string) {
-    this.orderService.order(this.roleProcessStateL22PESs, columnName, OrderTypeEnum.Desc)
+    this.orderService.order(this.roleDemands, columnName, OrderTypeEnum.Desc)
   }
 
   clear() {
@@ -93,7 +93,7 @@ export class RoleProcessStateL22PESComponent implements OnInit {
   }
 
   exportToExcel() {
-    const ws: xlsx.WorkSheet = xlsx.utils.json_to_sheet(this.roleProcessStateL22PESs);
+    const ws: xlsx.WorkSheet = xlsx.utils.json_to_sheet(this.roleDemands);
     const wb: xlsx.WorkBook = xlsx.utils.book_new();
     xlsx.utils.book_append_sheet(wb, ws, this.fileName);
     xlsx.writeFile(wb, this.fileName + '.xlsx');
@@ -112,11 +112,11 @@ export class RoleProcessStateL22PESComponent implements OnInit {
     });
   }
 
-  createRoleProcessStateL22PESForm() {
-    this.roleProcessStateL22PESForm = this.formBuilder.group({
+  createRoleDemandForm() {
+    this.roleDemandForm = this.formBuilder.group({
       id: [''],
       roleId: ['', [Validators.required]],
-      ProcessStateL22PESId: ['', [Validators.required]],
+      demandId: ['', [Validators.required]],
     });
   }
 
@@ -132,26 +132,26 @@ export class RoleProcessStateL22PESComponent implements OnInit {
     })
   }
 
-  getProcessStateL22PESs() {
-    this.ProcessStateL22PESService.getAll().subscribe(dataResult => {
+  getDemands() {
+    this.demandService.getAll().subscribe(dataResult => {
       if (dataResult) {
         if (dataResult.success) {
           if (dataResult.data) {
-            this.ProcessStateL22PESs = dataResult.data
+            this.demands = dataResult.data
           }
         }
       }
     })
   }
 
-  getById(roleProcessStateL22PESId: string) {
-    this.roleProcessStateL22PESService.getById(roleProcessStateL22PESId).subscribe((dataResult) => {
+  getById(roleDemandId: string) {
+    this.roleDemandService.getById(roleDemandId).subscribe((dataResult) => {
       if (dataResult) {
         if (dataResult.success) {
           if (dataResult.data) {
-            this.roleProcessStateL22PESForm.controls['id'].setValue(dataResult.data.id);
-            this.roleProcessStateL22PESForm.controls['roleId'].setValue(dataResult.data.roleId);
-            this.roleProcessStateL22PESForm.controls['ProcessStateL22PESId'].setValue(dataResult.data.ProcessStateL22PESId);
+            this.roleDemandForm.controls['id'].setValue(dataResult.data.id);
+            this.roleDemandForm.controls['roleId'].setValue(dataResult.data.roleId);
+            this.roleDemandForm.controls['demandId'].setValue(dataResult.data.demandId);
           }
         } else {
           this.alertifyService.error(dataResult.message);
@@ -160,42 +160,42 @@ export class RoleProcessStateL22PESComponent implements OnInit {
     });
   }
 
-  openRoleProcessStateL22PESModal(roleProcessStateL22PESId?: string) {
-    this.displayRoleProcessStateL22PESModal = "block"
-    if (roleProcessStateL22PESId) {
-      this.selectedRoleProcessStateL22PESId = roleProcessStateL22PESId
+  openRoleDemandModal(roleDemandId?: string) {
+    this.displayRoleDemandModal = "block"
+    if (roleDemandId) {
+      this.selectedRoleDemandId = roleDemandId
       this.saveType = SaveTypeEnum.Update
-      this.getById(roleProcessStateL22PESId)
+      this.getById(roleDemandId)
     }
     else {
       this.saveType = SaveTypeEnum.Add
     }
   }
 
-  closeRoleProcessStateL22PESModal() {
-    this.displayRoleProcessStateL22PESModal = "none"
-    this.resetRoleProcessStateL22PESModal()
+  closeRoleDemandModal() {
+    this.displayRoleDemandModal = "none"
+    this.resetRoleDemandModal()
   }
 
-  resetRoleProcessStateL22PESModal() {
-    this.roleProcessStateL22PESForm.controls['id'].setValue('');
-    this.roleProcessStateL22PESForm.controls['roleId'].setValue('');
-    this.roleProcessStateL22PESForm.controls['ProcessStateL22PESId'].setValue('');
+  resetRoleDemandModal() {
+    this.roleDemandForm.controls['id'].setValue('');
+    this.roleDemandForm.controls['roleId'].setValue('');
+    this.roleDemandForm.controls['demandId'].setValue('');
     this.displayConfirmModal = "none"
-    this.displayRoleProcessStateL22PESModal = "none"
+    this.displayRoleDemandModal = "none"
   }
 
   openConfirmModal(id: string) {
     this.displayConfirmModal = 'block';
-    this.selectedRoleProcessStateL22PESId = id
+    this.selectedRoleDemandId = id
   }
 
   closeConfirmModal() {
     this.displayConfirmModal = "none"
   }
 
-  delete(roleProcessStateL22PESId: string) {
-    this.roleProcessStateL22PESService.delete(roleProcessStateL22PESId).subscribe((result) => {
+  delete(roleDemandId: string) {
+    this.roleDemandService.delete(roleDemandId).subscribe((result) => {
       if (result) {
         if (result.success) {
           this.alertifyService.success(result.message);
@@ -205,24 +205,24 @@ export class RoleProcessStateL22PESComponent implements OnInit {
         }
       }
     });
-    this.resetRoleProcessStateL22PESModal()
+    this.resetRoleDemandModal()
   }
 
   deleteFromConfirm() {
-    this.delete(this.selectedRoleProcessStateL22PESId)
+    this.delete(this.selectedRoleDemandId)
     this.closeConfirmModal()
   }
 
   save() {
-    if (this.roleProcessStateL22PESForm.valid) {
-      this.roleProcessStateL22PES = Object.assign({}, this.roleProcessStateL22PESForm.value)
-      if (this.roleProcessStateL22PES) {
+    if (this.roleDemandForm.valid) {
+      this.roleDemand = Object.assign({}, this.roleDemandForm.value)
+      if (this.roleDemand) {
         if (this.saveType == SaveTypeEnum.Add) {
 
-          this.roleProcessStateL22PES.id = UUID.UUID()
-          this.roleProcessStateL22PES.optime = new Date()
-          this.roleProcessStateL22PES.isActive = true
-          this.roleProcessStateL22PESService.add(this.roleProcessStateL22PES).subscribe(result => {
+          this.roleDemand.id = UUID.UUID()
+          this.roleDemand.optime = new Date()
+          this.roleDemand.isActive = true
+          this.roleDemandService.add(this.roleDemand).subscribe(result => {
             if (result) {
               if (result.success) {
                 this.alertifyService.success(result.message)
@@ -235,10 +235,10 @@ export class RoleProcessStateL22PESComponent implements OnInit {
           })
         }
         else if (this.saveType = SaveTypeEnum.Update) {
-          this.roleProcessStateL22PES.id = this.selectedRoleProcessStateL22PESId
-          this.roleProcessStateL22PES.optime = new Date()
-          this.roleProcessStateL22PES.isActive = true
-          this.roleProcessStateL22PESService.update(this.roleProcessStateL22PES).subscribe(result => {
+          this.roleDemand.id = this.selectedRoleDemandId
+          this.roleDemand.optime = new Date()
+          this.roleDemand.isActive = true
+          this.roleDemandService.update(this.roleDemand).subscribe(result => {
             if (result) {
               if (result.success) {
                 this.alertifyService.success(result.message)
@@ -252,7 +252,7 @@ export class RoleProcessStateL22PESComponent implements OnInit {
         }
       }
     }
-    this.resetRoleProcessStateL22PESModal()
+    this.resetRoleDemandModal()
   }
 
 

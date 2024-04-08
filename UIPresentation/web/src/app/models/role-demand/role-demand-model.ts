@@ -1,9 +1,9 @@
-export class RoleProcessStateL22PESModel {
+export class RoleDemandModel {
   id!:string
   roleId!:string
   roleName!:string
-  ProcessStateL22PESId!:string
-  ProcessStateL22PESName!:string
+  demandId!:string
+  demandName!:string
   optime!:Date
   isActive!:boolean
 }

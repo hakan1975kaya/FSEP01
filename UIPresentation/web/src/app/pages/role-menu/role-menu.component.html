@@ -3,7 +3,7 @@
   <!--Title-->
   <div class="row p-2">
     <div class="col-md-1">
-      <i class="fa fa-bars fa-2x"></i>
+      <i class="fa fa-share-alt fa-2x"></i>
     </div>
     <div class="col-md-11">
       <h5>Rol Menü Tanımlama İşlemleri</h5>
@@ -30,7 +30,7 @@
           <div class="col-md-1">
             <div class="form-group">
               <input type="button" class="btn btn-warning" id="search" name="search" value="Ara" (click)="search()"
-                [ngStyle]="{'display':'RoleMenu.Search' | ProcessStateL22PESPipe}">
+                [ngStyle]="{'display':'RoleMenu.Search' | demandPipe}">
             </div>
           </div>
           <!--clear button-->
@@ -109,9 +109,9 @@
     <!--export to excel pdf-->
     <div class="col-md-1 d-flex justify-content-around">
       <i class="fa fa-file-excel-o fa-2x" style="cursor: pointer;color: green;" (click)="exportToExcel()"
-        [ngStyle]="{'display':'RoleMenu.Search' | ProcessStateL22PESPipe}"></i>
+        [ngStyle]="{'display':'RoleMenu.Search' | demandPipe}"></i>
       <i class="fa  fa-file-pdf-o fa-2x" style="cursor: pointer;color:red" (click)="exportToPdf()"
-        [ngStyle]="{'display':'RoleMenu.Search' | ProcessStateL22PESPipe}"></i>
+        [ngStyle]="{'display':'RoleMenu.Search' | demandPipe}"></i>
     </div>
   </div>
 
@@ -181,7 +181,7 @@
         <!--footer-->
         <div class="modal-footer d-flex justify-content-center">
           <input type="button" class="btn btn-success" (click)="save()" value="Kaydet" [disabled]="!roleMenuForm.valid"
-            [ngStyle]="{'display':'RoleMenu.Add' | ProcessStateL22PESPipe}" [ngStyle]="{'display':'RoleMenu.Update' | ProcessStateL22PESPipe}">
+            [ngStyle]="{'display':'RoleMenu.Add' | demandPipe}" [ngStyle]="{'display':'RoleMenu.Update' | demandPipe}">
         </div>
       </div>
     </div>
@@ -212,7 +212,7 @@
           <div class="row">
             <div class="col-md-6">
               <Input type="button" class="btn btn-success" (click)="deleteFromConfirm()" style="cursor: pointer;"
-                [ngStyle]="{'display':'RoleMenu.Delete' | ProcessStateL22PESPipe}" value="Evet">
+                [ngStyle]="{'display':'RoleMenu.Delete' | demandPipe}" value="Evet">
             </div>
             <div class="col-md-6">
               <Input type="button" class="btn btn-danger" (click)="closeConfirmModal()" style="cursor: pointer;"

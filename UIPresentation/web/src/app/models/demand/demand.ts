@@ -1,6 +1,6 @@
-export class ProcessStateL22PES {
+export class Demand {
   id!:string
-  ProcessStateL22PESName!:string
+  demandName!:string
   optime!:Date
   isActive!:boolean
 }
