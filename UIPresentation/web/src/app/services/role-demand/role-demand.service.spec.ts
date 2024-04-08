@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { RoleProcessStateL22PESService } from './role-ProcessStateL22PES.service';
+import { RoleDemandService } from './role-demand.service';
 
-describe('Service: RoleProcessStateL22PES', () => {
+describe('Service: RoleDemand', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [RoleProcessStateL22PESService]
+      providers: [RoleDemandService]
     });
   });
 
-  it('should ...', inject([RoleProcessStateL22PESService], (service: RoleProcessStateL22PESService) => {
+  it('should ...', inject([RoleDemandService], (service: RoleDemandService) => {
     expect(service).toBeTruthy();
   }));
 });

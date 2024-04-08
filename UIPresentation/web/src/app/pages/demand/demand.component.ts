@@ -2,45 +2,45 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UUID } from 'angular2-uuid';
 import { SaveTypeEnum } from 'src/app/enums/save-type-enum.enum';
-import { ProcessStateL22PES } from 'src/app/models/ProcessStateL22PES/ProcessStateL22PES';
+import { Demand } from 'src/app/models/demand/demand';
 import { FilterModel } from 'src/app/models/general/filterModel';
 import { AlertifyService } from 'src/app/services/alertify/alertify.service';
-import { ProcessStateL22PESService } from 'src/app/services/ProcessStateL22PES/ProcessStateL22PES.service';
+import { DemandService } from 'src/app/services/demand/demand.service';
 import * as xlsx from 'xlsx';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { OrderTypeEnum } from 'src/app/enums/order-type-enum.enum';
 import { OrderService } from 'src/app/services/general/order.service';
 @Component({
-  selector: 'app-ProcessStateL22PES',
-  templateUrl: './ProcessStateL22PES.component.html',
-  styleUrls: ['./ProcessStateL22PES.component.css'],
-  providers: [ProcessStateL22PESService],
+  selector: 'app-demand',
+  templateUrl: './demand.component.html',
+  styleUrls: ['./demand.component.css'],
+  providers: [DemandService],
 })
-export class ProcessStateL22PESComponent implements OnInit {
+export class DemandComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
-    private ProcessStateL22PESService: ProcessStateL22PESService,
+    private demandService: DemandService,
     private alertifyService: AlertifyService,
     private orderService:OrderService
   ) { }
 
   searchForm!: FormGroup;
   filterModel!: FilterModel;
-  ProcessStateL22PESs!: ProcessStateL22PES[];
+  demands!: Demand[];
   currentPage: number = 1;
   itemsPerPage: number = 10
-  displayProcessStateL22PESModal: string = 'none';
-  ProcessStateL22PESForm!: FormGroup;
+  displayDemandModal: string = 'none';
+  demandForm!: FormGroup;
   saveType!: SaveTypeEnum
-  ProcessStateL22PES!: ProcessStateL22PES
-  selectedProcessStateL22PESId!: string
-  fileName = 'ProcessStateL22PES';
+  demand!: Demand
+  selectedDemandId!: string
+  fileName = 'Demand';
   displayConfirmModal: string = 'none';
 
   ngOnInit() {
     this.createSearchForm();
-    this.createProcessStateL22PESForm();
+    this.createDemandForm();
   }
 
   createSearchForm() {
@@ -53,11 +53,11 @@ export class ProcessStateL22PESComponent implements OnInit {
     if (this.searchForm.valid) {
       this.filterModel = Object.assign({}, this.searchForm.value);
       if (this.filterModel) {
-        this.ProcessStateL22PESService.search(this.filterModel).subscribe((dataResult) => {
+        this.demandService.search(this.filterModel).subscribe((dataResult) => {
           if (dataResult) {
             if (dataResult.success) {
               if (dataResult.data) {
-                this.ProcessStateL22PESs = dataResult.data;
+                this.demands = dataResult.data;
               }
             } else {
               this.alertifyService.error(dataResult.message);
@@ -69,11 +69,11 @@ export class ProcessStateL22PESComponent implements OnInit {
   }
 
   orderAsc(columnName: string) {
-    this.orderService.order(this.ProcessStateL22PESs, columnName, OrderTypeEnum.Asc)
+    this.orderService.order(this.demands, columnName, OrderTypeEnum.Asc)
   }
 
   orderDesc(columnName: string) {
-    this.orderService.order(this.ProcessStateL22PESs, columnName, OrderTypeEnum.Desc)
+    this.orderService.order(this.demands, columnName, OrderTypeEnum.Desc)
   }
 
   clear() {
@@ -81,7 +81,7 @@ export class ProcessStateL22PESComponent implements OnInit {
   }
 
   exportToExcel() {
-    const ws: xlsx.WorkSheet = xlsx.utils.json_to_sheet(this.ProcessStateL22PESs);
+    const ws: xlsx.WorkSheet = xlsx.utils.json_to_sheet(this.demands);
     const wb: xlsx.WorkBook = xlsx.utils.book_new();
     xlsx.utils.book_append_sheet(wb, ws, this.fileName);
     xlsx.writeFile(wb, this.fileName + '.xlsx');
@@ -100,51 +100,51 @@ export class ProcessStateL22PESComponent implements OnInit {
     });
   }
 
-  createProcessStateL22PESForm() {
-    this.ProcessStateL22PESForm = this.formBuilder.group({
+  createDemandForm() {
+    this.demandForm = this.formBuilder.group({
       id: [""],
-      ProcessStateL22PESName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(50)]]
+      demandName: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(50)]]
     })
   }
 
-  getById(ProcessStateL22PESId: string) {
-    this.ProcessStateL22PESService.getById(ProcessStateL22PESId).subscribe(dataResult => {
+  getById(demandId: string) {
+    this.demandService.getById(demandId).subscribe(dataResult => {
       if (dataResult) {
         if (dataResult.success) {
           if (dataResult.data) {
-              this.ProcessStateL22PESForm.controls["ProcessStateL22PESName"].setValue(dataResult.data.ProcessStateL22PESName)
+              this.demandForm.controls["demandName"].setValue(dataResult.data.demandName)
           }
         }
       }
     })
   }
 
-  openProcessStateL22PESModal(ProcessStateL22PESId?: string) {
-    this.displayProcessStateL22PESModal = "block"
-    if (ProcessStateL22PESId) {
-      this.selectedProcessStateL22PESId = ProcessStateL22PESId
+  openDemandModal(demandId?: string) {
+    this.displayDemandModal = "block"
+    if (demandId) {
+      this.selectedDemandId = demandId
       this.saveType = SaveTypeEnum.Update
-      this.getById(ProcessStateL22PESId)
+      this.getById(demandId)
     }
     else {
       this.saveType = SaveTypeEnum.Add
     }
   }
 
-  closeProcessStateL22PESModal() {
-    this.displayProcessStateL22PESModal = "none"
-    this.resetProcessStateL22PESModal()
+  closeDemandModal() {
+    this.displayDemandModal = "none"
+    this.resetDemandModal()
   }
 
-  resetProcessStateL22PESModal() {
-    this.ProcessStateL22PESForm.controls["ProcessStateL22PESName"].setValue("")
+  resetDemandModal() {
+    this.demandForm.controls["demandName"].setValue("")
     this.displayConfirmModal="none"
-    this.displayProcessStateL22PESModal="none"
+    this.displayDemandModal="none"
   }
 
   openConfirmModal(id: string) {
     this.displayConfirmModal = 'block';
-    this.selectedProcessStateL22PESId = id
+    this.selectedDemandId = id
   }
 
   closeConfirmModal()
@@ -152,8 +152,8 @@ export class ProcessStateL22PESComponent implements OnInit {
     this.displayConfirmModal="none"
   }
 
-  delete(ProcessStateL22PESId: string) {
-    this.ProcessStateL22PESService.delete(ProcessStateL22PESId).subscribe((result) => {
+  delete(demandId: string) {
+    this.demandService.delete(demandId).subscribe((result) => {
       if (result) {
         if (result.success) {
           this.alertifyService.success(result.message);
@@ -163,24 +163,24 @@ export class ProcessStateL22PESComponent implements OnInit {
         }
       }
     });
-    this.resetProcessStateL22PESModal()
+    this.resetDemandModal()
   }
 
   deleteFromConfirm() {
-    this.delete(this.selectedProcessStateL22PESId)
+    this.delete(this.selectedDemandId)
     this.closeConfirmModal()
   }
 
   save() {
-    if (this.ProcessStateL22PESForm.valid) {
-      this.ProcessStateL22PES = Object.assign({}, this.ProcessStateL22PESForm.value)
-      if (this.ProcessStateL22PES) {
+    if (this.demandForm.valid) {
+      this.demand = Object.assign({}, this.demandForm.value)
+      if (this.demand) {
         if (this.saveType == SaveTypeEnum.Add) {
 
-          this.ProcessStateL22PES.id = UUID.UUID()
-          this.ProcessStateL22PES.optime = new Date()
-          this.ProcessStateL22PES.isActive = true
-          this.ProcessStateL22PESService.add(this.ProcessStateL22PES).subscribe(result => {
+          this.demand.id = UUID.UUID()
+          this.demand.optime = new Date()
+          this.demand.isActive = true
+          this.demandService.add(this.demand).subscribe(result => {
             if (result) {
               if (result.success) {
                 this.alertifyService.success(result.message)
@@ -193,10 +193,10 @@ export class ProcessStateL22PESComponent implements OnInit {
           })
         }
         else if (this.saveType = SaveTypeEnum.Update) {
-          this.ProcessStateL22PES.id = this.selectedProcessStateL22PESId
-          this.ProcessStateL22PES.optime = new Date()
-          this.ProcessStateL22PES.isActive = true
-          this.ProcessStateL22PESService.update(this.ProcessStateL22PES).subscribe(result => {
+          this.demand.id = this.selectedDemandId
+          this.demand.optime = new Date()
+          this.demand.isActive = true
+          this.demandService.update(this.demand).subscribe(result => {
             if (result) {
               if (result.success) {
                 this.alertifyService.success(result.message)
@@ -210,7 +210,7 @@ export class ProcessStateL22PESComponent implements OnInit {
         }
       }
     }
-    this.resetProcessStateL22PESModal()
+    this.resetDemandModal()
   }
 
 

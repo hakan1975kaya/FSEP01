@@ -39,7 +39,7 @@
           <ul class="list-group" *ngFor=" let  userMenu of  userMenus">
             <li class="list-group-item btn" style="text-align:left; padding: left 6px;" value="userMenu.id"
               [ngStyle]="{'background-color':userMenu.id == selectedMenuId ? '#54B4D3' : '#757575' ,'display':userMenu.path | menuPipe }">
-              <div class="link-light" [routerLink]="userMenu.path" (click)="setMenuId(userMenu.id)">
+              <div  class="link-light" [routerLink]="userMenu.path" (click)="setMenuId(userMenu.id)">
                 <span>{{userMenu.description}}</span>
               </div>
             </li>
@@ -53,13 +53,19 @@
     </div>
   </div>
   <!-- Footer -->
-  <div class="row p-4 d-flex justify-content-center">
-    <div class="col-md-4">
-      <footer>
-        <div class="copyright text-center">© 2024 ASAŞ
+  <footer class="py-5">
+    <div class="row p-4">
+      <div class="col-xl-2">
+        <div class="copyright text-center text-xl-left text-muted">
+          © 2023 ASAŞ <a href="d" class="font-weight-bold ml-1" target="_blank"></a>
         </div>
-      </footer>
+      </div>
+      <div class="col-xl-10">
+        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+          <li class="nav-item">
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-
+  </footer>
 </div>

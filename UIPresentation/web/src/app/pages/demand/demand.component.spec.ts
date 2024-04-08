@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { ProcessStateL22PESComponent } from './ProcessStateL22PES.component';
+import { DemandComponent } from './demand.component';
 
-describe('ProcessStateL22PESComponent', () => {
-  let component: ProcessStateL22PESComponent;
-  let fixture: ComponentFixture<ProcessStateL22PESComponent>;
+describe('DemandComponent', () => {
+  let component: DemandComponent;
+  let fixture: ComponentFixture<DemandComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProcessStateL22PESComponent ]
+      declarations: [ DemandComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProcessStateL22PESComponent);
+    fixture = TestBed.createComponent(DemandComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { RoleProcessStateL22PESComponent } from './role-ProcessStateL22PES.component';
+import { RoleDemandComponent } from './role-demand.component';
 
-describe('RoleProcessStateL22PESComponent', () => {
-  let component: RoleProcessStateL22PESComponent;
-  let fixture: ComponentFixture<RoleProcessStateL22PESComponent>;
+describe('RoleDemandComponent', () => {
+  let component: RoleDemandComponent;
+  let fixture: ComponentFixture<RoleDemandComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RoleProcessStateL22PESComponent ]
+      declarations: [ RoleDemandComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RoleProcessStateL22PESComponent);
+    fixture = TestBed.createComponent(RoleDemandComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
