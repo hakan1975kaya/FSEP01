@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using PLC.Abstract;
-using PLC.Helper;
+using PLC.Helper.Abstract;
 using S7.Net;
 using S7.Net.Types;
 using System;
@@ -13,11 +13,11 @@ using System.Threading.Tasks;
 
 namespace PLC.Concrete
 {
-    public class PlcDal : IPlcDal
+    public class PLCDal : IPLCDal
     {
-        private IPlcHelper _plcHelper;
+        private IPLCHelper _plcHelper;
         private Plc _plc;
-        public PlcDal(IPlcHelper plcHelper)
+        public PLCDal(IPLCHelper plcHelper)
         {
             _plcHelper = plcHelper;
             _plc = _plcHelper.Plc();

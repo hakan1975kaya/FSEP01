@@ -30,7 +30,7 @@
           <div class="col-md-1">
             <div class="form-group">
               <input type="button" class="btn btn-warning" id="search" name="search" value="Ara" (click)="search()"
-                [ngStyle]="{'display':'Role.Search' | demandPipe}">
+                [ngStyle]="{'display':'Role.Search' | ProcessStateL22PESPipe}">
             </div>
           </div>
           <!--clear button-->
@@ -98,9 +98,9 @@
     <!--export to excel pdf-->
     <div class="col-md-1 d-flex justify-content-around">
       <i class="fa fa-file-excel-o fa-2x" style="cursor: pointer;color: green;" (click)="exportToExcel()"
-        [ngStyle]="{'display':'Role.Search' | demandPipe}"></i>
+        [ngStyle]="{'display':'Role.Search' | ProcessStateL22PESPipe}"></i>
       <i class="fa  fa-file-pdf-o fa-2x" style="cursor: pointer;color:red" (click)="exportToPdf()"
-        [ngStyle]="{'display':'Role.Search' | demandPipe}"></i>
+        [ngStyle]="{'display':'Role.Search' | ProcessStateL22PESPipe}"></i>
     </div>
   </div>
 
@@ -151,7 +151,7 @@
         <!--footer-->
         <div class="modal-footer d-flex justify-content-center">
           <input type="button" class="btn btn-success" (click)="save()" value="Kaydet" [disabled]="!roleForm.valid"
-            [ngStyle]="{'display':'Role.Add' | demandPipe}" [ngStyle]="{'display':'Role.Update' | demandPipe}">
+            [ngStyle]="{'display':'Role.Add' | ProcessStateL22PESPipe}" [ngStyle]="{'display':'Role.Update' | ProcessStateL22PESPipe}">
         </div>
       </div>
     </div>
@@ -182,7 +182,7 @@
           <div class="row">
             <div class="col-md-6">
               <Input type="button" class="btn btn-success" (click)="deleteFromConfirm()" style="cursor: pointer;"
-                [ngStyle]="{'display':'Role.Delete' | demandPipe}" value="Evet">
+                [ngStyle]="{'display':'Role.Delete' | ProcessStateL22PESPipe}" value="Evet">
             </div>
             <div class="col-md-6">
               <Input type="button" class="btn btn-danger" (click)="closeConfirmModal()" style="cursor: pointer;"
