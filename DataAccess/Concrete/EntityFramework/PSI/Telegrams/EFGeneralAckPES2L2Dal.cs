@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.PSI.Telegrams
 {
-    public class EFGeneralAckPES2L2Dal : EFEntityRepositoryBase<FSEP01Context, GeneralAckPES2L2>, IGeneralAckPES2L2Dal
+    public class EFGeneralAckPES2L2Dal : EFEntityRepositoryBase<FSEP01Context, PSIGeneralAckPES2L2>, IGeneralAckPES2L2Dal
     {
     }
 }

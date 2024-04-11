@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract.PSI.Types
 {
-    public interface ITypeOutputMatDal : IEntityRepositoryBase<TypeOutputMat>
+    public interface ITypeOutputMatDal : IEntityRepositoryBase<PSITypeOutputMat>
     {
     }
 }

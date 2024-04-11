@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.PSI.Telegrams
 {
-    public class EFProcessStateL22PESDal : EFEntityRepositoryBase<FSEP01Context, ProcessStateL22PES>, IProcessStateL22PESDal
+    public class EFProcessStateL22PESDal : EFEntityRepositoryBase<FSEP01Context, PSIProcessStateL22PES>, IProcessStateL22PESDal
     {
 
     }

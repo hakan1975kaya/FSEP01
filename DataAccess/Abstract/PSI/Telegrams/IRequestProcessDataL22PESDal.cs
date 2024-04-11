@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract.PSI.Telegrams
 {
-    public interface IRequestProcessDataL22PESDal : IEntityRepositoryBase<RequestProcessDataL22PES>
+    public interface IRequestProcessDataL22PESDal : IEntityRepositoryBase<PSIRequestProcessDataL22PES>
     {
     }
 }

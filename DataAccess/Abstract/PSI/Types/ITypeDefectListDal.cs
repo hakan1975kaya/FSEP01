@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract.PSI.Types
 {
-    public interface ITypeDefectListDal : IEntityRepositoryBase<TypeDefectList>
+    public interface ITypeDefectListDal : IEntityRepositoryBase<PSITypeDefectList>
     {
     }
 }

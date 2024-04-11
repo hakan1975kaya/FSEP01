@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract.PSI.Telegrams
 {
-    public interface IPingAckPES2L2Dal : IEntityRepositoryBase<PingAckPES2L2>
+    public interface IPingAckPES2L2Dal : IEntityRepositoryBase<PSIPingAckPES2L2>
     {
     }
 }

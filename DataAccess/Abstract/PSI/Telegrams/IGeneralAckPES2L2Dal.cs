@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract.PSI.Telegrams
 {
-    public interface IGeneralAckPES2L2Dal : IEntityRepositoryBase<GeneralAckPES2L2>
+    public interface IGeneralAckPES2L2Dal : IEntityRepositoryBase<PSIGeneralAckPES2L2>
     {
     }
 }

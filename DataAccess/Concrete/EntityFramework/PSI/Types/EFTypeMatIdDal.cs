@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.PSI.Types
 {
-    public class EFTypeMatIdDal : EFEntityRepositoryBase<FSEP01Context, TypeMatId>, ITypeMatIdDal
+    public class EFTypeMatIdDal : EFEntityRepositoryBase<FSEP01Context, PSITypeMatId>, ITypeMatIdDal
     {
     }
 }

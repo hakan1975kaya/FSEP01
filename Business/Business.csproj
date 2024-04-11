@@ -17,10 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Abstract\PSI\" />
-    <Folder Include="Concrete\PSI\" />
     <Folder Include="Constants\Messages\PLC\" />
-    <Folder Include="Constants\Messages\PSI\" />
     <Folder Include="Validators\FluentValidators\PLC\" />
     <Folder Include="Validators\FluentValidators\PSI\" />
   </ItemGroup>

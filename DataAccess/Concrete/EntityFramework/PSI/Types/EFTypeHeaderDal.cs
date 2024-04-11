@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.PSI.Types
 {
-    public class EFTypeHeaderDal : EFEntityRepositoryBase<FSEP01Context, TypeHeader>, ITypeHeaderDal
+    public class EFTypeHeaderDal : EFEntityRepositoryBase<FSEP01Context, PSITypeHeader>, ITypeHeaderDal
     {
     }
 }

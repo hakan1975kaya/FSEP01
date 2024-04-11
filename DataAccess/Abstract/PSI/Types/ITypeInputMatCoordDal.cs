@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract.PSI.Types
 {
-    public interface ITypeInputMatCoordDal : IEntityRepositoryBase<TypeInputMatCoord>
+    public interface ITypeInputMatCoordDal : IEntityRepositoryBase<PSITypeInputMatCoord>
     {
     }
 }

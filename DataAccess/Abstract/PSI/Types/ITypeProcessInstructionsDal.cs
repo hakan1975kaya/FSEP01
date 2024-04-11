@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract.PSI.Types
 {
-    public interface ITypeProcessInstructionsDal : IEntityRepositoryBase<TypeProcessInstructions>
+    public interface ITypeProcessInstructionsDal : IEntityRepositoryBase<PSITypeProcessInstructions>
     {
     }
 }
