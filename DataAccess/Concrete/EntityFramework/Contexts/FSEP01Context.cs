@@ -1,6 +1,7 @@
 ﻿using Core.Entities.Concrete;
 using Core.Utilities.Service;
 using Entities.Concrete.Entities.General.General;
+using Entities.Concrete.Entities.General.Machine;
 using Entities.Concrete.Entities.PSI.Telegrams;
 using Entities.Concrete.Entities.PSI.Types;
 using Microsoft.EntityFrameworkCore;
@@ -55,6 +56,8 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<TypeTimeStamp> TypeTimeStamps { get; set; }
 
         //Machine
-        
+        public DbSet<EntryCoil> EntryCoils { get; set; }
+        public DbSet<ExitCoil> ExitCoils { get; set; }
+
     }
 }
