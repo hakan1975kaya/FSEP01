@@ -21,7 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Abstract\General\Machine\" />
     <Folder Include="Abstract\PLC\" />
+    <Folder Include="Concrete\EntityFramework\General\Machine\" />
     <Folder Include="Concrete\EntityFramework\PLC\" />
   </ItemGroup>
 

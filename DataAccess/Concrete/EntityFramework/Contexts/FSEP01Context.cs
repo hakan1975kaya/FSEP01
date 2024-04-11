@@ -1,7 +1,6 @@
 ﻿using Core.Entities.Concrete;
 using Core.Utilities.Service;
 using Entities.Concrete.Entities.General.General;
-using Entities.Concrete.Entities.General.Machine;
 using Entities.Concrete.Entities.PSI.Telegrams;
 using Entities.Concrete.Entities.PSI.Types;
 using Microsoft.EntityFrameworkCore;
@@ -56,36 +55,6 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<TypeTimeStamp> TypeTimeStamps { get; set; }
 
         //Machine
-        public DbSet<Defination> Definations { get; set; }
-        public DbSet<InputCoil> InputCoils { get; set; }
-        public DbSet<InputCoilApplyingUnit> InputCoilApplyingUnits { get; set; }
-        public DbSet<InputCoilAttachment> InputCoilAttachments { get; set; }
-        public DbSet<InputCoilBasicData> InputCoilBasicDatas { get; set; }
-        public DbSet<InputCoilDefect> InputCoilDefects { get; set; }
-        public DbSet<InputCoilMachine> InputCoilMachines { get; set; }
-        public DbSet<InputCoilRemark> InputCoilRemarks { get; set; }
-        public DbSet<InputCoilRewinder> InputCoilRewinders { get; set; }
-        public DbSet<InputCoilRewinderOnePressure> InputCoilRewinderOnePressures { get; set; }
-        public DbSet<InputCoilRewinderOneTension> InputCoilRewinderOneTensions { get; set; }
-        public DbSet<InputCoilRewinderTwoPressure> InputCoilRewinderTwoPressures { get; set; }
-        public DbSet<InputCoilRewinderTwoTension> InputCoilRewinderTwoTensions { get; set; }
-        public DbSet<InputCoilSlitPattern> InputCoilSlitPatterns { get; set; }
-        public DbSet<InputCoilSlitPatternDetail> InputCoilSlitPatternDetails { get; set; }
-        public DbSet<InputCoilSpeedCharacteristic> InputCoilSpeedCharacteristics { get; set; }
-        public DbSet<InputCoilSuction> InputCoilSuctions { get; set; }
-        public DbSet<OutputCoil> OutputCoils { get; set; }
-        public DbSet<Parameter> Parameters { get; set; }
-        public DbSet<ParameterApplyingUnit> ParameterApplyingUnits { get; set; }
-        public DbSet<ParameterBasicData> ParameterBasicDatas { get; set; }
-        public DbSet<ParameterContactRoll> ParameterContactRolls { get; set; }
-        public DbSet<ParameterDensity> ParameterDensitys { get; set; }
-        public DbSet<ParameterHeadTailScrap> ParameterHeadTailScraps { get; set; }
-        public DbSet<ParameterLubracationRoll> ParameterLubracationRolls { get; set; }
-        public DbSet<ParameterMachine> ParameterMachines { get; set; }
-        public DbSet<ParameterRewinder> ParameterRewinders { get; set; }
-        public DbSet<ParameterRewinderOnePressure> ParameterRewinderOnePressures { get; set; }
-        public DbSet<ParameterRewinderOneTension> ParameterRewinderOneTensions { get; set; }
-        public DbSet<ParameterRewinderTwoPressure> ParameterRewinderTwoPressures { get; set; }
-        public DbSet<ParameterRewinderTwoTension> ParameterRewinderTwoTensions { get; set; }
+        
     }
 }
