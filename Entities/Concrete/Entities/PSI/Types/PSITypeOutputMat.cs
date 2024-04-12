@@ -10,7 +10,7 @@ namespace Entities.Concrete.Entities.PSI.Types
     public class PSITypeOutputMat : IEntity
     {
         public Guid Id { get; set; }
-        public Guid ProdReportL22PES { get; set; }
+        public Guid PSIProdReportL22PES { get; set; }
         public Guid MatId { get; set; }
         public string KindOfOutput { get; set; }
         public Guid ProdStart { get; set; }

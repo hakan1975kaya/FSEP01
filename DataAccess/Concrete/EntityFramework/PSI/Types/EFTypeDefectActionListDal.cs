@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.PSI.Types
 {
-    public class EFTypeDefectActionListDal : EFEntityRepositoryBase<FSEP01Context, PSITypeDefectActionList>, ITypeDefectActionListDal
+    public class EFTypeDefectActionListDal : EFEntityRepositoryBase<FSEP01Context, PSITypeDefectActionList>, IPSITypeDefectActionListDal
     {
     }
 }

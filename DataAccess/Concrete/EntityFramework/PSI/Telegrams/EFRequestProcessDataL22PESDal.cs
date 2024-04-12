@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.PSI.Telegrams
 {
-    public class EFRequestProcessDataL22PESDal : EFEntityRepositoryBase<FSEP01Context, PSIRequestProcessDataL22PES>, IRequestProcessDataL22PESDal
+    public class EFRequestProcessDataL22PESDal : EFEntityRepositoryBase<FSEP01Context, PSIRequestProcessDataL22PES>, IPSIRequestProcessDataL22PESDal
     {
     }
 }

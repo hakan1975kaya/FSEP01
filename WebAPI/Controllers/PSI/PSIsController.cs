@@ -1,10 +1,6 @@
-﻿using Business.Abstract.General.General;
-using Business.Abstract.PSI;
-using Core.Entities.Concrete;
-using Entities.Concrete.Dtos.General.Genaral;
-using Entities.Concrete.Entities.PSI.Telegrams;
-using Microsoft.AspNetCore.Http;
+﻿using Business.Abstract.PSI;
 using Microsoft.AspNetCore.Mvc;
+using PSI.Dtos.Telegrams;
 
 namespace WebAPI.Controllers.General.General
 {
@@ -19,7 +15,7 @@ namespace WebAPI.Controllers.General.General
         }
 
         [HttpPost("setProcessDataPES2L2")]
-        public async Task<IActionResult> SetProcessDataPES2L2(PSIProcessDataPES2L2 processDataPES2L2)
+        public async Task<IActionResult> SetProcessDataPES2L2(ProcessDataPES2L2 processDataPES2L2)
         {
             var result = await _psiService.SetProcessDataPES2L2(processDataPES2L2);
             if (result.Success)

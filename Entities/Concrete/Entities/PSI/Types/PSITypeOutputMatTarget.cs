@@ -10,7 +10,7 @@ namespace Entities.Concrete.Entities.PSI.Types
     public class PSITypeOutputMatTarget : IEntity
     {
         public Guid Id { get; set; }
-        public Guid TypeProcessInstructions { get; set; }
+        public Guid PSITypeIProcessInstructions { get; set; }
         public Guid MatId { get; set; }
         public decimal CountOutputParameter { get; set; }
         public decimal CountInputMatRelation { get; set; }
@@ -18,4 +18,5 @@ namespace Entities.Concrete.Entities.PSI.Types
         public bool IsActive { get; set; }
     }
 }
+
 

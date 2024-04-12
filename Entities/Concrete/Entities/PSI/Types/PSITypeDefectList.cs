@@ -10,9 +10,9 @@ namespace Entities.Concrete.Entities.PSI.Types
     public class PSITypeDefectList : IEntity
     {
         public Guid Id { get; set; }
-        public Guid? TypeDefectActionList { get; set; }
-        public Guid? TypeInputMat { get; set; }
-        public Guid? TypeOutputMat { get; set; }
+        public Guid? PSITypeDefectActionList { get; set; }
+        public Guid? PSITypeInputMat { get; set; }
+        public Guid? PSITypeOutputMat { get; set; }
         public string DefectCode { get; set; }
         public string DefectBlocking { get; set; }
         public string DefectSeverity { get; set; }
@@ -25,9 +25,6 @@ namespace Entities.Concrete.Entities.PSI.Types
         public bool IsActive { get; set; }
     }
 }
-
-
-
 
 
 

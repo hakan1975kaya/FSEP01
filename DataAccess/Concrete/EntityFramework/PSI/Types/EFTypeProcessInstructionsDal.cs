@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.PSI.Types
 {
-    public class EFTypeProcessInstructionsDal : EFEntityRepositoryBase<FSEP01Context, PSITypeProcessInstructions>, ITypeProcessInstructionsDal
+    public class EFTypeProcessInstructionsDal : EFEntityRepositoryBase<FSEP01Context, PSITypeProcessInstructions>, IPSITypeProcessInstructionsDal
     {
     }
 }

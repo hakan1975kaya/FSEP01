@@ -10,7 +10,7 @@ namespace Entities.Concrete.Entities.PSI.Types
     public class PSITypeInputMatCoord : IEntity
     {
         public Guid Id { get; set; }
-        public Guid TypeOutputMatTarget { get; set; }
+        public Guid PSITypeOutputMatTarget { get; set; }
         public decimal OutputMatStartX { get; set; }
         public decimal OutputMatEndX { get; set; }
         public decimal OutputMatStartY { get; set; }

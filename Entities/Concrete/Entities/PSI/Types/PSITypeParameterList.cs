@@ -10,13 +10,13 @@ namespace Entities.Concrete.Entities.PSI.Types
     public class PSITypeParameterList : IEntity
     {
         public Guid Id { get; set; }
-        public Guid? ProcessDataPES2L2 { get; set; }
-        public Guid? ProcessStateL22PES { get; set; }
-        public Guid? TypeInputMat { get; set; }
-        public Guid? TypeOutputMat { get; set; }
-        public Guid? TypeProcessInstructions { get; set; }
-        public Guid? TypeOutputMatTarget { get; set; }
-        public Guid? GeneralAckPES2L2 { get; set; }
+        public Guid? PSIProcessDataPES2L2 { get; set; }
+        public Guid? PSIProcessStateL22PES { get; set; }
+        public Guid? PSITypeInputMat { get; set; }
+        public Guid? PSITypeOutputMat { get; set; }
+        public Guid? PSITypeProcessInstructions { get; set; }
+        public Guid? PSITypeOutputMatTarget { get; set; }
+        public Guid? PSIGeneralAckPES2L2 { get; set; }
         public string ParameterName { get; set; }
         public string ParameterValueString { get; set; }
         public decimal ParameterValueNumber { get; set; }

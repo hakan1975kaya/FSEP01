@@ -10,7 +10,8 @@ namespace Entities.Concrete.Entities.PSI.Types
     public class PSITypeInputMat : IEntity
     {
         public Guid Id { get; set; }
-        public Guid ProdReportL22PES { get; set; }
+        public Guid? PSITypeProcessInstructions { get; set; }
+        public Guid? PSIProdReportL22PES { get; set; }
         public Guid MatId { get; set; }
         public string FlagConsumed { get; set; }
         public string UsageOfInput { get; set; }
@@ -20,7 +21,6 @@ namespace Entities.Concrete.Entities.PSI.Types
         public bool IsActive { get; set; }
     }
 }
-
 
 
 
