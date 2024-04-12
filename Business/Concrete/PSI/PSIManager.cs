@@ -1,9 +1,7 @@
 ﻿using Business.Abstract.PSI;
 using Business.BusinessAspect.Autofac;
 using Business.Constants.Messages.General.General;
-using Business.Validators.FluentValidators.General.General.ApiLogValidators;
 using Core.Aspects.Autofac.Transaction;
-using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract.PSI.Telegrams;
@@ -12,14 +10,13 @@ using Entities.Concrete.Entities.PSI.Telegrams;
 using Entities.Concrete.Entities.PSI.Types;
 using PSI.Dtos.Telegrams;
 using PSI.Dtos.Types;
-using System.Net.NetworkInformation;
-using System.Reflection.PortableExecutable;
 
 namespace Business.Concrete.PSI
 {
     public class PSIManager : IPSIService
     {
         private IPSIProcessDataPES2L2Dal _psiProcessDataPES2L2Dal;
+        private IPSIGeneralAckPES2L2Dal _psiGeneralAckPES2L2Dal;
         private IPSITypeHeaderDal _psiTypeHeaderDal;
         private IPSITypeTimeStampDal _psiTimeStampDal;
         private IPSITypeParameterListDal _psiParameterListDal;
@@ -29,9 +26,9 @@ namespace Business.Concrete.PSI
         private IPSITypeOutputMatTargetDal _psiTypeOutputMatTargetDal;
         private IPSITypeInputMatCoordDal _psiTypeInputMatCoordDal;
         private IPSITypeDefectListDal _psiTypeDefectListDal;
-        private IPSIGeneralAckPES2L2Dal _psiGeneralAckPES2L2Dal;
         public PSIManager(
             IPSIProcessDataPES2L2Dal psiProcessDataPES2L2Dal,
+            IPSIGeneralAckPES2L2Dal psiGeneralAckPES2L2Dal,
             IPSITypeHeaderDal psiTypeHeaderDal,
             IPSITypeTimeStampDal psiTimeStampDal,
             IPSITypeParameterListDal psiParameterListDal,
@@ -40,10 +37,10 @@ namespace Business.Concrete.PSI
             IPSITypeInputMatDal psiTypeInputMatDal,
             IPSITypeOutputMatTargetDal psiTypeOutputMatTargetDal,
             IPSITypeInputMatCoordDal psiTypeInputMatCoordDal,
-            IPSITypeDefectListDal psiTypeDefectListDal,
-            IPSIGeneralAckPES2L2Dal psiGeneralAckPES2L2Dal)
+            IPSITypeDefectListDal psiTypeDefectListDal)
         {
             _psiProcessDataPES2L2Dal = psiProcessDataPES2L2Dal;
+            _psiGeneralAckPES2L2Dal = psiGeneralAckPES2L2Dal;
             _psiTypeHeaderDal = psiTypeHeaderDal;
             _psiTimeStampDal = psiTimeStampDal;
             _psiParameterListDal = psiParameterListDal;
@@ -53,7 +50,6 @@ namespace Business.Concrete.PSI
             _psiTypeOutputMatTargetDal = psiTypeOutputMatTargetDal;
             _psiTypeInputMatCoordDal = psiTypeInputMatCoordDal;
             _psiTypeDefectListDal = psiTypeDefectListDal;
-            _psiGeneralAckPES2L2Dal= psiGeneralAckPES2L2Dal;
         }
 
         [SecurityAspect("PSI.SetGeneralAckPES2L2", Priority = 2)]
@@ -76,6 +72,7 @@ namespace Business.Concrete.PSI
                 Optime = DateTime.Now,
                 IsActive = true
             };
+            await _psiGeneralAckPES2L2Dal.Add(psiGeneralAckPES2L2);
 
             var setTypeHeaderResult = await SetTypeHeader(generalAckPES2L2.Header, psiTypeHeaderId, psiTypeTimeSpanId);
 
@@ -89,13 +86,13 @@ namespace Business.Concrete.PSI
             var psiProcessDataPES2L2Id = Guid.NewGuid();
             var psiTypeHeaderId = Guid.NewGuid();
             var psiTypeTimeSpanId = Guid.NewGuid();
-            var eventTimePSITypeTimeSpanId = Guid.NewGuid();
+            var psiTypeTimeSpanEventTimeId = Guid.NewGuid();
 
             var psiProcessDataPES2L2 = new PSIProcessDataPES2L2
             {
                 Id = psiProcessDataPES2L2Id,
                 Header = psiTypeHeaderId,
-                EventTime = eventTimePSITypeTimeSpanId,
+                EventTime = psiTypeTimeSpanEventTimeId,
                 EventCode = processDataPES2L2.EventCode,
                 LineId = processDataPES2L2.LineId,
                 LineSequenceId = processDataPES2L2.LineSequenceId,
@@ -108,7 +105,7 @@ namespace Business.Concrete.PSI
 
             var setTypeHeaderResult = await SetTypeHeader(processDataPES2L2.Header, psiTypeHeaderId, psiTypeTimeSpanId);
 
-            var setTypeTimeStampResult = await SetTypeTimeStamp(processDataPES2L2.EventTime, eventTimePSITypeTimeSpanId);
+            var setTypeTimeStampResult = await SetTypeTimeStamp(processDataPES2L2.EventTime, psiTypeTimeSpanEventTimeId);
 
             var setTypeParameterListResult = await SetTypeParameterList(processDataPES2L2.LineSeqParameterList, psiProcessDataPES2L2Id);
 
@@ -143,35 +140,35 @@ namespace Business.Concrete.PSI
             }
             return new SuccessResult(PSIMessages.Added);
         }
-        public async Task<IResult> SetTypeHeader(TypeHeader typeHeader, Guid psiHeaderId, Guid psiTimeStampId)
+        public async Task<IResult> SetTypeHeader(TypeHeader typeHeader, Guid psiTypeHeaderId, Guid psiTypeTimeStampId)
         {
             var psiTypeHeader = new PSITypeHeader
             {
-                Id = psiHeaderId,
+                Id = psiTypeHeaderId,
                 TelegramType = typeHeader.TelegramType,
                 TelegramLength = typeHeader.TelegramLength,
                 Sender = typeHeader.Sender,
                 Receiver = typeHeader.Receiver,
                 TelegramSeqNo = typeHeader.TelegramSeqNo,
-                TimeStamp = psiTimeStampId,
+                TimeStamp = psiTypeTimeStampId,
                 AckReq = typeHeader.AckReq,
                 Optime = DateTime.Now,
                 IsActive = true
             };
             await _psiTypeHeaderDal.Add(psiTypeHeader);
 
-            var setTypeTimeStampResult = await SetTypeTimeStamp(typeHeader.TimeStamp, psiTimeStampId);
+            var setTypeTimeStampResult = await SetTypeTimeStamp(typeHeader.TimeStamp, psiTypeTimeStampId);
 
             return new SuccessResult(PSIMessages.Added);
         }
-        public async Task<IResult> SetTypeInputMat(TypeInputMat typeInputMat, Guid psiInputMatId, Guid psiMatId, Guid? psiTypeProcessInstructions = null, Guid? psiProdReportL22PES = null)
+        public async Task<IResult> SetTypeInputMat(TypeInputMat typeInputMat, Guid psiTypeInputMatId, Guid psiTypeMatId, Guid? psiTypeProcessInstructions = null, Guid? psiProdReportL22PES = null)
         {
             var psiTypeInputMat = new PSITypeInputMat
             {
-                Id = psiInputMatId,
+                Id = psiTypeInputMatId,
                 PSITypeProcessInstructions = psiTypeProcessInstructions,
                 PSIProdReportL22PES = psiProdReportL22PES,
-                MatId = psiMatId,
+                MatId = psiTypeMatId,
                 FlagConsumed = typeInputMat.FlagConsumed,
                 UsageOfInput = typeInputMat.UsageOfInput,
                 CountInputParameter = typeInputMat.CountInputParameter,
@@ -181,11 +178,11 @@ namespace Business.Concrete.PSI
             };
             await _psiTypeInputMatDal.Add(psiTypeInputMat);
 
-            var setTypeMatIdResult = await SetTypeMatId(typeInputMat.MatId, psiMatId);
+            var setTypeMatIdResult = await SetTypeMatId(typeInputMat.MatId, psiTypeMatId);
 
-            var setTypeParameterList = await SetTypeParameterList(typeInputMat.ParameterList, null, null, psiInputMatId);
+            var setTypeParameterList = await SetTypeParameterList(typeInputMat.ParameterList, null, null, psiTypeInputMatId);
 
-            var setTypeDefectList = await SetTypeDefectList(typeInputMat.InputDefectList, null, psiInputMatId);
+            var setTypeDefectList = await SetTypeDefectList(typeInputMat.InputDefectList, null, psiTypeInputMatId);
 
             return new SuccessResult(PSIMessages.Added);
         }
@@ -225,16 +222,17 @@ namespace Business.Concrete.PSI
 
             return new SuccessResult(PSIMessages.Added);
         }
-        public async Task<IResult> SetTypeOutputMatTarget(List<TypeOutputMatTarget> typeOutputMatTargets, Guid psiMatId, Guid psiTypeIProcessInstructions)
+        public async Task<IResult> SetTypeOutputMatTarget(List<TypeOutputMatTarget> typeOutputMatTargets, Guid psiTypeMatId, Guid psiTypeIProcessInstructions)
         {
             foreach (var typeOutputMatTarget in typeOutputMatTargets)
             {
                 var psiTypeOutputMatTargetId = Guid.NewGuid();
+
                 var outputMatList = new PSITypeOutputMatTarget
                 {
                     Id = psiTypeOutputMatTargetId,
                     PSITypeIProcessInstructions = psiTypeIProcessInstructions,
-                    MatId = psiMatId,
+                    MatId = psiTypeMatId,
                     CountOutputParameter = typeOutputMatTarget.CountOutputParameter,
                     CountInputMatRelation = typeOutputMatTarget.CountInputMatRelation,
                     Optime = DateTime.Now,
@@ -242,7 +240,7 @@ namespace Business.Concrete.PSI
                 };
                 await _psiTypeOutputMatTargetDal.Add(outputMatList);
 
-                var setTypeMatIdResult = await SetTypeMatId(typeOutputMatTarget.MatId, psiMatId);
+                var setTypeMatIdResult = await SetTypeMatId(typeOutputMatTarget.MatId, psiTypeMatId);
 
                 var setTypeParameterList = await SetTypeParameterList(typeOutputMatTarget.ParameterList, null, null, null, psiTypeOutputMatTargetId);
 
@@ -310,11 +308,11 @@ namespace Business.Concrete.PSI
             }
             return new SuccessResult(PSIMessages.Added);
         }
-        public async Task<IResult> SetTypeTimeStamp(TypeTimeStamp typeTimeStamp, Guid psiTimeStampId)
+        public async Task<IResult> SetTypeTimeStamp(TypeTimeStamp typeTimeStamp, Guid psiTypeTimeStampId)
         {
             var psiTypeTimeStamp = new PSITypeTimeStamp
             {
-                Id = psiTimeStampId,
+                Id = psiTypeTimeStampId,
                 TimeStamp = typeTimeStamp.TimeStamp,
                 Optime = DateTime.Now,
                 IsActive = true
