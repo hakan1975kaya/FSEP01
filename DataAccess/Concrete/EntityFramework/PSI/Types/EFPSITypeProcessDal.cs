@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.PSI.Types
 {
-    public class EFTypeInputMatCoordDal : EFEntityRepositoryBase<FSEP01Context, PSITypeInputMatCoord>, IPSITypeInputMatCoordDal
+    public class EFPSITypeProcessDal : EFEntityRepositoryBase<FSEP01Context, PSITypeProcess>, IPSITypeProcessDal
     {
     }
 }

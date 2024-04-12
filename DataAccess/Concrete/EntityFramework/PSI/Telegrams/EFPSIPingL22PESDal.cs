@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.PSI.Telegrams
 {
-    public class EFPingPES2L2Dal : EFEntityRepositoryBase<FSEP01Context, PSIPingPES2L2>, IPSIPingPES2L2Dal
+    public class EFPSIPingL22PESDal : EFEntityRepositoryBase<FSEP01Context, PSIPingL22PES>, IPSIPingL22PESDal
     {
     }
 }

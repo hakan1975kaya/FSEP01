@@ -10,7 +10,7 @@ namespace PSI.Dtos.Telegrams
 {
     public class GeneralAckPES2L2 : IDto
     {
-        public Guid Header { get; set; }
+        public TypeHeader Header { get; set; }
         public string AckState { get; set; }
         public string InfoCode { get; set; }
         public string InfoText { get; set; }

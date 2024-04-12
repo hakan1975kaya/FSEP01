@@ -12,6 +12,7 @@ namespace Business.Abstract.PSI
     public interface IPSIService
     {
         public Task<IResult> SetProcessDataPES2L2(ProcessDataPES2L2 processDataPES2L2);
+        public Task<IResult> SetGeneralAckPES2L2(GeneralAckPES2L2 generalAckPES2L2); 
         public Task<IResult> SetTypeHeader(TypeHeader typeHeader, Guid psiHeaderId, Guid psiTimeStampId);
         public Task<IResult> SetTypeTimeStamp(TypeTimeStamp typeTimeStamp, Guid psiTimeStampId);
         public Task<IResult> SetTypeParameterList(List<TypeParameterList> typeParameterLists, Guid? psiProcessDataPES2L2 = null, Guid? psiProcessStateL22PES = null, Guid? psiTypeInputMat = null, Guid? psiTypeOutputMat = null, Guid? psiTypeProcessInstructions = null, Guid? psiTypeOutputMatTarget = null, Guid? psiGeneralAckPES2L2 = null);

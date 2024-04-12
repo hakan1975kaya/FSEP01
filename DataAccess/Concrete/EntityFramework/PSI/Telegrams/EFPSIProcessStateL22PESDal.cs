@@ -1,4 +1,5 @@
 ﻿using Core.DataAccess.Concrete.EntityFramework;
+using Core.Entities.Concrete;
 using DataAccess.Abstract.PSI.Telegrams;
 using DataAccess.Concrete.EntityFramework.Contexts;
 using Entities.Concrete.Entities.PSI.Telegrams;
@@ -10,7 +11,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.PSI.Telegrams
 {
-    public class EFPingAckL22PESDal : EFEntityRepositoryBase<FSEP01Context, PSIPingAckL22PES>, IPSIPingAckL22PESDal
+    public class EFPSIProcessStateL22PESDal : EFEntityRepositoryBase<FSEP01Context, PSIProcessStateL22PES>, IPSIProcessStateL22PESDal
     {
+
     }
 }

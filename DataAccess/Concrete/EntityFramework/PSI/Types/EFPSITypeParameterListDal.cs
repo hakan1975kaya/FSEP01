@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.PSI.Types
 {
-    public class EFTypeOutputMatTargetDal : EFEntityRepositoryBase<FSEP01Context, PSITypeOutputMatTarget>, IPSITypeOutputMatTargetDal
+    public class EFPSITypeParameterListDal : EFEntityRepositoryBase<FSEP01Context, PSITypeParameterList>, IPSITypeParameterListDal
     {
     }
 }

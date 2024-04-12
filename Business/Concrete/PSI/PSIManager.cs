@@ -2,6 +2,7 @@
 using Business.BusinessAspect.Autofac;
 using Business.Constants.Messages.General.General;
 using Business.Validators.FluentValidators.General.General.ApiLogValidators;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
@@ -11,6 +12,8 @@ using Entities.Concrete.Entities.PSI.Telegrams;
 using Entities.Concrete.Entities.PSI.Types;
 using PSI.Dtos.Telegrams;
 using PSI.Dtos.Types;
+using System.Net.NetworkInformation;
+using System.Reflection.PortableExecutable;
 
 namespace Business.Concrete.PSI
 {
@@ -26,6 +29,7 @@ namespace Business.Concrete.PSI
         private IPSITypeOutputMatTargetDal _psiTypeOutputMatTargetDal;
         private IPSITypeInputMatCoordDal _psiTypeInputMatCoordDal;
         private IPSITypeDefectListDal _psiTypeDefectListDal;
+        private IPSIGeneralAckPES2L2Dal _psiGeneralAckPES2L2Dal;
         public PSIManager(
             IPSIProcessDataPES2L2Dal psiProcessDataPES2L2Dal,
             IPSITypeHeaderDal psiTypeHeaderDal,
@@ -36,7 +40,8 @@ namespace Business.Concrete.PSI
             IPSITypeInputMatDal psiTypeInputMatDal,
             IPSITypeOutputMatTargetDal psiTypeOutputMatTargetDal,
             IPSITypeInputMatCoordDal psiTypeInputMatCoordDal,
-            IPSITypeDefectListDal psiTypeDefectListDal)
+            IPSITypeDefectListDal psiTypeDefectListDal,
+            IPSIGeneralAckPES2L2Dal psiGeneralAckPES2L2Dal)
         {
             _psiProcessDataPES2L2Dal = psiProcessDataPES2L2Dal;
             _psiTypeHeaderDal = psiTypeHeaderDal;
@@ -48,10 +53,37 @@ namespace Business.Concrete.PSI
             _psiTypeOutputMatTargetDal = psiTypeOutputMatTargetDal;
             _psiTypeInputMatCoordDal = psiTypeInputMatCoordDal;
             _psiTypeDefectListDal = psiTypeDefectListDal;
+            _psiGeneralAckPES2L2Dal= psiGeneralAckPES2L2Dal;
         }
 
-        [SecurityAspect("PSI.ProcessDataPES2L2", Priority = 2)]
-        [ValidationAspect(typeof(ApiLogValidator), Priority = 3)]
+        [SecurityAspect("PSI.SetGeneralAckPES2L2", Priority = 2)]
+        [TransactionAspect(Priority = 3)]
+        public async Task<IResult> SetGeneralAckPES2L2(GeneralAckPES2L2 generalAckPES2L2)
+        {
+            var psiGeneralAckPES2L2Id = Guid.NewGuid();
+            var psiTypeHeaderId = Guid.NewGuid();
+            var psiTypeTimeSpanId = Guid.NewGuid();
+
+            var psiGeneralAckPES2L2 = new PSIGeneralAckPES2L2
+            {
+                Id = psiGeneralAckPES2L2Id,
+                Header = psiTypeHeaderId,
+                AckState = generalAckPES2L2.AckState,
+                InfoCode = generalAckPES2L2.InfoCode,
+                InfoText = generalAckPES2L2.InfoText,
+                TelegramSeqNo = generalAckPES2L2.TelegramSeqNo,
+                CountParameter = generalAckPES2L2.CountParameter,
+                Optime = DateTime.Now,
+                IsActive = true
+            };
+
+            var setTypeHeaderResult = await SetTypeHeader(generalAckPES2L2.Header, psiTypeHeaderId, psiTypeTimeSpanId);
+
+            return new SuccessResult(PSIMessages.Added);
+        }
+
+        [SecurityAspect("PSI.SetProcessDataPES2L2", Priority = 2)]
+        [TransactionAspect(Priority = 3)]
         public async Task<IResult> SetProcessDataPES2L2(ProcessDataPES2L2 processDataPES2L2)
         {
             var psiProcessDataPES2L2Id = Guid.NewGuid();
