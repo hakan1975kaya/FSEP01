@@ -26,7 +26,19 @@ namespace WebAPI.Controllers.General.General
             return BadRequest(result);
         }
 
-     
+        [HttpPost("setGeneralAckPES2L2")]
+        public async Task<IActionResult> SetGeneralAckPES2L2(GeneralAckPES2L2 generalAckPES2L2)
+        {
+            var result = await _psiService.SetGeneralAckPES2L2(generalAckPES2L2);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+      
 
     }
 }
