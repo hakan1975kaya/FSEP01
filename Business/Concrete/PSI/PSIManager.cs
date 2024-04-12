@@ -112,7 +112,6 @@ namespace Business.Concrete.PSI
 
             var setTypeParameterListResult = await SetTypeParameterList(processDataPES2L2.LineSeqParameterList, psiProcessDataPES2L2Id);
 
-            var psiTypeInputMatId = Guid.NewGuid();
             var setTypeProcessInstructionsResult = await SetTypeProcessInstructions(processDataPES2L2.ProcessInstructions, psiProcessDataPES2L2Id);
 
             return new SuccessResult(PSIMessages.Added);
@@ -160,7 +159,9 @@ namespace Business.Concrete.PSI
                 IsActive = true
             };
             await _psiTypeHeaderDal.Add(psiTypeHeader);
+
             var setTypeTimeStampResult = await SetTypeTimeStamp(typeHeader.TimeStamp, psiTimeStampId);
+
             return new SuccessResult(PSIMessages.Added);
         }
         public async Task<IResult> SetTypeInputMat(TypeInputMat typeInputMat, Guid psiInputMatId, Guid psiMatId, Guid? psiTypeProcessInstructions = null, Guid? psiProdReportL22PES = null)
@@ -221,6 +222,7 @@ namespace Business.Concrete.PSI
                 IsActive = true
             };
             await _psiMatIdDal.Add(psiTypeMatId);
+
             return new SuccessResult(PSIMessages.Added);
         }
         public async Task<IResult> SetTypeOutputMatTarget(List<TypeOutputMatTarget> typeOutputMatTargets, Guid psiMatId, Guid psiTypeIProcessInstructions)
@@ -275,6 +277,7 @@ namespace Business.Concrete.PSI
                     IsActive = true
                 };
                 await _psiParameterListDal.Add(psiTypeParameterList);
+
                 var setTypeTimeStampResult = await SetTypeTimeStamp(typeParameterList.ParameterDate, psiTypeTimeStampId);
             }
             return new SuccessResult(PSIMessages.Added);
@@ -284,26 +287,25 @@ namespace Business.Concrete.PSI
             foreach (var typeProcessInstruction in typeProcessInstructions)
             {
                 var psiTypeProcessInstructionsId = Guid.NewGuid();
-                var psiInputMatId = Guid.NewGuid();
+                var psiTypeInputMatId = Guid.NewGuid();
+                var psiTypeMatId = Guid.NewGuid();
 
                 var psiTypeProcessInstructions = new PSITypeProcessInstructions
                 {
                     Id = psiTypeProcessInstructionsId,
                     PSIProcessDataPES2L2 = psiProcessDataPES2L2,
-                    InputMat = psiInputMatId,
+                    InputMat = psiTypeInputMatId,
                     CountOutputMat = typeProcessInstruction.CountOutputMat,
                     CountProdParameter = typeProcessInstruction.CountProdParameter,
                     Optime = DateTime.Now,
                     IsActive = true
                 };
                 await _psiProcessInstructionsDal.Add(psiTypeProcessInstructions);
-
-                var psiTypeInputMatId = Guid.NewGuid();
+             
                 var setTypeInputMatResult = await SetTypeInputMat(typeProcessInstruction.InputMat, psiTypeInputMatId, psiTypeProcessInstructionsId);
 
                 var setTypeParameterListResult = await SetTypeParameterList(typeProcessInstruction.ProdParameterList, null, null, null, null, psiTypeProcessInstructionsId);
 
-                var psiTypeMatId = Guid.NewGuid();
                 var setTypeOutputMatTargetResult = await SetTypeOutputMatTarget(typeProcessInstruction.OutputMatList, psiTypeProcessInstructionsId, psiTypeMatId);
             }
             return new SuccessResult(PSIMessages.Added);
