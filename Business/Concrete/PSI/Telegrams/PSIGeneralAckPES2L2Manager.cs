@@ -29,7 +29,7 @@ namespace Business.Concrete.PSI.Telegrams
         public async Task<IResult> Add(PSIGeneralAckPES2L2 psiGeneralAckPES2L2)
         {
             await _psiGeneralAckPES2L2Dal.Add(psiGeneralAckPES2L2);
-            return new SuccessResult(PSIGeneralAckPES2L2Messages.Added);
+            return new SuccessResult(PSIProcessDataPES2L2Messages.Added);
         }
 
         [SecurityAspect("PSIGeneralAckPES2L2.Delete", Priority = 2)]
@@ -44,10 +44,10 @@ namespace Business.Concrete.PSI.Telegrams
                     var psiGeneralAckPES2L2 = psiGeneralAckPES2L2DataResult.Data;
                     psiGeneralAckPES2L2.IsActive = false;
                     await _psiGeneralAckPES2L2Dal.Update(psiGeneralAckPES2L2);
-                    return new SuccessResult(PSIGeneralAckPES2L2Messages.Deleted);
+                    return new SuccessResult(PSIProcessDataPES2L2Messages.Deleted);
                 }
             }
-            return new ErrorResult(PSIGeneralAckPES2L2Messages.OperationFailed);
+            return new ErrorResult(PSIProcessDataPES2L2Messages.OperationFailed);
         }
 
         [SecurityAspect("PSIGeneralAckPES2L2.GetAll", Priority = 2)]
@@ -77,7 +77,7 @@ namespace Business.Concrete.PSI.Telegrams
         public async Task<IResult> Update(PSIGeneralAckPES2L2 psiGeneralAckPES2L2)
         {
             await _psiGeneralAckPES2L2Dal.Update(psiGeneralAckPES2L2);
-            return new SuccessResult(PSIGeneralAckPES2L2Messages.Updated);
+            return new SuccessResult(PSIProcessDataPES2L2Messages.Updated);
         }
     }
 }
