@@ -7,10 +7,10 @@ namespace WebAPI.Controllers.PLC
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlcsController : ControllerBase
+    public class PLCsController : ControllerBase
     {
         private IPLCService _plcService;
-        public PlcsController(IPLCService plcService)
+        public PLCsController(IPLCService plcService)
         {
 
             _plcService = plcService;

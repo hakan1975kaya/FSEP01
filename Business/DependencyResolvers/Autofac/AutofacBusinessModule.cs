@@ -2,13 +2,18 @@
 using Autofac.Extras.DynamicProxy;
 using Business.Abstract.General.General;
 using Business.Abstract.PLC;
+using Business.Abstract.PSI.Telegrams;
 using Business.Concrete.General.General;
 using Business.Concrete.PLC;
 using Core.Utilities.Interceptors;
 using Core.Utilities.Security.Abstract;
 using Core.Utilities.Security.Concrete.Jwt;
 using DataAccess.Abstract.General.General;
+using DataAccess.Abstract.PSI.Telegrams;
+using DataAccess.Abstract.PSI.Types;
 using DataAccess.Concrete.EntityFramework.General.General;
+using DataAccess.Concrete.EntityFramework.PSI.Telegrams;
+using DataAccess.Concrete.EntityFramework.PSI.Types;
 using PLC.Abstract;
 using PLC.Concrete;
 using PLC.Helper.Abstract;
@@ -64,6 +69,50 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<PLCManager>().As<IPLCService>();
 
             //PSI
+
+            //Telegrams
+            builder.RegisterType<EFPSIGeneralAckPES2L2Dal>().As<IPSIGeneralAckPES2L2Dal>();
+
+            builder.RegisterType<EFPSIPingAckL22PESDal>().As<IPSIPingAckL22PESDal>();
+
+            builder.RegisterType<EFPSIPingAckPES2L2Dal>().As<IPSIPingAckPES2L2Dal>();
+
+            builder.RegisterType<EFPSIPingL22PESDal>().As<IPSIPingL22PESDal>();
+
+            builder.RegisterType<EFPSIPingPES2L2Dal>().As<IPSIPingPES2L2Dal>();
+
+            builder.RegisterType<EFPSIProcessDataPES2L2Dal>().As<IPSIProcessDataPES2L2Dal>();
+
+            builder.RegisterType<EFPSIProcessStateL22PESDal>().As<IPSIProcessStateL22PESDal>();
+
+            builder.RegisterType<EFPSIProdReportL22PESDal>().As<IPSIProdReportL22PESDal>();
+
+            builder.RegisterType<EFPSIRequestProcessDataL22PESDal>().As<IPSIRequestProcessDataL22PESDal>();
+
+            //Types
+            builder.RegisterType<EFPSITypeDefectActionListDal>().As<IPSITypeDefectActionListDal>();
+
+            builder.RegisterType<EFPSITypeDefectListDal>().As<IPSITypeDefectListDal>();
+
+            builder.RegisterType<EFPSITypeHeaderDal>().As<IPSITypeHeaderDal>();
+
+            builder.RegisterType<EFPSITypeInputMatCoordDal>().As<IPSITypeInputMatCoordDal>();
+
+            builder.RegisterType<EFPSITypeInputMatDal>().As<IPSITypeInputMatDal>();
+
+            builder.RegisterType<EFPSITypeMatIdDal>().As<IPSITypeMatIdDal>();
+
+            builder.RegisterType<EFPSITypeOutputMatDal>().As<IPSITypeOutputMatDal>();
+
+            builder.RegisterType<EFPSITypeOutputMatTargetDal>().As<IPSITypeOutputMatTargetDal>();
+
+            builder.RegisterType<EFPSITypeParameterListDal>().As<IPSITypeParameterListDal>();
+
+            builder.RegisterType<EFPSITypeProcessDal>().As<IPSITypeProcessDal>();
+
+            builder.RegisterType<EFPSITypeProcessInstructionsDal>().As<IPSITypeProcessInstructionsDal>();
+
+            builder.RegisterType<EFPSITypeTimeStampDal>().As<IPSITypeTimeStampDal>();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

@@ -1,4 +1,4 @@
-﻿using Business.Abstract.PSI;
+﻿using Business.Abstract.PSI.Transfers;
 using Microsoft.AspNetCore.Mvc;
 using PSI.Dtos.Telegrams;
 

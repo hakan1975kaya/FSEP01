@@ -19,8 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Constants\Messages\PLC\" />
-    <Folder Include="Validators\FluentValidators\PLC\" />
-    <Folder Include="Validators\FluentValidators\PSI\" />
   </ItemGroup>
 
 </Project>
