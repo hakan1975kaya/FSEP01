@@ -1,6 +1,6 @@
-﻿using Business.Abstract.PSI;
+﻿using Business.Abstract.PSI.Transfers;
 using Business.BusinessAspect.Autofac;
-using Business.Constants.Messages.General.General;
+using Business.Constants.Messages.PSI.Telegrams;
 using Core.Aspects.Autofac.Transaction;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
@@ -11,7 +11,7 @@ using Entities.Concrete.Entities.PSI.Types;
 using PSI.Dtos.Telegrams;
 using PSI.Dtos.Types;
 
-namespace Business.Concrete.PSI
+namespace Business.Concrete.PSI.Transfers
 {
     public class PSIManager : IPSIService
     {
@@ -76,7 +76,7 @@ namespace Business.Concrete.PSI
 
             var setTypeHeaderResult = await SetTypeHeader(generalAckPES2L2.Header, psiTypeHeaderId, psiTypeTimeSpanId);
 
-            return new SuccessResult(PSIMessages.Added);
+            return new SuccessResult(PSIGeneralAckPES2L2Messages.Added);
         }
 
         [SecurityAspect("PSI.SetProcessDataPES2L2", Priority = 2)]
@@ -111,7 +111,7 @@ namespace Business.Concrete.PSI
 
             var setTypeProcessInstructionsResult = await SetTypeProcessInstructions(processDataPES2L2.ProcessInstructions, psiProcessDataPES2L2Id);
 
-            return new SuccessResult(PSIMessages.Added);
+            return new SuccessResult(PSIGeneralAckPES2L2Messages.Added);
         }
         public async Task<IResult> SetTypeDefectList(List<TypeDefectList> typeDefectLists, Guid? psiTypeDefectActionList = null, Guid? psiTypeInputMat = null, Guid? psiTypeOutputMat = null)
         {
@@ -138,7 +138,7 @@ namespace Business.Concrete.PSI
                 };
                 await _psiTypeDefectListDal.Add(psiTypeDefectList);
             }
-            return new SuccessResult(PSIMessages.Added);
+            return new SuccessResult(PSIGeneralAckPES2L2Messages.Added);
         }
         public async Task<IResult> SetTypeHeader(TypeHeader typeHeader, Guid psiTypeHeaderId, Guid psiTypeTimeStampId)
         {
@@ -159,7 +159,7 @@ namespace Business.Concrete.PSI
 
             var setTypeTimeStampResult = await SetTypeTimeStamp(typeHeader.TimeStamp, psiTypeTimeStampId);
 
-            return new SuccessResult(PSIMessages.Added);
+            return new SuccessResult(PSIGeneralAckPES2L2Messages.Added);
         }
         public async Task<IResult> SetTypeInputMat(TypeInputMat typeInputMat, Guid psiTypeInputMatId, Guid psiTypeMatId, Guid? psiTypeProcessInstructions = null, Guid? psiProdReportL22PES = null)
         {
@@ -184,7 +184,7 @@ namespace Business.Concrete.PSI
 
             var setTypeDefectList = await SetTypeDefectList(typeInputMat.InputDefectList, null, psiTypeInputMatId);
 
-            return new SuccessResult(PSIMessages.Added);
+            return new SuccessResult(PSIGeneralAckPES2L2Messages.Added);
         }
         public async Task<IResult> SetTypeInputMatCoords(List<TypeInputMatCoord> typeInputMatCoords, Guid psiTypeOutputMatTarget)
         {
@@ -204,7 +204,7 @@ namespace Business.Concrete.PSI
                 };
                 await _psiTypeInputMatCoordDal.Add(matCoord);
             }
-            return new SuccessResult(PSIMessages.Added);
+            return new SuccessResult(PSIGeneralAckPES2L2Messages.Added);
         }
 
         public async Task<IResult> SetTypeMatId(TypeMatId typeMatId, Guid psiTypeMatIdId)
@@ -220,7 +220,7 @@ namespace Business.Concrete.PSI
             };
             await _psiMatIdDal.Add(psiTypeMatId);
 
-            return new SuccessResult(PSIMessages.Added);
+            return new SuccessResult(PSIGeneralAckPES2L2Messages.Added);
         }
         public async Task<IResult> SetTypeOutputMatTarget(List<TypeOutputMatTarget> typeOutputMatTargets, Guid psiTypeMatId, Guid psiTypeIProcessInstructions)
         {
@@ -247,7 +247,7 @@ namespace Business.Concrete.PSI
                 var setTypeInputMatCoords = await SetTypeInputMatCoords(typeOutputMatTarget.MatRelationList, psiTypeOutputMatTargetId);
 
             }
-            return new SuccessResult(PSIMessages.Added);
+            return new SuccessResult(PSIGeneralAckPES2L2Messages.Added);
         }
         public async Task<IResult> SetTypeParameterList(List<TypeParameterList> typeParameterLists, Guid? psiProcessDataPES2L2 = null, Guid? psiProcessStateL22PES = null, Guid? psiTypeInputMat = null, Guid? psiTypeOutputMat = null, Guid? psiTypeProcessInstructions = null, Guid? psiTypeOutputMatTarget = null, Guid? psiGeneralAckPES2L2 = null)
         {
@@ -278,7 +278,7 @@ namespace Business.Concrete.PSI
 
                 var setTypeTimeStampResult = await SetTypeTimeStamp(typeParameterList.ParameterDate, psiTypeTimeStampId);
             }
-            return new SuccessResult(PSIMessages.Added);
+            return new SuccessResult(PSIGeneralAckPES2L2Messages.Added);
         }
         public async Task<IResult> SetTypeProcessInstructions(List<TypeProcessInstructions> typeProcessInstructions, Guid psiProcessDataPES2L2)
         {
@@ -299,14 +299,14 @@ namespace Business.Concrete.PSI
                     IsActive = true
                 };
                 await _psiProcessInstructionsDal.Add(psiTypeProcessInstructions);
-             
+
                 var setTypeInputMatResult = await SetTypeInputMat(typeProcessInstruction.InputMat, psiTypeInputMatId, psiTypeProcessInstructionsId);
 
                 var setTypeParameterListResult = await SetTypeParameterList(typeProcessInstruction.ProdParameterList, null, null, null, null, psiTypeProcessInstructionsId);
 
                 var setTypeOutputMatTargetResult = await SetTypeOutputMatTarget(typeProcessInstruction.OutputMatList, psiTypeProcessInstructionsId, psiTypeMatId);
             }
-            return new SuccessResult(PSIMessages.Added);
+            return new SuccessResult(PSIGeneralAckPES2L2Messages.Added);
         }
         public async Task<IResult> SetTypeTimeStamp(TypeTimeStamp typeTimeStamp, Guid psiTypeTimeStampId)
         {
@@ -319,7 +319,7 @@ namespace Business.Concrete.PSI
             };
             await _psiTimeStampDal.Add(psiTypeTimeStamp);
 
-            return new SuccessResult(PSIMessages.Added);
+            return new SuccessResult(PSIGeneralAckPES2L2Messages.Added);
         }
 
 

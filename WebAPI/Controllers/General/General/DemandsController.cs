@@ -1,4 +1,5 @@
 ﻿using Business.Abstract.General.General;
+using Business.Abstract.PSI.Telegrams;
 using Core.Entities.Concrete;
 using Entities.Concrete.Dtos.General.Genaral;
 using Microsoft.AspNetCore.Http;
