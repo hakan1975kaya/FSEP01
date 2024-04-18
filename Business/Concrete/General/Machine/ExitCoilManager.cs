@@ -17,8 +17,8 @@ namespace Business.Concrete.General.General
     [LogAspect(typeof(DatabaseLogger), Priority = 1)]
     public class ExitCoilManager : IExitCoilService
     {
-        private IExitCoilDal _exitCoilDal;
-        public ExitCoilManager(IExitCoilDal exitCoilDal)
+        private IDefinationDal _exitCoilDal;
+        public ExitCoilManager(IDefinationDal exitCoilDal)
         {
             _exitCoilDal = exitCoilDal;
         }

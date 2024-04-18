@@ -56,8 +56,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<PSITypeTimeStamp> TypeTimeStamps { get; set; }
 
         //Machine
-        public DbSet<EntryCoil> EntryCoils { get; set; }
-        public DbSet<ExitCoil> ExitCoils { get; set; }
+        public DbSet<Defination> Definations { get; set; }
 
     }
 }

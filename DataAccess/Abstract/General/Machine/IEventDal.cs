@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract.General.Machine
 {
-    public interface IEntryCoilDal : IEntityRepositoryBase<EntryCoil>
+    public interface IEventDal:IEntityRepositoryBase<Event>
     {
     }
 }

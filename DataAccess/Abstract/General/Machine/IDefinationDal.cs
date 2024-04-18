@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract.General.Machine
 {
-    public interface IExitCoilDal : IEntityRepositoryBase<ExitCoil>
+    public interface IDefinationDal : IEntityRepositoryBase<Defination>
     {
     }
 }
