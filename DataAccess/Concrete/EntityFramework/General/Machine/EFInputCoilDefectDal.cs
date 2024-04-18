@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.General.Machine
 {
-    public class EFInputCoilDefectDal : EFEntityRepositoryBase<FSEP01Context, InputCoilDefect>, IInputCoilDefect
+    public class EFInputCoilDefectDal : EFEntityRepositoryBase<FSEP01Context, InputCoilDefect>, IInputCoilDefectDal
     {
     }
 }

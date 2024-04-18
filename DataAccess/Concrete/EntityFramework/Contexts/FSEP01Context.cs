@@ -57,6 +57,12 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
 
         //Machine
         public DbSet<Defination> Definations { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Flag> Flags { get; set; }
+        public DbSet<InputCoil> InputCoils { get; set; }
+        public DbSet<InputCoilAttachment> InputCoilAttachments { get; set; }
+        public DbSet<InputCoilDefect> InputCoilDefects { get; set; }
+        public DbSet<InputCoilRemark> InputCoilRemarks { get; set; }
 
     }
 }

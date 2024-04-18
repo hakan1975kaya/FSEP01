@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract.General.Machine
 {
-    public interface IInputCoilDefect : IEntityRepositoryBase<InputCoilDefect>
+    public interface IInputCoilDefectDal : IEntityRepositoryBase<InputCoilDefect>
     {
     }
 }
