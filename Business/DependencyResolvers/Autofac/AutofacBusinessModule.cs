@@ -86,7 +86,7 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EFInputCoilDefectDal>().As<IInputCoilDefectDal>();
 
 
-            builder.RegisterType<EFInputCoilRemarkDal>().As<IInputCoilRemarktDal>();
+            builder.RegisterType<EFInputCoilRemarkDal>().As<IInputCoilRemarkDal>();
 
             //PLC
             builder.RegisterType<PLCHelper>().As<IPLCHelper>();
