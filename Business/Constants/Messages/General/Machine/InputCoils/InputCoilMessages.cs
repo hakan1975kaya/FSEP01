@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Business.Constants.Messages.General.General
 {
-    public static class ExitCoilMessages
+    public static class InputCoilMessages
     {
-        public static string Added = "Çıkış bobini eklendi";
-        public static string Updated = "Çıkış bobini güncellendi";
-        public static string Deleted = "Çıkış bobini silindi";
+        public static string Added = "Input Coil eklendi";
+        public static string Updated = "Input Coil güncellendi";
+        public static string Deleted = "Input Coil silindi";
         public static string OperationFailed = "İşlem Başarısız";
     }
 }

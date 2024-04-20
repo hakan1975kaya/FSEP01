@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete.Entities.General.Machine.Recipes
 {
-    public class RecipeApplyingunit : IEntity
+    public class RecipeApplyingUnit : IEntity
     {
         public Guid Id { get; set; }
         public Guid InputCoilId { get; set; }

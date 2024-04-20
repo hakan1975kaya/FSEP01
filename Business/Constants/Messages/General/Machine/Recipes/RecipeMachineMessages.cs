@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Business.Constants.Messages.General.General
 {
-    public static class EntryCoilMessages
+    public static class RecipeMachineMessages
     {
-        public static string Added = "Giriş bobini eklendi";
-        public static string Updated = "Giriş bobini  güncellendi";
-        public static string Deleted = "Giriş bobini  silindi";
+        public static string Added = "Recipe Machine eklendi";
+        public static string Updated = "Recipe Machine güncellendi";
+        public static string Deleted = "Recipe Machine silindi";
         public static string OperationFailed = "İşlem Başarısız";
     }
 }
