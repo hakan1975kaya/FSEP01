@@ -1,7 +1,8 @@
 ﻿using Core.Entities.Concrete;
 using Core.Utilities.Service;
 using Entities.Concrete.Entities.General.General;
-using Entities.Concrete.Entities.General.Machine;
+using Entities.Concrete.Entities.General.Machine.General;
+using Entities.Concrete.Entities.General.Machine.InputCoils;
 using Entities.Concrete.Entities.PSI.Telegrams;
 using Entities.Concrete.Entities.PSI.Types;
 using Microsoft.EntityFrameworkCore;
@@ -58,7 +59,6 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         //Machine
         public DbSet<Defination> Definations { get; set; }
         public DbSet<Event> Events { get; set; }
-        public DbSet<Flag> Flags { get; set; }
         public DbSet<InputCoil> InputCoils { get; set; }
         public DbSet<InputCoilAttachment> InputCoilAttachments { get; set; }
         public DbSet<InputCoilDefect> InputCoilDefects { get; set; }

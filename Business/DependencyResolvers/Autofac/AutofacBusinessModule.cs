@@ -2,21 +2,21 @@
 using Autofac.Extras.DynamicProxy;
 using Business.Abstract.General.General;
 using Business.Abstract.PLC;
-using Business.Abstract.PSI.Telegrams;
 using Business.Concrete.General.General;
 using Business.Concrete.PLC;
 using Core.Utilities.Interceptors;
 using Core.Utilities.Security.Abstract;
 using Core.Utilities.Security.Concrete.Jwt;
 using DataAccess.Abstract.General.General;
-using DataAccess.Abstract.General.Machine;
+using DataAccess.Abstract.General.Machine.General;
+using DataAccess.Abstract.General.Machine.InputCoils;
 using DataAccess.Abstract.PSI.Telegrams;
 using DataAccess.Abstract.PSI.Types;
 using DataAccess.Concrete.EntityFramework.General.General;
-using DataAccess.Concrete.EntityFramework.General.Machine;
+using DataAccess.Concrete.EntityFramework.General.Machine.General;
+using DataAccess.Concrete.EntityFramework.General.Machine.InputCoils;
 using DataAccess.Concrete.EntityFramework.PSI.Telegrams;
 using DataAccess.Concrete.EntityFramework.PSI.Types;
-using Entities.Concrete.Entities.General.Machine;
 using PLC.Abstract;
 using PLC.Concrete;
 using PLC.Helper.Abstract;
@@ -72,9 +72,6 @@ namespace Business.DependencyResolvers.Autofac
 
 
             builder.RegisterType<EFEventDal>().As<IEventDal>();
-
-
-            builder.RegisterType<EFFlagDal>().As<IFlagDal>();
 
 
             builder.RegisterType<EFInputCoilDal>().As<IInputCoilDal>();
