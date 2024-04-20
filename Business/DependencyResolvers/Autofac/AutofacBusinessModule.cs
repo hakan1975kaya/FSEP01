@@ -67,6 +67,7 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<Stopwatch>();
 
+            //General
             //Machine
             builder.RegisterType<EFDefinationDal>().As<IDefinationDal>();
 
@@ -91,7 +92,6 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<PLCManager>().As<IPLCService>();
 
             //PSI
-
             //Telegrams
             builder.RegisterType<EFPSIGeneralAckPES2L2Dal>().As<IPSIGeneralAckPES2L2Dal>();
 
@@ -111,6 +111,7 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<EFPSIRequestProcessDataL22PESDal>().As<IPSIRequestProcessDataL22PESDal>();
 
+            //PSI
             //Types
             builder.RegisterType<EFPSITypeDefectActionListDal>().As<IPSITypeDefectActionListDal>();
 
