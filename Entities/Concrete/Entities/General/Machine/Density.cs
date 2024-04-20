@@ -1,4 +1,5 @@
 ﻿using Core.Entities.Abstract;
+using Entities.Concrete.Entities.General.Machine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete.Entities.General.Machine
 {
-    public class InputCoilRemark : IEntity//Giriş Bobini Açıklama
+    public class Density : IEntity//Yoğunluk
     {
         public Guid Id { get; set; }
-        public Guid InputCoilId { get; set; }
-        public string? Text { get; set; }//D0KKATT! S0P SAP 2 MM ALTI S0PAR0^LERE VER0LMEL0D0R. deneme
+        public string? Alloy { get; set; }// Alaşım 10500
+        public float? Value { get; set; }//2.705
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
     }

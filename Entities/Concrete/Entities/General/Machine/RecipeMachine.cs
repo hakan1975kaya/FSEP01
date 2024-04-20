@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete.Entities.General.Machine
 {
-    public class InputCoilRemark : IEntity//Giriş Bobini Açıklama
+    public class RecipeMachine : IEntity
     {
         public Guid Id { get; set; }
         public Guid InputCoilId { get; set; }
-        public string? Text { get; set; }//D0KKATT! S0P SAP 2 MM ALTI S0PAR0^LERE VER0LMEL0D0R. deneme
+        public short? TransportMachineTension { get; set; }
+        public short? TransportOneTension { get; set; }
+        public short? TransportTwoTension { get; set; }
+        public short? MachineSpeedSet { get; set; }
+        public short? Acceleration { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
     }
