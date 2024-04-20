@@ -13,6 +13,8 @@ namespace Business.Validators.FluentValidators.General.General.RoleValidators
     {
         public RoleValidator()
         {
+            RuleFor(x => x.Id).NotEmpty();
+
             RuleFor(x => x.RoleName).NotEmpty();
             RuleFor(x => x.RoleName).Length(2, 50);
 

@@ -13,6 +13,8 @@ namespace Business.Validators.FluentValidators.General.General.MenuValidators
     {
         public MenuValidator()
         {
+            RuleFor(x => x.Id).NotEmpty();
+
             RuleFor(x => x.MenuName).NotEmpty();
             RuleFor(x => x.MenuName).Length(2, 50);
 

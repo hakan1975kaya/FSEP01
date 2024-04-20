@@ -1,5 +1,5 @@
 ﻿using Core.Entities.Concrete;
-using Entities.Concrete.Entities.General.General;
+using Entities.Concrete.Entities.General.Machine.General;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -7,13 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Validators.FluentValidators.General.General.RoleMenuValidators
+namespace Business.Validators.FluentValidators.General.General.DemandValidators
 {
-    public class RoleMenuValidator : AbstractValidator<RoleMenu>
+    public class DensityValidator : AbstractValidator<Density>
     {
-        public RoleMenuValidator()
+        public DensityValidator()
         {
             RuleFor(x => x.Id).NotEmpty();
+
+            RuleFor(x => x.Alloy).Length(2, 20);
+
+            RuleFor(x => x.Value).InclusiveBetween(float.MinValue, float.MaxValue);
 
             RuleFor(x => x.Optime).NotEmpty();
             RuleFor(x => x.Optime).LessThanOrEqualTo(DateTime.Now);
