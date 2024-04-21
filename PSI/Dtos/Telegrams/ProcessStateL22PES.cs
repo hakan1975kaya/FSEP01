@@ -12,17 +12,17 @@ namespace PSI.Dtos.Telegrams
     public class ProcessStateL22PES : IDto
     {
         public TypeHeader Header { get; set; }
-        public string Eventmode { get; set; }
-        public TypeTimeStamp EventTime { get; set; }
-        public string LineId { get; set; }
-        public TypeProcess Process { get; set; }
-        public TypeMatId MatId { get; set; }
-        public string EventCode { get; set; }
-        public string SubLine { get; set; }
-        public decimal CountEventParameter { get; set; }
-        public List<TypeParameterList> ParameterList { get; set; }
-        public decimal CountDefectActions { get; set; }
-        public List<TypeDefectActionList> DefectList { get; set; }
+        public string? Eventmode { get; set; }
+        public TypeTimeStamp? EventTime { get; set; }
+        public string? LineId { get; set; }
+        public TypeProcess? Process { get; set; }
+        public TypeMatId? MatId { get; set; }
+        public string? EventCode { get; set; }
+        public string? SubLine { get; set; }
+        public decimal? CountEventParameter { get; set; }
+        public List<TypeParameterList>? ParameterList { get; set; }
+        public decimal? CountDefectActions { get; set; }
+        public List<TypeDefectActionList>? DefectList { get; set; }
     }
 }
 

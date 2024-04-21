@@ -10,11 +10,11 @@ namespace PSI.Dtos.Types
     public class TypeHeader : IDto
     {
         public string TelegramType { get; set; }
-        public string TelegramLength { get; set; }
-        public string Sender { get; set; }
-        public string Receiver { get; set; }
-        public string TelegramSeqNo { get; set; }
-        public TypeTimeStamp TimeStamp { get; set; }
-        public string AckReq { get; set; }
+        public string? TelegramLength { get; set; }
+        public string? Sender { get; set; }
+        public string? Receiver { get; set; }
+        public string? TelegramSeqNo { get; set; }
+        public TypeTimeStamp? TimeStamp { get; set; }
+        public string? AckReq { get; set; }
     }
 }

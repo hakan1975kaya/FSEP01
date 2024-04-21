@@ -10,8 +10,8 @@ namespace PSI.Dtos.Types
 {
     public class TypeProcess : IDto
     {
-        public string ProcessId { get; set; }
-        public string ProcessPhase { get; set; }
+        public string? ProcessId { get; set; }
+        public string? ProcessPhase { get; set; }
     }
 }
 

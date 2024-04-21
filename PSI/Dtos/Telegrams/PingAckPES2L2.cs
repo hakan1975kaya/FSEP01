@@ -11,7 +11,7 @@ namespace PSI.Dtos.Telegrams
     public class PingAckPES2L2 : IDto
     {
         public TypeHeader Header { get; set; }
-        public string TelegramSeqNo { get; set; }
+        public string? TelegramSeqNo { get; set; }
     }
 }
 

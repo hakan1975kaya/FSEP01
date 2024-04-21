@@ -9,9 +9,9 @@ namespace PSI.Dtos.Types
 {
     public class TypeMatId : IDto
     {
-        public string GlobalId { get; set; }
-        public string LocalId { get; set; }
-        public string InternalId { get; set; }
+        public string? GlobalId { get; set; }
+        public string? LocalId { get; set; }
+        public string? InternalId { get; set; }
     }
 }
 

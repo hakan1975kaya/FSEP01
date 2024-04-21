@@ -1,5 +1,4 @@
-﻿using Entities.Concrete.Entities.PSI.Telegrams;
-using FluentValidation;
+﻿using FluentValidation;
 using PSI.Dtos.Telegrams;
 using System;
 using System.Collections.Generic;

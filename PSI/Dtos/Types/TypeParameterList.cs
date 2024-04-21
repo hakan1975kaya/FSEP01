@@ -10,10 +10,10 @@ namespace PSI.Dtos.Types
     public class TypeParameterList : IDto
     {
         public string ParameterName { get; set; }
-        public string ParameterValueString { get; set; }
-        public decimal ParameterValueNumber { get; set; }
-        public TypeTimeStamp ParameterDate { get; set; }
-        public string UnitOfMeasurement { get; set; }
+        public string? ParameterValueString { get; set; }
+        public decimal? ParameterValueNumber { get; set; }
+        public TypeTimeStamp? ParameterDate { get; set; }
+        public string? UnitOfMeasurement { get; set; }
     }
 }
 
