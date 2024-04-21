@@ -3,6 +3,7 @@ using Business.BusinessAspect.Autofac;
 using Business.Constants.Messages.PSI.Telegrams;
 using Business.Constants.Messages.PSI.Types;
 using Core.Aspects.Autofac.Transaction;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract.PSI.Telegrams;
@@ -11,6 +12,8 @@ using Entities.Concrete.Entities.PSI.Telegrams;
 using Entities.Concrete.Entities.PSI.Types;
 using PSI.Dtos.Telegrams;
 using PSI.Dtos.Types;
+using PSI.Validators.FluentValidators.Telegrams.GeneralAckPES2L2Validators;
+using PSI.Validators.FluentValidators.Telegrams.PSIProcessDataPES2L2Validators;
 
 namespace Business.Concrete.PSI.Transfers
 {
@@ -54,7 +57,8 @@ namespace Business.Concrete.PSI.Transfers
         }
 
         [SecurityAspect("PSI.SetGeneralAckPES2L2", Priority = 2)]
-        [TransactionAspect(Priority = 3)]
+        [ValidationAspect(typeof(GeneralAckPES2L2Validator), Priority = 3)]
+        [TransactionAspect(Priority = 4)]
         public async Task<IResult> SetGeneralAckPES2L2(GeneralAckPES2L2 generalAckPES2L2)
         {
             var psiGeneralAckPES2L2Id = Guid.NewGuid();
@@ -81,7 +85,8 @@ namespace Business.Concrete.PSI.Transfers
         }
 
         [SecurityAspect("PSI.SetProcessDataPES2L2", Priority = 2)]
-        [TransactionAspect(Priority = 3)]
+        [ValidationAspect(typeof(ProcessDataPES2L2Validator), Priority = 3)]
+        [TransactionAspect(Priority = 4)]
         public async Task<IResult> SetProcessDataPES2L2(ProcessDataPES2L2 processDataPES2L2)
         {
             var psiProcessDataPES2L2Id = Guid.NewGuid();
