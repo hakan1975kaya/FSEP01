@@ -12,6 +12,8 @@ namespace Business.Validators.FluentValidators.General.General.DemandValidators
     {
         public DemandValidator()
         {
+            RuleFor(x => x.Id).NotEmpty();
+
             RuleFor(x => x.DemandName).NotEmpty();
             RuleFor(x => x.DemandName).Length(2, 50);
 

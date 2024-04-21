@@ -13,6 +13,8 @@ namespace Business.Validators.FluentValidators.General.General.UserRoleValidator
     {
         public UserRoleValidator()
         {
+            RuleFor(x => x.Id).NotEmpty();
+
             RuleFor(x => x.Optime).NotEmpty();
             RuleFor(x => x.Optime).LessThanOrEqualTo(DateTime.Now);
 

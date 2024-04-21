@@ -13,6 +13,8 @@ namespace Business.Validators.FluentValidators.General.General.WebLogValidators
     {
         public WebLogValidator()
         {
+            RuleFor(x => x.Id).NotEmpty();
+
             RuleFor(x => x.Detail).NotEmpty();
             RuleFor(x => x.Detail).Length(2, int.MaxValue);
 
