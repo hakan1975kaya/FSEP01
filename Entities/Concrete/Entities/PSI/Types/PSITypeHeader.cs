@@ -11,12 +11,12 @@ namespace Entities.Concrete.Entities.PSI.Types
     {
         public Guid Id { get; set; }
         public string TelegramType { get; set; }
-        public string TelegramLength { get; set; }
-        public string Sender { get; set; }
-        public string Receiver { get; set; }
-        public string TelegramSeqNo { get; set; }
-        public Guid TimeStamp { get; set; }
-        public string AckReq { get; set; }
+        public string? TelegramLength { get; set; }
+        public string? Sender { get; set; }
+        public string? Receiver { get; set; }
+        public string? TelegramSeqNo { get; set; }
+        public Guid? TimeStamp { get; set; }
+        public string? AckReq { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
     }

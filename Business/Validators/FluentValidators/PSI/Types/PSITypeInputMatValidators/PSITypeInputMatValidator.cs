@@ -16,19 +16,14 @@ namespace Business.Validators.FluentValidators.PSI.Types.PSITypeInputMatValidato
 
             RuleFor(x => x.MatId).NotEmpty();
 
-            RuleFor(x => x.FlagConsumed).NotEmpty();
             RuleFor(x => x.FlagConsumed).Length(1, 1);
 
-            RuleFor(x => x.FlagConsumed).NotEmpty();
             RuleFor(x => x.FlagConsumed).Length(1, 1);
 
-            RuleFor(x => x.UsageOfInput).NotEmpty();
             RuleFor(x => x.UsageOfInput).Length(1, 10);
 
-            RuleFor(x => x.CountInputParameter).NotEmpty();
             RuleFor(x => x.CountInputParameter).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
-            RuleFor(x => x.CountInputDefects).NotEmpty();
             RuleFor(x => x.CountInputDefects).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
             RuleFor(x => x.Optime).NotEmpty();

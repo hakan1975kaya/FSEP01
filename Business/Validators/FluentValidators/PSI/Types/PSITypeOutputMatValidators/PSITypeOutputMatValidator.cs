@@ -18,20 +18,12 @@ namespace Business.Validators.FluentValidators.PSI.Types.PSITypeOutputMatValidat
 
             RuleFor(x => x.MatId).NotEmpty();
 
-            RuleFor(x => x.KindOfOutput).NotEmpty();
             RuleFor(x => x.KindOfOutput).Length(1, 10);
 
-            RuleFor(x => x.ProdStart).NotEmpty();
-
-            RuleFor(x => x.ProdEnd).NotEmpty();
-
-            RuleFor(x => x.ProdDuration).NotEmpty();
             RuleFor(x => x.ProdDuration).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
-            RuleFor(x => x.CountOutputParameter).NotEmpty();
             RuleFor(x => x.CountOutputParameter).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
-            RuleFor(x => x.CountOutputDefects).NotEmpty();
             RuleFor(x => x.CountOutputDefects).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
             RuleFor(x => x.Optime).NotEmpty();

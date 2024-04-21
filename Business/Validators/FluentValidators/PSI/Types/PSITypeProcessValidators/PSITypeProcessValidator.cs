@@ -17,7 +17,6 @@ namespace Business.Validators.FluentValidators.PSI.Types.PSITypeProcessValidator
             RuleFor(x => x.ProcessId).NotEmpty();
             RuleFor(x => x.ProcessId).Length(1, 100);
 
-            RuleFor(x => x.ProcessPhase).NotEmpty();
             RuleFor(x => x.ProcessPhase).Length(1, 100);
 
             RuleFor(x => x.Optime).NotEmpty();

@@ -11,12 +11,12 @@ namespace Entities.Concrete.Entities.PSI.Telegrams
     {
         public Guid Id { get; set; }
         public Guid Header { get; set; }
-        public Guid EventTime { get; set; }
-        public string EventCode { get; set; }
-        public string LineId { get; set; }
-        public string LineSequenceId { get; set; }
-        public decimal CountLineSeqParameter { get; set; }
-        public decimal CountProcessInstructions { get; set; }
+        public Guid? EventTime { get; set; }
+        public string? EventCode { get; set; }
+        public string? LineId { get; set; }
+        public string? LineSequenceId { get; set; }
+        public decimal? CountLineSeqParameter { get; set; }
+        public decimal? CountProcessInstructions { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
     }

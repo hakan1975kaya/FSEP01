@@ -16,28 +16,16 @@ namespace Business.Validators.FluentValidators.PSI.Telegrams.PSIProcessStateL22P
 
             RuleFor(x => x.Header).NotEmpty();
 
-            RuleFor(x => x.Eventmode).NotEmpty();
             RuleFor(x => x.Eventmode).Length(1, 3);
 
-            RuleFor(x => x.EventTime).NotEmpty();
-
-            RuleFor(x => x.LineId).NotEmpty();
             RuleFor(x => x.LineId).Length(1, 10);
 
-            RuleFor(x => x.Process).NotEmpty();
-
-            RuleFor(x => x.MatId).NotEmpty();
-
-            RuleFor(x => x.EventCode).NotEmpty();
             RuleFor(x => x.EventCode).Length(1, 10);
 
-            RuleFor(x => x.SubLine).NotEmpty();
             RuleFor(x => x.SubLine).Length(1, 10);
 
-            RuleFor(x => x.CountEventParameter).NotEmpty();
             RuleFor(x => x.CountEventParameter).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
-            RuleFor(x => x.CountDefectActions).NotEmpty();
             RuleFor(x => x.CountDefectActions).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
             RuleFor(x => x.Optime).NotEmpty();

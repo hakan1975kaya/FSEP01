@@ -15,19 +15,13 @@ namespace Business.Validators.FluentValidators.PSI.Types.PSITypeParameterListVal
 
             RuleFor(x => x.Id).NotEmpty();
 
-
             RuleFor(x => x.ParameterName).NotEmpty();
             RuleFor(x => x.ParameterName).Length(1, 40);
 
-            RuleFor(x => x.ParameterValueString).NotEmpty();
             RuleFor(x => x.ParameterValueString).Length(1, 512);
 
-            RuleFor(x => x.ParameterValueNumber).NotEmpty();
             RuleFor(x => x.ParameterValueNumber).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
-            RuleFor(x => x.ParameterDate).NotEmpty();
-
-            RuleFor(x => x.UnitOfMeasurement).NotEmpty();
             RuleFor(x => x.UnitOfMeasurement).Length(1,20);
 
             RuleFor(x => x.Optime).NotEmpty();

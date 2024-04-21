@@ -18,10 +18,10 @@ namespace Entities.Concrete.Entities.PSI.Types
         public Guid? PSITypeOutputMatTarget { get; set; }
         public Guid? PSIGeneralAckPES2L2 { get; set; }
         public string ParameterName { get; set; }
-        public string ParameterValueString { get; set; }
-        public decimal ParameterValueNumber { get; set; }
-        public Guid ParameterDate { get; set; }
-        public string UnitOfMeasurement { get; set; }
+        public string? ParameterValueString { get; set; }
+        public decimal? ParameterValueNumber { get; set; }
+        public Guid? ParameterDate { get; set; }
+        public string? UnitOfMeasurement { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
     }

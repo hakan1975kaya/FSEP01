@@ -16,18 +16,12 @@ namespace Business.Validators.FluentValidators.PSI.Telegrams.PSIProdReportL22PES
 
             RuleFor(x => x.Header).NotEmpty();
 
-            RuleFor(x => x.EventTime).NotEmpty();
-
-            RuleFor(x => x.LineId).NotEmpty();
             RuleFor(x => x.LineId).Length(1, 10);
 
-            RuleFor(x => x.ProdCode).NotEmpty();
             RuleFor(x => x.ProdCode).Length(1, 10);
 
-            RuleFor(x => x.CountInputMat).NotEmpty();
             RuleFor(x => x.CountInputMat).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
-            RuleFor(x => x.CountOutputMat).NotEmpty();
             RuleFor(x => x.CountOutputMat).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
             RuleFor(x => x.Optime).NotEmpty();
