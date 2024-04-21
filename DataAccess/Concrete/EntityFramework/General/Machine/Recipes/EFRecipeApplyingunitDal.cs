@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.General.Machine.Recipes
 {
-    public class EFRecipeApplyingunitDal:EFEntityRepositoryBase<FSEP01Context, RecipeApplyingunit>, IRecipeApplyingunitDal
+    public class EFRecipeApplyingUnitDal:EFEntityRepositoryBase<FSEP01Context, RecipeApplyingUnit>, IRecipeApplyingUnitDal
     {
     }
 }

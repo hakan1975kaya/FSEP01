@@ -44,7 +44,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<Density> Densitys { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<HeadTailScrap> HeadTailScraps { get; set; }
-        public DbSet<LevelOneTelegrm> LevelOneTelegrms { get; set; }
+        public DbSet<LevelOneTelegram> LevelOneTelegrms { get; set; }
         public DbSet<LevelThreeTelegram> LevelThreeTelegrams { get; set; }
         public DbSet<LubracationRoll> LubracationRolls { get; set; }
         public DbSet<SlitPattern> SlitPatterns { get; set; }
@@ -89,7 +89,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         //General
         //Machine
         //Recipes
-        public DbSet<RecipeApplyingunit> RecipeApplyingunits { get; set; }
+        public DbSet<RecipeApplyingUnit> RecipeApplyingunits { get; set; }
         public DbSet<RecipeBasicData> RecipeBasicDatas { get; set; }
         public DbSet<RecipeMachine> RecipeMachines { get; set; }
         public DbSet<RecipeRewinder> RecipeRewinders { get; set; }

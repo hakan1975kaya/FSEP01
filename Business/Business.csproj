@@ -18,8 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Abstract\General\Machine\" />
-    <Folder Include="Concrete\General\Machine\" />
     <Folder Include="Constants\Messages\PLC\" />
   </ItemGroup>
 

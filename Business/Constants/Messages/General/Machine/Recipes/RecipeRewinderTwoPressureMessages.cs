@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Constants.Messages.General.General
 {
-    public static class RRecipeRewinderTwoPressureMessages
+    public static class RecipeRewinderTwoPressureMessages
     {
         public static string Added = "Recipe Rewinder Two Pressure eklendi";
         public static string Updated = "Recipe Rewinder Two Pressure güncellendi";

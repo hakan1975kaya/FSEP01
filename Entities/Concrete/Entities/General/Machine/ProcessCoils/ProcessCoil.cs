@@ -91,7 +91,7 @@ namespace Entities.Concrete.Entities.General.Machine.ProcessCoils
         public short? AirFlapTwoActuel { get; set; }
         public bool? RollRollWidthTwoOneOnOff { get; set; }
         public bool? RollWidthTwoTwoOnOff { get; set; }
-        public short? RollWidthFourOnOff { get; set; }
+        public bool? RollWidthFourOnOff { get; set; }
         public short? RollWidthThreeSpeedActuel { get; set; }
         public short? RollWidthFourSpeedActuel { get; set; }
         public short? OverlapValueActuel { get; set; }

@@ -17,6 +17,7 @@ namespace Entities.Concrete.Entities.General.Machine.OutputCoils
         public decimal? UnwinderThicknessCalculatedValueMinimum { get; set; }//48.70
         public decimal? UnwinderThicknessCalculatedValueMaximum { get; set; }//61.40
         public decimal? UnwinderThicknessCalculatedValueAverage { get; set; }//57.29
+        public short? TensionInletValueActuel { get; set; }//Gerginlik Giriş Değer iMinimum 3332
         public short? TensionInletValueMininimum { get; set; }//Gerginlik Giriş Değer iMinimum 3332
         public short? TensionInletValueMaximum { get; set; }//5920
         public short? TensionInletValueAverage { get; set; }//5084

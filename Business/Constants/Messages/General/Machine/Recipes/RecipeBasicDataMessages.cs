@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Constants.Messages.General.General
 {
-    public static class RRecipeBasicDataMessages
+    public static class RecipeBasicDataMessages
     {
         public static string Added = "Recipe Basic Data eklendi";
         public static string Updated = "Recipe Basic Data güncellendi";

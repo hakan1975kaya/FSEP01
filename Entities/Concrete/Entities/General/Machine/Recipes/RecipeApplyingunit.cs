@@ -17,7 +17,7 @@ namespace Entities.Concrete.Entities.General.Machine.Recipes
         public decimal Thickness { get; set; }
         public decimal Width { get; set; }
         public decimal Diameter { get; set; }
-        public string UsageAreaId { get; set; }
+        public string UsageArea { get; set; }
         public bool? LubricatorAutoOn { get; set; }
         public decimal? RelativeApplyingSpeedSet { get; set; }
         public decimal? MinimumApplyingSpeedSet { get; set; }

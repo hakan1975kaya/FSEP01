@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract.General.Machine.Recipes
 {
-    public interface IRecipeApplyingunitDal:IEntityRepositoryBase<RecipeApplyingunit>
+    public interface IRecipeApplyingUnitDal:IEntityRepositoryBase<RecipeApplyingUnit>
     {
     }
 }

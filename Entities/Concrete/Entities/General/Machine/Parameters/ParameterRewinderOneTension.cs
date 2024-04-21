@@ -19,7 +19,7 @@ namespace Entities.Concrete.Entities.General.Machine.Parameters
         public short? DiameterSix { get; set; }
         public short? DiameterSeven { get; set; }
         public short? DiameterEight { get; set; }
-        public short? DiameterNone { get; set; }
+        public short? DiameterNine { get; set; }
         public short? DiameterTen { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
