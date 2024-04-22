@@ -2,16 +2,17 @@
 using Business.BusinessAspect.Autofac;
 using Business.Constants.Messages.PSI.Telegrams;
 using Business.Constants.Messages.PSI.Types;
+using Business.Validators.FluentValidators.PSI.Transfers;
 using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract.PSI.Telegrams;
 using DataAccess.Abstract.PSI.Types;
+using Entities.Concrete.Dtos.PSI.Types;
 using Entities.Concrete.Entities.PSI.Telegrams;
 using Entities.Concrete.Entities.PSI.Types;
 using PSI.Dtos.Telegrams;
-using PSI.Dtos.Types;
 using PSI.Validators.FluentValidators.Telegrams.GeneralAckPES2L2Validators;
 using PSI.Validators.FluentValidators.Telegrams.PSIProcessDataPES2L2Validators;
 
@@ -79,7 +80,13 @@ namespace Business.Concrete.PSI.Transfers
             };
             await _psiGeneralAckPES2L2Dal.Add(psiGeneralAckPES2L2);
 
-            var setTypeHeaderResult = await SetTypeHeader(generalAckPES2L2.Header, psiTypeHeaderId, psiTypeTimeSpanId);
+            var setTypeHeaderDto = new SetTypeHeaderDto
+            {
+                typeHeader = generalAckPES2L2.Header,
+                psiTypeHeaderId = psiTypeHeaderId,
+                psiTypeTimeStampId = psiTypeTimeSpanId
+            };
+            var setTypeHeaderResult = await SetTypeHeader(setTypeHeaderDto);
 
             return new SuccessResult(PSIGeneralAckPES2L2Messages.Added);
         }
@@ -109,28 +116,54 @@ namespace Business.Concrete.PSI.Transfers
             };
             await _psiProcessDataPES2L2Dal.Add(psiProcessDataPES2L2);
 
-            var setTypeHeaderResult = await SetTypeHeader(processDataPES2L2.Header, psiTypeHeaderId, psiTypeTimeSpanId);
+            var setTypeHeaderDto = new SetTypeHeaderDto
+            {
+                typeHeader = processDataPES2L2.Header,
+                psiTypeHeaderId = psiTypeHeaderId,
+                psiTypeTimeStampId = psiTypeTimeSpanId
+            };
+            var setTypeHeaderResult = await SetTypeHeader(setTypeHeaderDto);
 
-            var setTypeTimeStampResult = await SetTypeTimeStamp(processDataPES2L2.EventTime, psiTypeTimeSpanEventTimeId);
+            var setTypeTimeStampDto = new SetTypeTimeStampDto
+            {
+                typeTimeStamp = processDataPES2L2.EventTime,
+                psiTypeTimeStampId = psiTypeTimeSpanEventTimeId
+            };
+            var setTypeTimeStampResult = await SetTypeTimeStamp(setTypeTimeStampDto);
 
-            var setTypeParameterListResult = await SetTypeParameterList(processDataPES2L2.LineSeqParameterList, psiProcessDataPES2L2Id);
 
-            var setTypeProcessInstructionsResult = await SetTypeProcessInstructions(processDataPES2L2.ProcessInstructions, psiProcessDataPES2L2Id);
+            var setTypeParameterListDto = new SetTypeParameterListDto
+            {
+                typeParameterLists = processDataPES2L2.LineSeqParameterList,
+                psiProcessDataPES2L2 = psiProcessDataPES2L2Id
+            };
+            var setTypeParameterListResult = await SetTypeParameterList(setTypeParameterListDto);
+
+            var setTypeProcessInstructionsDto = new SetTypeProcessInstructionsDto
+            {
+                typeProcessInstructions = processDataPES2L2.ProcessInstructions,
+                psiProcessDataPES2L2 = psiProcessDataPES2L2Id
+            };
+            var setTypeProcessInstructionsResult = await SetTypeProcessInstructions(setTypeProcessInstructionsDto);
 
             return new SuccessResult(PSIProcessDataPES2L2Messages.Added);
         }
-        public async Task<IResult> SetTypeDefectList(List<TypeDefectList> typeDefectLists, Guid? psiTypeDefectActionList = null, Guid? psiTypeInputMat = null, Guid? psiTypeOutputMat = null)
+
+        [SecurityAspect("PSI.SetTypeDefectList", Priority = 2)]
+        [ValidationAspect(typeof(SetTypeDefectListDtoValidator), Priority = 3)]
+        [TransactionAspect(Priority = 4)]
+        public async Task<IResult> SetTypeDefectList(SetTypeDefectListDto setTypeDefectListDto)
         {
-            foreach (var typeDefectList in typeDefectLists)
+            foreach (var typeDefectList in setTypeDefectListDto.typeDefectLists)
             {
                 var psiTypeDefectListId = Guid.NewGuid();
 
                 var psiTypeDefectList = new PSITypeDefectList
                 {
                     Id = psiTypeDefectListId,
-                    PSITypeDefectActionList = psiTypeDefectActionList,
-                    PSITypeInputMat = psiTypeInputMat,
-                    PSITypeOutputMat = psiTypeOutputMat,
+                    PSITypeDefectActionList = setTypeDefectListDto.psiTypeDefectActionList,
+                    PSITypeInputMat = setTypeDefectListDto.psiTypeInputMat,
+                    PSITypeOutputMat = setTypeDefectListDto.psiTypeOutputMat,
                     DefectCode = typeDefectList.DefectCode,
                     DefectBlocking = typeDefectList.DefectBlocking,
                     DefectSeverity = typeDefectList.DefectSeverity,
@@ -146,61 +179,94 @@ namespace Business.Concrete.PSI.Transfers
             }
             return new SuccessResult(PSITypeDefectListMessages.Added);
         }
-        public async Task<IResult> SetTypeHeader(TypeHeader typeHeader, Guid psiTypeHeaderId, Guid psiTypeTimeStampId)
+
+        [SecurityAspect("PSI.SetTypeHeader", Priority = 2)]
+        [ValidationAspect(typeof(SetTypeHeaderDtoValidator), Priority = 3)]
+        [TransactionAspect(Priority = 4)]
+        public async Task<IResult> SetTypeHeader(SetTypeHeaderDto setTypeHeaderDto)
         {
             var psiTypeHeader = new PSITypeHeader
             {
-                Id = psiTypeHeaderId,
-                TelegramType = typeHeader.TelegramType,
-                TelegramLength = typeHeader.TelegramLength,
-                Sender = typeHeader.Sender,
-                Receiver = typeHeader.Receiver,
-                TelegramSeqNo = typeHeader.TelegramSeqNo,
-                TimeStamp = psiTypeTimeStampId,
-                AckReq = typeHeader.AckReq,
+                Id = setTypeHeaderDto.psiTypeHeaderId,
+                TelegramType = setTypeHeaderDto.typeHeader.TelegramType,
+                TelegramLength = setTypeHeaderDto.typeHeader.TelegramLength,
+                Sender = setTypeHeaderDto.typeHeader.Sender,
+                Receiver = setTypeHeaderDto.typeHeader.Receiver,
+                TelegramSeqNo = setTypeHeaderDto.typeHeader.TelegramSeqNo,
+                TimeStamp = setTypeHeaderDto.psiTypeTimeStampId,
+                AckReq = setTypeHeaderDto.typeHeader.AckReq,
                 Optime = DateTime.Now,
                 IsActive = true
             };
             await _psiTypeHeaderDal.Add(psiTypeHeader);
 
-            var setTypeTimeStampResult = await SetTypeTimeStamp(typeHeader.TimeStamp, psiTypeTimeStampId);
+            var setTypeTimeStampDto = new SetTypeTimeStampDto
+            {
+                typeTimeStamp = setTypeHeaderDto.typeHeader.TimeStamp,
+                psiTypeTimeStampId = setTypeHeaderDto.psiTypeTimeStampId
+            };
+            var setTypeTimeStampResult = await SetTypeTimeStamp(setTypeTimeStampDto);
 
             return new SuccessResult(PSITypeHeaderMessages.Added);
         }
-        public async Task<IResult> SetTypeInputMat(TypeInputMat typeInputMat, Guid psiTypeInputMatId, Guid psiTypeMatId, Guid? psiTypeProcessInstructions = null, Guid? psiProdReportL22PES = null)
+
+        [SecurityAspect("PSI.SetTypeInputMat", Priority = 2)]
+        [ValidationAspect(typeof(SetTypeInputMatDtoValidator), Priority = 3)]
+        [TransactionAspect(Priority = 4)]
+        public async Task<IResult> SetTypeInputMat(SetTypeInputMatDto setTypeInputMatDto)
         {
             var psiTypeInputMat = new PSITypeInputMat
             {
-                Id = psiTypeInputMatId,
-                PSITypeProcessInstructions = psiTypeProcessInstructions,
-                PSIProdReportL22PES = psiProdReportL22PES,
-                MatId = psiTypeMatId,
-                FlagConsumed = typeInputMat.FlagConsumed,
-                UsageOfInput = typeInputMat.UsageOfInput,
-                CountInputParameter = typeInputMat.CountInputParameter,
-                CountInputDefects = typeInputMat.CountInputDefects,
+                Id = setTypeInputMatDto.psiTypeInputMatId,
+                PSITypeProcessInstructions = setTypeInputMatDto.psiTypeProcessInstructions,
+                PSIProdReportL22PES = setTypeInputMatDto.psiProdReportL22PES,
+                MatId = setTypeInputMatDto.psiTypeMatId,
+                FlagConsumed = setTypeInputMatDto.typeInputMat.FlagConsumed,
+                UsageOfInput = setTypeInputMatDto.typeInputMat.UsageOfInput,
+                CountInputParameter = setTypeInputMatDto.typeInputMat.CountInputParameter,
+                CountInputDefects = setTypeInputMatDto.typeInputMat.CountInputDefects,
                 Optime = DateTime.Now,
                 IsActive = true
             };
             await _psiTypeInputMatDal.Add(psiTypeInputMat);
 
-            var setTypeMatIdResult = await SetTypeMatId(typeInputMat.MatId, psiTypeMatId);
+            var setTypeMatIdDto = new SetTypeMatIdDto
+            {
+                typeMatId = setTypeInputMatDto.typeInputMat.MatId,
+                psiTypeMatIdId = setTypeInputMatDto.psiTypeMatId
+            };
+            var setTypeMatIdResult = await SetTypeMatId(setTypeMatIdDto);
 
-            var setTypeParameterList = await SetTypeParameterList(typeInputMat.ParameterList, null, null, psiTypeInputMatId);
+            var setTypeParameterListDto = new SetTypeParameterListDto
+            {
+                typeParameterLists = setTypeInputMatDto.typeInputMat.ParameterList,
+                psiTypeInputMat = setTypeInputMatDto.psiTypeInputMatId
+            };
+            var setTypeParameterList = await SetTypeParameterList(setTypeParameterListDto);
 
-            var setTypeDefectList = await SetTypeDefectList(typeInputMat.InputDefectList, null, psiTypeInputMatId);
+            var setTypeDefectListDto = new SetTypeDefectListDto
+            {
+                typeDefectLists = setTypeInputMatDto.typeInputMat.InputDefectList,
+                psiTypeInputMat = setTypeInputMatDto.psiTypeInputMatId
+            };
+            var setTypeDefectList = await SetTypeDefectList(setTypeDefectListDto);
 
             return new SuccessResult(PSITypeInputMatMessages.Added);
         }
-        public async Task<IResult> SetTypeInputMatCoords(List<TypeInputMatCoord> typeInputMatCoords, Guid psiTypeOutputMatTarget)
+
+
+        [SecurityAspect("PSI.SetTypeInputMatCoords", Priority = 2)]
+        [ValidationAspect(typeof(SetTypeInputMatCoordsDtoValidator), Priority = 3)]
+        [TransactionAspect(Priority = 4)]
+        public async Task<IResult> SetTypeInputMatCoords(SetTypeInputMatCoordsDto setTypeInputMatCoordsDto)
         {
-            foreach (var typeInputMatCoord in typeInputMatCoords)
+            foreach (var typeInputMatCoord in setTypeInputMatCoordsDto.typeInputMatCoords)
             {
                 var typeInputMatCoordId = Guid.NewGuid();
                 var matCoord = new PSITypeInputMatCoord
                 {
                     Id = typeInputMatCoordId,
-                    PSITypeOutputMatTarget = psiTypeOutputMatTarget,
+                    PSITypeOutputMatTarget = setTypeInputMatCoordsDto.psiTypeOutputMatTarget,
                     OutputMatStartX = typeInputMatCoord.OutputMatStartX,
                     OutputMatEndX = typeInputMatCoord.OutputMatEndX,
                     OutputMatStartY = typeInputMatCoord.OutputMatStartY,
@@ -213,14 +279,17 @@ namespace Business.Concrete.PSI.Transfers
             return new SuccessResult(PSITypeInputMatCoordMessages.Added);
         }
 
-        public async Task<IResult> SetTypeMatId(TypeMatId typeMatId, Guid psiTypeMatIdId)
+        [SecurityAspect("PSI.SetTypeMatId", Priority = 2)]
+        [ValidationAspect(typeof(SetTypeMatIdDtoValidator), Priority = 3)]
+        [TransactionAspect(Priority = 4)]
+        public async Task<IResult> SetTypeMatId(SetTypeMatIdDto setTypeMatIdDto)
         {
             var psiTypeMatId = new PSITypeMatId
             {
-                Id = psiTypeMatIdId,
-                GlobalId = typeMatId.GlobalId,
-                LocalId = typeMatId.LocalId,
-                InternalId = typeMatId.InternalId,
+                Id = setTypeMatIdDto.psiTypeMatIdId,
+                GlobalId = setTypeMatIdDto.typeMatId.GlobalId,
+                LocalId = setTypeMatIdDto.typeMatId.LocalId,
+                InternalId = setTypeMatIdDto.typeMatId.InternalId,
                 Optime = DateTime.Now,
                 IsActive = true
             };
@@ -228,17 +297,21 @@ namespace Business.Concrete.PSI.Transfers
 
             return new SuccessResult(PSITypeMatIdMessages.Added);
         }
-        public async Task<IResult> SetTypeOutputMatTarget(List<TypeOutputMatTarget> typeOutputMatTargets, Guid psiTypeMatId, Guid psiTypeIProcessInstructions)
+
+        [SecurityAspect("PSI.SetTypeOutputMatTarget", Priority = 2)]
+        [ValidationAspect(typeof(SetTypeOutputMatTargetDtoValidator), Priority = 3)]
+        [TransactionAspect(Priority = 4)]
+        public async Task<IResult> SetTypeOutputMatTarget(SetTypeOutputMatTargetDto setTypeOutputMatTargetDto)
         {
-            foreach (var typeOutputMatTarget in typeOutputMatTargets)
+            foreach (var typeOutputMatTarget in setTypeOutputMatTargetDto.typeOutputMatTargets)
             {
                 var psiTypeOutputMatTargetId = Guid.NewGuid();
 
                 var outputMatList = new PSITypeOutputMatTarget
                 {
                     Id = psiTypeOutputMatTargetId,
-                    PSITypeIProcessInstructions = psiTypeIProcessInstructions,
-                    MatId = psiTypeMatId,
+                    PSITypeIProcessInstructions = setTypeOutputMatTargetDto.psiTypeIProcessInstructions,
+                    MatId = setTypeOutputMatTargetDto.psiTypeMatId,
                     CountOutputParameter = typeOutputMatTarget.CountOutputParameter,
                     CountInputMatRelation = typeOutputMatTarget.CountInputMatRelation,
                     Optime = DateTime.Now,
@@ -246,18 +319,37 @@ namespace Business.Concrete.PSI.Transfers
                 };
                 await _psiTypeOutputMatTargetDal.Add(outputMatList);
 
-                var setTypeMatIdResult = await SetTypeMatId(typeOutputMatTarget.MatId, psiTypeMatId);
+                var setTypeMatIdDto = new SetTypeMatIdDto
+                {
+                    typeMatId = typeOutputMatTarget.MatId,
+                    psiTypeMatIdId = setTypeOutputMatTargetDto.psiTypeMatId
+                };
+                var setTypeMatIdResult = await SetTypeMatId(setTypeMatIdDto);
 
-                var setTypeParameterList = await SetTypeParameterList(typeOutputMatTarget.ParameterList, null, null, null, psiTypeOutputMatTargetId);
+                var setTypeParameterListDto = new SetTypeParameterListDto
+                {
+                    typeParameterLists = typeOutputMatTarget.ParameterList,
+                    psiTypeOutputMatTarget = psiTypeOutputMatTargetId
+                };
+                var setTypeParameterList = await SetTypeParameterList(setTypeParameterListDto);
 
-                var setTypeInputMatCoords = await SetTypeInputMatCoords(typeOutputMatTarget.MatRelationList, psiTypeOutputMatTargetId);
+                var setTypeInputMatCoordsDto = new SetTypeInputMatCoordsDto
+                {
+                    typeInputMatCoords = typeOutputMatTarget.MatRelationList,
+                    psiTypeOutputMatTarget = psiTypeOutputMatTargetId
+                };
+                var setTypeInputMatCoords = await SetTypeInputMatCoords(setTypeInputMatCoordsDto);
 
             }
             return new SuccessResult(PSITypeOutputMatTargetMessages.Added);
         }
-        public async Task<IResult> SetTypeParameterList(List<TypeParameterList> typeParameterLists, Guid? psiProcessDataPES2L2 = null, Guid? psiProcessStateL22PES = null, Guid? psiTypeInputMat = null, Guid? psiTypeOutputMat = null, Guid? psiTypeProcessInstructions = null, Guid? psiTypeOutputMatTarget = null, Guid? psiGeneralAckPES2L2 = null)
+
+        [SecurityAspect("PSI.SetTypeParameterList", Priority = 2)]
+        [ValidationAspect(typeof(SetTypeParameterListDtoValidator), Priority = 3)]
+        [TransactionAspect(Priority = 4)]
+        public async Task<IResult> SetTypeParameterList(SetTypeParameterListDto setTypeParameterListDto)
         {
-            foreach (var typeParameterList in typeParameterLists)
+            foreach (var typeParameterList in setTypeParameterListDto.typeParameterLists)
             {
                 var psiTypeParameterListId = Guid.NewGuid();
                 var psiTypeTimeStampId = Guid.NewGuid();
@@ -265,13 +357,13 @@ namespace Business.Concrete.PSI.Transfers
                 var psiTypeParameterList = new PSITypeParameterList
                 {
                     Id = psiTypeParameterListId,
-                    PSIProcessDataPES2L2 = psiProcessDataPES2L2,
-                    PSIProcessStateL22PES = psiProcessStateL22PES,
-                    PSITypeInputMat = psiTypeInputMat,
-                    PSITypeOutputMat = psiTypeOutputMat,
-                    PSITypeProcessInstructions = psiTypeProcessInstructions,
-                    PSITypeOutputMatTarget = psiTypeOutputMatTarget,
-                    PSIGeneralAckPES2L2 = psiGeneralAckPES2L2,
+                    PSIProcessDataPES2L2 = setTypeParameterListDto.psiProcessDataPES2L2,
+                    PSIProcessStateL22PES = setTypeParameterListDto.psiProcessStateL22PES,
+                    PSITypeInputMat = setTypeParameterListDto.psiTypeInputMat,
+                    PSITypeOutputMat = setTypeParameterListDto.psiTypeOutputMat,
+                    PSITypeProcessInstructions = setTypeParameterListDto.psiTypeProcessInstructions,
+                    PSITypeOutputMatTarget = setTypeParameterListDto.psiTypeOutputMatTarget,
+                    PSIGeneralAckPES2L2 = setTypeParameterListDto.psiGeneralAckPES2L2,
                     ParameterName = typeParameterList.ParameterName,
                     ParameterValueString = typeParameterList.ParameterValueString,
                     ParameterValueNumber = typeParameterList.ParameterValueNumber,
@@ -282,13 +374,22 @@ namespace Business.Concrete.PSI.Transfers
                 };
                 await _psiParameterListDal.Add(psiTypeParameterList);
 
-                var setTypeTimeStampResult = await SetTypeTimeStamp(typeParameterList.ParameterDate, psiTypeTimeStampId);
+                var setTypeTimeStampDto = new SetTypeTimeStampDto
+                {
+                    typeTimeStamp = typeParameterList.ParameterDate,
+                    psiTypeTimeStampId = psiTypeTimeStampId
+                };
+                var setTypeTimeStampResult = await SetTypeTimeStamp(setTypeTimeStampDto);
             }
             return new SuccessResult(PSITypeParameterListMessages.Added);
         }
-        public async Task<IResult> SetTypeProcessInstructions(List<TypeProcessInstructions> typeProcessInstructions, Guid psiProcessDataPES2L2)
+
+        [SecurityAspect("PSI.SetTypeProcessInstructions", Priority = 2)]
+        [ValidationAspect(typeof(SetTypeProcessInstructionsDtoValidator), Priority = 3)]
+        [TransactionAspect(Priority = 4)]
+        public async Task<IResult> SetTypeProcessInstructions(SetTypeProcessInstructionsDto setTypeProcessInstructionsDto)
         {
-            foreach (var typeProcessInstruction in typeProcessInstructions)
+            foreach (var typeProcessInstruction in setTypeProcessInstructionsDto.typeProcessInstructions)
             {
                 var psiTypeProcessInstructionsId = Guid.NewGuid();
                 var psiTypeInputMatId = Guid.NewGuid();
@@ -297,7 +398,7 @@ namespace Business.Concrete.PSI.Transfers
                 var psiTypeProcessInstructions = new PSITypeProcessInstructions
                 {
                     Id = psiTypeProcessInstructionsId,
-                    PSIProcessDataPES2L2 = psiProcessDataPES2L2,
+                    PSIProcessDataPES2L2 = setTypeProcessInstructionsDto.psiProcessDataPES2L2,
                     InputMat = psiTypeInputMatId,
                     CountOutputMat = typeProcessInstruction.CountOutputMat,
                     CountProdParameter = typeProcessInstruction.CountProdParameter,
@@ -306,20 +407,41 @@ namespace Business.Concrete.PSI.Transfers
                 };
                 await _psiProcessInstructionsDal.Add(psiTypeProcessInstructions);
 
-                var setTypeInputMatResult = await SetTypeInputMat(typeProcessInstruction.InputMat, psiTypeInputMatId, psiTypeProcessInstructionsId);
+                var setTypeInputMatDto = new SetTypeInputMatDto
+                {
+                    typeInputMat = typeProcessInstruction.InputMat,
+                    psiTypeInputMatId = psiTypeInputMatId,
+                    psiTypeProcessInstructions = psiTypeProcessInstructionsId
+                };
+                var setTypeInputMatResult = await SetTypeInputMat(setTypeInputMatDto);
 
-                var setTypeParameterListResult = await SetTypeParameterList(typeProcessInstruction.ProdParameterList, null, null, null, null, psiTypeProcessInstructionsId);
+                var setTypeParameterListDto = new SetTypeParameterListDto
+                {
+                    typeParameterLists = typeProcessInstruction.ProdParameterList,
+                    psiTypeProcessInstructions = psiTypeProcessInstructionsId
+                };
+                var setTypeParameterListResult = await SetTypeParameterList(setTypeParameterListDto);
 
-                var setTypeOutputMatTargetResult = await SetTypeOutputMatTarget(typeProcessInstruction.OutputMatList, psiTypeProcessInstructionsId, psiTypeMatId);
+                var setTypeOutputMatTargetDto = new SetTypeOutputMatTargetDto
+                {
+                    typeOutputMatTargets = typeProcessInstruction.OutputMatList,
+                    psiTypeMatId = psiTypeMatId,
+                    psiTypeIProcessInstructions = psiTypeProcessInstructionsId
+                };
+                var setTypeOutputMatTargetResult = await SetTypeOutputMatTarget(setTypeOutputMatTargetDto);
             }
             return new SuccessResult(PSITypeProcessInstructionsMessages.Added);
         }
-        public async Task<IResult> SetTypeTimeStamp(TypeTimeStamp typeTimeStamp, Guid psiTypeTimeStampId)
+
+        [SecurityAspect("PSI.SetTypeTimeStampDto", Priority = 2)]
+        [ValidationAspect(typeof(SetTypeTimeStampDtoValidator), Priority = 3)]
+        [TransactionAspect(Priority = 4)]
+        public async Task<IResult> SetTypeTimeStamp(SetTypeTimeStampDto setTypeTimeStampDto)
         {
             var psiTypeTimeStamp = new PSITypeTimeStamp
             {
-                Id = psiTypeTimeStampId,
-                TimeStamp = typeTimeStamp.TimeStamp,
+                Id = setTypeTimeStampDto.psiTypeTimeStampId,
+                TimeStamp = setTypeTimeStampDto.typeTimeStamp.TimeStamp,
                 Optime = DateTime.Now,
                 IsActive = true
             };

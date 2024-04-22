@@ -8,11 +8,13 @@
 
   <ItemGroup>
     <Folder Include="Abstract\" />
+    <Folder Include="Concrete\Dtos\PSI\Telegrams\" />
     <Folder Include="Concrete\Entities\PLC\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\PSI\PSI.csproj" />
   </ItemGroup>
 
 </Project>

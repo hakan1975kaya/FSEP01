@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PSI.Validators.FluentValidators.Types.TypeProcessInstructionsValidators
 {
-    internal class TypeProcessInstructionsValidator : AbstractValidator<TypeProcessInstructions>
+    public class TypeProcessInstructionsValidator : AbstractValidator<TypeProcessInstructions>
     {
         public TypeProcessInstructionsValidator()
         {
