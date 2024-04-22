@@ -59,8 +59,6 @@
         <div class="table-responsive" name="divSerach" id="divSerach">
           <table class="table table-flush table-striped" id="tblSearch" name="tblSearch">
             <thead>
-              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('id')"></i>Id<i
-                  class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('id')"></i></th>
               <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('menuName')"></i>Menu
                 Adı<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('menuName')"></i></th>
               <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
@@ -79,7 +77,6 @@
             <tbody>
               <tr
                 *ngFor="let menu of menus | paginate: {id:'menuPagination',itemsPerPage:itemsPerPage, currentPage:currentPage}">
-                <td>{{menu.id}}</td>
                 <td>{{menu.menuName}}</td>
                 <td>{{menu.description}}</td>
                 <td>{{menu.path}}</td>

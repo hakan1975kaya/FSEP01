@@ -35,7 +35,7 @@ import { UserRoleComponent } from './pages/user-role/user-role.component';
 import { RoleDemandComponent } from './pages/role-demand/role-demand.component';
 import { RoleMenuComponent } from './pages/role-menu/role-menu.component';
 import { PasswordChangeComponent } from './pages/password-change/password-change.component';
-
+import { ContactRollComponent } from './pages/contact-roll/contact-roll.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +52,8 @@ import { PasswordChangeComponent } from './pages/password-change/password-change
     UserRoleComponent,
     RoleDemandComponent,
     RoleMenuComponent,
-    PasswordChangeComponent
+    PasswordChangeComponent,
+    ContactRollComponent
   ],
   imports: [
     AppRoutingModule,

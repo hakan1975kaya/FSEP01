@@ -15,7 +15,6 @@ namespace Entities.Concrete.Entities.General.Machine.Recipes
         public short? TransportOneTension { get; set; }
         public short? TransportTwoTension { get; set; }
         public short? MachineSpeedSet { get; set; }
-        public short? Acceleration { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
     }

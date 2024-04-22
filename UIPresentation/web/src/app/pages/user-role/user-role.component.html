@@ -59,8 +59,6 @@
         <div class="table-responsive" name="divSerach" id="divSerach">
           <table class="table table-flush table-striped" id="tblSearch" name="tblSearch">
             <thead>
-              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('id')"></i>Id<i
-                  class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('id')"></i></th>
               <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
                   (click)="orderDesc('registrationNumber')"></i>Sicil<i class="fa fa-arrow-circle-o-up"
                   style="cursor: pointer;" (click)="orderAsc('registrationNumber')"></i>
@@ -82,7 +80,6 @@
             <tbody>
               <tr
                 *ngFor="let userRole of userRoles | paginate: {id:'userRolePagination',itemsPerPage:itemsPerPage, currentPage:currentPage}">
-                <td>{{userRole.id}}</td>
                 <td>{{userRole.registrationNumber}}</td>
                 <td>{{userRole.firstName}}</td>
                 <td>{{userRole.lastName}}</td>

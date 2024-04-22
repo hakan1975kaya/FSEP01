@@ -39,7 +39,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         //General
         //Machine
         //General
-        public DbSet<ContactRoll> ContactRollS { get; set; }
+        public DbSet<ContactRoll> ContactRolls { get; set; }
         public DbSet<Defination> Definations { get; set; }
         public DbSet<Density> Densitys { get; set; }
         public DbSet<Event> Events { get; set; }

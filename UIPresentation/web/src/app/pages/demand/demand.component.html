@@ -59,8 +59,6 @@
         <div class="table-responsive" name="divSerach" id="divSerach">
           <table class="table table-flush table-striped" id="tblSearch" name="tblSearch">
             <thead>
-              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('id')"></i>Id<i
-                  class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('id')"></i></th>
               <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
                   (click)="orderDesc('demandName')"></i>Yetki Adı<i class="fa fa-arrow-circle-o-up"
                   style="cursor: pointer;" (click)="orderAsc('demandName')"></i></th>
@@ -72,7 +70,6 @@
             <tbody>
               <tr
                 *ngFor="let demand of demands | paginate: {id:'demandPagination',itemsPerPage:itemsPerPage, currentPage:currentPage}">
-                <td>{{demand.id}}</td>
                 <td>{{demand.demandName}}</td>
                 <td>{{demand.optime | date:"dd.MM.yyyy hh:mm:ss"}} </td>
                 <td>

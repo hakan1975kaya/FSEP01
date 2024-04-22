@@ -17,6 +17,7 @@ import { UserRoleComponent } from './pages/user-role/user-role.component';
 import { RoleDemandComponent } from './pages/role-demand/role-demand.component';
 import { RoleMenuComponent } from './pages/role-menu/role-menu.component';
 import { PasswordChangeComponent } from './pages/password-change/password-change.component';
+import { ContactRollComponent } from './pages/contact-roll/contact-roll.component';
 
 const routes: Routes = [
   { path: 'app', component: AppComponent, canActivate: [AuthenticationGuard, AuthorizationGuard] },
@@ -32,9 +33,9 @@ const routes: Routes = [
   { path: 'role-demand', component: RoleDemandComponent, canActivate: [AuthenticationGuard, AuthorizationGuard] },
   { path: 'role-menu', component: RoleMenuComponent, canActivate: [AuthenticationGuard, AuthorizationGuard] },
   { path: 'password-change', component: PasswordChangeComponent, canActivate: [AuthenticationGuard, AuthorizationGuard] },
+  { path: 'contact-roll', component:ContactRollComponent, canActivate: [AuthenticationGuard, AuthorizationGuard] },
   { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

@@ -59,16 +59,16 @@
         <div class="table-responsive" name="divSerach" id="divSerach">
           <table class="table table-flush table-striped" id="tblSearch" name="tblSearch">
             <thead>
-              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('id')"></i>Id<i
-                  class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('id')"></i></th>
               <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('roleName')"></i>Role
                 Adı<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('roleName')"></i></th>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('optime')"></i>Tarih<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
+                  (click)="orderAsc('optime')"></i></th>
               <th>İşlemler</th>
             </thead>
             <tbody>
               <tr
                 *ngFor="let role of roles | paginate: {id:'rolePagination',itemsPerPage:itemsPerPage, currentPage:currentPage}">
-                <td>{{role.id}}</td>
                 <td>{{role.roleName}}</td>
                 <td>{{role.optime | date:"dd.MM.yyyy hh:mm:ss"}} </td>
                 <td>
