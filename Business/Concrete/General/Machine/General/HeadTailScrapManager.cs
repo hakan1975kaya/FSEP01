@@ -68,7 +68,14 @@ namespace Business.Concrete.General.General
         [SecurityAspect("HeadTailScrap.Search", Priority = 2)]
         public async Task<IDataResult<List<HeadTailScrap>>> Search(FilterDto filterDto)
         {
-            return new SuccessDataResult<List<HeadTailScrap>>(await _headTailScrapDal.GetList(x => x.IsActive == true && x.Optime.ToString().Contains(filterDto.Filter)));
+            return new SuccessDataResult<List<HeadTailScrap>>(await _headTailScrapDal.GetList(x => 
+            x.IsActive == true && 
+            (x.Optime.ToString().Contains(filterDto.Filter) ||
+            x.UsageArea.Contains(filterDto.Filter) ||
+            x.PreviousLine.Contains(filterDto.Filter) ||
+            x.ThicknessMinimum.ToString().Contains(filterDto.Filter) ||
+            x.ThicknessMaximum.ToString().Contains(filterDto.Filter) ||
+            x.ScrapValue.ToString().Contains(filterDto.Filter) )));
         }
 
         [SecurityAspect("HeadTailScrap.Update", Priority = 2)]

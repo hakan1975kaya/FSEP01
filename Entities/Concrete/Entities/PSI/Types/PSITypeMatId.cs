@@ -10,9 +10,9 @@ namespace Entities.Concrete.Entities.PSI.Types
     public class PSITypeMatId : IEntity
     {
         public Guid Id { get; set; }
-        public string GlobalId { get; set; }
-        public string LocalId { get; set; }
-        public string InternalId { get; set; }
+        public string? GlobalId { get; set; }
+        public string? LocalId { get; set; }
+        public string? InternalId { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
     }

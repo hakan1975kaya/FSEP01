@@ -16,19 +16,14 @@ namespace Business.Validators.FluentValidators.PSI.Telegrams.PSIGeneralAckPES2L2
 
             RuleFor(x => x.Header).NotEmpty();
 
-            RuleFor(x => x.AckState).NotEmpty();
             RuleFor(x => x.AckState).Length(1, 3);
 
-            RuleFor(x => x.InfoCode).NotEmpty();
             RuleFor(x => x.InfoCode).Length(1, 10);
 
-            RuleFor(x => x.InfoText).NotEmpty();
             RuleFor(x => x.InfoText).Length(1, 80);
 
-            RuleFor(x => x.TelegramSeqNo).NotEmpty();
             RuleFor(x => x.TelegramSeqNo).Length(1, 10);
 
-            RuleFor(x => x.CountParameter).NotEmpty();
             RuleFor(x => x.CountParameter).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
             RuleFor(x => x.Optime).NotEmpty();

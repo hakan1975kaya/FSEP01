@@ -11,15 +11,15 @@ namespace Entities.Concrete.Entities.PSI.Telegrams
     {
         public Guid Id { get; set; }
         public Guid Header { get; set; }
-        public string Eventmode { get; set; }
-        public Guid EventTime { get; set; }
-        public string LineId { get; set; }
-        public Guid Process { get; set; }
-        public Guid MatId { get; set; }
-        public string EventCode { get; set; }
-        public string SubLine { get; set; }
-        public decimal CountEventParameter { get; set; }
-        public decimal CountDefectActions { get; set; }
+        public string? Eventmode { get; set; }
+        public Guid? EventTime { get; set; }
+        public string? LineId { get; set; }
+        public Guid? Process { get; set; }
+        public Guid? MatId { get; set; }
+        public string? EventCode { get; set; }
+        public string? SubLine { get; set; }
+        public decimal? CountEventParameter { get; set; }
+        public decimal? CountDefectActions { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
     }

@@ -11,7 +11,7 @@ namespace Entities.Concrete.Entities.PSI.Types
     {
         public Guid Id { get; set; }
         public string ProcessId { get; set; }
-        public string ProcessPhase { get; set; }
+        public string? ProcessPhase { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
     }

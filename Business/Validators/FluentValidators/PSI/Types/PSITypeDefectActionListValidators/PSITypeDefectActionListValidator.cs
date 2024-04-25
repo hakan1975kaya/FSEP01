@@ -16,10 +16,8 @@ namespace Business.Validators.FluentValidators.PSI.Types.PSITypeDefectActionList
 
             RuleFor(x => x.PSIProcessStateL22PES).NotEmpty();
 
-            RuleFor(x => x.Action).NotEmpty();
             RuleFor(x => x.Action).Length(1, 10);
 
-            RuleFor(x => x.CountDefects).NotEmpty();
             RuleFor(x => x.CountDefects).Length(1, 1);
 
             RuleFor(x => x.Optime).NotEmpty();

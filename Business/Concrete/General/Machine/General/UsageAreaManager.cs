@@ -68,7 +68,9 @@ namespace Business.Concrete.General.General
         [SecurityAspect("UsageArea.Search", Priority = 2)]
         public async Task<IDataResult<List<UsageArea>>> Search(FilterDto filterDto)
         {
-            return new SuccessDataResult<List<UsageArea>>(await _usageAreaDal.GetList(x => x.IsActive == true && x.Optime.ToString().Contains(filterDto.Filter)));
+            return new SuccessDataResult<List<UsageArea>>(await _usageAreaDal.GetList(x => 
+            x.IsActive == true && (x.Optime.ToString().Contains(filterDto.Filter)||
+            x.Value.Contains(filterDto.Filter))));
         }
 
         [SecurityAspect("UsageArea.Update", Priority = 2)]

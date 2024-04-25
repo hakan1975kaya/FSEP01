@@ -26,9 +26,9 @@ namespace Business.Validators.FluentValidators.General.General.DemandValidators
 
             RuleFor(x => x.TramCount).InclusiveBetween(short.MinValue, short.MaxValue);
 
-            RuleFor(x => x.Status).Length(2, 50);
+            RuleFor(x => x.Status).IsInEnum();
 
-            RuleFor(x => x.Location).Length(2, 50);
+            RuleFor(x => x.Location).IsInEnum();
 
             RuleFor(x => x.Optime).NotEmpty();
             RuleFor(x => x.Optime).LessThanOrEqualTo(DateTime.Now);

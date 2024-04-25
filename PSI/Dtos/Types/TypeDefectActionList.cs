@@ -9,9 +9,9 @@ namespace PSI.Dtos.Types
 {
     public class TypeDefectActionList : IDto
     {
-        public string Action { get; set; }
-        public string CountDefects { get; set; }
-        public List<TypeDefectList> OutputDefectList { get; set; }
+        public string? Action { get; set; }
+        public string? CountDefects { get; set; }
+        public List<TypeDefectList>? OutputDefectList { get; set; }
     }
 }
 

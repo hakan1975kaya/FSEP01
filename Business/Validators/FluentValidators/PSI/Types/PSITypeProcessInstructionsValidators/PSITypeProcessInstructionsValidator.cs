@@ -16,12 +16,8 @@ namespace Business.Validators.FluentValidators.PSI.Types.PSITypeProcessInstructi
 
             RuleFor(x => x.PSIProcessDataPES2L2).NotEmpty();
 
-            RuleFor(x => x.InputMat).NotEmpty();
-
-            RuleFor(x => x.CountOutputMat).NotEmpty();
             RuleFor(x => x.CountOutputMat).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
-            RuleFor(x => x.CountProdParameter).NotEmpty();
             RuleFor(x => x.CountProdParameter).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
             RuleFor(x => x.Optime).NotEmpty();

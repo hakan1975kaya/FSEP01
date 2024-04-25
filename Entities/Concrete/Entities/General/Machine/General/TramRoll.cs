@@ -1,4 +1,5 @@
 ﻿using Core.Entities.Abstract;
+using Entities.Concrete.Enums.General;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,8 @@ namespace Entities.Concrete.Entities.General.Machine.General
         public string? GroupName { get; set; }
         public string? RollName { get; set; }
         public short? TramCount { get; set; }
-        public string? Status { get; set; }
-        public string? Location { get; set; }
+        public RollStatusEnum Status { get; set; }
+        public LocationEnum Location { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
     }

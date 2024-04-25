@@ -68,7 +68,13 @@ namespace Business.Concrete.General.General
         [SecurityAspect("LubracationRoll.Search", Priority = 2)]
         public async Task<IDataResult<List<LubracationRoll>>> Search(FilterDto filterDto)
         {
-            return new SuccessDataResult<List<LubracationRoll>>(await _lubracationRollDal.GetList(x => x.IsActive == true && x.Optime.ToString().Contains(filterDto.Filter)));
+            return new SuccessDataResult<List<LubracationRoll>>(await _lubracationRollDal.GetList(x =>
+          x.IsActive == true &&
+            (x.Optime.ToString().Contains(filterDto.Filter) ||
+            x.RollNumber.Contains(filterDto.Filter) ||
+            x.RollDiameter.ToString().Contains(filterDto.Filter) ||
+            x.GroupName.Contains(filterDto.Filter) ||
+            x.RollName.Contains(filterDto.Filter))));
         }
 
         [SecurityAspect("LubracationRoll.Update", Priority = 2)]

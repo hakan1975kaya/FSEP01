@@ -12,8 +12,8 @@ namespace Entities.Concrete.Entities.PSI.Types
         public Guid Id { get; set; }
         public Guid PSITypeIProcessInstructions { get; set; }
         public Guid MatId { get; set; }
-        public decimal CountOutputParameter { get; set; }
-        public decimal CountInputMatRelation { get; set; }
+        public decimal? CountOutputParameter { get; set; }
+        public decimal? CountInputMatRelation { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
     }

@@ -68,7 +68,11 @@ namespace Business.Concrete.General.General
         [SecurityAspect("Density.Search", Priority = 2)]
         public async Task<IDataResult<List<Density>>> Search(FilterDto filterDto)
         {
-            return new SuccessDataResult<List<Density>>(await _densityDal.GetList(x => x.IsActive == true && x.Optime.ToString().Contains(filterDto.Filter)));
+            return new SuccessDataResult<List<Density>>(await _densityDal.GetList(x =>
+            x.IsActive == true &&
+            (x.Optime.ToString().Contains(filterDto.Filter) ||
+            x.Alloy.Contains(filterDto.Filter) ||
+            x.Value.ToString().Contains(filterDto.Filter))));
         }
 
         [SecurityAspect("Density.Update", Priority = 2)]

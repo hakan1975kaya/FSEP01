@@ -39,7 +39,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         //General
         //Machine
         //General
-        public DbSet<ContactRoll> ContactRollS { get; set; }
+        public DbSet<ContactRoll> ContactRolls { get; set; }
         public DbSet<Defination> Definations { get; set; }
         public DbSet<Density> Densitys { get; set; }
         public DbSet<Event> Events { get; set; }
@@ -50,7 +50,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<SlitPattern> SlitPatterns { get; set; }
         public DbSet<SlitPatternDetail> SlitPatternDetails { get; set; }
         public DbSet<TramRoll> TramRolls { get; set; }
-        public DbSet<UsageArea> UsageArea { get; set; }
+        public DbSet<UsageArea> UsageAreas { get; set; }
 
         //General
         //Machine

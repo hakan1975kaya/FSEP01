@@ -68,7 +68,9 @@ namespace Business.Concrete.General.General
         [SecurityAspect("Event.Search", Priority = 2)]
         public async Task<IDataResult<List<Event>>> Search(FilterDto filterDto)
         {
-            return new SuccessDataResult<List<Event>>(await _eventDal.GetList(x => x.IsActive == true && x.Optime.ToString().Contains(filterDto.Filter)));
+            return new SuccessDataResult<List<Event>>(await _eventDal.GetList(x => 
+            x.IsActive == true && (x.Optime.ToString().Contains(filterDto.Filter) || 
+            x.LocalId.Contains(filterDto.Filter)) ));
         }
 
         [SecurityAspect("Event.Update", Priority = 2)]

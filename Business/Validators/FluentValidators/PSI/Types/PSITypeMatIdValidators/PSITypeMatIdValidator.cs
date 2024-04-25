@@ -14,16 +14,12 @@ namespace Business.Validators.FluentValidators.PSI.Types.PSITypeMatIdValidators
         {
             RuleFor(x => x.Id).NotEmpty();
 
-            RuleFor(x => x.GlobalId).NotEmpty();
             RuleFor(x => x.GlobalId).Length(1, 40);
 
-            RuleFor(x => x.LocalId).NotEmpty();
             RuleFor(x => x.LocalId).Length(1, 40);
 
-            RuleFor(x => x.LocalId).NotEmpty();
             RuleFor(x => x.LocalId).Length(1, 40);
 
-            RuleFor(x => x.InternalId).NotEmpty();
             RuleFor(x => x.InternalId).Length(1, 40);
 
             RuleFor(x => x.Optime).NotEmpty();

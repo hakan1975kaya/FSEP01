@@ -16,29 +16,18 @@ namespace Business.Validators.FluentValidators.PSI.Telegrams.PSIRequestProcessDa
 
             RuleFor(x => x.Header).NotEmpty();
 
-            RuleFor(x => x.EventTime).NotEmpty();
-
-            RuleFor(x => x.LineId).NotEmpty();
             RuleFor(x => x.LineId).Length(1, 10);
 
-            RuleFor(x => x.ReqType).NotEmpty();
             RuleFor(x => x.ReqType).Length(1, 3);
 
-            RuleFor(x => x.ReqCategory).NotEmpty();
             RuleFor(x => x.ReqCategory).Length(1, 20);
 
-            RuleFor(x => x.ReqKey).NotEmpty();
             RuleFor(x => x.ReqKey).Length(1, 40);
 
-            RuleFor(x => x.MatId).NotEmpty();
-
-            RuleFor(x => x.SubLine).NotEmpty();
             RuleFor(x => x.SubLine).Length(1, 10);
 
-            RuleFor(x => x.EventCode).NotEmpty();
             RuleFor(x => x.EventCode).Length(1, 20);
 
-            RuleFor(x => x.Remark).NotEmpty();
             RuleFor(x => x.Remark).Length(1, 512);
 
             RuleFor(x => x.Optime).NotEmpty();

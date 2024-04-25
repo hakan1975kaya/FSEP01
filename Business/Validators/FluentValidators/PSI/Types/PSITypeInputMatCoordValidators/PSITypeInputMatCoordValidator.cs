@@ -16,16 +16,12 @@ namespace Business.Validators.FluentValidators.PSI.Types.PSITypeInputMatCoordVal
 
             RuleFor(x => x.PSITypeOutputMatTarget).NotEmpty();
 
-            RuleFor(x => x.OutputMatStartX).NotEmpty();
             RuleFor(x => x.OutputMatStartX).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
-            RuleFor(x => x.OutputMatEndX).NotEmpty();
             RuleFor(x => x.OutputMatEndX).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
-            RuleFor(x => x.OutputMatStartY).NotEmpty();
             RuleFor(x => x.OutputMatStartY).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
-            RuleFor(x => x.OutputMatEndY).NotEmpty();
             RuleFor(x => x.OutputMatEndY).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
             RuleFor(x => x.Optime).NotEmpty();

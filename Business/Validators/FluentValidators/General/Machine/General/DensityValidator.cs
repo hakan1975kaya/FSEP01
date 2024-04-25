@@ -17,7 +17,7 @@ namespace Business.Validators.FluentValidators.General.General.DemandValidators
 
             RuleFor(x => x.Alloy).Length(2, 20);
 
-            RuleFor(x => x.Value).InclusiveBetween(float.MinValue, float.MaxValue);
+            RuleFor(x => x.Value).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
             RuleFor(x => x.Optime).NotEmpty();
             RuleFor(x => x.Optime).LessThanOrEqualTo(DateTime.Now);

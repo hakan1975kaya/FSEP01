@@ -14,28 +14,20 @@ namespace Business.Validators.FluentValidators.PSI.Types.PSITypeDefectListValida
         {
             RuleFor(x => x.Id).NotEmpty();
 
-            RuleFor(x => x.DefectCode).NotEmpty();
             RuleFor(x => x.DefectCode).Length(1, 10);
 
-            RuleFor(x => x.DefectBlocking).NotEmpty();
             RuleFor(x => x.DefectBlocking).Length(1, 1);
 
-            RuleFor(x => x.DefectSeverity).NotEmpty();
             RuleFor(x => x.DefectSeverity).Length(1, 1);
 
-            RuleFor(x => x.DefectComment).NotEmpty();
             RuleFor(x => x.DefectComment).Length(1, 250);
 
-            RuleFor(x => x.DefectLengthStartPos).NotEmpty();
             RuleFor(x => x.DefectLengthStartPos).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
-            RuleFor(x => x.DefectLength).NotEmpty();
             RuleFor(x => x.DefectLength).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
-            RuleFor(x => x.DefectWidthStartPos).NotEmpty();
             RuleFor(x => x.DefectWidthStartPos).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
-            RuleFor(x => x.DefectWidth).NotEmpty();
             RuleFor(x => x.DefectWidth).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
             RuleFor(x => x.Optime).NotEmpty();

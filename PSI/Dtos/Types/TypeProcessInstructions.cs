@@ -10,9 +10,9 @@ namespace PSI.Dtos.Types
     public class TypeProcessInstructions : IDto
     {
         public TypeInputMat InputMat { get; set; }
-        public decimal CountOutputMat { get; set; }
-        public List<TypeOutputMatTarget> OutputMatList { get; set; }
-        public decimal CountProdParameter { get; set; }
-        public List<TypeParameterList> ProdParameterList { get; set; }
+        public decimal? CountOutputMat { get; set; }
+        public List<TypeOutputMatTarget>? OutputMatList { get; set; }
+        public decimal? CountProdParameter { get; set; }
+        public List<TypeParameterList>? ProdParameterList { get; set; }
     }
 }

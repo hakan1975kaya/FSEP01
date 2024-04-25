@@ -16,7 +16,6 @@ namespace Business.Validators.FluentValidators.PSI.Telegrams.PSIPingAckPES2L2Val
 
             RuleFor(x => x.Header).NotEmpty();
 
-            RuleFor(x => x.TelegramSeqNo).NotEmpty();
             RuleFor(x => x.TelegramSeqNo).Length(1, 10);
 
             RuleFor(x => x.Optime).NotEmpty();

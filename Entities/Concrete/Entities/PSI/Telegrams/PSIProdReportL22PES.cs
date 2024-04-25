@@ -11,11 +11,11 @@ namespace Entities.Concrete.Entities.PSI.Telegrams
     {
         public Guid Id { get; set; }
         public Guid Header { get; set; }
-        public Guid EventTime { get; set; }
-        public string LineId { get; set; }
-        public string ProdCode { get; set; }
-        public decimal CountInputMat { get; set; }
-        public decimal CountOutputMat { get; set; }
+        public Guid? EventTime { get; set; }
+        public string? LineId { get; set; }
+        public string? ProdCode { get; set; }
+        public decimal? CountInputMat { get; set; }
+        public decimal? CountOutputMat { get; set; }
         public DateTime Optime { get; set; }
         public bool IsActive { get; set; }
     }

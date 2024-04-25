@@ -1,0 +1,402 @@
+<div class="container-fluid" role="main">
+
+  <!--Title-->
+  <div class="row p-2">
+    <div class="col-md-1">
+      <i class="fa fa-building fa-2x"></i>
+    </div>
+    <div class="col-md-11">
+      <h5>Tanımlama İşlemleri</h5>
+    </div>
+  </div>
+
+  <!--search-->
+  <div class="card">
+    <div class="card-body bg-secondary text-white">
+      <form [formGroup]="searchForm">
+        <div class="row pt-2">
+          <!--filter-->
+          <div class="col-md-10">
+            <div class="form-group">
+              <input class="form-control" type="text" id="filter" name="filter" formControlName="filter"
+                placeholder="Tanımlama, mesaj id, telegram tipi, telegram uzunluğu, gönderici, alıcı, veya tarihi..." required minlength>
+              <div *ngIf="searchForm.get('filter')?.hasError('required')&&searchForm.get('filter')?.dirty"
+                class="alert alert-danger">Arama ifadesi zorunlu</div>
+              <div *ngIf="searchForm.get('filter')?.hasError('minlength')&& searchForm.get('filter')?.dirty"
+                class="alert alert-danger">En az iki harf girmek zorundasınız</div>
+            </div>
+          </div>
+
+          <!--search button-->
+          <div class="col-md-1">
+            <div class="form-group">
+              <input type="button" class="btn btn-warning" id="search" name="search" value="Ara" (click)="search()"
+                [ngStyle]="{'display':'Defination.Search' | demandPipe}">
+            </div>
+          </div>
+
+          <!--clear button-->
+          <div class="col-md-1">
+            <div class="form-group">
+              <input type="button" class="btn btn-light" id="clear" name="clear" value="Temizle" (click)="clear()">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!--add new -->
+  <div class="row pt-2">
+    <div class="col-md-1">
+      <i class="fa fa-plus-square fa-2x" (click)="openDefinationModal()" ngbTooltip="Ekle"
+        style="cursor: pointer;"></i>
+    </div>
+    <div class="col-md-11"></div>
+  </div>
+
+  <!--defination table-->
+  <div class="row pt-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive" name="divSerach" id="divSerach">
+          <table class="table table-flush table-striped" id="tblSearch" name="tblSearch">
+            <thead>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('messageId')"></i>Mesaj<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('messageId')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                (click)="orderDesc('telegramType')"></i>Tip<i class="fa fa-arrow-circle-o-up"
+                style="cursor: pointer;" (click)="orderAsc('telegramType')"></i>
+            </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('telegramLength')"></i>Uzunluk<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('telegramLength')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('sender')"></i>Gönderen<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
+                  (click)="orderAsc('sender')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('reciever')"></i>Alan<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
+                  (click)="orderAsc('reciever')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('telegramSequenceNumber')"></i>Sekans
+                <i class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('telegramSequenceNumber')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('timeStamp')"></i>Damga<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('timeStamp')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('ackReq')"></i>İstek<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
+                  (click)="orderAsc('ackReq')"></i>
+              </th>
+
+              <th>İşlemler</th>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let defination of definations | paginate: {id:'definationPagination',itemsPerPage:itemsPerPage, currentPage:currentPage}">
+                <td>{{defination.messageId}}</td>
+                <td>{{defination.telegramType}}</td>
+                <td>{{defination.sender}}</td>
+                <td>{{defination.reciever}}</td>
+                <td>{{defination.telegramSequenceNumber}}</td>
+                <td>{{defination.timeStamp}}</td>
+                <td>{{defination.ackReq}}</td>
+                <td>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <i class="fa fa-pencil fa-2x" (click)="openDefinationModal(defination.id)"
+                        style="cursor: pointer;color: steelblue;"></i>
+                    </div>
+                    <div class="col-md-6">
+                      <i class="fa fa-trash fa-2x" (click)="openConfirmModal(defination.id)"
+                        style="cursor: pointer;color:red"></i>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--pagination-->
+  <div class="row p-2">
+    <div class="col-md-11">
+      <pagination-controls id="definationPagination" (pageChange)="currentPage = $event"></pagination-controls>
+    </div>
+    <!--export to excel pdf-->
+    <div class="col-md-1 d-flex justify-content-around">
+      <i class="fa fa-file-excel-o fa-2x" style="cursor: pointer;color: green;" (click)="exportToExcel()"
+        [ngStyle]="{'display':'Defination.Search' | demandPipe}"></i>
+      <i class="fa  fa-file-pdf-o fa-2x" style="cursor: pointer;color:red" (click)="exportToPdf()"
+        [ngStyle]="{'display':'Defination.Search' | demandPipe}"></i>
+    </div>
+  </div>
+
+  <!--definationModal--->
+  <div class="modal" defination="dialog" tabindex="-1" [ngStyle]="{'display':displayDefinationModal}">
+    <div class="modal-dialog modal-lg" defination="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <!--Header-->
+        <div class="modal-header">
+          <h4 class="modal-title">Tanımlama Ekle & Düzelt</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeDefinationModal()"></i>
+        </div>
+        <!--body-->
+        <div class="modal-body">
+          <form [formGroup]="definationForm">
+            <!--id-->
+            <div style="display: none;" class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="id">Id:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="id" name="id" formControlName="id"
+                    placeholder="id giriniz">
+                </div>
+              </div>
+            </div>
+
+            <!--messageId-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="messageId">Mesaj:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="number" id="messageId" name="messageId" formControlName="messageId"
+                    placeholder="Mesaj Numarası giriniz..." required min max>
+                  <div
+                    *ngIf="definationForm.get('messageId')?.hasError('required') && definationForm.get('messageId')?.dirty"
+                    class="alert alert-danger">Mesaj Numarası  boş olamaz</div>
+                  <div
+                    *ngIf="definationForm.get('messageId')?.hasError('min') && definationForm.get('messageId')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div
+                    *ngIf="definationForm.get('messageId')?.hasError('max') && definationForm.get('messageId')?.dirty"
+                    class="alert alert-danger">Çok Büyük Sayı</div>
+                </div>
+              </div>
+            </div>
+
+            <!--telegramType-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="telegramType">Tip:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="telegramType" name="telegramType"
+                    formControlName="telegramType" placeholder="Telegram Tipi giriniz..." required minlength maxlength>
+                  <div
+                    *ngIf="definationForm.get('telegramType')?.hasError('required') && definationForm.get('telegramType')?.dirty"
+                    class="alert alert-danger">Telegram Tipi boş olamaz</div>
+                  <div
+                    *ngIf="definationForm.get('telegramType')?.hasError('minlength') && definationForm.get('telegramType')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div
+                    *ngIf="definationForm.get('telegramType')?.hasError('maxlength') && definationForm.get('telegramType')?.dirty"
+                    class="alert alert-danger">En fazla 30 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+
+            <!--telegramLength-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="telegramLength">Uzunluk:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="telegramLength" name="telegramLength" formControlName="telegramLength"
+                    placeholder="Telegram Uzunluğu giriniz..." required minlength maxlength>
+                  <div
+                    *ngIf="definationForm.get('telegramLength')?.hasError('required') && definationForm.get('telegramLength')?.dirty"
+                    class="alert alert-danger">Telegram Uzunluğu boş olamaz</div>
+                  <div
+                    *ngIf="definationForm.get('telegramLength')?.hasError('minlength') && definationForm.get('telegramLength')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div
+                    *ngIf="definationForm.get('telegramLength')?.hasError('maxlength') && definationForm.get('telegramLength')?.dirty"
+                    class="alert alert-danger">En fazla 5 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+
+
+            <!--sender-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="sender">Gönderen:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="sender" name="sender" formControlName="sender"
+                    placeholder="Gönderen giriniz..." required minlength maxlength>
+                  <div
+                    *ngIf="definationForm.get('sender')?.hasError('required') && definationForm.get('sender')?.dirty"
+                    class="alert alert-danger">Gönderen boş olamaz</div>
+                  <div
+                    *ngIf="definationForm.get('sender')?.hasError('minlength') && definationForm.get('sender')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div
+                    *ngIf="definationForm.get('sender')?.hasError('maxlength') && definationForm.get('sender')?.dirty"
+                    class="alert alert-danger">En fazla 10 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+
+            <!--reciever-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="reciever">Alan:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="reciever" name="reciever" formControlName="reciever"
+                    placeholder="Alan giriniz..." required minlength maxlength>
+                  <div
+                    *ngIf="definationForm.get('reciever')?.hasError('required') && definationForm.get('reciever')?.dirty"
+                    class="alert alert-danger">Alan boş olamaz</div>
+                  <div
+                    *ngIf="definationForm.get('reciever')?.hasError('minlength') && definationForm.get('reciever')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div
+                    *ngIf="definationForm.get('reciever')?.hasError('maxlength') && definationForm.get('reciever')?.dirty"
+                    class="alert alert-danger">En fazla 10 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+
+            <!--telegramSequenceNumber-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="telegramSequenceNumber">Sekans:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="number" id="telegramSequenceNumber" name="telegramSequenceNumber" formControlName="telegramSequenceNumber"
+                    placeholder="Sekans Numarası giriniz..." required min max>
+                  <div
+                    *ngIf="definationForm.get('telegramSequenceNumber')?.hasError('required') && definationForm.get('telegramSequenceNumber')?.dirty"
+                    class="alert alert-danger">Sekans Numarası boş olamaz</div>
+                  <div
+                    *ngIf="definationForm.get('telegramSequenceNumber')?.hasError('min') && definationForm.get('telegramSequenceNumber')?.dirty"
+                    class="alert alert-danger">En az 0 olabilir</div>
+                  <div
+                    *ngIf="definationForm.get('telegramSequenceNumber')?.hasError('max') && definationForm.get('telegramSequenceNumber')?.dirty"
+                    class="alert alert-danger">Çok Büyük Sayı</div>
+                </div>
+              </div>
+            </div>
+
+             <!--timeStamp-->
+             <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="timeStamp">Damga:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="timeStamp" name="timeStamp" formControlName="timeStamp"
+                    placeholder="Zaman Damgası giriniz..." required minlength maxlength>
+                  <div
+                    *ngIf="definationForm.get('timeStamp')?.hasError('required') && definationForm.get('timeStamp')?.dirty"
+                    class="alert alert-danger">Zaman Damgası boş olamaz</div>
+                  <div
+                    *ngIf="definationForm.get('timeStamp')?.hasError('minlength') && definationForm.get('timeStamp')?.dirty"
+                    class="alert alert-danger">En az 10 harf olabilir</div>
+                  <div
+                    *ngIf="definationForm.get('timeStamp')?.hasError('maxlength') && definationForm.get('timeStamp')?.dirty"
+                    class="alert alert-danger">En fazla 10 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+
+            <!--ackReq-->
+            <div class="form-group">
+             <div class="row pt-4">
+               <div class="col-md-2">
+                 <label class="form-label" for="ackReq">İstek:</label>
+               </div>
+               <div class="col-md-10">
+                 <input class="form-control" type="text" id="ackReq" name="ackReq" formControlName="ackReq"
+                   placeholder="Ack İsteği giriniz..." required minlength maxlength>
+                 <div
+                   *ngIf="definationForm.get('ackReq')?.hasError('required') && definationForm.get('ackReq')?.dirty"
+                   class="alert alert-danger">Ack İsteği boş olamaz</div>
+                 <div
+                   *ngIf="definationForm.get('ackReq')?.hasError('minlength') && definationForm.get('ackReq')?.dirty"
+                   class="alert alert-danger">En az 2 harf olabilir</div>
+                 <div
+                   *ngIf="definationForm.get('ackReq')?.hasError('maxlength') && definationForm.get('ackReq')?.dirty"
+                   class="alert alert-danger">En fazla 3 harf olabilir</div>
+               </div>
+             </div>
+           </div>
+
+
+          </form>
+        </div>
+        <!--footer-->
+        <div class="modal-footer d-flex justify-content-center">
+          <input type="button" class="btn btn-success" (click)="save()" value="Kaydet"
+            [disabled]="!definationForm.valid" [ngStyle]="{'display':'Defination.Add' | demandPipe}"
+            [ngStyle]="{'display':'Defination.Update' | demandPipe}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--confirm modal-->
+  <div class="modal" tabindex="-1" defination="dialog" [ngStyle]="{'display':displayConfirmModal}">
+    <div class="modal-dialog" defination="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <div class="modal-header">
+          <h4 class="modal-title">Tanımlama Silme Onay</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeConfirmModal()"></i>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body bg-secondary text-white">
+              <div class="row">
+                <div class="col-md-12">
+                  <h5>
+                    Silmek İstediğinizden Emin misiniz?
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer bg-secondary text-white justify-content-center">
+          <div class="row">
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-success" (click)="deleteFromConfirm()" style="cursor: pointer;"
+                [ngStyle]="{'display':'Defination.Delete' | demandPipe}" value="Evet">
+            </div>
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-danger" (click)="closeConfirmModal()" style="cursor: pointer;"
+                value="Hayır">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

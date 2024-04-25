@@ -26,8 +26,6 @@ namespace Business.Validators.FluentValidators.General.Machine.Recipe
 
             RuleFor(x => x.MachineSpeedSet).InclusiveBetween(short.MinValue, short.MaxValue);
 
-            RuleFor(x => x.Acceleration).InclusiveBetween(short.MinValue, short.MaxValue);
-
             RuleFor(x => x.Optime).NotEmpty();
             RuleFor(x => x.Optime).LessThanOrEqualTo(DateTime.Now);
 
