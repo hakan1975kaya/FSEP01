@@ -1,3 +1,4 @@
+import { RollStatusEnum } from './../../enums/roll-status-enum.enum';
 import { LocationEnum } from 'src/app/enums/location-enum.enum';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -39,9 +40,10 @@ export class ContactRollComponent implements OnInit {
   displayConfirmModal: string = 'none';
   locationDefault = "";
   statusDefault = "";
+  rollStatusEnum!:RollStatusEnum
   ngOnInit() {
     this.createSearchForm();
-    this.createcontactRollForm();
+    this.createContactRollForm();
   }
 
   createSearchForm() {
@@ -103,7 +105,7 @@ export class ContactRollComponent implements OnInit {
     });
   }
 
-  createcontactRollForm() {
+  createContactRollForm() {
     this.contactRollForm = this.formBuilder.group({
       id: [''],
       rollNumber: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
@@ -136,7 +138,7 @@ export class ContactRollComponent implements OnInit {
     });
   }
 
-  opencontactRollModal(contactRollId?: string) {
+  openContactRollModal(contactRollId?: string) {
     this.displayContactRollModal = 'block';
     if (contactRollId) {
       this.selectedContactRollId = contactRollId;
@@ -147,12 +149,12 @@ export class ContactRollComponent implements OnInit {
     }
   }
 
-  closecontactRollModal() {
+  closeContactRollModal() {
     this.displayContactRollModal = 'none';
-    this.resetcontactRollModal();
+    this.resetContactRollModal();
   }
 
-  resetcontactRollModal() {
+  resetContactRollModal() {
     this.contactRollForm.controls['rollNumber'].setValue('');
     this.contactRollForm.controls['rollDiameter'].setValue('');
     this.contactRollForm.controls['groupName'].setValue('');
@@ -185,7 +187,7 @@ export class ContactRollComponent implements OnInit {
         }
       }
     });
-    this.resetcontactRollModal();
+    this.resetContactRollModal();
   }
 
   deleteFromConfirm() {
@@ -230,6 +232,6 @@ export class ContactRollComponent implements OnInit {
         }
       }
     }
-    this.resetcontactRollModal();
+    this.resetContactRollModal();
   }
 }

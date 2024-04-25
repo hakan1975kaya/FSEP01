@@ -1,0 +1,224 @@
+<div class="container-fluid" role="main">
+
+  <!--Title-->
+  <div class="row p-2">
+    <div class="col-md-1">
+      <i class="fa fa-building fa-2x"></i>
+    </div>
+    <div class="col-md-11">
+      <h5>Yoğunluk Tanımlama İşlemleri</h5>
+    </div>
+  </div>
+
+  <!--search-->
+  <div class="card">
+    <div class="card-body bg-secondary text-white">
+      <form [formGroup]="searchForm">
+        <div class="row pt-2">
+          <!--filter-->
+          <div class="col-md-10">
+            <div class="form-group">
+              <input class="form-control" type="text" id="filter" name="filter" formControlName="filter"
+                placeholder="Yoğunluk adı, değeri veya tarihi..." required minlength>
+              <div *ngIf="searchForm.get('filter')?.hasError('required')&&searchForm.get('filter')?.dirty"
+                class="alert alert-danger">Arama ifadesi zorunlu</div>
+              <div *ngIf="searchForm.get('filter')?.hasError('minlength')&& searchForm.get('filter')?.dirty"
+                class="alert alert-danger">En az iki harf girmek zorundasınız</div>
+            </div>
+          </div>
+
+          <!--search button-->
+          <div class="col-md-1">
+            <div class="form-group">
+              <input type="button" class="btn btn-warning" id="search" name="search" value="Ara" (click)="search()"
+                [ngStyle]="{'display':'Density.Search' | demandPipe}">
+            </div>
+          </div>
+
+          <!--clear button-->
+          <div class="col-md-1">
+            <div class="form-group">
+              <input type="button" class="btn btn-light" id="clear" name="clear" value="Temizle" (click)="clear()">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!--add new -->
+  <div class="row pt-2">
+    <div class="col-md-1">
+      <i class="fa fa-plus-square fa-2x" (click)="openDensityModal()" ngbTooltip="Ekle" style="cursor: pointer;"></i>
+    </div>
+    <div class="col-md-11"></div>
+  </div>
+
+  <!--density table-->
+  <div class="row pt-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive" name="divSerach" id="divSerach">
+          <table class="table table-flush table-striped" id="tblSearch" name="tblSearch">
+            <thead>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('alloy')"></i>Alaşım<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
+                  (click)="orderAsc('alloy')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;" (click)="orderDesc('value')"></i>Değer<i
+                  class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('value')"></i>
+              </th>
+
+              <th>İşlemler</th>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let density of densitys | paginate: {id:'densityPagination',itemsPerPage:itemsPerPage, currentPage:currentPage}">
+                <td>{{density.alloy}}</td>
+                <td>{{density.value}}</td>
+                <td>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <i class="fa fa-pencil fa-2x" (click)="openDensityModal(density.id)"
+                        style="cursor: pointer;color: steelblue;"></i>
+                    </div>
+                    <div class="col-md-6">
+                      <i class="fa fa-trash fa-2x" (click)="openConfirmModal(density.id)"
+                        style="cursor: pointer;color:red"></i>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--pagination-->
+  <div class="row p-2">
+    <div class="col-md-11">
+      <pagination-controls id="densityPagination" (pageChange)="currentPage = $event"></pagination-controls>
+    </div>
+    <!--export to excel pdf-->
+    <div class="col-md-1 d-flex justify-content-around">
+      <i class="fa fa-file-excel-o fa-2x" style="cursor: pointer;color: green;" (click)="exportToExcel()"
+        [ngStyle]="{'display':'Density.Search' | demandPipe}"></i>
+      <i class="fa  fa-file-pdf-o fa-2x" style="cursor: pointer;color:red" (click)="exportToPdf()"
+        [ngStyle]="{'display':'Density.Search' | demandPipe}"></i>
+    </div>
+  </div>
+
+  <!--densityModal--->
+  <div class="modal" density="dialog" tabindex="-1" [ngStyle]="{'display':displayDensityModal}">
+    <div class="modal-dialog modal-lg" density="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <!--Header-->
+        <div class="modal-header">
+          <h4 class="modal-title">Alaşım Tanımlama Ekle & Düzelt</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeDensityModal()"></i>
+        </div>
+        <!--body-->
+        <div class="modal-body">
+          <form [formGroup]="densityForm">
+            <!--id-->
+            <div style="display: none;" class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="id">Id:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="id" name="id" formControlName="id"
+                    placeholder="id giriniz">
+                </div>
+              </div>
+            </div>
+
+            <!--alloy-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="telegramType">Alaşım:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="alloy" name="alloy" formControlName="alloy"
+                    placeholder="Alaşım giriniz..." required minlength maxlength>
+                  <div *ngIf="densityForm.get('alloy')?.hasError('required') && densityForm.get('alloy')?.dirty"
+                    class="alert alert-danger">Alaşım boş olamaz</div>
+                  <div *ngIf="densityForm.get('alloy')?.hasError('minlength') && densityForm.get('alloy')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div *ngIf="densityForm.get('alloy')?.hasError('maxlength') && densityForm.get('alloy')?.dirty"
+                    class="alert alert-danger">En fazla 20 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+
+            <!--value-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="value">Değer:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="number" id="value" name="value" formControlName="value"
+                    placeholder="Değer giriniz..." required min max>
+                  <div *ngIf="densityForm.get('value')?.hasError('required') && densityForm.get('value')?.dirty"
+                    class="alert alert-danger">Değer boş olamaz</div>
+                  <div *ngIf="densityForm.get('value')?.hasError('min') && densityForm.get('value')?.dirty"
+                    class="alert alert-danger">En az 0 olabilir</div>
+                  <div *ngIf="densityForm.get('value')?.hasError('max') && densityForm.get('value')?.dirty"
+                    class="alert alert-danger">Çok Büyük Sayı</div>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <!--footer-->
+        <div class="modal-footer d-flex justify-content-center">
+          <input type="button" class="btn btn-success" (click)="save()" value="Kaydet" [disabled]="!densityForm.valid"
+            [ngStyle]="{'display':'Density.Add' | demandPipe}" [ngStyle]="{'display':'Density.Update' | demandPipe}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--confirm modal-->
+  <div class="modal" tabindex="-1" density="dialog" [ngStyle]="{'display':displayConfirmModal}">
+    <div class="modal-dialog" density="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <div class="modal-header">
+          <h4 class="modal-title">Yoğunluk Silme Onay</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeConfirmModal()"></i>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body bg-secondary text-white">
+              <div class="row">
+                <div class="col-md-12">
+                  <h5>
+                    Silmek İstediğinizden Emin misiniz?
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer bg-secondary text-white justify-content-center">
+          <div class="row">
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-success" (click)="deleteFromConfirm()" style="cursor: pointer;"
+                [ngStyle]="{'display':'Density.Delete' | demandPipe}" value="Evet">
+            </div>
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-danger" (click)="closeConfirmModal()" style="cursor: pointer;"
+                value="Hayır">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

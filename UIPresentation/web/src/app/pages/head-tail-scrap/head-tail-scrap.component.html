@@ -1,0 +1,343 @@
+<div class="container-fluid" role="main">
+
+  <!--Title-->
+  <div class="row p-2">
+    <div class="col-md-1">
+      <i class="fa fa-building fa-2x"></i>
+    </div>
+    <div class="col-md-11">
+      <h5>Baş Son Hurda İşlemleri</h5>
+    </div>
+  </div>
+
+  <!--search-->
+  <div class="card">
+    <div class="card-body bg-secondary text-white">
+      <form [formGroup]="searchForm">
+        <div class="row pt-2">
+
+          <!--filter-->
+          <div class="col-md-10">
+            <div class="form-group">
+              <input class="form-control" type="text" id="filter" name="filter" formControlName="filter"
+                placeholder="Kullanım alanı, önceki yol, minimum ve maximum kalınlık veya tarih..." required minlength>
+              <div *ngIf="searchForm.get('filter')?.hasError('required')&&searchForm.get('filter')?.dirty"
+                class="alert alert-danger">Arama ifadesi zorunlu</div>
+              <div *ngIf="searchForm.get('filter')?.hasError('minlength')&& searchForm.get('filter')?.dirty"
+                class="alert alert-danger">En az iki harf girmek zorundasınız</div>
+            </div>
+          </div>
+
+          <!--search button-->
+          <div class="col-md-1">
+            <div class="form-group">
+              <input type="button" class="btn btn-warning" id="search" name="search" value="Ara" (click)="search()"
+                [ngStyle]="{'display':'HeadTailScrap.Search' | demandPipe}">
+            </div>
+          </div>
+
+          <!--clear button-->
+          <div class="col-md-1">
+            <div class="form-group">
+              <input type="button" class="btn btn-light" id="clear" name="clear" value="Temizle" (click)="clear()">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!--add new -->
+  <div class="row pt-2">
+    <div class="col-md-1">
+      <i class="fa fa-plus-square fa-2x" (click)="openHeadTailScrapModal()" ngbTooltip="Ekle"
+        style="cursor: pointer;"></i>
+    </div>
+    <div class="col-md-11"></div>
+  </div>
+
+  <!--headTailScrap table-->
+  <div class="row pt-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive" name="divSerach" id="divSerach">
+          <table class="table table-flush table-striped" id="tblSearch" name="tblSearch">
+            <thead>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('usageArea')"></i>Kullanım Alanı<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('usageArea')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('previousLine')"></i>Önceki Yol<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('previousLine')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('thicknessMinimum')"></i>Kalınlık Maks<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('thicknessMinimum')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('thicknessMaximum')"></i>Kalınlık Min<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('thicknessMaximum')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('scrapValue')"></i>Hurda değeri<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('scrapValue')"></i>
+              </th>
+
+              <th>İşlemler</th>
+            </thead>
+
+            <tbody>
+              <tr
+                *ngFor="let headTailScrap of headTailScraps | paginate: {id:'headTailScrapPagination',itemsPerPage:itemsPerPage, currentPage:currentPage}">
+                <td>{{headTailScrap.usageArea}}</td>
+                <td>{{headTailScrap.previousLine}}</td>
+                <td>{{headTailScrap.thicknessMinimum}}</td>
+                <td>{{headTailScrap.thicknessMaximum}}</td>
+                <td>{{headTailScrap.scrapValue}}</td>
+                <td>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <i class="fa fa-pencil fa-2x" (click)="openHeadTailScrapModal(headTailScrap.id)"
+                        style="cursor: pointer;color: steelblue;"></i>
+                    </div>
+                    <div class="col-md-6">
+                      <i class="fa fa-trash fa-2x" (click)="openConfirmModal(headTailScrap.id)"
+                        style="cursor: pointer;color:red"></i>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--pagination-->
+  <div class="row p-2">
+    <div class="col-md-11">
+      <pagination-controls id="headTailScrapPagination" (pageChange)="currentPage = $event"></pagination-controls>
+    </div>
+    <!--export to excel pdf-->
+    <div class="col-md-1 d-flex justify-content-around">
+      <i class="fa fa-file-excel-o fa-2x" style="cursor: pointer;color: green;" (click)="exportToExcel()"
+        [ngStyle]="{'display':'HeadTailScrap.Search' | demandPipe}"></i>
+      <i class="fa  fa-file-pdf-o fa-2x" style="cursor: pointer;color:red" (click)="exportToPdf()"
+        [ngStyle]="{'display':'HeadTailScrap.Search' | demandPipe}"></i>
+    </div>
+  </div>
+
+  <!--headTailScrapModal--->
+  <div class="modal" headTailScrap="dialog" tabindex="-1" [ngStyle]="{'display':displayHeadTailScrapModal}">
+    <div class="modal-dialog modal-lg" headTailScrap="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <!--Header-->
+        <div class="modal-header">
+          <h4 class="modal-title">Baş Son Hurdası Ekle & Düzelt</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeHeadTailScrapModal()"></i>
+        </div>
+        <!--body-->
+        <div class="modal-body">
+          <form [formGroup]="headTailScrapForm">
+
+            <!--id-->
+            <div style="display: none;" class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="id">Id:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="id" name="id" formControlName="id"
+                    placeholder="id giriniz">
+                </div>
+              </div>
+            </div>
+
+            <!--usageArea-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="usageArea">Kullanım Alanı:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="usageArea" name="usageArea" formControlName="usageArea"
+                    placeholder="Kullanım Alanı giriniz..." required minlength maxlength>
+                  <div
+                    *ngIf="headTailScrapForm.get('usageArea')?.hasError('required') && headTailScrapForm.get('usageArea')?.dirty"
+                    class="alert alert-danger">Kullanım Alanı boş olamaz</div>
+                  <div
+                    *ngIf="headTailScrapForm.get('usageArea')?.hasError('minlength') && headTailScrapForm.get('usageArea')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div
+                    *ngIf="headTailScrapForm.get('usageArea')?.hasError('maxlength') && headTailScrapForm.get('usageArea')?.dirty"
+                    class="alert alert-danger">En fazla 30 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+
+            <!--previousLine-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="previousLine">Önceki Yol:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="previousLine" name="previousLine"
+                    formControlName="previousLine" placeholder="Önceki Yol giriniz..." required minlength maxlength>
+                  <div
+                    *ngIf="headTailScrapForm.get('previousLine')?.hasError('required') && headTailScrapForm.get('previousLine')?.dirty"
+                    class="alert alert-danger">Önceki Yol: boş olamaz</div>
+                  <div
+                    *ngIf="headTailScrapForm.get('previousLine')?.hasError('minlength') && headTailScrapForm.get('previousLine')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div
+                    *ngIf="headTailScrapForm.get('previousLine')?.hasError('maxlength') && headTailScrapForm.get('previousLine')?.dirty"
+                    class="alert alert-danger">En fazla 20 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+
+            <!--thicknessMinimum-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="thicknessMinimum">Kalınlık Min:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="number" id="thicknessMinimum" name="thicknessMinimum"
+                    formControlName="thicknessMinimum" placeholder="Kalınlık Min giriniz..." required min max>
+                  <div
+                    *ngIf="headTailScrapForm.get('thicknessMinimum')?.hasError('required') && headTailScrapForm.get('thicknessMinimum')?.dirty"
+                    class="alert alert-danger">Kalınlık Min boş olamaz</div>
+                  <div
+                    *ngIf="headTailScrapForm.get('thicknessMinimum')?.hasError('min') && headTailScrapForm.get('thicknessMinimum')?.dirty"
+                    class="alert alert-danger">En az 0 olabilir</div>
+                  <div
+                    *ngIf="headTailScrapForm.get('thicknessMinimum')?.hasError('max') && headTailScrapForm.get('thicknessMinimum')?.dirty"
+                    class="alert alert-danger">Çok Büyük Sayı</div>
+                </div>
+              </div>
+            </div>
+
+            <!--thicknessMaximum-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="thicknessMaximum">Kalınlık Maks:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="number" id="thicknessMaximum" name="thicknessMaximum"
+                    formControlName="thicknessMaximum" placeholder="Kalınlık Maks giriniz..." required min max>
+                  <div
+                    *ngIf="headTailScrapForm.get('thicknessMaximum')?.hasError('required') && headTailScrapForm.get('thicknessMaximum')?.dirty"
+                    class="alert alert-danger">Kalınlık Maksboş olamaz</div>
+                  <div
+                    *ngIf="headTailScrapForm.get('thicknessMaximum')?.hasError('min') && headTailScrapForm.get('thicknessMaximum')?.dirty"
+                    class="alert alert-danger">En az 0 olabilir</div>
+                  <div
+                    *ngIf="headTailScrapForm.get('thicknessMaximum')?.hasError('max') && headTailScrapForm.get('thicknessMaximum')?.dirty"
+                    class="alert alert-danger">Çok Büyük Sayı</div>
+                </div>
+              </div>
+            </div>
+
+            <!--thicknessMaximum-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="thicknessMaximum">Kalınlık Maks:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="number" id="thicknessMaximum" name="thicknessMaximum"
+                    formControlName="thicknessMaximum" placeholder="Kalınlık Maks giriniz..." required min max>
+                  <div
+                    *ngIf="headTailScrapForm.get('thicknessMaximum')?.hasError('required') && headTailScrapForm.get('thicknessMaximum')?.dirty"
+                    class="alert alert-danger">Kalınlık Maks boş olamaz</div>
+                  <div
+                    *ngIf="headTailScrapForm.get('thicknessMaximum')?.hasError('min') && headTailScrapForm.get('thicknessMaximum')?.dirty"
+                    class="alert alert-danger">En az 0 olabilir</div>
+                  <div
+                    *ngIf="headTailScrapForm.get('thicknessMaximum')?.hasError('max') && headTailScrapForm.get('thicknessMaximum')?.dirty"
+                    class="alert alert-danger">Çok Büyük Sayı</div>
+                </div>
+              </div>
+            </div>
+
+            <!--scrapValue-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="scrapValue">Hurda Değeri:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="number" id="scrapValue" name="scrapValue"
+                    formControlName="scrapValue" placeholder="Hurda Değeri giriniz..." required min max>
+                  <div
+                    *ngIf="headTailScrapForm.get('scrapValue')?.hasError('required') && headTailScrapForm.get('scrapValue')?.dirty"
+                    class="alert alert-danger">Hurda Değeri boş olamaz</div>
+                  <div
+                    *ngIf="headTailScrapForm.get('scrapValue')?.hasError('min') && headTailScrapForm.get('scrapValue')?.dirty"
+                    class="alert alert-danger">En az 0 olabilir</div>
+                  <div
+                    *ngIf="headTailScrapForm.get('scrapValue')?.hasError('max') && headTailScrapForm.get('scrapValue')?.dirty"
+                    class="alert alert-danger">Çok Büyük Sayı</div>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+        <!--footer-->
+        <div class="modal-footer d-flex justify-content-center">
+          <input type="button" class="btn btn-success" (click)="save()" value="Kaydet"
+            [disabled]="!headTailScrapForm.valid" [ngStyle]="{'display':'HeadTailScrap.Add' | demandPipe}"
+            [ngStyle]="{'display':'HeadTailScrap.Update' | demandPipe}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--confirm modal-->
+  <div class="modal" tabindex="-1" headTailScrap="dialog" [ngStyle]="{'display':displayConfirmModal}">
+    <div class="modal-dialog" headTailScrap="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <div class="modal-header">
+          <h4 class="modal-title">Baş Son Hurda Silme Onay</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeConfirmModal()"></i>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body bg-secondary text-white">
+              <div class="row">
+                <div class="col-md-12">
+                  <h5>
+                    Silmek İstediğinizden Emin misiniz?
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer bg-secondary text-white justify-content-center">
+          <div class="row">
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-success" (click)="deleteFromConfirm()" style="cursor: pointer;"
+                [ngStyle]="{'display':'HeadTailScrap.Delete' | demandPipe}" value="Evet">
+            </div>
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-danger" (click)="closeConfirmModal()" style="cursor: pointer;"
+                value="Hayır">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

@@ -36,6 +36,13 @@ import { RoleDemandComponent } from './pages/role-demand/role-demand.component';
 import { RoleMenuComponent } from './pages/role-menu/role-menu.component';
 import { PasswordChangeComponent } from './pages/password-change/password-change.component';
 import { ContactRollComponent } from './pages/contact-roll/contact-roll.component';
+import { DefinationComponent } from './pages/defination/defination.component';
+import { DensityComponent } from './pages/density/density.component';
+import { EventComponent } from './pages/event/event.component';
+import { HeadTailScrapComponent } from './pages/head-tail-scrap/head-tail-scrap.component';
+import { LubracationRollComponent } from './pages/lubracation-roll/lubracation-roll.component';
+import { TramRollComponent } from './pages/tram-roll/tram-roll.component';
+import { UsageAreaComponent } from './pages/usage-area/usage-area.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +60,14 @@ import { ContactRollComponent } from './pages/contact-roll/contact-roll.componen
     RoleDemandComponent,
     RoleMenuComponent,
     PasswordChangeComponent,
-    ContactRollComponent
+    ContactRollComponent,
+    DefinationComponent,
+    DensityComponent,
+    EventComponent,
+    HeadTailScrapComponent,
+    LubracationRollComponent,
+    TramRollComponent,
+    UsageAreaComponent
   ],
   imports: [
     AppRoutingModule,

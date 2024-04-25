@@ -1,0 +1,363 @@
+<div class="container-fluid" role="main">
+
+  <!--Title-->
+  <div class="row p-2">
+    <div class="col-md-1">
+      <i class="fa fa-building fa-2x"></i>
+    </div>
+    <div class="col-md-11">
+      <h5>Tramvay Ruloları Tanımlama İşlemleri</h5>
+    </div>
+  </div>
+
+  <!--search-->
+  <div class="card">
+    <div class="card-body bg-secondary text-white">
+      <form [formGroup]="searchForm">
+        <div class="row pt-2">
+          <!--filter-->
+          <div class="col-md-10">
+            <div class="form-group">
+              <input class="form-control" type="text" id="filter" name="filter" formControlName="filter"
+                placeholder="İletişim Rulo adı, numarası, çapı, grubu veya tarihi..." required minlength>
+              <div *ngIf="searchForm.get('filter')?.hasError('required')&&searchForm.get('filter')?.dirty"
+                class="alert alert-danger">Arama ifadesi zorunlu</div>
+              <div *ngIf="searchForm.get('filter')?.hasError('minlength')&& searchForm.get('filter')?.dirty"
+                class="alert alert-danger">En az iki harf girmek zorundasınız</div>
+            </div>
+          </div>
+          <!--search button-->
+          <div class="col-md-1">
+            <div class="form-group">
+              <input type="button" class="btn btn-warning" id="search" name="search" value="Ara" (click)="search()"
+                [ngStyle]="{'display':'TramRoll.Search' | demandPipe}">
+            </div>
+          </div>
+          <!--clear button-->
+          <div class="col-md-1">
+            <div class="form-group">
+              <input type="button" class="btn btn-light" id="clear" name="clear" value="Temizle" (click)="clear()">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!--add new -->
+  <div class="row pt-2">
+    <div class="col-md-1">
+      <i class="fa fa-plus-square fa-2x" (click)="openTramRollModal()" ngbTooltip="Ekle"
+        style="cursor: pointer;"></i>
+    </div>
+    <div class="col-md-11"></div>
+  </div>
+
+  <!--tramRoll table-->
+  <div class="row pt-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive" name="divSerach" id="divSerach">
+          <table class="table table-flush table-striped" id="tblSearch" name="tblSearch">
+            <thead>
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('rollNumber')"></i>Numara<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('rollNumber')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('rollDiameter')"></i>Çapı<i class="fa fa-arrow-circle-o-up"
+                  style="cursor: pointer;" (click)="orderAsc('rollDiameter')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('groupName')"></i>Grup<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
+                  (click)="orderAsc('groupName')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('rollName')"></i>Adı<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
+                  (click)="orderAsc('rollName')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('tramCount')"></i>Rulo Sayısı
+                <i class="fa fa-arrow-circle-o-up" style="cursor: pointer;" (click)="orderAsc('tramCount')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('status')"></i>Durum<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
+                  (click)="orderAsc('status')"></i>
+              </th>
+
+              <th><i class="fa fa-arrow-circle-o-down" style="cursor: pointer;"
+                  (click)="orderDesc('location')"></i>Bölge<i class="fa fa-arrow-circle-o-up" style="cursor: pointer;"
+                  (click)="orderAsc('location')"></i>
+              </th>
+
+              <th>İşlemler</th>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let tramRoll of tramRolls | paginate: {id:'tramRollPagination',itemsPerPage:itemsPerPage, currentPage:currentPage}">
+                <td>{{tramRoll.rollNumber}}</td>
+                <td>{{tramRoll.rollDiameter}}</td>
+                <td>{{tramRoll.groupName}}</td>
+                <td>{{tramRoll.rollName}}</td>
+                <td>{{tramRoll.tramCount}}</td>
+                <td>{{tramRoll.status}}</td>
+                <td>{{tramRoll.location}}</td>
+                <td>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <i class="fa fa-pencil fa-2x" (click)="openTramRollModal(tramRoll.id)"
+                        style="cursor: pointer;color: steelblue;"></i>
+                    </div>
+                    <div class="col-md-6">
+                      <i class="fa fa-trash fa-2x" (click)="openConfirmModal(tramRoll.id)"
+                        style="cursor: pointer;color:red"></i>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--pagination-->
+  <div class="row p-2">
+    <div class="col-md-11">
+      <pagination-controls id="tramRollPagination" (pageChange)="currentPage = $event"></pagination-controls>
+    </div>
+    <!--export to excel pdf-->
+    <div class="col-md-1 d-flex justify-content-around">
+      <i class="fa fa-file-excel-o fa-2x" style="cursor: pointer;color: green;" (click)="exportToExcel()"
+        [ngStyle]="{'display':'TramRoll.Search' | demandPipe}"></i>
+      <i class="fa  fa-file-pdf-o fa-2x" style="cursor: pointer;color:red" (click)="exportToPdf()"
+        [ngStyle]="{'display':'TramRoll.Search' | demandPipe}"></i>
+    </div>
+  </div>
+
+  <!--tramRollModal--->
+  <div class="modal" tramRoll="dialog" tabindex="-1" [ngStyle]="{'display':displayTramRollModal}">
+    <div class="modal-dialog modal-lg" tramRoll="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <!--Header-->
+        <div class="modal-header">
+          <h4 class="modal-title">Tramvay Ruloları Ekle & Düzelt</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeTramRollModal()"></i>
+        </div>
+        <!--body-->
+        <div class="modal-body">
+          <form [formGroup]="tramRollForm">
+            <!--id-->
+            <div style="display: none;" class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="id">Id:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="id" name="id" formControlName="id"
+                    placeholder="id giriniz">
+                </div>
+              </div>
+            </div>
+            <!--rollNumber-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="rollNumber">Rulo Numarası:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="rollNumber" name="rollNumber" formControlName="rollNumber"
+                    placeholder="Rulo Numarası giriniz..." required minlength maxlength>
+                  <div
+                    *ngIf="tramRollForm.get('rollNumber')?.hasError('required') && tramRollForm.get('rollNumber')?.dirty"
+                    class="alert alert-danger">Rulo Numarası boş olamaz</div>
+                  <div
+                    *ngIf="tramRollForm.get('rollNumber')?.hasError('minlength') && tramRollForm.get('rollNumber')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div
+                    *ngIf="tramRollForm.get('rollNumber')?.hasError('maxlength') && tramRollForm.get('rollNumber')?.dirty"
+                    class="alert alert-danger">En fazla 50 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+
+            <!--rollDiameter-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="rollDiameter">Rulo Çapı:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="number" id="rollDiameter" name="rollDiameter"
+                    formControlName="rollDiameter" placeholder="Rulo Çapı giriniz..." required min max>
+                  <div
+                    *ngIf="tramRollForm.get('rollDiameter')?.hasError('required') && tramRollForm.get('rollDiameter')?.dirty"
+                    class="alert alert-danger">Rulo Çapı boş olamaz</div>
+                  <div
+                    *ngIf="tramRollForm.get('rollDiameter')?.hasError('min') && tramRollForm.get('rollDiameter')?.dirty"
+                    class="alert alert-danger">En az 0 olabilir</div>
+                  <div
+                    *ngIf="tramRollForm.get('rollDiameter')?.hasError('max') && tramRollForm.get('rollDiameter')?.dirty"
+                    class="alert alert-danger">Çok Büyük Sayı</div>
+                </div>
+              </div>
+            </div>
+
+            <!--groupName-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="groupName">Grup Adı:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="groupName" name="groupName" formControlName="groupName"
+                    placeholder="Grup Adı giriniz..." required minlength maxlength>
+                  <div
+                    *ngIf="tramRollForm.get('groupName')?.hasError('required') && tramRollForm.get('groupName')?.dirty"
+                    class="alert alert-danger">Grup Adı boş olamaz</div>
+                  <div
+                    *ngIf="tramRollForm.get('groupName')?.hasError('minlength') && tramRollForm.get('groupName')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div
+                    *ngIf="tramRollForm.get('groupName')?.hasError('maxlength') && tramRollForm.get('groupName')?.dirty"
+                    class="alert alert-danger">En fazla 60 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+
+
+            <!--rollName-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="rollName">Rulo Adı:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="text" id="rollName" name="rollName" formControlName="rollName"
+                    placeholder="Rulo Adı giriniz..." required minlength maxlength>
+                  <div
+                    *ngIf="tramRollForm.get('rollName')?.hasError('required') && tramRollForm.get('rollName')?.dirty"
+                    class="alert alert-danger">Rulo Adı boş olamaz</div>
+                  <div
+                    *ngIf="tramRollForm.get('rollName')?.hasError('minlength') && tramRollForm.get('rollName')?.dirty"
+                    class="alert alert-danger">En az 2 harf olabilir</div>
+                  <div
+                    *ngIf="tramRollForm.get('rollName')?.hasError('maxlength') && tramRollForm.get('rollName')?.dirty"
+                    class="alert alert-danger">En fazla 60 harf olabilir</div>
+                </div>
+              </div>
+            </div>
+
+            <!--tramCount-->
+            <div class="form-group">
+              <div class="row pt-4">
+                <div class="col-md-2">
+                  <label class="form-label" for="tramCount">Rulo Sayısı:</label>
+                </div>
+                <div class="col-md-10">
+                  <input class="form-control" type="number" id="tramCount" name="tramCount" formControlName="tramCount"
+                    placeholder="Rulo Sayısı giriniz..." required min max>
+                  <div
+                    *ngIf="tramRollForm.get('tramCount')?.hasError('required') && tramRollForm.get('tramCount')?.dirty"
+                    class="alert alert-danger">Rulo Sayısı boş olamaz</div>
+                  <div
+                    *ngIf="tramRollForm.get('tramCount')?.hasError('min') && tramRollForm.get('tramCount')?.dirty"
+                    class="alert alert-danger">En az 0 olabilir</div>
+                  <div
+                    *ngIf="tramRollForm.get('tramCount')?.hasError('max') && tramRollForm.get('tramCount')?.dirty"
+                    class="alert alert-danger">Çok Büyük Sayı</div>
+                </div>
+              </div>
+            </div>
+
+            <!--status-->
+            <div class="form-group pt-4">
+              <div class="row">
+                <div class="col-md-2">
+                  <label for="status" class="col-form-label">Durum :</label>
+                </div>
+                <div class="col-md-10">
+                  <select class="form-select" [(ngModel)]="statusDefault" formControlName="status" id="status"
+                    name="status" required style="cursor: pointer;">
+                    <option value="" selected disabled>Durum Seçiniz</option>
+                    <option value="1">Serbest</option>
+                    <option value="2">Kullanılmış</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!--location-->
+            <div class="form-group pt-4">
+              <div class="row">
+                <div class="col-md-2">
+                  <label for="location" class="col-form-label">Bölge :</label>
+                </div>
+                <div class="col-md-10">
+                  <select class="form-select" [(ngModel)]="locationDefault" formControlName="location" id="location"
+                    name="location" required style="cursor: pointer;">
+                    <option value="" selected disabled>Bölge Seçiniz</option>
+                    <option value="1">Sarıcı</option>
+                    <option value="2">Açıcı</option>
+                    <option value="3">Semer</option>
+                    <option value="4">Sarıcı Bir</option>
+                    <option value="5">Sarıcı İki</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <!--footer-->
+        <div class="modal-footer d-flex justify-content-center">
+          <input type="button" class="btn btn-success" (click)="save()" value="Kaydet"
+            [disabled]="!tramRollForm.valid" [ngStyle]="{'display':'TramRoll.Add' | demandPipe}"
+            [ngStyle]="{'display':'TramRoll.Update' | demandPipe}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--confirm modal-->
+  <div class="modal" tabindex="-1" tramRoll="dialog" [ngStyle]="{'display':displayConfirmModal}">
+    <div class="modal-dialog" tramRoll="dialog">
+      <div class="modal-content bg-secondary text-white">
+        <div class="modal-header">
+          <h4 class="modal-title">Tramvay Ruloları Silme Onay</h4>
+          <i class="fa fa-window-close fa-2x" (click)="closeConfirmModal()"></i>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body bg-secondary text-white">
+              <div class="row">
+                <div class="col-md-12">
+                  <h5>
+                    Silmek İstediğinizden Emin misiniz?
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer bg-secondary text-white justify-content-center">
+          <div class="row">
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-success" (click)="deleteFromConfirm()" style="cursor: pointer;"
+                [ngStyle]="{'display':'TramRoll.Delete' | demandPipe}" value="Evet">
+            </div>
+            <div class="col-md-6">
+              <Input type="button" class="btn btn-danger" (click)="closeConfirmModal()" style="cursor: pointer;"
+                value="Hayır">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

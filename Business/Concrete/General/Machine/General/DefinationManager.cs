@@ -11,6 +11,7 @@ using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract.General.Machine.General;
 using Entities.Concrete.Dtos.General.Genaral;
 using Entities.Concrete.Entities.General.Machine.General;
+using System.Reflection;
 
 namespace Business.Concrete.General.General
 {
@@ -68,7 +69,14 @@ namespace Business.Concrete.General.General
         [SecurityAspect("Defination.Search", Priority = 2)]
         public async Task<IDataResult<List<Defination>>> Search(FilterDto filterDto)
         {
-            return new SuccessDataResult<List<Defination>>(await _definationDal.GetList(x => x.IsActive == true && x.Optime.ToString().Contains(filterDto.Filter)));
+            return new SuccessDataResult<List<Defination>>(await _definationDal.GetList(x =>
+            x.IsActive == true &&
+            (x.Optime.ToString().Contains(filterDto.Filter) ||
+            x.MessageId.ToString().Contains(filterDto.Filter) ||
+            x.TelegramType.Contains(filterDto.Filter) ||
+            x.TelegramLength.Contains(filterDto.Filter) ||
+            x.Sender.Contains(filterDto.Filter) ||
+            x.Reciever.Contains(filterDto.Filter))));
         }
 
         [SecurityAspect("Defination.Update", Priority = 2)]

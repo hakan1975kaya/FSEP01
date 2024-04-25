@@ -15,7 +15,7 @@ namespace Entities.Concrete.Entities.General.Machine.General
         public string LocalId { get; set; }//123040192.02.01
         public short TType { get; set; }//2
         public int? IPara { get; set; }//0
-        public float? FPara { get; set; }//0
+        public decimal? FPara { get; set; }//0
         public DateTime Optime { get; set; }//2023-06-03 00:20:45
         public bool IsActive { get; set; }
     }

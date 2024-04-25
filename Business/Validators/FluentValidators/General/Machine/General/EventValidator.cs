@@ -27,7 +27,7 @@ namespace Business.Validators.FluentValidators.General.General.DemandValidators
 
             RuleFor(x => x.IPara).InclusiveBetween(int.MinValue, int.MaxValue);
 
-            RuleFor(x => x.FPara).InclusiveBetween(float.MinValue, float.MaxValue);
+            RuleFor(x => x.FPara).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
             RuleFor(x => x.Optime).NotEmpty();
             RuleFor(x => x.Optime).LessThanOrEqualTo(DateTime.Now);

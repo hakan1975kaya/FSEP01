@@ -50,7 +50,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<SlitPattern> SlitPatterns { get; set; }
         public DbSet<SlitPatternDetail> SlitPatternDetails { get; set; }
         public DbSet<TramRoll> TramRolls { get; set; }
-        public DbSet<UsageArea> UsageArea { get; set; }
+        public DbSet<UsageArea> UsageAreas { get; set; }
 
         //General
         //Machine
