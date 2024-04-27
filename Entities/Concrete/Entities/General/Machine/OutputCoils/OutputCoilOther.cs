@@ -11,7 +11,7 @@ namespace Entities.Concrete.Entities.General.Machine.OutputCoils
     {
         public Guid Id { get; set; }
         public Guid InputCoilId { get; set; }
-        public int? UnwinderActuelLength { get; set; }//0
+        public int? UnwinderlLength { get; set; }//0
         public decimal? UnwinderThickness { get; set; }//75.00
         public decimal? UnwinderThicknessCalculatedValueActuel { get; set; }// Çözücü Kalınlık Hesaplanan Değer Gerçek 60.40
         public decimal? UnwinderThicknessCalculatedValueMinimum { get; set; }//48.70

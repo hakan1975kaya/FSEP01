@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Abstract\PLC\Genaral\" />
+    <Folder Include="Abstract\PLC\Parameters\" />
+    <Folder Include="Concrete\PLC\Genaral\" />
+    <Folder Include="Concrete\PLC\Parameters\" />
     <Folder Include="Constants\Messages\PLC\" />
   </ItemGroup>
 

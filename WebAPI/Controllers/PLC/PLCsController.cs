@@ -1,4 +1,4 @@
-﻿using Business.Abstract.PLC;
+﻿using Business.Abstract.PLC.InputCoils;
 using Core.Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,8 +9,8 @@ namespace WebAPI.Controllers.PLC
     [ApiController]
     public class PLCsController : ControllerBase
     {
-        private IPLCService _plcService;
-        public PLCsController(IPLCService plcService)
+        private IPLCInputCoilService _plcService;
+        public PLCsController(IPLCInputCoilService plcService)
         {
 
             _plcService = plcService;
