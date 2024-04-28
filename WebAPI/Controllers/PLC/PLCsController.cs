@@ -9,36 +9,13 @@ namespace WebAPI.Controllers.PLC
     [ApiController]
     public class PLCsController : ControllerBase
     {
-        private IPLCInputCoilService _plcService;
-        public PLCsController(IPLCInputCoilService plcService)
+
+        public PLCsController()
         {
 
-            _plcService = plcService;
+
 
         }
 
-        [HttpPost("motorStart")]
-        public async Task<IActionResult> MotorStart()
-        {
-            var result = await _plcService.MotorStart();
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-
-            return BadRequest(result);
-        }
-
-        [HttpPost("motorStop")]
-        public async Task<IActionResult> MotorStop()
-        {
-            var result = await _plcService.MotorStop();
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-
-            return BadRequest(result);
-        }
     }
 }

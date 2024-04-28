@@ -11,10 +11,13 @@ namespace Business.Abstract.PLC.Recipes
     {
         public Task<IDataResult<int>> ReadAcceleration();
         public Task<IResult> WriteAcceleration(int acceleration);
+
         public Task<IDataResult<int>> ReadDecelaration();
         public Task<IResult> WriteDecelaration(int decelaration);
+
         public Task<IDataResult<int>> ReadFastStop();
         public Task<IResult> WriteFastStop(int fastStop);
+
         public Task<IDataResult<int>> ReadJogSpeed();
         public Task<IResult> WriteJogSpeed(int jogSpeed);
 

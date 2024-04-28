@@ -27,6 +27,8 @@ namespace Business.Concrete.PLC.Machines
             _plcDal.Write(DataType.DataBlock, 91, 8, acceleration);
             return new SuccessResult();
         }
+
+
         public async Task<IDataResult<int>> ReadDecelaration()//Name:MachineTimeDecel,Addres:DB 91 DBW 10
         {
             return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 10, VarType.Int, 1));
@@ -36,6 +38,8 @@ namespace Business.Concrete.PLC.Machines
             _plcDal.Write(DataType.DataBlock, 91, 10, decelaration);
             return new SuccessResult();
         }
+
+
         public async Task<IDataResult<int>> ReadFastStop()//Name:MachineTimeFastStop,Addres:DB 91 DBW 12
         {
             return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 12, VarType.Int, 1));
@@ -45,6 +49,8 @@ namespace Business.Concrete.PLC.Machines
             _plcDal.Write(DataType.DataBlock, 91, 12, fastStop);
             return new SuccessResult();
         }
+
+
         public async Task<IDataResult<int>> ReadJogSpeed()//Name:MachineSpeedJog,Addres:DB 91 DBW 4
         {
             return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 4, VarType.Int, 1));
@@ -54,6 +60,8 @@ namespace Business.Concrete.PLC.Machines
             _plcDal.Write(DataType.DataBlock, 91, 4, jogSpeed);
             return new SuccessResult();
         }
+
+
   
     }
 }
