@@ -18,7 +18,7 @@ namespace Business.Validators.FluentValidators.General.General.DemandValidators
 
             RuleFor(x => x.InputCoilId).NotEmpty();
 
-            RuleFor(x => x.UnwinderActuelLength).InclusiveBetween(int.MinValue, int.MaxValue);
+            RuleFor(x => x.UnwinderlLength).InclusiveBetween(int.MinValue, int.MaxValue);
 
             RuleFor(x => x.UnwinderThickness).InclusiveBetween(decimal.MinValue, decimal.MaxValue);
 
