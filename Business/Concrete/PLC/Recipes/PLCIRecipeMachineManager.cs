@@ -245,15 +245,14 @@ namespace Business.Concrete.PLC.Machines
             return new SuccessResult();
         }
 
-        public async Task<IDataResult<int>> ReadRecipeNumberl()//Name:RecipeNumber,Addres:DB 96 DBW 40,Data Type:Int
+        public async Task<IDataResult<int>> ReadRecipeNumber()//Name:RecipeNumber,Addres:DB 96 DBW 40,Data Type:Int
         {
             return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 96, 40, VarType.Int, 1));
         }
-        public async Task<IResult> WriteRecipeNumberl(int recipeNumber)//Name:RecipeNumber,Addres:DB 96 DBW 40,Data Type:Int
+        public async Task<IResult> WriteRecipeNumber(int recipeNumber)//Name:RecipeNumber,Addres:DB 96 DBW 40,Data Type:Int
         {
             _plcDal.Write(DataType.DataBlock, 96, 40, recipeNumber);
             return new SuccessResult();
         }
-
     }
 }
