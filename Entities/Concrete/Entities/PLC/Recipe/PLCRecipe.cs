@@ -104,6 +104,8 @@ namespace Entities.Concrete.Entities.PLC.Recipe
         public int RewinderTwoCharacteristicPressureSupportNine { get; set; }//Name:Recipe_entry_0_90 ,DisplayName:Pressure char. supp. roll rew.2 [d9][%],TagName:Rew2CharacteristicPressureSupport_D09,TagValue:DB 93 DBW 228
         public int RewinderTwoCharacteristicPressureSupportTen { get; set; }//Name:Recipe_entry_0_91 ,DisplayName:Pressure char. supp. roll rew.2 [d10][%],TagName:Rew2CharacteristicPressureSupport_D010,TagValue:DB 93 DBW 230
         public int RewinderTwoCharacteristicPressureSupportSpeedInfluence { get; set; }//Name:Recipe_entry_0_92 ,DisplayName: Pressure char. supp. roll rew.2 speed[%],TagName:Rew2CharacteristicPressureSupportSpeedInfluence,TagValue:  DB 93 DBW 210
+        public DateTime Optime { get; set; }
+        public bool IsActive { get; set; }
     }
 }
 
