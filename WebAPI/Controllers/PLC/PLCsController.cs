@@ -1,5 +1,4 @@
-﻿using Business.Abstract.PLC.InputCoils;
-using Core.Entities.Concrete;
+﻿using Core.Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

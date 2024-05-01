@@ -1,12 +1,10 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Business.Abstract.General.General;
-using Business.Abstract.PLC.InputCoils;
 using Business.Abstract.PSI.Telegrams;
 using Business.Abstract.PSI.Transfers;
 using Business.Abstract.PSI.Types;
 using Business.Concrete.General.General;
-using Business.Concrete.PLC.InputCoils;
 using Business.Concrete.PSI.Telegrams;
 using Business.Concrete.PSI.Transfers;
 using Core.Utilities.Interceptors;
@@ -218,7 +216,6 @@ namespace Business.DependencyResolvers.Autofac
             //PLC
             builder.RegisterType<PLCHelper>().As<IPLCHelper>();
             builder.RegisterType<PLCDal>().As<IPLCDal>();
-            builder.RegisterType<PLCInputCoilManager>().As<IPLCInputCoilService>();
 
             //PSI
             //Telegrams

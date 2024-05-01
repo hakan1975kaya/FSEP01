@@ -1,4 +1,4 @@
-﻿using Business.Abstract.PLC.Recipes;
+﻿using Business.Abstract.PLC.Machine;
 using Core.Aspects.Autofac.Logging;
 using Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using Core.Utilities.Results.Abstract;
@@ -7,13 +7,13 @@ using PLC.Abstract;
 using S7.Net;
 using System.Text;
 
-namespace Business.Concrete.PLC.Machines
+namespace Business.Concrete.PLC.Machine
 {
     [LogAspect(typeof(DatabaseLogger), Priority = 1)]
-    public class PLCMRecipeMachineManager : IPLCRecipeMachineService
+    public class PLCMachineManager : IPLCMachineService
     {
         private IPLCDal _plcDal;
-        public PLCMRecipeMachineManager(IPLCDal plcDal)
+        public PLCMachineManager(IPLCDal plcDal)
         {
             _plcDal = plcDal;
         }
@@ -27,7 +27,6 @@ namespace Business.Concrete.PLC.Machines
             return new SuccessResult();
         }
 
-
         public async Task<IDataResult<int>> ReadTransportOneTensionSet()//Name:Transport1TensionSet,Addres:DB 91 DBW 550,Data Type:Int
         {
             return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 550, VarType.Int, 1));
@@ -37,7 +36,6 @@ namespace Business.Concrete.PLC.Machines
             _plcDal.Write(DataType.DataBlock, 91, 550, transportOneTensionSet);
             return new SuccessResult();
         }
-
 
         public async Task<IDataResult<int>> ReadTransportTwoTensionSet()//Name:Transport2TensionSet,Addres:DB 91 DBW 560,Data Type:Int
         {
@@ -49,7 +47,6 @@ namespace Business.Concrete.PLC.Machines
             return new SuccessResult();
         }
 
-
         public async Task<IDataResult<long>> ReadWeightRewinderOne()//Name:Weight_Rew_1,Addres:DB 1 DBD 2384,Data Type:Int
         {
             return new SuccessDataResult<long>((long)_plcDal.Read(DataType.DataBlock, 1, 2384, VarType.Real, 1));
@@ -59,7 +56,6 @@ namespace Business.Concrete.PLC.Machines
             _plcDal.Write(DataType.DataBlock, 1, 2384, weightRewinderOne);
             return new SuccessResult();
         }
-
 
         public async Task<IDataResult<long>> ReadWeightRewinderTwo()//Name:Weight_Rew_2,Addres:DB 1 DBD 2380,Data Type:Int
         {
@@ -71,7 +67,6 @@ namespace Business.Concrete.PLC.Machines
             return new SuccessResult();
         }
 
-
         public async Task<IDataResult<int>> ReadRewinderOneDiameterSet()//Name:Rew1DiaSet,Addres:DB 91 DBW 300,Data Type:Int
         {
             return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 300, VarType.Int, 1));
@@ -79,17 +74,6 @@ namespace Business.Concrete.PLC.Machines
         public async Task<IResult> WriteRewinderOneDiameterSet(int rewinderOneDiameterSet)//Name:Rew1DiaSet,Addres:DB 91 DBW 300,Data Type:Int
         {
             _plcDal.Write(DataType.DataBlock, 91, 300, rewinderOneDiameterSet);
-            return new SuccessResult();
-        }
-
-
-        public async Task<IDataResult<int>> ReadRewinderOneDiameterActuel()//Name:Rew1DiaAct,Addres:DB 90 DBW 300,Data Type:Int
-        {
-            return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 90, 300, VarType.Int ,1));
-        }
-        public async Task<IResult> WriteRewinderOneDiameterActuel(int rewinderOneDiameterActuel)//Name:Rew1DiaAct,Addres:DB 90 DBW 300,Data Type:Int
-        {
-            _plcDal.Write(DataType.DataBlock, 90, 300, rewinderOneDiameterActuel);
             return new SuccessResult();
         }
 
@@ -103,7 +87,6 @@ namespace Business.Concrete.PLC.Machines
             _plcDal.Write(DataType.DataBlock, 91, 306, rewinderOneLengthSet);
             return new SuccessResult();
         }
-
 
         public async Task<IDataResult<long>> ReadRewinderOneLengthActuel()//Name:Rew1LengthAct,Addres:DB 90 DBD 306,Data Type:DInt
         {
@@ -125,7 +108,6 @@ namespace Business.Concrete.PLC.Machines
             return new SuccessResult();
         }
 
-
         public async Task<IDataResult<int>> ReadRewinderTwoDiameterActuel()//Name:Rew1DiaAct,Addres:DB 90 DBW 400,Data Type:Int
         {
             return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 90, 400, VarType.Int, 1));
@@ -135,7 +117,6 @@ namespace Business.Concrete.PLC.Machines
             _plcDal.Write(DataType.DataBlock, 90, 400, rewinderTwoDiameterActuel);
             return new SuccessResult();
         }
-
 
         public async Task<IDataResult<long>> ReadRewinderTwoLengthSet()//Name:Rew1LengthSet,Addres:DB 91 DBD 406,Data Type:DInt
         {
@@ -147,39 +128,35 @@ namespace Business.Concrete.PLC.Machines
             return new SuccessResult();
         }
 
-
-        public async Task<IDataResult<long>> ReadRewinderTwoLengthActuel()//Name:Rew1LengthAct,Addres:DB 90 DBD 406,Data Type:DInt
+        public async Task<IDataResult<long>> ReadRewinderTwoLengthActuel()//Name:Rew2LengthAct,Addres:DB 90 DBD 406,Data Type:DInt
         {
             return new SuccessDataResult<long>((long)_plcDal.Read(DataType.DataBlock, 90, 406, VarType.DInt, 1));
         }
-        public async Task<IResult> WriteRewinderTwoLengthActuel(long rewinderTwoLengthActuel)//Name:Rew1LengthAct,Addres:DB 90 DBD 406,Data Type:DInt
+        public async Task<IResult> WriteRewinderTwoLengthActuel(long rewinderTwoLengthActuel)//Name:Rew2LengthAct,Addres:DB 90 DBD 406,Data Type:DInt
         {
             _plcDal.Write(DataType.DataBlock, 90, 406, rewinderTwoLengthActuel);
             return new SuccessResult();
         }
 
-
-        public async Task<IDataResult<int>> ReadUnwinderOneDiameterSet()//Name:Rew1DiaAct,Addres:DB 91 DBW 100,Data Type:Int
+        public async Task<IDataResult<int>> ReadUnwinderOneDiameterSet()//Name:Unw1DiaSet,Addres:DB 91 DBW 100,Data Type:Int
         {
             return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 100, VarType.Int, 1));
         }
-        public async Task<IResult> WriteUnwinderOneDiameterSet(int unwinderOneDiameterSet)//Name:Rew1DiaAct,Addres:DB 91 DBW 100,Data Type:Int
+        public async Task<IResult> WriteUnwinderOneDiameterSet(int unwinderOneDiameterSet)//Name:Unw1DiaSet,Addres:DB 91 DBW 100,Data Type:Int
         {
             _plcDal.Write(DataType.DataBlock, 91, 100, unwinderOneDiameterSet);
             return new SuccessResult();
         }
 
-
-        public async Task<IDataResult<int>> ReadUnwinderOneDiameterActuel()//Name:Rew1DiaAct,Addres:DB 90 DBW 100,Data Type:Int
+        public async Task<IDataResult<int>> ReadUnwinderOneDiameterActuel()//Name:Unw1DiaAct,Addres:DB 90 DBW 100,Data Type:Int
         {
             return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 90, 100, VarType.Int, 1));
         }
-        public async Task<IResult> WriteUnwinderOneDiameterActuel(int unwinderOneDiameterActuel)//Name:Rew1DiaAct,Addres:DB 90 DBW 100,Data Type:Int
+        public async Task<IResult> WriteUnwinderOneDiameterActuel(int unwinderOneDiameterActuel)//Name:Unw1DiaAct,Addres:DB 90 DBW 100,Data Type:Int
         {
             _plcDal.Write(DataType.DataBlock, 90, 100, unwinderOneDiameterActuel);
             return new SuccessResult();
         }
-
 
         public async Task<IDataResult<decimal>> ReadRewinderOneTensionLaySetScaled()//Name:Rew1TensionLaySetScaled,Addres:DB 91 DBW 372,Data Type:Int
         {
@@ -191,7 +168,6 @@ namespace Business.Concrete.PLC.Machines
             return new SuccessResult();
         }
 
-
         public async Task<IDataResult<decimal>> ReadRewinderOneTensionCalculateCharScaled()//Name:Rew1TensionCalcCharScaled,Addres:DB 90 DBW 316,Data Type:Int
         {
             return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 316, VarType.Int, 1));
@@ -201,7 +177,6 @@ namespace Business.Concrete.PLC.Machines
             _plcDal.Write(DataType.DataBlock, 90, 316, rewinderOneTensionCalculateCharScaled);
             return new SuccessResult();
         }
-
 
         public async Task<IDataResult<decimal>> ReadContactOneTensionActuel()//Name:Cont1TensionAct,Addres:DB 90 DBW 580,Data Type:Int
         {
@@ -213,7 +188,6 @@ namespace Business.Concrete.PLC.Machines
             return new SuccessResult();
         }
 
-
         public async Task<IDataResult<decimal>> ReadContactTwoTensionActuel()//Name:Cont2TensionAct,Addres:DB 90 DBW 590,Data Type:Int
         {
             return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 590, VarType.Int, 1));
@@ -223,7 +197,6 @@ namespace Business.Concrete.PLC.Machines
             _plcDal.Write(DataType.DataBlock, 90, 590, contactTwoTensionActuel);
             return new SuccessResult();
         }
-
 
         public async Task<IDataResult<decimal>> ReadRewinderTwoTensionSupportSetScaled()//Name:Rew2TensionSupSetScaled,Addres:DB 91 DBW 472,Data Type:Int
         {
@@ -252,6 +225,16 @@ namespace Business.Concrete.PLC.Machines
         public async Task<IResult> WriteRecipeNumber(int recipeNumber)//Name:RecipeNumber,Addres:DB 96 DBW 40,Data Type:Int
         {
             _plcDal.Write(DataType.DataBlock, 96, 40, recipeNumber);
+            return new SuccessResult();
+        }
+
+        public async Task<IDataResult<int>> ReadRewinderOneDiameterActuel()//Name:Rew1DiaAct,Adress:DB 90 DBW 300,Data Type:Int
+        {
+            return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 90, 300, VarType.Int, 1));
+        }
+        public async Task<IResult> WriteRewinderOneDiameterActuel(int rewinderOneDiameterActuel)//Name:Rew1DiaAct,Adress:DB 90 DBW 300,Data Type:Int
+        {
+            _plcDal.Write(DataType.DataBlock, 90, 300, rewinderOneDiameterActuel);
             return new SuccessResult();
         }
     }

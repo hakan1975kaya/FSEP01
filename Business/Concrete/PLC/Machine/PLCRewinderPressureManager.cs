@@ -1,4 +1,4 @@
-﻿using Business.Abstract.PLC.Recipes;
+﻿using Business.Abstract.PLC.Machine;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using PLC.Abstract;
@@ -9,12 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Concrete.PLC.Recipes
+namespace Business.Concrete.PLC.Machine
 {
-    public class PLCRecipeRewinderOnePressureManager : IPLCRecipeRewinderOnePressureService
+    public class PLCRewinderPressureManager : IPLCRewinderPressureService
     {
         private IPLCDal _plcDal;
-        public PLCRecipeRewinderOnePressureManager(IPLCDal plcDal)
+        public PLCRewinderPressureManager(IPLCDal plcDal)
         {
             _plcDal = plcDal;
         }
@@ -38,7 +38,6 @@ namespace Business.Concrete.PLC.Recipes
             return new SuccessResult();
         }
 
-
         public async Task<IDataResult<int>> ReadRewinderOnePresureLayBalance()//Name:Rew1PresLayBalance,Addres:DB 91 DBW 366, Data Type:Int
         {
             return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 366, VarType.Int, 1));
@@ -49,7 +48,6 @@ namespace Business.Concrete.PLC.Recipes
             return new SuccessResult();
         }
 
-
         public async Task<IDataResult<decimal>> ReadRewinderOnePressureLayCalculateRight()//Name:Rew1PresLayCalcRight,Addres:DB 90 DBW 364,Data Type:Int
         {
             return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 364, VarType.Int, 1));
@@ -59,7 +57,6 @@ namespace Business.Concrete.PLC.Recipes
             _plcDal.Write(DataType.DataBlock, 90, 364, rewinderOnePressureLayCalculateRight);
             return new SuccessResult();
         }
-
 
         public async Task<IDataResult<decimal>> ReadRewinderOnePressureLayCalculateLeft()//Name:Rew1PresLayCalcLeft,Addres:DB 90 DBW 362,Data Type:Int
         {
@@ -81,7 +78,6 @@ namespace Business.Concrete.PLC.Recipes
             return new SuccessResult();
         }
 
-
         public async Task<IDataResult<decimal>> ReadRewinderOnePressureContactCalculateCharScaled()//Name:Rew1PresContCalcCharScaled,Addres:DB 90 DBW 326,Data Type:Int
         {
             return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 326, VarType.Int, 1));
@@ -91,7 +87,6 @@ namespace Business.Concrete.PLC.Recipes
             _plcDal.Write(DataType.DataBlock, 90, 326, rewinderOnePressureContactCalculateCharScaled);
             return new SuccessResult();
         }
-
 
         public async Task<IDataResult<int>> ReadRewinderOnePressureContactBalance()//Name:Rew1PresContBalance,Addres:DB 91 DBW 336, Data Type:Int
         {
@@ -103,7 +98,6 @@ namespace Business.Concrete.PLC.Recipes
             return new SuccessResult();
         }
 
-
         public async Task<IDataResult<decimal>> ReadRewinderOnePressureContactCalculateRight()//Name:Rew1PresContCalcRight,Addres:DB 90 DBW 334,Data Type:Int
         {
             return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 334, VarType.Int, 1));
@@ -113,7 +107,6 @@ namespace Business.Concrete.PLC.Recipes
             _plcDal.Write(DataType.DataBlock, 90, 334, rewinderOnePressureContactCalculateRight);
             return new SuccessResult();
         }
-
 
         public async Task<IDataResult<decimal>> ReadRewinderOnePressureContactCalculateLeft()//Name:Rew1PresContCalcLeft,Addres:DB 90 DBW 332,Data Type:Int
         {
@@ -125,7 +118,6 @@ namespace Business.Concrete.PLC.Recipes
             return new SuccessResult();
         }
 
-
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureContanctSetScaled()//Name:Rew2PresContSetScaled,Addres:DB 91 DBW 422,Data Type:Int
         {
             return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 91, 422, VarType.Int, 1));
@@ -135,7 +127,6 @@ namespace Business.Concrete.PLC.Recipes
             _plcDal.Write(DataType.DataBlock, 91, 422, rewinderTwoPressureContanctSetScaled);
             return new SuccessResult();
         }
-
 
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureContactCalculateCharScaled()//Name:Rew2PresContCalcCharScaled,Addres:DB 90 DBW 426,Data Type:Int
         {
@@ -147,7 +138,6 @@ namespace Business.Concrete.PLC.Recipes
             return new SuccessResult();
         }
 
-
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureContanctBalance()//Name:Rew2PresContBalance,Addres:DB 91 DBW 436,Data Type:Int
         {
             return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 91, 436, VarType.Int, 1));
@@ -157,7 +147,6 @@ namespace Business.Concrete.PLC.Recipes
             _plcDal.Write(DataType.DataBlock, 91, 436, rewinderTwoPressureContanctBalance);
             return new SuccessResult();
         }
-
 
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureContactCalculateRight()//Name:Rew2PresContCalcRight,Addres:DB 90 DBW 434,Data Type:Int
         {
@@ -169,8 +158,6 @@ namespace Business.Concrete.PLC.Recipes
             return new SuccessResult();
         }
 
-
-
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureContactCalculateLeft()//Name:Rew2PresContCalcLeft,Addres:DB 90 DBW 432,Data Type:Int
         {
             return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 432, VarType.Int, 1));
@@ -180,8 +167,6 @@ namespace Business.Concrete.PLC.Recipes
             _plcDal.Write(DataType.DataBlock, 90, 432, rewinderTwoPressureContactCalculateLeft);
             return new SuccessResult();
         }
-
-
 
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureSupportSetScaled()//Name:Rew2PresSupSetScaled,Addres:DB 91 DBW 452,Data Type:Int
         {
@@ -193,7 +178,6 @@ namespace Business.Concrete.PLC.Recipes
             return new SuccessResult();
         }
 
-
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureSupportCalculateCharScaled()//Name:Rew2PresSupCalcCharScaled,Addres:DB 90 DBW 456,Data Type:Int
         {
             return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 456, VarType.Int, 1));
@@ -203,7 +187,6 @@ namespace Business.Concrete.PLC.Recipes
             _plcDal.Write(DataType.DataBlock, 90, 456, rewinderTwoPressureSupportCalculateCharScaled);
             return new SuccessResult();
         }
-
 
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureSupportBalance()//Name:Rew2PresSupCalcCharScaled,Addres:DB 91 DBW 466,Data Type:Int
         {
@@ -215,7 +198,6 @@ namespace Business.Concrete.PLC.Recipes
             return new SuccessResult();
         }
 
-
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureSupportCalcuteRight()//Name:Rew2PresSupCalcRight,Addres:DB 90 DBW 464,Data Type:Int
         {
             return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 464, VarType.Int, 1));
@@ -225,7 +207,6 @@ namespace Business.Concrete.PLC.Recipes
             _plcDal.Write(DataType.DataBlock, 90, 464, rewinderTwoPressureSupportCalcuteRight);
             return new SuccessResult();
         }
-
 
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureSupportCalcuteLeft()//Name:Rew2PresSupCalcLeft,Addres:DB 90 DBW 462,Data Type:Int
         {

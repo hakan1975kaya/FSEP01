@@ -7,6 +7,7 @@ using Entities.Concrete.Entities.General.Machine.OutputCoils;
 using Entities.Concrete.Entities.General.Machine.Parameters;
 using Entities.Concrete.Entities.General.Machine.ProcessCoils;
 using Entities.Concrete.Entities.General.Machine.Recipes;
+using Entities.Concrete.Entities.PLC.Recipe;
 using Entities.Concrete.Entities.PSI.Telegrams;
 using Entities.Concrete.Entities.PSI.Types;
 using Microsoft.EntityFrameworkCore;
@@ -127,6 +128,9 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<PSITypeProcessInstructions> TypeProcessInstructionss { get; set; }
         public DbSet<PSITypeTimeStamp> TypeTimeStamps { get; set; }
 
+        //PLC
+        //PLCRecipe
+        public DbSet<PLCRecipe> PLCRecipes { get; set; }
 
     }
 }

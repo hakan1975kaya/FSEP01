@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Abstract.PLC.Recipes
+namespace Business.Abstract.PLC.Machine
 {
-    public interface IPLCRecipeMachineService
+    public interface IPLCMachineService
     {
         public Task<IDataResult<int>> ReadMachineSpeedSet();
         public Task<IResult> WriteMachineSpeedSet(int machineSpeedSet);
@@ -36,7 +36,7 @@ namespace Business.Abstract.PLC.Recipes
         public Task<IDataResult<long>> ReadRewinderOneLengthActuel();
         public Task<IResult> WriteRewinderOneLengthActuel(long rewinderOneLengthActuel);
 
-         public Task<IDataResult<int>> ReadRewinderTwoDiameterSet();
+        public Task<IDataResult<int>> ReadRewinderTwoDiameterSet();
         public Task<IResult> WriteRewinderTwoDiameterSet(int rewinderTwoDiameterSet);
 
         public Task<IDataResult<int>> ReadRewinderTwoDiameterActuel();
@@ -49,7 +49,7 @@ namespace Business.Abstract.PLC.Recipes
         public Task<IResult> WriteRewinderTwoLengthActuel(long rewinderTwoLengthActuel);
 
         public Task<IDataResult<int>> ReadUnwinderOneDiameterSet();
-        public Task<IResult> WriteUnwinderOneDiameterSet(int unwinderOneDiameterSet); 
+        public Task<IResult> WriteUnwinderOneDiameterSet(int unwinderOneDiameterSet);
 
         public Task<IDataResult<int>> ReadUnwinderOneDiameterActuel();
         public Task<IResult> WriteUnwinderOneDiameterActuel(int unwinderOneDiameterActuel);
@@ -69,13 +69,13 @@ namespace Business.Abstract.PLC.Recipes
         public Task<IDataResult<decimal>> ReadRewinderTwoTensionSupportSetScaled();
         public Task<IResult> WriteRewinderTwoTensionSupportSetScaled(decimal rewinderTwoTensionSupportSetScaled);
 
-
         public Task<IDataResult<int>> ReadRecipeRecordNumber();
         public Task<IResult> WriteRecipeRecordNumber(int recipeRecordNumber);
 
-
         public Task<IDataResult<int>> ReadRecipeNumber();
         public Task<IResult> WriteRecipeNumber(int recipeNumber);
+
+
 
 
 
