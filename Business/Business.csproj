@@ -18,7 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Constants\Messages\PLC\" />
+    <Folder Include="Constants\Messages\PLC\Machine\" />
+    <Folder Include="Validators\FluentValidators\PLC\Machine\" />
   </ItemGroup>
 
 </Project>
