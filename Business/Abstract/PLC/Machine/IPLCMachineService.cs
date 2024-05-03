@@ -9,14 +9,14 @@ namespace Business.Abstract.PLC.Machine
 {
     public interface IPLCMachineService
     {
-        public Task<IDataResult<int>> ReadMachineSpeedSet();
-        public Task<IResult> WriteMachineSpeedSet(int machineSpeedSet);
+        public Task<IDataResult<long>> ReadMachineSpeedSet();
+        public Task<IResult> WriteMachineSpeedSet(long machineSpeedSet);
 
-        public Task<IDataResult<int>> ReadTransportOneTensionSet();
-        public Task<IResult> WriteTransportOneTensionSet(int transportOneTensionSet);
+        public Task<IDataResult<long>> ReadTransportOneTensionSet();
+        public Task<IResult> WriteTransportOneTensionSet(long transportOneTensionSet);
 
-        public Task<IDataResult<int>> ReadTransportTwoTensionSet();
-        public Task<IResult> WriteTransportTwoTensionSet(int transportTwoTensionSet);
+        public Task<IDataResult<long>> ReadTransportTwoTensionSet();
+        public Task<IResult> WriteTransportTwoTensionSet(long transportTwoTensionSet);
 
         public Task<IDataResult<long>> ReadWeightRewinderOne();
         public Task<IResult> WriteWeightRewinderOne(long weightRewinderOne);
@@ -24,11 +24,11 @@ namespace Business.Abstract.PLC.Machine
         public Task<IDataResult<long>> ReadWeightRewinderTwo();
         public Task<IResult> WriteWeightRewinderTwo(long weightRewinderOne);
 
-        public Task<IDataResult<int>> ReadRewinderOneDiameterSet();
-        public Task<IResult> WriteRewinderOneDiameterSet(int rewinderOneDiameterSet);
+        public Task<IDataResult<long>> ReadRewinderOneDiameterSet();
+        public Task<IResult> WriteRewinderOneDiameterSet(long rewinderOneDiameterSet);
 
-        public Task<IDataResult<int>> ReadRewinderOneDiameterActuel();
-        public Task<IResult> WriteRewinderOneDiameterActuel(int rewinderOneDiameterActuel);
+        public Task<IDataResult<long>> ReadRewinderOneDiameterActuel();
+        public Task<IResult> WriteRewinderOneDiameterActuel(long rewinderOneDiameterActuel);
 
         public Task<IDataResult<long>> ReadRewinderOneLengthSet();
         public Task<IResult> WriteRewinderOneLengthSet(long rewinderOneLengthSet);
@@ -36,11 +36,11 @@ namespace Business.Abstract.PLC.Machine
         public Task<IDataResult<long>> ReadRewinderOneLengthActuel();
         public Task<IResult> WriteRewinderOneLengthActuel(long rewinderOneLengthActuel);
 
-        public Task<IDataResult<int>> ReadRewinderTwoDiameterSet();
-        public Task<IResult> WriteRewinderTwoDiameterSet(int rewinderTwoDiameterSet);
+        public Task<IDataResult<long>> ReadRewinderTwoDiameterSet();
+        public Task<IResult> WriteRewinderTwoDiameterSet(long rewinderTwoDiameterSet);
 
-        public Task<IDataResult<int>> ReadRewinderTwoDiameterActuel();
-        public Task<IResult> WriteRewinderTwoDiameterActuel(int rewinderTwoDiameterActuel);
+        public Task<IDataResult<long>> ReadRewinderTwoDiameterActuel();
+        public Task<IResult> WriteRewinderTwoDiameterActuel(long rewinderTwoDiameterActuel);
 
         public Task<IDataResult<long>> ReadRewinderTwoLengthSet();
         public Task<IResult> WriteRewinderTwoLengthSet(long rewinderTwoLengthSet);
@@ -48,35 +48,17 @@ namespace Business.Abstract.PLC.Machine
         public Task<IDataResult<long>> ReadRewinderTwoLengthActuel();
         public Task<IResult> WriteRewinderTwoLengthActuel(long rewinderTwoLengthActuel);
 
-        public Task<IDataResult<int>> ReadUnwinderOneDiameterSet();
-        public Task<IResult> WriteUnwinderOneDiameterSet(int unwinderOneDiameterSet);
+        public Task<IDataResult<long>> ReadUnwinderOneDiameterSet();
+        public Task<IResult> WriteUnwinderOneDiameterSet(long unwinderOneDiameterSet);
 
-        public Task<IDataResult<int>> ReadUnwinderOneDiameterActuel();
-        public Task<IResult> WriteUnwinderOneDiameterActuel(int unwinderOneDiameterActuel);
+        public Task<IDataResult<long>> ReadUnwinderOneDiameterActuel();
+        public Task<IResult> WriteUnwinderOneDiameterActuel(long unwinderOneDiameterActuel);
 
-        public Task<IDataResult<decimal>> ReadRewinderOneTensionLaySetScaled();
-        public Task<IResult> WriteRewinderOneTensionLaySetScaled(decimal rewinderOneTensionLaySetScaled);
+        public Task<IDataResult<bool>> ReadRewinderOneResetLength();
+        public Task<IResult> WriteRewinderOneResetLength(bool rewinderOneResetLength);
 
-        public Task<IDataResult<decimal>> ReadRewinderOneTensionCalculateCharScaled();
-        public Task<IResult> WriteRewinderOneTensionCalculateCharScaled(decimal rewinderOneTensionCalculateCharScaled);
-
-        public Task<IDataResult<decimal>> ReadContactOneTensionActuel();
-        public Task<IResult> WriteContactOneTensionActuel(decimal contactOneTensionActuel);
-
-        public Task<IDataResult<decimal>> ReadContactTwoTensionActuel();
-        public Task<IResult> WriteContactTwoTensionActuel(decimal contactTwoTensionActuel);
-
-        public Task<IDataResult<decimal>> ReadRewinderTwoTensionSupportSetScaled();
-        public Task<IResult> WriteRewinderTwoTensionSupportSetScaled(decimal rewinderTwoTensionSupportSetScaled);
-
-        public Task<IDataResult<int>> ReadRecipeRecordNumber();
-        public Task<IResult> WriteRecipeRecordNumber(int recipeRecordNumber);
-
-        public Task<IDataResult<int>> ReadRecipeNumber();
-        public Task<IResult> WriteRecipeNumber(int recipeNumber);
-
-
-
+        public Task<IDataResult<bool>> ReadRewinderTwoResetLength();
+        public Task<IResult> WriteRewinderTwoResetLength(bool rewinderTwoResetLength);
 
 
 

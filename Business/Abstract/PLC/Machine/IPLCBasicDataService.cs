@@ -33,32 +33,32 @@ namespace Business.Abstract.PLC.Machine
         public Task<IDataResult<decimal>> ReadMaterialThicknessCalculatedValueActuel();
         public Task<IResult> WriteMaterialThicknessCalculatedValueActuel(decimal materialThicknessCalculatedValueActuel);
 
-        public Task<IDataResult<decimal>> ReadMaterialThicknessCalculatedValueMinimuml();
+        public Task<IDataResult<decimal>> ReadMaterialThicknessCalculatedValueMinimum();
         public Task<IResult> WritenMaterialThicknessCalculatedValueMinimuml(decimal materialThicknessCalculatedValueMinimuml);
 
         public Task<IDataResult<decimal>> ReadMaterialThicknessCalculatedValueMaximum();
         public Task<IResult> WriteMaterialThicknessCalculatedValueMaximum(decimal materialThicknessCalculatedValueMaximum);
 
-        public Task<IDataResult<int>> ReadMachineWeldingSpeedSet();
-        public Task<IResult> WriteMachineWeldingSpeedSet(int machineWeldingSpeedSet);
+        public Task<IDataResult<short>> ReadMachineWeldingSpeedSet();
+        public Task<IResult> WriteMachineWeldingSpeedSet(short machineWeldingSpeedSet);
 
-        public Task<IDataResult<int>> ReadMachineWeldingAmplitudeSet();
-        public Task<IResult> WriteMachineWeldingAmplitudeSet(int machineWeldingAmplitudeSet);
+        public Task<IDataResult<short>> ReadMachineWeldingAmplitudeSet();
+        public Task<IResult> WriteMachineWeldingAmplitudeSet(short machineWeldingAmplitudeSet);
 
         public Task<IDataResult<decimal>> ReadMachineWeldingPowerActuel();
         public Task<IResult> WriteMachineWeldingPowerActuel(decimal machineWeldingPowerActuel);
 
-        public Task<IDataResult<int>> ReadAMachineTimeAcceleration();
-        public Task<IResult> WriteMachineTimeAcceleration(int machineTimeAcceleration);
+        public Task<IDataResult<short>> ReadMachineTimeAcceleration();
+        public Task<IResult> WriteMachineTimeAcceleration(short machineTimeAcceleration);
 
-        public Task<IDataResult<int>> ReadMachineTimeDecelaration();
-        public Task<IResult> WriteMachineTimeDecelaration(int machineTimeDecelaration);
+        public Task<IDataResult<short>> ReadMachineTimeDecelaration();
+        public Task<IResult> WriteMachineTimeDecelaration(short machineTimeDecelaration);
 
-        public Task<IDataResult<int>> ReadMachineTimeFastStop();
-        public Task<IResult> WriteMachineTimeFastStop(int machineTimeFastStop);
+        public Task<IDataResult<short>> ReadMachineTimeFastStop();
+        public Task<IResult> WriteMachineTimeFastStop(short machineTimeFastStop);
 
-        public Task<IDataResult<int>> ReadMachineSpeedJog();
-        public Task<IResult> WriteMachineSpeedJog(int machineSpeedJog);
+        public Task<IDataResult<short>> ReadMachineSpeedJog();
+        public Task<IResult> WriteMachineSpeedJog(short machineSpeedJog);
 
         public Task<IDataResult<long>> ReadMachineLengthTotal();
         public Task<IResult> WriteMachineLengthTotal(long machineLengthTotal);

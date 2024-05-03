@@ -89,6 +89,7 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult();
         }
 
+        //Calculated
         public async Task<IDataResult<decimal>> ReadMaterialThicknessCalculatedValueActuel()//HMI:Only Read,Name:MaterialThicknessCalc,Adress:DB 90 DBW 36,Data Type:Int
         {
             return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 36, VarType.Int, 1));
@@ -99,7 +100,7 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult();
         }
 
-        public async Task<IDataResult<decimal>> ReadMaterialThicknessCalculatedValueMinimuml()//Name:MaterialThicknessMin,Adress:DB 90 DBW 124,Data Type:Int
+        public async Task<IDataResult<decimal>> ReadMaterialThicknessCalculatedValueMinimum()//Name:MaterialThicknessMin,Adress:DB 90 DBW 124,Data Type:Int
         {
             return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 124, VarType.Int, 1));
         }
@@ -119,26 +120,27 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult();
         }
 
-        public async Task<IDataResult<int>> ReadMachineWeldingSpeedSet()//Name:MachineWeldingSpeedSet_0,Adress:DB 91 DBW 80,Data Type:Int
+        public async Task<IDataResult<short>> ReadMachineWeldingSpeedSet()//Name:MachineWeldingSpeedSet_0,Adress:DB 91 DBW 80,Data Type:Int
         {
-            return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 80, VarType.Int, 1));
+            return new SuccessDataResult<short>((short)_plcDal.Read(DataType.DataBlock, 91, 80, VarType.Int, 1));
         }
-        public async Task<IResult> WriteMachineWeldingSpeedSet(int machineWeldingSpeedSet)//Name:MachineWeldingSpeedSet_0,Adress:DB 91 DBW 80,Data Type:Int
+        public async Task<IResult> WriteMachineWeldingSpeedSet(short machineWeldingSpeedSet)//Name:MachineWeldingSpeedSet_0,Adress:DB 91 DBW 80,Data Type:Int
         {
             _plcDal.Write(DataType.DataBlock, 91, 80, machineWeldingSpeedSet);
             return new SuccessResult();
         }
 
-        public async Task<IDataResult<int>> ReadMachineWeldingAmplitudeSet()//Name:MachineWeldingAmplitudeSet,Adress:DB 91 DBW 82,Data Type:Int
+        public async Task<IDataResult<short>> ReadMachineWeldingAmplitudeSet()//Name:MachineWeldingAmplitudeSet,Adress:DB 91 DBW 82,Data Type:Int
         {
-            return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 82, VarType.Int, 1));
+            return new SuccessDataResult<short>((short)_plcDal.Read(DataType.DataBlock, 91, 82, VarType.Int, 1));
         }
-        public async Task<IResult> WriteMachineWeldingAmplitudeSet(int machineWeldingAmplitudeSet)//Name:MachineWeldingAmplitudeSet,Adress:DB 91 DBW 82,Data Type:Int
+        public async Task<IResult> WriteMachineWeldingAmplitudeSet(short machineWeldingAmplitudeSet)//Name:MachineWeldingAmplitudeSet,Adress:DB 91 DBW 82,Data Type:Int
         {
             _plcDal.Write(DataType.DataBlock, 91, 82, machineWeldingAmplitudeSet);
             return new SuccessResult();
         }
 
+        //Read Only
         public async Task<IDataResult<decimal>> ReadMachineWeldingPowerActuel()//HMI:Read Only, Name:MachineWeldingPowerAct,Adress:DB 90 DBW 82,Data Type:Int
         {
             return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 82, VarType.Int, 1));
@@ -149,47 +151,48 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult();
         }
 
-        public async Task<IDataResult<int>> ReadAMachineTimeAcceleration()//Name:MachineTimeAccel,Addres:DB 91 DBW 8
+        public async Task<IDataResult<short>> ReadMachineTimeAcceleration()//Name:MachineTimeAccel,Addres:DB 91 DBW 8
         {
 
-            return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 8, VarType.Int, 1));
+            return new SuccessDataResult<short>((short)_plcDal.Read(DataType.DataBlock, 91, 8, VarType.Int, 1));
         }
-        public async Task<IResult> WriteMachineTimeAcceleration(int machineTimeAcceleration)//Name:MachineTimeAccel,Addres:DB 91 DBW 8
+        public async Task<IResult> WriteMachineTimeAcceleration(short machineTimeAcceleration)//Name:MachineTimeAccel,Addres:DB 91 DBW 8
         {
             _plcDal.Write(DataType.DataBlock, 91, 8, machineTimeAcceleration);
             return new SuccessResult();
         }
 
-        public async Task<IDataResult<int>> ReadMachineTimeDecelaration()//Name:MachineTimeDecel,Addres:DB 91 DBW 10
+        public async Task<IDataResult<short>> ReadMachineTimeDecelaration()//Name:MachineTimeDecel,Addres:DB 91 DBW 10
         {
-            return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 10, VarType.Int, 1));
+            return new SuccessDataResult<short>((short)_plcDal.Read(DataType.DataBlock, 91, 10, VarType.Int, 1));
         }
-        public async Task<IResult> WriteMachineTimeDecelaration(int machineTimeDecelaration)//Name:MachineTimeDecel,Addres:DB 91 DBW 10
+        public async Task<IResult> WriteMachineTimeDecelaration(short machineTimeDecelaration)//Name:MachineTimeDecel,Addres:DB 91 DBW 10
         {
             _plcDal.Write(DataType.DataBlock, 91, 10, machineTimeDecelaration);
             return new SuccessResult();
         }
 
-        public async Task<IDataResult<int>> ReadMachineTimeFastStop()//Name:MachineTimeFastStop,Addres:DB 91 DBW 12
+        public async Task<IDataResult<short>> ReadMachineTimeFastStop()//Name:MachineTimeFastStop,Addres:DB 91 DBW 12
         {
-            return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 12, VarType.Int, 1));
+            return new SuccessDataResult<short>((short)_plcDal.Read(DataType.DataBlock, 91, 12, VarType.Int, 1));
         }
-        public async Task<IResult> WriteMachineTimeFastStop(int machineTimeFastStop)//Name:MachineTimeFastStop,Addres:DB 91 DBW 12
+        public async Task<IResult> WriteMachineTimeFastStop(short machineTimeFastStop)//Name:MachineTimeFastStop,Addres:DB 91 DBW 12
         {
             _plcDal.Write(DataType.DataBlock, 91, 12, machineTimeFastStop);
             return new SuccessResult();
         }
 
-        public async Task<IDataResult<int>> ReadMachineSpeedJog()//Name:MachineSpeedJog,Addres:DB 91 DBW 4
+        public async Task<IDataResult<short>> ReadMachineSpeedJog()//Name:MachineSpeedJog,Addres:DB 91 DBW 4
         {
-            return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 4, VarType.Int, 1));
+            return new SuccessDataResult<short>((short)_plcDal.Read(DataType.DataBlock, 91, 4, VarType.Int, 1));
         }
-        public async Task<IResult> WriteMachineSpeedJog(int machineSpeedJog)//Name:MachineSpeedJog,Addres:DB 91 DBW 4
+        public async Task<IResult> WriteMachineSpeedJog(short machineSpeedJog)//Name:MachineSpeedJog,Addres:DB 91 DBW 4
         {
             _plcDal.Write(DataType.DataBlock, 91, 4, machineSpeedJog);
             return new SuccessResult();
         }
 
+        //Read Only
         public async Task<IDataResult<long>> ReadMachineLengthTotal()//Name:MachineLengthTotal,Adress:DB 90 DBD 16,Data Type:DInt
         {
             return new SuccessDataResult<long>((long)_plcDal.Read(DataType.DataBlock, 90, 16, VarType.DInt, 1));

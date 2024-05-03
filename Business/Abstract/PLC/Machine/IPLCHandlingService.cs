@@ -18,20 +18,20 @@ namespace Business.Abstract.PLC.Machine
         public Task<IDataResult<decimal>> ReadPositionHandlingLiftTwo();
         public Task<IResult> WritePositionHandlingLiftTwo(decimal positionHandlingLiftTwo);
 
-        public Task<IDataResult<decimal>> ReadHandlingPositionOne();
-        public Task<IResult> WriteHandlingPositionOne(decimal handlingPositionOne);
+        public Task<IDataResult<long>> ReadHandlingPositionOne();
+        public Task<IResult> WriteHandlingPositionOne(long handlingPositionOne);
 
-        public Task<IDataResult<decimal>> ReadHandlingPositionTwo();
-        public Task<IResult> WriteHandlingPositionTwo(decimal handlingPositionTwo);
+        public Task<IDataResult<long>> ReadHandlingPositionTwo();
+        public Task<IResult> WriteHandlingPositionTwo(long handlingPositionTwo);
 
-        public Task<IDataResult<decimal>> ReadHandlingPositionThree();
-        public Task<IResult> WriteHandlingPositionThree(decimal handlingPositionThree);
+        public Task<IDataResult<long>> ReadHandlingPositionThree();
+        public Task<IResult> WriteHandlingPositionThree(long handlingPositionThree);
 
-        public Task<IDataResult<decimal>> ReadHandlingPositionFour();
-        public Task<IResult> WriteHandlingPositionFour(decimal handlingPositionFour);
+        public Task<IDataResult<long>> ReadHandlingPositionFour();
+        public Task<IResult> WriteHandlingPositionFour(long handlingPositionFour);
 
-        public Task<IDataResult<decimal>> ReadHandlingPositionFive();
-        public Task<IResult> WriteHandlingPositionFive(decimal handlingPositionFive);
+        public Task<IDataResult<long>> ReadHandlingPositionFive();
+        public Task<IResult> WriteHandlingPositionFive(long handlingPositionFive);
 
         public Task<IDataResult<bool>> ReadLiftOnePositionOne();
         public Task<IResult> WriteLiftOnePositionOne(bool liftOnePositionOne);
@@ -81,52 +81,52 @@ namespace Business.Abstract.PLC.Machine
         public Task<IDataResult<bool>> ReadLiftTwoPositionEight();
         public Task<IResult> WriteLiftTwoPositionEight(bool liftTwoPositionEight);
 
-        public Task<IDataResult<decimal>> ReadLiftOneSetPositionOne();
-        public Task<IResult> WriteLiftOneSetPositionOne(decimal liftOneSetPositionOne);
+        public Task<IDataResult<long>> ReadLiftOneSetPositionOne();
+        public Task<IResult> WriteLiftOneSetPositionOne(long liftOneSetPositionOne);
 
-        public Task<IDataResult<decimal>> ReadLiftOneSetPositionTwo();
-        public Task<IResult> WriteLiftOneSetPositionTwo(decimal liftOneSetPositionTwo);
+        public Task<IDataResult<long>> ReadLiftOneSetPositionTwo();
+        public Task<IResult> WriteLiftOneSetPositionTwo(long liftOneSetPositionTwo);
 
-        public Task<IDataResult<decimal>> ReadLiftOneSetPositionThree();
-        public Task<IResult> WriteLiftOneSetPositionThree(decimal liftOneSetPositionThree);
+        public Task<IDataResult<long>> ReadLiftOneSetPositionThree();
+        public Task<IResult> WriteLiftOneSetPositionThree(long liftOneSetPositionThree);
 
-        public Task<IDataResult<decimal>> ReadLiftOneSetPositionFour();
-        public Task<IResult> WriteLiftOneSetPositionFour(decimal liftOneSetPositionFour);
+        public Task<IDataResult<long>> ReadLiftOneSetPositionFour();
+        public Task<IResult> WriteLiftOneSetPositionFour(long liftOneSetPositionFour);
 
-        public Task<IDataResult<decimal>> ReadLiftOneSetPositionFive();
-        public Task<IResult> WriteLiftOneSetPositionFive(decimal liftOneSetPositionFive);
+        public Task<IDataResult<long>> ReadLiftOneSetPositionFive();
+        public Task<IResult> WriteLiftOneSetPositionFive(long liftOneSetPositionFive);
 
-        public Task<IDataResult<decimal>> ReadLiftOneSetPositionSix();
-        public Task<IResult> WriteLiftOneSetPositionSix(decimal liftOneSetPositionSix);
+        public Task<IDataResult<long>> ReadLiftOneSetPositionSix();
+        public Task<IResult> WriteLiftOneSetPositionSix(long liftOneSetPositionSix);
 
-        public Task<IDataResult<decimal>> ReadLiftOneSetPositionSeven();
-        public Task<IResult> WriteLiftOneSetPositionSeven(decimal liftOneSetPositionSeven);
+        public Task<IDataResult<long>> ReadLiftOneSetPositionSeven();
+        public Task<IResult> WriteLiftOneSetPositionSeven(long liftOneSetPositionSeven);
 
-        public Task<IDataResult<decimal>> ReadLiftOneSetPositionEight();
-        public Task<IResult> WriteLiftOneSetPositionEight(decimal liftOneSetPositionEight);
+        public Task<IDataResult<long>> ReadLiftOneSetPositionEight();
+        public Task<IResult> WriteLiftOneSetPositionEight(long liftOneSetPositionEight);
 
-        public Task<IDataResult<decimal>> ReadLiftTwoSetPositionOne();
-        public Task<IResult> WriteLiftTwoSetPositionOne(decimal LiftTwoSetPositionOne);
+        public Task<IDataResult<long>> ReadLiftTwoSetPositionOne();
+        public Task<IResult> WriteLiftTwoSetPositionOne(long LiftTwoSetPositionOne);
 
-        public Task<IDataResult<decimal>> ReadLiftTwoSetPositionTwo();
-        public Task<IResult> WriteLiftTwoSetPositionTwo(decimal LiftTwoSetPositionTwo);
+        public Task<IDataResult<long>> ReadLiftTwoSetPositionTwo();
+        public Task<IResult> WriteLiftTwoSetPositionTwo(long LiftTwoSetPositionTwo);
 
-        public Task<IDataResult<decimal>> ReadLiftTwoSetPositionThree();
-        public Task<IResult> WriteLiftTwoSetPositionThree(decimal LiftTwoSetPositionThree);
+        public Task<IDataResult<long>> ReadLiftTwoSetPositionThree();
+        public Task<IResult> WriteLiftTwoSetPositionThree(long LiftTwoSetPositionThree);
 
-        public Task<IDataResult<decimal>> ReadLiftTwoSetPositionFour();
-        public Task<IResult> WriteLiftTwoSetPositionFour(decimal LiftTwoSetPositionFour);
+        public Task<IDataResult<long>> ReadLiftTwoSetPositionFour();
+        public Task<IResult> WriteLiftTwoSetPositionFour(long LiftTwoSetPositionFour);
 
-        public Task<IDataResult<decimal>> ReadLiftTwoSetPositionFive();
-        public Task<IResult> WriteLiftTwoSetPositionFive(decimal LiftTwoSetPositionFive);
+        public Task<IDataResult<long>> ReadLiftTwoSetPositionFive();
+        public Task<IResult> WriteLiftTwoSetPositionFive(long LiftTwoSetPositionFive);
 
-        public Task<IDataResult<decimal>> ReadLiftTwoSetPositionSix();
-        public Task<IResult> WriteLiftTwoSetPositionSix(decimal LiftTwoSetPositionSix);
+        public Task<IDataResult<long>> ReadLiftTwoSetPositionSix();
+        public Task<IResult> WriteLiftTwoSetPositionSix(long LiftTwoSetPositionSix);
 
-        public Task<IDataResult<decimal>> ReadLiftTwoSetPositionSeven();
-        public Task<IResult> WriteLiftTwoSetPositionSeven(decimal LiftTwoSetPositionSeven);
+        public Task<IDataResult<long>> ReadLiftTwoSetPositionSeven();
+        public Task<IResult> WriteLiftTwoSetPositionSeven(long LiftTwoSetPositionSeven);
 
-        public Task<IDataResult<decimal>> ReadLiftTwoSetPositionEight();
-        public Task<IResult> WriteLiftTwoSetPositionEight(decimal LiftTwoSetPositionEight);
+        public Task<IDataResult<long>> ReadLiftTwoSetPositionEight();
+        public Task<IResult> WriteLiftTwoSetPositionEight(long LiftTwoSetPositionEight);
     }
 }
