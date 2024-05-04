@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Results.Abstract;
+using Entities.Concrete.Entities.PLC.General;
 using Entities.Concrete.Enums.PLC.Machine;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,6 @@ namespace Business.Abstract.PLC.General
 
         public Task<IDataResult<short>> ReadMachineSpeedMaximum();
         public Task<IResult> WriteMachineSpeedMaximum(short machineSpeedMaximum);
-
 
 
 

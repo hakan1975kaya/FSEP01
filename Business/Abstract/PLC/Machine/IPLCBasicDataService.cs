@@ -1,4 +1,5 @@
 ﻿using Core.Utilities.Results.Abstract;
+using Entities.Concrete.Entities.PLC.Machine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace Business.Abstract.PLC.Machine
         public Task<IResult> WriteMaterialThicknessCalculatedValueActuel(decimal materialThicknessCalculatedValueActuel);
 
         public Task<IDataResult<decimal>> ReadMaterialThicknessCalculatedValueMinimum();
-        public Task<IResult> WritenMaterialThicknessCalculatedValueMinimuml(decimal materialThicknessCalculatedValueMinimuml);
+        public Task<IResult> WritenMaterialThicknessCalculatedValueMinimum(decimal materialThicknessCalculatedValueMinimum);
 
         public Task<IDataResult<decimal>> ReadMaterialThicknessCalculatedValueMaximum();
         public Task<IResult> WriteMaterialThicknessCalculatedValueMaximum(decimal materialThicknessCalculatedValueMaximum);
@@ -62,6 +63,7 @@ namespace Business.Abstract.PLC.Machine
 
         public Task<IDataResult<long>> ReadMachineLengthTotal();
         public Task<IResult> WriteMachineLengthTotal(long machineLengthTotal);
+
 
     }
 }

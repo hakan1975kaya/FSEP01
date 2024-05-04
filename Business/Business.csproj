@@ -22,7 +22,6 @@
     <Folder Include="Abstract\General\Machine\Recipes\" />
     <Folder Include="Concrete\General\Machine\Parameters\" />
     <Folder Include="Concrete\General\Machine\Recipes\" />
-    <Folder Include="Constants\Messages\PLC\Machine\" />
     <Folder Include="Validators\FluentValidators\General\Machine\Parameters\" />
     <Folder Include="Validators\FluentValidators\General\Recipes\" />
     <Folder Include="Validators\FluentValidators\PLC\Machine\" />
