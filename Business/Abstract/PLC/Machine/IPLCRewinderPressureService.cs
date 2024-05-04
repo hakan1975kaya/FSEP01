@@ -21,6 +21,9 @@ namespace Business.Abstract.PLC.Machine
         public Task<IDataResult<decimal>> ReadRewinderOnePressureLayCalculateRight();
         public Task<IResult> WriteRewinderOnePressureLayCalculateRight(decimal rewinderOnePressureLayCalculateRight);
 
+        public Task<IDataResult<decimal>> ReadRewinderOnePressureLayCalculateLeft();
+        public Task<IResult> WriteRewinderOnePressureLayCalculateLeft(decimal rewinderOnePressureLayCalculateLeft);
+
         public Task<IDataResult<decimal>> ReadRewinderOnePressureContactSetScaled();
         public Task<IResult> WriteRewinderOnePressureContactSetScaled(decimal rewinderOnePressureContactSetScaled);
 
@@ -42,8 +45,8 @@ namespace Business.Abstract.PLC.Machine
         public Task<IDataResult<decimal>> ReadRewinderTwoPressureContactCalculateCharScaled();
         public Task<IResult> WriteRewinderTwoPressureContactCalculateCharScaled(decimal rewinderTwoPressureContactCalculateCharScaled);
 
-        public Task<IDataResult<decimal>> ReadRewinderTwoPressureContanctBalance();
-        public Task<IResult> WriteRewinderTwoPressureContanctBalance(decimal rewinderTwoPressureContanctBalance);
+        public Task<IDataResult<int>> ReadRewinderTwoPressureContanctBalance();
+        public Task<IResult> WriteRewinderTwoPressureContanctBalance(int rewinderTwoPressureContanctBalance);
 
         public Task<IDataResult<decimal>> ReadRewinderTwoPressureContactCalculateRight();
         public Task<IResult> WriteRewinderTwoPressureContactCalculateRight(decimal rewinderTwoPressureContactCalculateRight);
@@ -57,8 +60,8 @@ namespace Business.Abstract.PLC.Machine
         public Task<IDataResult<decimal>> ReadRewinderTwoPressureSupportCalculateCharScaled();
         public Task<IResult> WriteRewinderTwoPressureSupportCalculateCharScaled(decimal rewinderTwoPressureSupportCalculateCharScaled);
 
-        public Task<IDataResult<decimal>> ReadRewinderTwoPressureSupportBalance();
-        public Task<IResult> WriteRewinderTwoPressureSupportBalance(decimal rewinderTwoPressureSupportBalance);
+        public Task<IDataResult<int>> ReadRewinderTwoPressureSupportBalance();
+        public Task<IResult> WriteRewinderTwoPressureSupportBalance(int rewinderTwoPressureSupportBalance);
 
         public Task<IDataResult<decimal>> ReadRewinderTwoPressureSupportCalcuteRight();
         public Task<IResult> WriteRewinderTwoPressureSupportCalcuteRight(decimal rewinderTwoPressureSupportCalcuteRight);
@@ -66,4 +69,4 @@ namespace Business.Abstract.PLC.Machine
         public Task<IDataResult<decimal>> ReadRewinderTwoPressureSupportCalcuteLeft();
         public Task<IResult> WriteRewinderTwoPressureSupportCalcuteLeft(decimal rewinderTwoPressureSupportCalcuteLeft);
     }
-}
+}  

@@ -14,18 +14,14 @@ using DataAccess.Abstract.General.General;
 using DataAccess.Abstract.General.Machine.General;
 using DataAccess.Abstract.General.Machine.InputCoils;
 using DataAccess.Abstract.General.Machine.OutputCoils;
-using DataAccess.Abstract.General.Machine.Parameters;
 using DataAccess.Abstract.General.Machine.ProcessCoils;
-using DataAccess.Abstract.General.Machine.Recipes;
 using DataAccess.Abstract.PSI.Telegrams;
 using DataAccess.Abstract.PSI.Types;
 using DataAccess.Concrete.EntityFramework.General.General;
 using DataAccess.Concrete.EntityFramework.General.Machine.General;
 using DataAccess.Concrete.EntityFramework.General.Machine.InputCoils;
 using DataAccess.Concrete.EntityFramework.General.Machine.OutputCoils;
-using DataAccess.Concrete.EntityFramework.General.Machine.Parameters;
 using DataAccess.Concrete.EntityFramework.General.Machine.ProcessCoils;
-using DataAccess.Concrete.EntityFramework.General.Machine.Recipes;
 using DataAccess.Concrete.EntityFramework.PSI.Telegrams;
 using DataAccess.Concrete.EntityFramework.PSI.Types;
 using PLC.Abstract;
@@ -81,29 +77,7 @@ namespace Business.DependencyResolvers.Autofac
             //General
             //Machine
             //General
-            builder.RegisterType<EFContactRollDal>().As<IContactRollDal>();
-            builder.RegisterType<ContactRollManager>().As<IContactRollService>();
 
-            builder.RegisterType<EFDefinationDal>().As<IDefinationDal>();
-            builder.RegisterType<DefinationManager>().As<IDefinationService>();
-
-            builder.RegisterType<EFDensityDal>().As<IDensityDal>();
-            builder.RegisterType<DensityManager>().As<IDensityService>();
-
-            builder.RegisterType<EFEventDal>().As<IEventDal>();
-            builder.RegisterType<EventManager>().As<IEventService>();
-
-            builder.RegisterType<EFHeadTailScrapDal>().As<IHeadTailScrapDal>();
-            builder.RegisterType<HeadTailScrapManager>().As<IHeadTailScrapService>();
-
-            builder.RegisterType<EFLevelOneTelegramDal>().As<ILevelOneTelegramDal>();
-            builder.RegisterType<LevelOneTelegramManager>().As<ILevelOneTelegramService>();
-
-            builder.RegisterType<EFLevelThreeTelegramDal>().As<ILevelThreeTelegramDal>();
-            builder.RegisterType<LevelThreeTelegramManager>().As<ILevelThreeTelegramService>();
-
-            builder.RegisterType<EFLubracationRollDal>().As<ILubracationRollDal>();
-            builder.RegisterType<LubracationRollManager>().As<ILubracationRollService>();
 
             builder.RegisterType<EFSlitPatternDal>().As<ISlitPatternDal>();
             builder.RegisterType<SlitPatternManager>().As<ISlitPatternService>();
@@ -111,11 +85,7 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EFSlitPatternDetailDal>().As<ISlitPatternDetailDal>();
             builder.RegisterType<SlitPatternDetailManager>().As<ISlitPatternDetailService>();
 
-            builder.RegisterType<EFTramRollDal>().As<ITramRollDal>();
-            builder.RegisterType<TramRollManager>().As<ITramRollService>();
 
-            builder.RegisterType<EFUsageAreaDal>().As<IUsageAreaDal>();
-            builder.RegisterType<UsageAreaManager>().As<IUsageAreaService>();
             //General
             //Machine
             //InputCoilS
@@ -141,38 +111,7 @@ namespace Business.DependencyResolvers.Autofac
             //General
             //Machine
             //Parameters
-            builder.RegisterType<EFParameterApplyingUnitDal>().As<IParameterApplyingUnitDal>();
-            builder.RegisterType<ParameterApplyingUnitManager>().As<IParameterApplyingUnitService>();
 
-            builder.RegisterType<EFParameterBasicDataDal>().As<IParameterBasicDataDal>();
-            builder.RegisterType<ParameterBasicDataManager>().As<IParameterBasicDataService>();
-
-            builder.RegisterType<EFParameterDal>().As<IParameterDal>();
-            builder.RegisterType<ParameterManager>().As<IParameterService>();
-
-            builder.RegisterType<EFParameterMachineDal>().As<IParameterMachineDal>();
-            builder.RegisterType<ParameterMachineManager>().As<IParameterMachineService>();
-
-            builder.RegisterType<EFParameterRewinderDal>().As<IParameterRewinderDal>();
-            builder.RegisterType<ParameterRewinderManager>().As<IParameterRewinderService>();
-
-            builder.RegisterType<EFParameterRewinderOnePressureDal>().As<IParameterRewinderOnePressureDal>();
-            builder.RegisterType<ParameterRewinderOnePressureManager>().As<IParameterRewinderOnePressureService>();
-
-            builder.RegisterType<EFParameterRewinderOneTensionDal>().As<IParameterRewinderOneTensionDal>();
-            builder.RegisterType<ParameterRewinderOneTensionManager>().As<IParameterRewinderOneTensionService>();
-
-            builder.RegisterType<EFParameterRewinderTwoPressureDal>().As<IParameterRewinderTwoPressureDal>();
-            builder.RegisterType<ParameterRewinderTwoPressureManager>().As<IParameterRewinderTwoPressureService>();
-
-            builder.RegisterType<EFParameterRewinderTwoTensionDal>().As<IParameterRewinderTwoTensionDal>();
-            builder.RegisterType<ParameterRewinderTwoTensionManager>().As<IParameterRewinderTwoTensionService>();
-
-            builder.RegisterType<EFParameterSpeedCharacteristicDal>().As<IParameterSpeedCharacteristicDal>();
-            builder.RegisterType<ParameterSpeedCharacteristicManager>().As<IParameterSpeedCharacteristicService>();
-
-            builder.RegisterType<EFParameterSuctionDal>().As<IParameterSuctionDal>();
-            builder.RegisterType<ParameterSuctionManager>().As<IParameterSuctionService>();
 
             //General
             //Machine
@@ -183,35 +122,7 @@ namespace Business.DependencyResolvers.Autofac
             //General
             //Machine
             //Recipes
-            builder.RegisterType<EFRecipeApplyingUnitDal>().As<IRecipeApplyingUnitDal>();
-            builder.RegisterType<RecipeApplyingUnitManager>().As<IRecipeApplyingUnitService>();
 
-            builder.RegisterType<EFRecipeBasicDataDal>().As<IRecipeBasicDataDal>();
-            builder.RegisterType<RecipeBasicDataManager>().As<IRecipeBasicDataService>();
-
-            builder.RegisterType<EFRecipeMachineDal>().As<IRecipeMachineDal>();
-            builder.RegisterType<RecipeMachineManager>().As<IRecipeMachineService>();
-
-            builder.RegisterType<EFRecipeRewinderDal>().As<IRecipeRewinderDal>();
-            builder.RegisterType<RecipeRewinderManager>().As<IRecipeRewinderService>();
-
-            builder.RegisterType<EFRecipeRewinderOnePressureDal>().As<IRecipeRewinderOnePressureDal>();
-            builder.RegisterType<RecipeRewinderOnePressureManager>().As<IRecipeRewinderOnePressureService>();
-
-            builder.RegisterType<EFRecipeRewinderOneTensionDal>().As<IRecipeRewinderOneTensionDal>();
-            builder.RegisterType<RecipeRewinderOneTensionManager>().As<IRecipeRewinderOneTensionService>();
-
-            builder.RegisterType<EFRecipeRewinderTwoPressureDal>().As<IRecipeRewinderTwoPressureDal>();
-            builder.RegisterType<RecipeRewinderTwoPressureManager>().As<IRecipeRewinderTwoPressureService>();
-
-            builder.RegisterType<EFRecipeRewinderTwoTensionDal>().As<IRecipeRewinderTwoTensionDal>();
-            builder.RegisterType<RecipeRewinderTwoTensionManager>().As<IRecipeRewinderTwoTensionService>();
-
-            builder.RegisterType<EFRecipeSpeedCharacteristicDal>().As<IRecipeSpeedCharacteristicDal>();
-            builder.RegisterType<RecipeSpeedCharacteristicManager>().As<IRecipeSpeedCharacteristicService>();
-
-            builder.RegisterType<EFRecipeSuctionDal>().As<IRecipeSuctionDal>();
-            builder.RegisterType<RecipeSuctionManager>().As<IRecipeSuctionService>();
 
             //PLC
             builder.RegisterType<PLCHelper>().As<IPLCHelper>();

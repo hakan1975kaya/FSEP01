@@ -89,7 +89,7 @@ namespace Business.Concrete.PLC.Machine
 
         public async Task<IDataResult<long>> ReadRewinderOneLengthSet()//Name:Rew1LengthSet,Addres:DB 91 DBD 306,Data Type:Dlong
         {
-            return new SuccessDataResult<long>((long)_plcDal.Read(DataType.DataBlock, 91, 306, VarType.Dlong, 1));
+            return new SuccessDataResult<long>((long)_plcDal.Read(DataType.DataBlock, 91, 306, VarType.DInt, 1));
         }
         public async Task<IResult> WriteRewinderOneLengthSet(long rewinderOneLengthSet)//Name:Rew1LengthSet,Addres:DB 91 DBD 306,Data Type:Dlong
         {
@@ -100,7 +100,7 @@ namespace Business.Concrete.PLC.Machine
         //Read Only
         public async Task<IDataResult<long>> ReadRewinderOneLengthActuel()//Name:Rew1LengthAct,Addres:DB 90 DBD 306,Data Type:Dlong
         {
-            return new SuccessDataResult<long>((long)_plcDal.Read(DataType.DataBlock, 90, 306, VarType.Dlong, 1));
+            return new SuccessDataResult<long>((long)_plcDal.Read(DataType.DataBlock, 90, 306, VarType.DInt, 1));
         }
         public async Task<IResult> WriteRewinderOneLengthActuel(long rewinderOneLengthActuel)//Name:Rew1LengthAct,Addres:DB 90 DBD 306,Data Type:Dlong
         {
@@ -131,7 +131,7 @@ namespace Business.Concrete.PLC.Machine
 
         public async Task<IDataResult<long>> ReadRewinderTwoLengthSet()//Name:Rew1LengthSet,Addres:DB 91 DBD 406,Data Type:Dlong
         {
-            return new SuccessDataResult<long>((long)_plcDal.Read(DataType.DataBlock, 91, 406, VarType.Dlong, 1));
+            return new SuccessDataResult<long>((long)_plcDal.Read(DataType.DataBlock, 91, 406, VarType.DInt, 1));
         }
         public async Task<IResult> WriteRewinderTwoLengthSet(long rewinderTwoLengthSet)//Name:Rew1LengthSet,Addres:DB 91 DBD 406,Data Type:Dlong
         {
@@ -142,7 +142,7 @@ namespace Business.Concrete.PLC.Machine
         //Read Only
         public async Task<IDataResult<long>> ReadRewinderTwoLengthActuel()//Name:Rew2LengthAct,Addres:DB 90 DBD 406,Data Type:Dlong
         {
-            return new SuccessDataResult<long>((long)_plcDal.Read(DataType.DataBlock, 90, 406, VarType.Dlong, 1));
+            return new SuccessDataResult<long>((long)_plcDal.Read(DataType.DataBlock, 90, 406, VarType.DInt, 1));
         }
         public async Task<IResult> WriteRewinderTwoLengthActuel(long rewinderTwoLengthActuel)//Name:Rew2LengthAct,Addres:DB 90 DBD 406,Data Type:Dlong
         {

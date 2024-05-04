@@ -25,7 +25,7 @@ namespace Business.Abstract.PLC.Machine
         public Task<IResult> WriteRewinderOneDiameterActuel(long rewinderOneDiameterActuel);
 
         public Task<IDataResult<long>> ReadRewinderOneLengthActuel();
-        public Task<IResult> WriteRewinderOneLengthActuel(long rewinderOneLengthActuel);t
+        public Task<IResult> WriteRewinderOneLengthActuel(long rewinderOneLengthActuel);
 
         public Task<IDataResult<long>> ReadRewinderTwoDiameterActuel();
         public Task<IResult> WriteRewinderTwoDiameterActuel(long rewinderTwoDiameterActuel);

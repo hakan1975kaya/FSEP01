@@ -78,21 +78,21 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult();
         }
 
-        public async Task<IDataResult<int>> ReadRewinderOneMaterialWidth()//Name:Rew1MaterialWidth,Addres:DB 91 DBW 310,Data Type:Int
+        public async Task<IDataResult<short>> ReadRewinderOneMaterialWidth()//Name:Rew1MaterialWidth,Addres:DB 91 DBW 310,Data Type:Int
         {
-            return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 310, VarType.Int, 1));
+            return new SuccessDataResult<short>((short)_plcDal.Read(DataType.DataBlock, 91, 310, VarType.Int, 1));
         }
-        public async Task<IResult> WriteRewinderOneMaterialWidth(int rewinderOneMaterialWidth)//Name:Rew1MaterialWidth,Addres:DB 91 DBW 310,Data Type:Int
+        public async Task<IResult> WriteRewinderOneMaterialWidth(short rewinderOneMaterialWidth)//Name:Rew1MaterialWidth,Addres:DB 91 DBW 310,Data Type:Int
         {
             _plcDal.Write(DataType.DataBlock, 91, 310, rewinderOneMaterialWidth);
             return new SuccessResult();
         }
 
-        public async Task<IDataResult<decimal>> ReadRewinderOneShaft()//Name:Rew1Shaft,Addres:DB 91 DBW 382,Data Type:Int
+        public async Task<IDataResult<short>> ReadRewinderOneShaft()//Name:Rew1Shaft,Addres:DB 91 DBW 382,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 91, 382, VarType.Int, 1));
+            return new SuccessDataResult<short>((short)_plcDal.Read(DataType.DataBlock, 91, 382, VarType.Int, 1));
         }
-        public async Task<IResult> WriteRewinderOneShaft(decimal rewinderOneShaft)//Name:Rew1Shaft,Addres:DB 91 DBW 382,Data Type:Int
+        public async Task<IResult> WriteRewinderOneShaft(short rewinderOneShaft)//Name:Rew1Shaft,Addres:DB 91 DBW 382,Data Type:Int
         {
             _plcDal.Write(DataType.DataBlock, 91, 382, rewinderOneShaft);
             return new SuccessResult();
@@ -138,41 +138,41 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult();
         }
 
-        public async Task<IDataResult<decimal>> ReadRewinderTwoTensionCalculateCharNewton()//Name:Rew2TensionCalcCharNewton,Addres:DB 90 DBW 418,Data Type:Int
+        public async Task<IDataResult<short>> ReadRewinderTwoTensionCalculateCharNewton()//Name:Rew2TensionCalcCharNewton,Addres:DB 90 DBW 418,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 418, VarType.Int, 1));
+            return new SuccessDataResult<short>((short)_plcDal.Read(DataType.DataBlock, 90, 418, VarType.Int, 1));
         }
-        public async Task<IResult> WriteRewinderTwoTensionCalculateCharNewton(decimal rewinderTwoTensionCalculateCharNewton)//Name:Rew2TensionCalcCharNewton,Addres:DB 90 DBW 418,Data Type:Int
+        public async Task<IResult> WriteRewinderTwoTensionCalculateCharNewton(short rewinderTwoTensionCalculateCharNewton)//Name:Rew2TensionCalcCharNewton,Addres:DB 90 DBW 418,Data Type:Int
         {
             _plcDal.Write(DataType.DataBlock, 90, 418, rewinderTwoTensionCalculateCharNewton);
             return new SuccessResult();
         }
 
-        public async Task<IDataResult<decimal>> ReadRewinderTwoTensionActuelMeasureNewton()//Name:Rew2TensionActMeasNewton,Addres:DB 90 DBW 414,Data Type:Int
+        public async Task<IDataResult<short>> ReadRewinderTwoTensionActuelMeasureNewton()//Name:Rew2TensionActMeasNewton,Addres:DB 90 DBW 414,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 414, VarType.Int, 1));
+            return new SuccessDataResult<short>((short)_plcDal.Read(DataType.DataBlock, 90, 414, VarType.Int, 1));
         }
-        public async Task<IResult> WriteRewinderTwoTensionActuelMeasureNewton(decimal rewinderTwoTensionActuelMeasureNewton)//Name:Rew2TensionActMeasNewton,Addres:DB 90 DBW 414,Data Type:Int
+        public async Task<IResult> WriteRewinderTwoTensionActuelMeasureNewton(short rewinderTwoTensionActuelMeasureNewton)//Name:Rew2TensionActMeasNewton,Addres:DB 90 DBW 414,Data Type:Int
         {
             _plcDal.Write(DataType.DataBlock, 90, 414, rewinderTwoTensionActuelMeasureNewton);
             return new SuccessResult();
         }
 
-        public async Task<IDataResult<decimal>> ReadRewinderTwoMaterialWidth()//Name:Rew2MaterialWidth,Addres:DB 91 DBW 410,Data Type:Int
+        public async Task<IDataResult<short>> ReadRewinderTwoMaterialWidth()//Name:Rew2MaterialWidth,Addres:DB 91 DBW 410,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 410, VarType.Int, 1));
+            return new SuccessDataResult<short>((short)_plcDal.Read(DataType.DataBlock, 90, 410, VarType.Int, 1));
         }
-        public async Task<IResult> WriteRewinderTwoMaterialWidth(decimal rewinderTwoMaterialWidth)//Name:Rew2MaterialWidth,Addres:DB 91 DBW 410,Data Type:Int
+        public async Task<IResult> WriteRewinderTwoMaterialWidth(short rewinderTwoMaterialWidth)//Name:Rew2MaterialWidth,Addres:DB 91 DBW 410,Data Type:Int
         {
             _plcDal.Write(DataType.DataBlock, 90, 410, rewinderTwoMaterialWidth);
             return new SuccessResult();
         }
 
-        public async Task<IDataResult<decimal>> ReadRewinderTwoShaft()//Name:Rew2Shaft,Addres:DB 91 DBW 482,Data Type:Int
+        public async Task<IDataResult<short>> ReadRewinderTwoShaft()//Name:Rew2Shaft,Addres:DB 91 DBW 482,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 91, 482, VarType.Int, 1));
+            return new SuccessDataResult<short>((short)_plcDal.Read(DataType.DataBlock, 91, 482, VarType.Int, 1));
         }
-        public async Task<IResult> WriteRewinderTwoShaft(decimal rewinderTwoShaft)//Name:Rew2Shaft,Addres:DB 91 DBW 482,Data Type:Int
+        public async Task<IResult> WriteRewinderTwoShaft(short rewinderTwoShaft)//Name:Rew2Shaft,Addres:DB 91 DBW 482,Data Type:Int
         {
             _plcDal.Write(DataType.DataBlock, 91, 482, rewinderTwoShaft);
             return new SuccessResult();

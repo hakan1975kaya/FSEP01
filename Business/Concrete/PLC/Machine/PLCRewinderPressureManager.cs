@@ -138,11 +138,11 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult();
         }
 
-        public async Task<IDataResult<decimal>> ReadRewinderTwoPressureContanctBalance()//Name:Rew2PresContBalance,Addres:DB 91 DBW 436,Data Type:Int
+        public async Task<IDataResult<int>> ReadRewinderTwoPressureContanctBalance()//Name:Rew2PresContBalance,Addres:DB 91 DBW 436,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 91, 436, VarType.Int, 1));
+            return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 436, VarType.Int, 1));
         }
-        public async Task<IResult> WriteRewinderTwoPressureContanctBalance(decimal rewinderTwoPressureContanctBalance)//Name:Rew2PresContBalance,Addres:DB 91 DBW 436,Data Type:Int
+        public async Task<IResult> WriteRewinderTwoPressureContanctBalance(int rewinderTwoPressureContanctBalance)//Name:Rew2PresContBalance,Addres:DB 91 DBW 436,Data Type:Int
         {
             _plcDal.Write(DataType.DataBlock, 91, 436, rewinderTwoPressureContanctBalance);
             return new SuccessResult();
@@ -188,11 +188,11 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult();
         }
 
-        public async Task<IDataResult<decimal>> ReadRewinderTwoPressureSupportBalance()//Name:Rew2PresSupCalcCharScaled,Addres:DB 91 DBW 466,Data Type:Int
+        public async Task<IDataResult<int>> ReadRewinderTwoPressureSupportBalance()//Name:Rew2PresSupCalcCharScaled,Addres:DB 91 DBW 466,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 91, 466, VarType.Int, 1));
+            return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 466, VarType.Int, 1));
         }
-        public async Task<IResult> WriteRewinderTwoPressureSupportBalance(decimal rewinderTwoPressureSupportBalance)//Name:Rew2PresSupCalcCharScaled,Addres:DB 91 DBW 466,Data Type:Int
+        public async Task<IResult> WriteRewinderTwoPressureSupportBalance(int rewinderTwoPressureSupportBalance)//Name:Rew2PresSupCalcCharScaled,Addres:DB 91 DBW 466,Data Type:Int
         {
             _plcDal.Write(DataType.DataBlock, 91, 466, rewinderTwoPressureSupportBalance);
             return new SuccessResult();

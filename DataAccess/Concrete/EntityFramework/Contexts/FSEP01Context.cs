@@ -4,9 +4,7 @@ using Entities.Concrete.Entities.General.General;
 using Entities.Concrete.Entities.General.Machine.General;
 using Entities.Concrete.Entities.General.Machine.InputCoils;
 using Entities.Concrete.Entities.General.Machine.OutputCoils;
-using Entities.Concrete.Entities.General.Machine.Parameters;
 using Entities.Concrete.Entities.General.Machine.ProcessCoils;
-using Entities.Concrete.Entities.General.Machine.Recipes;
 using Entities.Concrete.Entities.PLC.Recipe;
 using Entities.Concrete.Entities.PSI.Telegrams;
 using Entities.Concrete.Entities.PSI.Types;
@@ -70,17 +68,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         //General
         //Machine
         //Parameters
-        public DbSet<Parameter> Parameters { get; set; }
-        public DbSet<ParameterApplyingUnit> ParameterApplyingUnits { get; set; }
-        public DbSet<ParameterBasicData> ParameterBasicDatas { get; set; }
-        public DbSet<ParameterMachine> ParameterMachines { get; set; }
-        public DbSet<ParameterRewinder> ParameterRewinders { get; set; }
-        public DbSet<ParameterRewinderOnePressure> ParameterRewinderOnePressures { get; set; }
-        public DbSet<ParameterRewinderOneTension> ParameterRewinderOneTensions { get; set; }
-        public DbSet<ParameterRewinderTwoPressure> ParameterRewinderTwoPressures { get; set; }
-        public DbSet<ParameterRewinderTwoTension> ParameterRewinderTwoTensions { get; set; }
-        public DbSet<ParameterSpeedCharacteristic> ParameterSpeedCharacteristics { get; set; }
-        public DbSet<ParameterSuction> ParameterSuctions { get; set; }
+
 
         //General
         //Machine
@@ -90,16 +78,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         //General
         //Machine
         //Recipes
-        public DbSet<RecipeApplyingUnit> RecipeApplyingunits { get; set; }
-        public DbSet<RecipeBasicData> RecipeBasicDatas { get; set; }
-        public DbSet<RecipeMachine> RecipeMachines { get; set; }
-        public DbSet<RecipeRewinder> RecipeRewinders { get; set; }
-        public DbSet<RecipeRewinderOnePressure> RecipeRewinderOnePressures { get; set; }
-        public DbSet<RecipeRewinderOneTension> RecipeRewinderOneTensions { get; set; }
-        public DbSet<RecipeRewinderTwoPressure> RecipeRewinderTwoPressures { get; set; }
-        public DbSet<RecipeRewinderTwoTension> PrRecipeRewinderTwoTensionsocessCoils { get; set; }
-        public DbSet<RecipeSpeedCharacteristic> RecipeSpeedCharacteristics { get; set; }
-        public DbSet<RecipeSuction> RecipeSuctions { get; set; }
+
 
         //PSI
         //Telegrams

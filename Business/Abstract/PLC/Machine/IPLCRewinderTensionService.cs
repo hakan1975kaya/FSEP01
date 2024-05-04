@@ -27,11 +27,11 @@ namespace Business.Abstract.PLC.Machine
         public Task<IDataResult<decimal>> ReadRewinderOneTensionContactSetScaled();
         public Task<IResult> WriteRewinderOneTensionContactSetScaled(decimal rewinderOneTensionContactSetScaled);
 
-        public Task<IDataResult<int>> ReadRewinderOneMaterialWidth();
-        public Task<IResult> WriteRewinderOneMaterialWidth(int rewinderOneMaterialWidth);
+        public Task<IDataResult<short>> ReadRewinderOneMaterialWidth();
+        public Task<IResult> WriteRewinderOneMaterialWidth(short rewinderOneMaterialWidth);
 
-        public Task<IDataResult<decimal>> ReadRewinderOneShaft();
-        public Task<IResult> WriteRewinderOneShaft(decimal rewinderOneShaft);
+        public Task<IDataResult<short>> ReadRewinderOneShaft();
+        public Task<IResult> WriteRewinderOneShaft(short rewinderOneShaft);
 
         public Task<IDataResult<decimal>> ReadRewinderTwoTensionContactSetScaled();
         public Task<IResult> WriteRewinderTwoTensionContactSetScaled(decimal rewinderTwoTensionContactSetScaled);
@@ -45,17 +45,17 @@ namespace Business.Abstract.PLC.Machine
         public Task<IDataResult<decimal>> ReadRewinderTwoTensionActuelMeasureScaled();
         public Task<IResult> WriteRewinderTwoTensionActuelMeasureScaled(decimal rewinderTwoTensionActuelMeasureScaled);
 
-        public Task<IDataResult<decimal>> ReadRewinderTwoTensionCalculateCharNewton();
-        public Task<IResult> WriteRewinderTwoTensionCalculateCharNewton(decimal rewinderTwoTensionCalculateCharNewton);
+        public Task<IDataResult<short>> ReadRewinderTwoTensionCalculateCharNewton();
+        public Task<IResult> WriteRewinderTwoTensionCalculateCharNewton(short rewinderTwoTensionCalculateCharNewton);
 
-        public Task<IDataResult<decimal>> ReadRewinderTwoTensionActuelMeasureNewton();
-        public Task<IResult> WriteRewinderTwoTensionActuelMeasureNewton(decimal rewinderTwoTensionActuelMeasureNewton);
+        public Task<IDataResult<short>> ReadRewinderTwoTensionActuelMeasureNewton();
+        public Task<IResult> WriteRewinderTwoTensionActuelMeasureNewton(short rewinderTwoTensionActuelMeasureNewton);
 
-        public Task<IDataResult<decimal>> ReadRewinderTwoMaterialWidth();
-        public Task<IResult> WriteRewinderTwoMaterialWidth(decimal rewinderTwoMaterialWidth);
+        public Task<IDataResult<short>> ReadRewinderTwoMaterialWidth();
+        public Task<IResult> WriteRewinderTwoMaterialWidth(short rewinderTwoMaterialWidth);
 
-        public Task<IDataResult<decimal>> ReadRewinderTwoShaft();
-        public Task<IResult> WriteRewinderTwoShaft(decimal rewinderTwoShaft);
+        public Task<IDataResult<short>> ReadRewinderTwoShaft();
+        public Task<IResult> WriteRewinderTwoShaft(short rewinderTwoShaft);
 
     }
 }

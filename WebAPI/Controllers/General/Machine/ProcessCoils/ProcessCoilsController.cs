@@ -1,6 +1,5 @@
 ﻿using Business.Abstract.General.General;
 using Entities.Concrete.Dtos.General.Genaral;
-using Entities.Concrete.Entities.General.Machine.Parameters;
 using Entities.Concrete.Entities.General.Machine.ProcessCoils;
 using Microsoft.AspNetCore.Mvc;
 
