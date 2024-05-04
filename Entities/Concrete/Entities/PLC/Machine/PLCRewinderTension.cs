@@ -11,6 +11,7 @@ namespace Entities.Concrete.Entities.PLC.Machine
     public class PLCRewinderTension:IEntity
     {
         public Guid Id { get; set; }
+        public Guid PLCGeneralId { get; set; }
         public decimal? RewinderOneTensionSetScaled { get; set; }//Name:Rew1TensionSetScaled,Adress:DB 91 DBW 312,Data Type:Int
         public decimal? RewinderOneTensionCalculateCharScale { get; set; }//Name:Rew1TensionCalcCharScaled,Adress:DB 90 DBW 316,Data Type:Int
         public decimal? RewinderOneTensionActuelMeasureScaled { get; set; }//Name:Rew1TensionActMeasScaled,Adress:DB 90 DBW 312,Data Type:Int

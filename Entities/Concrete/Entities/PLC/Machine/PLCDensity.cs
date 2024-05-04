@@ -10,6 +10,7 @@ namespace Entities.Concrete.Entities.PLC.Machine
     public class PLCDensity : IEntity
     {
         public Guid Id { get; set; }
+        public Guid PLCGeneralId { get; set; }
         public int? RewinderOneDensityGraph { get; set; }//Name:Rew1DensityGraph,Adress:DB 43 DBW 48,Data Type:Int
         public int? RewinderTwoDensityGraph { get; set; }//Name:Rew2DensityGraph,Adress:DB 53 DBW 48,Data Type:Int
         public int? MachineSpeedActuelArchive { get; set; }//Name:MachineSpeedActArchive,Adress:DB 304 DBW 20,Data Type:Int

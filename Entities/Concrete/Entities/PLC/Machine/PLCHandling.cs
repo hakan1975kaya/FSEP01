@@ -11,6 +11,7 @@ namespace Entities.Concrete.Entities.PLC.Machine
     public class PLCHandling : IEntity
     {
         public Guid Id { get; set; }
+        public Guid PLCGeneralId { get; set; }
         public decimal? PositionHandling { get; set; }//Name:Pos_Handling,Adress:DB 233 DBD 44,Data Type:DInt
         public decimal? PositionHandlingLiftOne { get; set; }//Name:Pos_Handling_Lift_1,Adress:DB 230 DBD 44,Data Type:DInt
         public decimal? PositionHandlingLiftTwo { get; set; }//Name:Pos_Handling_Lift_2,Adress:DB 231 DBD 44,Data Type:DInt

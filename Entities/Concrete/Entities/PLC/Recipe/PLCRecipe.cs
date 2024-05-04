@@ -10,6 +10,7 @@ namespace Entities.Concrete.Entities.PLC.Recipe
     public class PLCRecipe : IEntity
     {
         public Guid Id { get; set; }
+        public Guid PLCGeneralId { get; set; }
         public int? RecipeNumber { get; set; }//TagName:RecipeNumber,TagValue:DB 96 DBW 40
         public int? MaterialThickness { get; set; }//Name:Recipe_entry_0_0,DisplayName: Material thickness [µm],TagName:MaterialThickness,TagValue:DB 91 DBW 36
         public int? RewinderOneMaterialWidth { get; set; }//Name:Recipe_entry_0_1 ,DisplayName:Material width rewinder [mm] ,TagName:Rew1MaterialWidth,TagValue: DB 91 DBW 310

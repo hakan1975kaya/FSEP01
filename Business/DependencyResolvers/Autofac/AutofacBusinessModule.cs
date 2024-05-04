@@ -77,8 +77,6 @@ namespace Business.DependencyResolvers.Autofac
             //General
             //Machine
             //General
-
-
             builder.RegisterType<EFSlitPatternDal>().As<ISlitPatternDal>();
             builder.RegisterType<SlitPatternManager>().As<ISlitPatternService>();
 
@@ -100,6 +98,8 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<EFInputCoilRemarkDal>().As<IInputCoilRemarkDal>();
             builder.RegisterType<InputCoilRemarkManager>().As<IInputCoilRemarkService>();
+
+
             //General
             //Machine
             //OutputCoilS
@@ -108,21 +108,12 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<EFOutputCoilOtherDal>().As<IOutputCoilOtherDal>();
             builder.RegisterType<OutputCoilOtherManager>().As<IOutputCoilOtherService>();
-            //General
-            //Machine
-            //Parameters
-
 
             //General
             //Machine
             //Parameters
             builder.RegisterType<EFProcessCoilDal>().As<IProcessCoilDal>();
             builder.RegisterType<ProcessCoilManager>().As<IProcessCoilService>();
-
-            //General
-            //Machine
-            //Recipes
-
 
             //PLC
             builder.RegisterType<PLCHelper>().As<IPLCHelper>();

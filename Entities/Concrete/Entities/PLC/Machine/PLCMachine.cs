@@ -11,6 +11,7 @@ namespace Entities.Concrete.Entities.PLC.Machine
     public class PLCMachine:IEntity
     {
         public Guid Id { get; set; }
+        public Guid PLCGeneralId { get; set; }
         public long? MachineSpeedSet { get; set; }//Name:MachineSpeedSet,Adress:DB 91 DBW 2,Data Type:Int
         public long? TransportOneTensionSet { get; set; }//Name:Transport1TensionSet,Adress:DB 91 DBW 550,Data Type:Int
         public long? TransportTwoTensionSet { get; set; }//Name:Transport2TensionSet,Adress:DB 91 DBW 560,Data Type:Int

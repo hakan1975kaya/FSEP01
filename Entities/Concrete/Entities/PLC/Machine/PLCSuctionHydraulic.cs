@@ -11,6 +11,7 @@ namespace Entities.Concrete.Entities.PLC.Machine
     public class PLCSuctionHydraulic:IEntity
     {
         public Guid Id { get; set; }
+        public Guid PLCGeneralId { get; set; }
         public bool StartCycleCentralLubrication { get; set; }//Name:MachineFunctFlag1,Adress:DB 91 DBW 28,Data Type:Int,Note:91.28.6 StartCycleCentrallubrication
         public bool StartCycleCentralLubricationIsRunning { get; set; }//Name:MachineFunctFlag1,Adress:DB 91 DBW 28,Data Type:Int,Note:91.28.15 StartLubrication
         public short HydraulicTemperature { get; set; }//Name:HydraulicTemperature,Adress:DB 90 DBW 660,Data Type:Int

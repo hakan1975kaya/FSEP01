@@ -10,6 +10,7 @@ namespace Entities.Concrete.Entities.PLC.Machine
     public class PLCBasicData : IEntity
     {
         public Guid Id { get; set; }
+        public Guid PLCGeneralId { get; set; }
         public decimal? RewinderOneDiameterLayRoll { get; set; }//Name:Rew1DiaLayRoll,Adress:DB 91 DBD 368,Data Type:DInt
         public decimal? RewinderOneDiameterContactRoll { get; set; }//Name:Rew1DiaContRoll,Adress:DB 91 DBD 338,Data Type:Int
         public decimal? RewinderTwoDiameterContactRoll { get; set; }//Name:Rew2DiaContRoll,Adress:DB 91 DBD 438,Data Type:DInt

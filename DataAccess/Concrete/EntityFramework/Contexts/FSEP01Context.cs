@@ -5,6 +5,8 @@ using Entities.Concrete.Entities.General.Machine.General;
 using Entities.Concrete.Entities.General.Machine.InputCoils;
 using Entities.Concrete.Entities.General.Machine.OutputCoils;
 using Entities.Concrete.Entities.General.Machine.ProcessCoils;
+using Entities.Concrete.Entities.PLC.General;
+using Entities.Concrete.Entities.PLC.Machine;
 using Entities.Concrete.Entities.PLC.Recipe;
 using Entities.Concrete.Entities.PSI.Telegrams;
 using Entities.Concrete.Entities.PSI.Types;
@@ -38,18 +40,9 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         //General
         //Machine
         //General
-        public DbSet<ContactRoll> ContactRolls { get; set; }
-        public DbSet<Defination> Definations { get; set; }
-        public DbSet<Density> Densitys { get; set; }
-        public DbSet<Event> Events { get; set; }
-        public DbSet<HeadTailScrap> HeadTailScraps { get; set; }
-        public DbSet<LevelOneTelegram> LevelOneTelegrms { get; set; }
-        public DbSet<LevelThreeTelegram> LevelThreeTelegrams { get; set; }
-        public DbSet<LubracationRoll> LubracationRolls { get; set; }
+
         public DbSet<SlitPattern> SlitPatterns { get; set; }
         public DbSet<SlitPatternDetail> SlitPatternDetails { get; set; }
-        public DbSet<TramRoll> TramRolls { get; set; }
-        public DbSet<UsageArea> UsageAreas { get; set; }
 
         //General
         //Machine
@@ -65,19 +58,11 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<OutputCoil> OutputCoils { get; set; }
         public DbSet<OutputCoilOther> OutputCoilOthers { get; set; }
 
-        //General
-        //Machine
-        //Parameters
-
 
         //General
         //Machine
         //ProcessCoils
         public DbSet<ProcessCoil> ProcessCoils { get; set; }
-
-        //General
-        //Machine
-        //Recipes
 
 
         //PSI
@@ -108,8 +93,22 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<PSITypeTimeStamp> TypeTimeStamps { get; set; }
 
         //PLC
-        //PLCRecipe
+        //Recipe
         public DbSet<PLCRecipe> PLCRecipes { get; set; }
 
+        //PLC
+        //Machine
+        public DbSet<PLCBasicData> PLCBasicDatas { get; set; }
+        public DbSet<PLCDensity> PLCDensitys { get; set; }
+        public DbSet<PLCHandling> PLCHandlings { get; set; }
+        public DbSet<PLCMachine> PLCMachines { get; set; }
+        public DbSet<PLCMachineOverview> PLCMachineOverviews { get; set; }
+        public DbSet<PLCRewinderPressure> PLCRewinderPressures { get; set; }
+        public DbSet<PLCRewinderTension> PLCRewinderTensions { get; set; }
+        public DbSet<PLCSuctionHydraulic> PLCSuctionHydraulics { get; set; }
+
+        //PLC
+        //General
+        public DbSet<PLCGeneral> PLCGenerals { get; set; }
     }
 }

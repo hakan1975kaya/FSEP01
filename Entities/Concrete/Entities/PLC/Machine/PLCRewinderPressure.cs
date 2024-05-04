@@ -11,6 +11,7 @@ namespace Entities.Concrete.Entities.PLC.Machine
     public class PLCRewinderPressure:IEntity
     {
         public Guid Id { get; set; }
+        public Guid PLCGeneralId { get; set; }
         public decimal? RewinderOnePressureLaySetScaled { get; set; }//Name:Rew1PresLaySetScaled,Adress:DB 91 DBW 352,Data Type:Int
         public decimal? RewinderOnePressureLayCalculateCharScaled { get; set; }//Name:Rew1PresLayCalcCharScaled,Adress:DB 90 DBW 356,Data Type:Int
         public int? RewinderOnePresureLayBalance { get; set; }//Name:Rew1PresLayBalance,Adress:DB 91 DBW 366,Data Type:Int

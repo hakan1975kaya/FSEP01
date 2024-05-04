@@ -10,6 +10,7 @@ namespace Entities.Concrete.Entities.PLC.Machine
     public class PLCMachineOverview : IEntity
     {
         public Guid Id { get; set; }
+        public Guid PLCGeneralId { get; set; }
         public long? UnwinderOneDiameterActuel { get; set; }//Name:Unw1DiaAct,Adress:DB 90 DBW 100,Data Type:Int
         public long? TransportOneTensionSet { get; set; }//Name:Transport1TensionSet,Adress:DB 91 DBW 550,Data Type:Int
         public long? TransportTwoTensionSet { get; set; }//Name:Transport2TensionSet,Adress:DB 91 DBW 560,Data Type:Int
