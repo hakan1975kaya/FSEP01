@@ -29,5 +29,7 @@ namespace Business.Abstract.PLC.General
         public Task<IResult> WriteMachineSpeedMaximum(short machineSpeedMaximum);
 
 
+
+
     }
 }

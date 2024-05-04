@@ -4,11 +4,6 @@ using Core.Utilities.Results.Concrete;
 using Entities.Concrete.Enums.PLC.Machine;
 using PLC.Abstract;
 using S7.Net;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concrete.PLC.General
 {
