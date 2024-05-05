@@ -22,7 +22,7 @@ namespace Business.Abstract.PLC.Machine
         public Task<IResult> WriteWeightRewinderOne(long weightRewinderOne);
 
         public Task<IDataResult<long>> ReadWeightRewinderTwo();
-        public Task<IResult> WriteWeightRewinderTwo(long weightRewinderOne);
+        public Task<IResult> WriteWeightRewinderTwo(long weightRewinderTwo);
 
         public Task<IDataResult<long>> ReadRewinderOneDiameterSet();
         public Task<IResult> WriteRewinderOneDiameterSet(long rewinderOneDiameterSet);

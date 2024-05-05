@@ -1,7 +1,5 @@
-﻿using Business.Abstract.General.General;
+﻿
 using Business.Abstract.PLC.General;
-using Business.Abstract.PSI.Transfers;
-using Core.Utilities.Results.Abstract;
 using Entities.Concrete.Enums.PLC.Machine;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

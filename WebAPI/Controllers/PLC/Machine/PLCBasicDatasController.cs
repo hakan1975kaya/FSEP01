@@ -1,7 +1,4 @@
-﻿using Business.Abstract.PLC.General;
-using Business.Abstract.PLC.Machine;
-using Core.Utilities.Results.Abstract;
-using Microsoft.AspNetCore.Http;
+﻿using Business.Abstract.PLC.Machine;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.PLC.Machine
@@ -326,7 +323,7 @@ namespace WebAPI.Controllers.PLC.Machine
             return BadRequest(dataResult);
         }
 
-        [HttpPost("rriteMachineTimeAcceleration")]
+        [HttpPost("writeMachineTimeAcceleration")]
         public async Task<IActionResult> WriteMachineTimeAcceleration(short machineTimeAcceleration)
         {
             var result = await _plcBasicDataService.WriteMachineTimeAcceleration(machineTimeAcceleration);
