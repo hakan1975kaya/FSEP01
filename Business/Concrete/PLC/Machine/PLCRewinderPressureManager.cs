@@ -1,221 +1,2508 @@
 ﻿using Business.Abstract.PLC.Machine;
+using Business.Constants.Messages.PLC.Machine;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
+using DataAccess.Abstract.PLC.General;
+using DataAccess.Abstract.PLC.Machine;
+using Entities.Concrete.Entities.PLC.General;
+using Entities.Concrete.Entities.PLC.Machine;
 using PLC.Abstract;
 using S7.Net;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concrete.PLC.Machine
 {
     public class PLCRewinderPressureManager : IPLCRewinderPressureService
     {
         private IPLCDal _plcDal;
-        public PLCRewinderPressureManager(IPLCDal plcDal)
+        private IPLCGeneralDal _plcGeneralDal;
+        private IPLCRewinderPressureDal _plcRewinderPressureDal;
+        private string _recipeNameLast;
+        public PLCRewinderPressureManager(IPLCDal plcDal, IPLCGeneralDal plcGeneralDal, IPLCRewinderPressureDal plcRewinderPressureDal)
         {
             _plcDal = plcDal;
+            _plcGeneralDal = plcGeneralDal;
+            _plcRewinderPressureDal = plcRewinderPressureDal;
+            _recipeNameLast = (string)_plcDal.Read(DataType.DataBlock, 90, 40, VarType.String, 1);
         }
+
         public async Task<IDataResult<decimal>> ReadRewinderOnePressureLaySetScaled()//Name:Rew1PresLaySetScaled,Addres:DB 91 DBW 352,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 91, 352, VarType.Int, 1));
+            var rewinderOnePressureLaySetScaled = (decimal)_plcDal.Read(DataType.DataBlock, 91, 352, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureLaySetScaled = rewinderOnePressureLaySetScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureLaySetScaled = rewinderOnePressureLaySetScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureLaySetScaled = rewinderOnePressureLaySetScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureLaySetScaled = rewinderOnePressureLaySetScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<decimal>(rewinderOnePressureLaySetScaled,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureLaySetScaled(decimal rewinderOnePressureLaySetScaled)//Name:Rew1PresLaySetScaled,Addres:DB 91 DBW 352,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureLaySetScaled = rewinderOnePressureLaySetScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureLaySetScaled = rewinderOnePressureLaySetScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureLaySetScaled = rewinderOnePressureLaySetScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureLaySetScaled = rewinderOnePressureLaySetScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 91, 352, rewinderOnePressureLaySetScaled);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<decimal>> ReadRewinderOnePressureLayCalculateCharScaled()//Name:Rew1PresLayCalcCharScaled,Addres:DB 90 DBW 356,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 356, VarType.Int, 1));
+            var rewinderOnePressureLayCalculateCharScaled = (decimal)_plcDal.Read(DataType.DataBlock, 90, 356, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureLayCalculateCharScaled = rewinderOnePressureLayCalculateCharScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureLayCalculateCharScaled = rewinderOnePressureLayCalculateCharScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureLayCalculateCharScaled = rewinderOnePressureLayCalculateCharScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureLayCalculateCharScaled = rewinderOnePressureLayCalculateCharScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<decimal>(rewinderOnePressureLayCalculateCharScaled,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureLayCalculateCharScaled(decimal rewinderOnePressureLayCalculateCharScaled)//Name:Rew1PresLayCalcCharScaled,Addres:DB 90 DBW 356,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureLayCalculateCharScaled = rewinderOnePressureLayCalculateCharScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureLayCalculateCharScaled = rewinderOnePressureLayCalculateCharScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureLayCalculateCharScaled = rewinderOnePressureLayCalculateCharScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureLayCalculateCharScaled = rewinderOnePressureLayCalculateCharScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 90, 356, rewinderOnePressureLayCalculateCharScaled);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<int>> ReadRewinderOnePresureLayBalance()//Name:Rew1PresLayBalance,Addres:DB 91 DBW 366, Data Type:Int
         {
-            return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 366, VarType.Int, 1));
+            var rewinderOnePresureLayBalance = (int)_plcDal.Read(DataType.DataBlock, 91, 366, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePresureLayBalance = rewinderOnePresureLayBalance,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePresureLayBalance = rewinderOnePresureLayBalance;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePresureLayBalance = rewinderOnePresureLayBalance,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePresureLayBalance = rewinderOnePresureLayBalance;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<int>(rewinderOnePresureLayBalance,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePresureLayBalance(int rewinderOnePresureLayBalance)//Name:Rew1PresLayBalance,Addres:DB 91 DBW 366,DataType:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePresureLayBalance = rewinderOnePresureLayBalance,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePresureLayBalance = rewinderOnePresureLayBalance;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePresureLayBalance = rewinderOnePresureLayBalance,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePresureLayBalance = rewinderOnePresureLayBalance;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 91, 366, rewinderOnePresureLayBalance);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<decimal>> ReadRewinderOnePressureLayCalculateRight()//Name:Rew1PresLayCalcRight,Addres:DB 90 DBW 364,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 364, VarType.Int, 1));
+            var rewinderOnePressureLayCalculateRight = (decimal)_plcDal.Read(DataType.DataBlock, 90, 364, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureLayCalculateRight = rewinderOnePressureLayCalculateRight,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureLayCalculateRight = rewinderOnePressureLayCalculateRight;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureLayCalculateRight = rewinderOnePressureLayCalculateRight,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureLayCalculateRight = rewinderOnePressureLayCalculateRight;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<decimal>(rewinderOnePressureLayCalculateRight,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureLayCalculateRight(decimal rewinderOnePressureLayCalculateRight)//Name:Rew1PresLayCalcRight,Addres:DB 90 DBW 364,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureLayCalculateRight = rewinderOnePressureLayCalculateRight,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureLayCalculateRight = rewinderOnePressureLayCalculateRight;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureLayCalculateRight = rewinderOnePressureLayCalculateRight,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureLayCalculateRight = rewinderOnePressureLayCalculateRight;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 90, 364, rewinderOnePressureLayCalculateRight);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<decimal>> ReadRewinderOnePressureLayCalculateLeft()//Name:Rew1PresLayCalcLeft,Addres:DB 90 DBW 362,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 362, VarType.Int, 1));
+            var rewinderOnePressureLayCalculateLeft = (decimal)_plcDal.Read(DataType.DataBlock, 90, 362, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureLayCalculateLeft = rewinderOnePressureLayCalculateLeft,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureLayCalculateLeft = rewinderOnePressureLayCalculateLeft;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureLayCalculateLeft = rewinderOnePressureLayCalculateLeft,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureLayCalculateLeft = rewinderOnePressureLayCalculateLeft;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<decimal>(rewinderOnePressureLayCalculateLeft,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureLayCalculateLeft(decimal rewinderOnePressureLayCalculateLeft)//Name:Rew1PresLayCalcLeft,Addres:DB 90 DBW 362,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureLayCalculateLeft = rewinderOnePressureLayCalculateLeft,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureLayCalculateLeft = rewinderOnePressureLayCalculateLeft;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureLayCalculateLeft = rewinderOnePressureLayCalculateLeft,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureLayCalculateLeft = rewinderOnePressureLayCalculateLeft;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 90, 362, rewinderOnePressureLayCalculateLeft);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<decimal>> ReadRewinderOnePressureContactSetScaled()//Name:Rew1PresContSetScaled,Addres:DB 91 DBW 322,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 91, 322, VarType.Int, 1));
+            var rewinderOnePressureContactSetScaled = (decimal)_plcDal.Read(DataType.DataBlock, 91, 322, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactSetScaled = rewinderOnePressureContactSetScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactSetScaled = rewinderOnePressureContactSetScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactSetScaled = rewinderOnePressureContactSetScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactSetScaled = rewinderOnePressureContactSetScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<decimal>(rewinderOnePressureContactSetScaled,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureContactSetScaled(decimal rewinderOnePressureContactSetScaled)//Name:Rew1PresContSetScaled,Addres:DB 91 DBW 322,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactSetScaled = rewinderOnePressureContactSetScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactSetScaled = rewinderOnePressureContactSetScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactSetScaled = rewinderOnePressureContactSetScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactSetScaled = rewinderOnePressureContactSetScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 91, 322, rewinderOnePressureContactSetScaled);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<decimal>> ReadRewinderOnePressureContactCalculateCharScaled()//Name:Rew1PresContCalcCharScaled,Addres:DB 90 DBW 326,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 326, VarType.Int, 1));
+            var rewinderOnePressureContactCalculateCharScaled = (decimal)_plcDal.Read(DataType.DataBlock, 90, 326, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactCalculateCharScaled = rewinderOnePressureContactCalculateCharScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactCalculateCharScaled = rewinderOnePressureContactCalculateCharScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactCalculateCharScaled = rewinderOnePressureContactCalculateCharScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactCalculateCharScaled = rewinderOnePressureContactCalculateCharScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<decimal>(rewinderOnePressureContactCalculateCharScaled,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureContactCalculateCharScaled(decimal rewinderOnePressureContactCalculateCharScaled)//Name:Rew1PresContCalcCharScaled,Addres:DB 90 DBW 326,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactCalculateCharScaled = rewinderOnePressureContactCalculateCharScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactCalculateCharScaled = rewinderOnePressureContactCalculateCharScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactCalculateCharScaled = rewinderOnePressureContactCalculateCharScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactCalculateCharScaled = rewinderOnePressureContactCalculateCharScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 90, 326, rewinderOnePressureContactCalculateCharScaled);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<int>> ReadRewinderOnePressureContactBalance()//Name:Rew1PresContBalance,Addres:DB 91 DBW 336, Data Type:Int
         {
-            return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 336, VarType.Int, 1));
+            var rewinderOnePressureContactBalance = (int)_plcDal.Read(DataType.DataBlock, 91, 336, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactBalance = rewinderOnePressureContactBalance,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactBalance = rewinderOnePressureContactBalance;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactBalance = rewinderOnePressureContactBalance,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactBalance = rewinderOnePressureContactBalance;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<int>(rewinderOnePressureContactBalance,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureContactBalance(int rewinderOnePressureContactBalance)//Name:Rew1PresContBalance,Addres:DB 91 DBW 336,DataType:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactBalance = rewinderOnePressureContactBalance,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactBalance = rewinderOnePressureContactBalance;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactBalance = rewinderOnePressureContactBalance,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactBalance = rewinderOnePressureContactBalance;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 91, 336, rewinderOnePressureContactBalance);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<decimal>> ReadRewinderOnePressureContactCalculateRight()//Name:Rew1PresContCalcRight,Addres:DB 90 DBW 334,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 334, VarType.Int, 1));
+            var rewinderOnePressureContactCalculateRight = (decimal)_plcDal.Read(DataType.DataBlock, 90, 334, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactCalculateRight = rewinderOnePressureContactCalculateRight,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactCalculateRight = rewinderOnePressureContactCalculateRight;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactCalculateRight = rewinderOnePressureContactCalculateRight,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactCalculateRight = rewinderOnePressureContactCalculateRight;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<decimal>(rewinderOnePressureContactCalculateRight,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureContactCalculateRight(decimal rewinderOnePressureContactCalculateRight)//Name:Rew1PresContCalcRight,Addres:DB 90 DBW 334,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactCalculateRight = rewinderOnePressureContactCalculateRight,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactCalculateRight = rewinderOnePressureContactCalculateRight;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactCalculateRight = rewinderOnePressureContactCalculateRight,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactCalculateRight = rewinderOnePressureContactCalculateRight;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 90, 334, rewinderOnePressureContactCalculateRight);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<decimal>> ReadRewinderOnePressureContactCalculateLeft()//Name:Rew1PresContCalcLeft,Addres:DB 90 DBW 332,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 332, VarType.Int, 1));
+            var rewinderOnePressureContactCalculateLeft = (decimal)_plcDal.Read(DataType.DataBlock, 90, 332, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactCalculateLeft = rewinderOnePressureContactCalculateLeft,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactCalculateLeft = rewinderOnePressureContactCalculateLeft;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactCalculateLeft = rewinderOnePressureContactCalculateLeft,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactCalculateLeft = rewinderOnePressureContactCalculateLeft;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<decimal>(rewinderOnePressureContactCalculateLeft,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureContactCalculateLeft(decimal rewinderOnePressureContactCalculateLeft)//Name:Rew1PresContCalcLeft,Addres:DB 90 DBW 332,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactCalculateLeft = rewinderOnePressureContactCalculateLeft,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactCalculateLeft = rewinderOnePressureContactCalculateLeft;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderOnePressureContactCalculateLeft = rewinderOnePressureContactCalculateLeft,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderOnePressureContactCalculateLeft = rewinderOnePressureContactCalculateLeft;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 90, 332, rewinderOnePressureContactCalculateLeft);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureContanctSetScaled()//Name:Rew2PresContSetScaled,Addres:DB 91 DBW 422,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 91, 422, VarType.Int, 1));
+            var rewinderTwoPressureContanctSetScaled = (decimal)_plcDal.Read(DataType.DataBlock, 91, 422, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContanctSetScaled = rewinderTwoPressureContanctSetScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContanctSetScaled = rewinderTwoPressureContanctSetScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContanctSetScaled = rewinderTwoPressureContanctSetScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContanctSetScaled = rewinderTwoPressureContanctSetScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<decimal>(rewinderTwoPressureContanctSetScaled,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureContanctSetScaled(decimal rewinderTwoPressureContanctSetScaled)//Name:Rew2PresContSetScaled,Addres:DB 91 DBW 422,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContanctSetScaled = rewinderTwoPressureContanctSetScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContanctSetScaled = rewinderTwoPressureContanctSetScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContanctSetScaled = rewinderTwoPressureContanctSetScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContanctSetScaled = rewinderTwoPressureContanctSetScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 91, 422, rewinderTwoPressureContanctSetScaled);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureContactCalculateCharScaled()//Name:Rew2PresContCalcCharScaled,Addres:DB 90 DBW 426,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 426, VarType.Int, 1));
+            var rewinderTwoPressureContactCalculateCharScaled = (decimal)_plcDal.Read(DataType.DataBlock, 90, 426, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContactCalculateCharScaled = rewinderTwoPressureContactCalculateCharScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContactCalculateCharScaled = rewinderTwoPressureContactCalculateCharScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContactCalculateCharScaled = rewinderTwoPressureContactCalculateCharScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContactCalculateCharScaled = rewinderTwoPressureContactCalculateCharScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<decimal>(rewinderTwoPressureContactCalculateCharScaled,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureContactCalculateCharScaled(decimal rewinderTwoPressureContactCalculateCharScaled)//Name:Rew2PresContCalcCharScaled,Addres:DB 90 DBW 426,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContactCalculateCharScaled = rewinderTwoPressureContactCalculateCharScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContactCalculateCharScaled = rewinderTwoPressureContactCalculateCharScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContactCalculateCharScaled = rewinderTwoPressureContactCalculateCharScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContactCalculateCharScaled = rewinderTwoPressureContactCalculateCharScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 90, 426, rewinderTwoPressureContactCalculateCharScaled);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<int>> ReadRewinderTwoPressureContanctBalance()//Name:Rew2PresContBalance,Addres:DB 91 DBW 436,Data Type:Int
         {
-            return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 436, VarType.Int, 1));
+            var rewinderTwoPressureContanctBalance = (int)_plcDal.Read(DataType.DataBlock, 91, 436, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContanctBalance = rewinderTwoPressureContanctBalance,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContanctBalance = rewinderTwoPressureContanctBalance;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContanctBalance = rewinderTwoPressureContanctBalance,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContanctBalance = rewinderTwoPressureContanctBalance;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<int>(rewinderTwoPressureContanctBalance,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureContanctBalance(int rewinderTwoPressureContanctBalance)//Name:Rew2PresContBalance,Addres:DB 91 DBW 436,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContanctBalance = rewinderTwoPressureContanctBalance,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContanctBalance = rewinderTwoPressureContanctBalance;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContanctBalance = rewinderTwoPressureContanctBalance,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContanctBalance = rewinderTwoPressureContanctBalance;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 91, 436, rewinderTwoPressureContanctBalance);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureContactCalculateRight()//Name:Rew2PresContCalcRight,Addres:DB 90 DBW 434,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 434, VarType.Int, 1));
+            var rewinderTwoPressureContactCalculateRight = (decimal)_plcDal.Read(DataType.DataBlock, 90, 434, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContactCalculateRight = rewinderTwoPressureContactCalculateRight,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContactCalculateRight = rewinderTwoPressureContactCalculateRight;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContactCalculateRight = rewinderTwoPressureContactCalculateRight,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContactCalculateRight = rewinderTwoPressureContactCalculateRight;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<decimal>(rewinderTwoPressureContactCalculateRight,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureContactCalculateRight(decimal rewinderTwoPressureContactCalculateRight)//Name:Rew2PresContCalcRight,Addres:DB 90 DBW 434,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContactCalculateRight = rewinderTwoPressureContactCalculateRight,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContactCalculateRight = rewinderTwoPressureContactCalculateRight;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContactCalculateRight = rewinderTwoPressureContactCalculateRight,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContactCalculateRight = rewinderTwoPressureContactCalculateRight;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 90, 434, rewinderTwoPressureContactCalculateRight);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureContactCalculateLeft()//Name:Rew2PresContCalcLeft,Addres:DB 90 DBW 432,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 432, VarType.Int, 1));
+            var rewinderTwoPressureContactCalculateLeft = (decimal)_plcDal.Read(DataType.DataBlock, 90, 432, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContactCalculateLeft = rewinderTwoPressureContactCalculateLeft,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContactCalculateLeft = rewinderTwoPressureContactCalculateLeft;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContactCalculateLeft = rewinderTwoPressureContactCalculateLeft,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContactCalculateLeft = rewinderTwoPressureContactCalculateLeft;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<decimal>(rewinderTwoPressureContactCalculateLeft,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureContactCalculateLeft(decimal rewinderTwoPressureContactCalculateLeft)//Name:Rew2PresContCalcLeft,Addres:DB 90 DBW 432,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContactCalculateLeft = rewinderTwoPressureContactCalculateLeft,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContactCalculateLeft = rewinderTwoPressureContactCalculateLeft;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureContactCalculateLeft = rewinderTwoPressureContactCalculateLeft,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureContactCalculateLeft = rewinderTwoPressureContactCalculateLeft;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 90, 432, rewinderTwoPressureContactCalculateLeft);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureSupportSetScaled()//Name:Rew2PresSupSetScaled,Addres:DB 91 DBW 452,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 91, 452, VarType.Int, 1));
+            var rewinderTwoPressureSupportSetScaled = (decimal)_plcDal.Read(DataType.DataBlock, 91, 452, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportSetScaled = rewinderTwoPressureSupportSetScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportSetScaled = rewinderTwoPressureSupportSetScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportSetScaled = rewinderTwoPressureSupportSetScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportSetScaled = rewinderTwoPressureSupportSetScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<decimal>(rewinderTwoPressureSupportSetScaled,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureSupportSetScaled(decimal rewinderTwoPressureSupportSetScaled)//Name:Rew2PresSupSetScaled,Addres:DB 91 DBW 452,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportSetScaled = rewinderTwoPressureSupportSetScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportSetScaled = rewinderTwoPressureSupportSetScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportSetScaled = rewinderTwoPressureSupportSetScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportSetScaled = rewinderTwoPressureSupportSetScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 91, 452, rewinderTwoPressureSupportSetScaled);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureSupportCalculateCharScaled()//Name:Rew2PresSupCalcCharScaled,Addres:DB 90 DBW 456,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 456, VarType.Int, 1));
+            var rewinderTwoPressureSupportCalculateCharScaled = (decimal)_plcDal.Read(DataType.DataBlock, 90, 456, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportCalculateCharScaled = rewinderTwoPressureSupportCalculateCharScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportCalculateCharScaled = rewinderTwoPressureSupportCalculateCharScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportCalculateCharScaled = rewinderTwoPressureSupportCalculateCharScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportCalculateCharScaled = rewinderTwoPressureSupportCalculateCharScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<decimal>(rewinderTwoPressureSupportCalculateCharScaled,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureSupportCalculateCharScaled(decimal rewinderTwoPressureSupportCalculateCharScaled)//Name:Rew2PresSupCalcCharScaled,Addres:DB 90 DBW 456,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportCalculateCharScaled = rewinderTwoPressureSupportCalculateCharScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportCalculateCharScaled = rewinderTwoPressureSupportCalculateCharScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportCalculateCharScaled = rewinderTwoPressureSupportCalculateCharScaled,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportCalculateCharScaled = rewinderTwoPressureSupportCalculateCharScaled;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 90, 456, rewinderTwoPressureSupportCalculateCharScaled);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<int>> ReadRewinderTwoPressureSupportBalance()//Name:Rew2PresSupCalcCharScaled,Addres:DB 91 DBW 466,Data Type:Int
         {
-            return new SuccessDataResult<int>((int)_plcDal.Read(DataType.DataBlock, 91, 466, VarType.Int, 1));
+            var rewinderTwoPressureSupportBalance = (int)_plcDal.Read(DataType.DataBlock, 91, 466, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportBalance = rewinderTwoPressureSupportBalance,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportBalance = rewinderTwoPressureSupportBalance;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportBalance = rewinderTwoPressureSupportBalance,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportBalance = rewinderTwoPressureSupportBalance;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<int>(rewinderTwoPressureSupportBalance,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureSupportBalance(int rewinderTwoPressureSupportBalance)//Name:Rew2PresSupCalcCharScaled,Addres:DB 91 DBW 466,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportBalance = rewinderTwoPressureSupportBalance,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportBalance = rewinderTwoPressureSupportBalance;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportBalance = rewinderTwoPressureSupportBalance,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportBalance = rewinderTwoPressureSupportBalance;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 91, 466, rewinderTwoPressureSupportBalance);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureSupportCalcuteRight()//Name:Rew2PresSupCalcRight,Addres:DB 90 DBW 464,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 464, VarType.Int, 1));
+            var rewinderTwoPressureSupportCalcuteRight = (decimal)_plcDal.Read(DataType.DataBlock, 90, 464, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportCalcuteRight = rewinderTwoPressureSupportCalcuteRight,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportCalcuteRight = rewinderTwoPressureSupportCalcuteRight;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportCalcuteRight = rewinderTwoPressureSupportCalcuteRight,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportCalcuteRight = rewinderTwoPressureSupportCalcuteRight;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<decimal>(rewinderTwoPressureSupportCalcuteRight,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureSupportCalcuteRight(decimal rewinderTwoPressureSupportCalcuteRight)//Name:Rew2PresSupCalcRight,Addres:DB 90 DBW 464,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportCalcuteRight = rewinderTwoPressureSupportCalcuteRight,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportCalcuteRight = rewinderTwoPressureSupportCalcuteRight;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportCalcuteRight = rewinderTwoPressureSupportCalcuteRight,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportCalcuteRight = rewinderTwoPressureSupportCalcuteRight;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 90, 464, rewinderTwoPressureSupportCalcuteRight);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
         public async Task<IDataResult<decimal>> ReadRewinderTwoPressureSupportCalcuteLeft()//Name:Rew2PresSupCalcLeft,Addres:DB 90 DBW 462,Data Type:Int
         {
-            return new SuccessDataResult<decimal>((decimal)_plcDal.Read(DataType.DataBlock, 90, 462, VarType.Int, 1));
+            var rewinderTwoPressureSupportCalcuteLeft = (decimal)_plcDal.Read(DataType.DataBlock, 90, 462, VarType.Int, 1);
+
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportCalcuteLeft = rewinderTwoPressureSupportCalcuteLeft,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportCalcuteLeft = rewinderTwoPressureSupportCalcuteLeft;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportCalcuteLeft = rewinderTwoPressureSupportCalcuteLeft,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportCalcuteLeft = rewinderTwoPressureSupportCalcuteLeft;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
+            return new SuccessDataResult<decimal>(rewinderTwoPressureSupportCalcuteLeft,PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureSupportCalcuteLeft(decimal rewinderTwoPressureSupportCalcuteLeft)//Name:Rew2PresSupCalcLeft,Addres:DB 90 DBW 462,Data Type:Int
         {
+            var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
+            if (plcGeneral == null)
+            {
+                var plcGeneralId = Guid.NewGuid();
+                plcGeneral = new PLCGeneral
+                {
+                    Id = plcGeneralId,
+                    RecipeNameLast = _recipeNameLast,
+                    Optime = DateTime.Now,
+                    IsActive = true
+                };
+                await _plcGeneralDal.Add(plcGeneral);
+
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportCalcuteLeft = rewinderTwoPressureSupportCalcuteLeft,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportCalcuteLeft = rewinderTwoPressureSupportCalcuteLeft;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+            else
+            {
+                var plcRewinderPressure = await _plcRewinderPressureDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcRewinderPressure == null)
+                {
+                    var plcRewinderPressureId = Guid.NewGuid();
+                    plcRewinderPressure = new PLCRewinderPressure
+                    {
+                        Id = plcRewinderPressureId,
+                        PLCGeneralId = plcRewinderPressureId,
+                        RewinderTwoPressureSupportCalcuteLeft = rewinderTwoPressureSupportCalcuteLeft,
+                        Optime = DateTime.Now,
+                        IsActive = true
+                    };
+                    await _plcRewinderPressureDal.Add(plcRewinderPressure);
+                }
+                else
+                {
+                    plcRewinderPressure.RewinderTwoPressureSupportCalcuteLeft = rewinderTwoPressureSupportCalcuteLeft;
+                    await _plcRewinderPressureDal.Update(plcRewinderPressure);
+                }
+            }
+
             _plcDal.Write(DataType.DataBlock, 90, 462, rewinderTwoPressureSupportCalcuteLeft);
-            return new SuccessResult();
+            return new SuccessResult(PLCRewinderPressureMessages.Write);
         }
 
     }
