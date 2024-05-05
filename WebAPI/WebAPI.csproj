@@ -23,6 +23,7 @@
   <ItemGroup>
     <Folder Include="Controllers\General\Machine\Parameters\" />
     <Folder Include="Controllers\General\Machine\Recipes\" />
+    <Folder Include="Controllers\PLC\Recipe\" />
   </ItemGroup>
 
 </Project>

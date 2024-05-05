@@ -24,7 +24,6 @@
     <Folder Include="Concrete\General\Machine\Recipes\" />
     <Folder Include="Validators\FluentValidators\General\Machine\Parameters\" />
     <Folder Include="Validators\FluentValidators\General\Recipes\" />
-    <Folder Include="Validators\FluentValidators\PLC\Machine\" />
   </ItemGroup>
 
 </Project>
