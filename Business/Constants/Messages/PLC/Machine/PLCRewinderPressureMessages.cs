@@ -8,11 +8,11 @@ namespace Business.Constants.Messages.PLC.Machine
 {
     public static class PLCRewinderPressureMessages
     {
-        public static string Added = " PLCRecipe eklendi";
-        public static string Updated = " PLCRecipe güncellendi";
-        public static string Deleted = " PLCRecipe silindi";
+        public static string Added = " Sarıcı Basıncı eklendi";
+        public static string Updated = " Sarıcı Basıncı güncellendi";
+        public static string Deleted = " Sarıcı Basıncı silindi";
         public static string OperationFailed = "İşlem Başarısız";
-        public static string Read = " PLCRecipe PLC den okundu";
-        public static string Write = " PLCRecipe PLC ye yazıldı";
+        public static string Read = " Sarıcı Basıncı Bileşeni PLC den okundu";
+        public static string Write = " Sarıcı Basıncı Bileşeni PLC ye yazıldı";
     }
 }

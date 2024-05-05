@@ -49,7 +49,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureLaySetScaled = rewinderOnePressureLaySetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -71,7 +71,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureLaySetScaled = rewinderOnePressureLaySetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -85,7 +85,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderOnePressureLaySetScaled,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderOnePressureLaySetScaled, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureLaySetScaled(decimal rewinderOnePressureLaySetScaled)//Name:Rew1PresLaySetScaled,Addres:DB 91 DBW 352,Data Type:Int
         {
@@ -109,7 +109,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureLaySetScaled = rewinderOnePressureLaySetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -131,7 +131,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureLaySetScaled = rewinderOnePressureLaySetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -173,7 +173,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureLayCalculateCharScaled = rewinderOnePressureLayCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -195,7 +195,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureLayCalculateCharScaled = rewinderOnePressureLayCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -209,7 +209,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderOnePressureLayCalculateCharScaled,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderOnePressureLayCalculateCharScaled, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureLayCalculateCharScaled(decimal rewinderOnePressureLayCalculateCharScaled)//Name:Rew1PresLayCalcCharScaled,Addres:DB 90 DBW 356,Data Type:Int
         {
@@ -233,7 +233,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureLayCalculateCharScaled = rewinderOnePressureLayCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -255,7 +255,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureLayCalculateCharScaled = rewinderOnePressureLayCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -297,7 +297,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePresureLayBalance = rewinderOnePresureLayBalance,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -319,7 +319,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePresureLayBalance = rewinderOnePresureLayBalance,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -333,7 +333,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<int>(rewinderOnePresureLayBalance,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<int>(rewinderOnePresureLayBalance, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePresureLayBalance(int rewinderOnePresureLayBalance)//Name:Rew1PresLayBalance,Addres:DB 91 DBW 366,DataType:Int
         {
@@ -357,7 +357,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePresureLayBalance = rewinderOnePresureLayBalance,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -379,7 +379,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePresureLayBalance = rewinderOnePresureLayBalance,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -421,7 +421,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureLayCalculateRight = rewinderOnePressureLayCalculateRight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -443,7 +443,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureLayCalculateRight = rewinderOnePressureLayCalculateRight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -457,7 +457,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderOnePressureLayCalculateRight,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderOnePressureLayCalculateRight, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureLayCalculateRight(decimal rewinderOnePressureLayCalculateRight)//Name:Rew1PresLayCalcRight,Addres:DB 90 DBW 364,Data Type:Int
         {
@@ -481,7 +481,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureLayCalculateRight = rewinderOnePressureLayCalculateRight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -503,7 +503,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureLayCalculateRight = rewinderOnePressureLayCalculateRight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -545,7 +545,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureLayCalculateLeft = rewinderOnePressureLayCalculateLeft,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -567,7 +567,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureLayCalculateLeft = rewinderOnePressureLayCalculateLeft,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -581,7 +581,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderOnePressureLayCalculateLeft,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderOnePressureLayCalculateLeft, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureLayCalculateLeft(decimal rewinderOnePressureLayCalculateLeft)//Name:Rew1PresLayCalcLeft,Addres:DB 90 DBW 362,Data Type:Int
         {
@@ -605,7 +605,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureLayCalculateLeft = rewinderOnePressureLayCalculateLeft,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -627,7 +627,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureLayCalculateLeft = rewinderOnePressureLayCalculateLeft,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -669,7 +669,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureContactSetScaled = rewinderOnePressureContactSetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -691,7 +691,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureContactSetScaled = rewinderOnePressureContactSetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -705,7 +705,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderOnePressureContactSetScaled,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderOnePressureContactSetScaled, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureContactSetScaled(decimal rewinderOnePressureContactSetScaled)//Name:Rew1PresContSetScaled,Addres:DB 91 DBW 322,Data Type:Int
         {
@@ -729,7 +729,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureContactSetScaled = rewinderOnePressureContactSetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -751,7 +751,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureContactSetScaled = rewinderOnePressureContactSetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -793,7 +793,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureContactCalculateCharScaled = rewinderOnePressureContactCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -815,7 +815,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureContactCalculateCharScaled = rewinderOnePressureContactCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -829,7 +829,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderOnePressureContactCalculateCharScaled,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderOnePressureContactCalculateCharScaled, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureContactCalculateCharScaled(decimal rewinderOnePressureContactCalculateCharScaled)//Name:Rew1PresContCalcCharScaled,Addres:DB 90 DBW 326,Data Type:Int
         {
@@ -853,7 +853,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureContactCalculateCharScaled = rewinderOnePressureContactCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -875,7 +875,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureContactCalculateCharScaled = rewinderOnePressureContactCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -917,7 +917,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureContactBalance = rewinderOnePressureContactBalance,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -939,7 +939,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureContactBalance = rewinderOnePressureContactBalance,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -953,7 +953,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<int>(rewinderOnePressureContactBalance,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<int>(rewinderOnePressureContactBalance, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureContactBalance(int rewinderOnePressureContactBalance)//Name:Rew1PresContBalance,Addres:DB 91 DBW 336,DataType:Int
         {
@@ -977,7 +977,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureContactBalance = rewinderOnePressureContactBalance,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -999,7 +999,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureContactBalance = rewinderOnePressureContactBalance,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1041,7 +1041,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureContactCalculateRight = rewinderOnePressureContactCalculateRight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1063,7 +1063,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureContactCalculateRight = rewinderOnePressureContactCalculateRight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1077,7 +1077,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderOnePressureContactCalculateRight,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderOnePressureContactCalculateRight, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureContactCalculateRight(decimal rewinderOnePressureContactCalculateRight)//Name:Rew1PresContCalcRight,Addres:DB 90 DBW 334,Data Type:Int
         {
@@ -1101,7 +1101,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureContactCalculateRight = rewinderOnePressureContactCalculateRight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1123,7 +1123,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureContactCalculateRight = rewinderOnePressureContactCalculateRight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1165,7 +1165,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureContactCalculateLeft = rewinderOnePressureContactCalculateLeft,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1187,7 +1187,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureContactCalculateLeft = rewinderOnePressureContactCalculateLeft,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1201,7 +1201,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderOnePressureContactCalculateLeft,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderOnePressureContactCalculateLeft, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureContactCalculateLeft(decimal rewinderOnePressureContactCalculateLeft)//Name:Rew1PresContCalcLeft,Addres:DB 90 DBW 332,Data Type:Int
         {
@@ -1225,7 +1225,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureContactCalculateLeft = rewinderOnePressureContactCalculateLeft,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1247,7 +1247,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureContactCalculateLeft = rewinderOnePressureContactCalculateLeft,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1289,7 +1289,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureContanctSetScaled = rewinderTwoPressureContanctSetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1311,7 +1311,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureContanctSetScaled = rewinderTwoPressureContanctSetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1325,7 +1325,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderTwoPressureContanctSetScaled,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderTwoPressureContanctSetScaled, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureContanctSetScaled(decimal rewinderTwoPressureContanctSetScaled)//Name:Rew2PresContSetScaled,Addres:DB 91 DBW 422,Data Type:Int
         {
@@ -1349,7 +1349,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureContanctSetScaled = rewinderTwoPressureContanctSetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1371,7 +1371,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureContanctSetScaled = rewinderTwoPressureContanctSetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1413,7 +1413,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureContactCalculateCharScaled = rewinderTwoPressureContactCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1435,7 +1435,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureContactCalculateCharScaled = rewinderTwoPressureContactCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1449,7 +1449,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderTwoPressureContactCalculateCharScaled,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderTwoPressureContactCalculateCharScaled, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureContactCalculateCharScaled(decimal rewinderTwoPressureContactCalculateCharScaled)//Name:Rew2PresContCalcCharScaled,Addres:DB 90 DBW 426,Data Type:Int
         {
@@ -1473,7 +1473,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureContactCalculateCharScaled = rewinderTwoPressureContactCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1495,7 +1495,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureContactCalculateCharScaled = rewinderTwoPressureContactCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1537,7 +1537,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureContanctBalance = rewinderTwoPressureContanctBalance,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1559,7 +1559,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureContanctBalance = rewinderTwoPressureContanctBalance,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1573,7 +1573,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<int>(rewinderTwoPressureContanctBalance,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<int>(rewinderTwoPressureContanctBalance, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureContanctBalance(int rewinderTwoPressureContanctBalance)//Name:Rew2PresContBalance,Addres:DB 91 DBW 436,Data Type:Int
         {
@@ -1597,7 +1597,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureContanctBalance = rewinderTwoPressureContanctBalance,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1619,7 +1619,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureContanctBalance = rewinderTwoPressureContanctBalance,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1661,7 +1661,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureContactCalculateRight = rewinderTwoPressureContactCalculateRight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1683,7 +1683,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureContactCalculateRight = rewinderTwoPressureContactCalculateRight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1697,7 +1697,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderTwoPressureContactCalculateRight,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderTwoPressureContactCalculateRight, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureContactCalculateRight(decimal rewinderTwoPressureContactCalculateRight)//Name:Rew2PresContCalcRight,Addres:DB 90 DBW 434,Data Type:Int
         {
@@ -1721,7 +1721,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureContactCalculateRight = rewinderTwoPressureContactCalculateRight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1743,7 +1743,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureContactCalculateRight = rewinderTwoPressureContactCalculateRight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1785,7 +1785,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureContactCalculateLeft = rewinderTwoPressureContactCalculateLeft,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1807,7 +1807,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureContactCalculateLeft = rewinderTwoPressureContactCalculateLeft,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1821,7 +1821,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderTwoPressureContactCalculateLeft,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderTwoPressureContactCalculateLeft, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureContactCalculateLeft(decimal rewinderTwoPressureContactCalculateLeft)//Name:Rew2PresContCalcLeft,Addres:DB 90 DBW 432,Data Type:Int
         {
@@ -1845,7 +1845,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureContactCalculateLeft = rewinderTwoPressureContactCalculateLeft,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1867,7 +1867,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureContactCalculateLeft = rewinderTwoPressureContactCalculateLeft,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1909,7 +1909,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureSupportSetScaled = rewinderTwoPressureSupportSetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1931,7 +1931,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureSupportSetScaled = rewinderTwoPressureSupportSetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1945,7 +1945,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderTwoPressureSupportSetScaled,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderTwoPressureSupportSetScaled, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureSupportSetScaled(decimal rewinderTwoPressureSupportSetScaled)//Name:Rew2PresSupSetScaled,Addres:DB 91 DBW 452,Data Type:Int
         {
@@ -1969,7 +1969,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureSupportSetScaled = rewinderTwoPressureSupportSetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1991,7 +1991,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureSupportSetScaled = rewinderTwoPressureSupportSetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2033,7 +2033,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureSupportCalculateCharScaled = rewinderTwoPressureSupportCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2055,7 +2055,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureSupportCalculateCharScaled = rewinderTwoPressureSupportCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2069,7 +2069,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderTwoPressureSupportCalculateCharScaled,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderTwoPressureSupportCalculateCharScaled, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureSupportCalculateCharScaled(decimal rewinderTwoPressureSupportCalculateCharScaled)//Name:Rew2PresSupCalcCharScaled,Addres:DB 90 DBW 456,Data Type:Int
         {
@@ -2093,7 +2093,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureSupportCalculateCharScaled = rewinderTwoPressureSupportCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2115,7 +2115,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureSupportCalculateCharScaled = rewinderTwoPressureSupportCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2157,7 +2157,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureSupportBalance = rewinderTwoPressureSupportBalance,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2179,7 +2179,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureSupportBalance = rewinderTwoPressureSupportBalance,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2193,7 +2193,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<int>(rewinderTwoPressureSupportBalance,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<int>(rewinderTwoPressureSupportBalance, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureSupportBalance(int rewinderTwoPressureSupportBalance)//Name:Rew2PresSupCalcCharScaled,Addres:DB 91 DBW 466,Data Type:Int
         {
@@ -2217,7 +2217,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureSupportBalance = rewinderTwoPressureSupportBalance,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2239,7 +2239,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureSupportBalance = rewinderTwoPressureSupportBalance,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2281,7 +2281,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureSupportCalcuteRight = rewinderTwoPressureSupportCalcuteRight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2303,7 +2303,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureSupportCalcuteRight = rewinderTwoPressureSupportCalcuteRight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2317,7 +2317,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderTwoPressureSupportCalcuteRight,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderTwoPressureSupportCalcuteRight, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureSupportCalcuteRight(decimal rewinderTwoPressureSupportCalcuteRight)//Name:Rew2PresSupCalcRight,Addres:DB 90 DBW 464,Data Type:Int
         {
@@ -2341,7 +2341,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureSupportCalcuteRight = rewinderTwoPressureSupportCalcuteRight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2363,7 +2363,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureSupportCalcuteRight = rewinderTwoPressureSupportCalcuteRight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2405,7 +2405,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureSupportCalcuteLeft = rewinderTwoPressureSupportCalcuteLeft,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2427,7 +2427,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureSupportCalcuteLeft = rewinderTwoPressureSupportCalcuteLeft,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2441,7 +2441,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderTwoPressureSupportCalcuteLeft,PLCRewinderPressureMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderTwoPressureSupportCalcuteLeft, PLCRewinderPressureMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureSupportCalcuteLeft(decimal rewinderTwoPressureSupportCalcuteLeft)//Name:Rew2PresSupCalcLeft,Addres:DB 90 DBW 462,Data Type:Int
         {
@@ -2465,7 +2465,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureSupportCalcuteLeft = rewinderTwoPressureSupportCalcuteLeft,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2487,7 +2487,7 @@ namespace Business.Concrete.PLC.Machine
                     plcRewinderPressure = new PLCRewinderPressure
                     {
                         Id = plcRewinderPressureId,
-                        PLCGeneralId = plcRewinderPressureId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureSupportCalcuteLeft = rewinderTwoPressureSupportCalcuteLeft,
                         Optime = DateTime.Now,
                         IsActive = true

@@ -50,7 +50,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         UnwinderOneDiameterActuel = unwinderOneDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -72,7 +72,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         UnwinderOneDiameterActuel = unwinderOneDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -110,7 +110,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         UnwinderOneDiameterActuel = unwinderOneDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -132,7 +132,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         UnwinderOneDiameterActuel = unwinderOneDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -175,7 +175,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         TransportOneTensionSet = transportOneTensionSet,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -197,7 +197,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         TransportOneTensionSet = transportOneTensionSet,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -211,7 +211,7 @@ namespace Business.Concrete.PLC.MachineOverview
                 }
             }
 
-            return new SuccessDataResult<long>(transportOneTensionSet,PLCMachineOverviewMessages.Read);
+            return new SuccessDataResult<long>(transportOneTensionSet, PLCMachineOverviewMessages.Read);
         }
         public async Task<IResult> WriteTransportOneTensionSet(long transportOneTensionSet)//Name:Transport1TensionSet,Adress:DB 91 DBW 550,Data Type:Int
         {
@@ -235,7 +235,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         TransportOneTensionSet = transportOneTensionSet,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -257,7 +257,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         TransportOneTensionSet = transportOneTensionSet,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -300,7 +300,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         TransportTwoTensionSet = transportTwoTensionSet,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -322,7 +322,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         TransportTwoTensionSet = transportTwoTensionSet,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -336,7 +336,7 @@ namespace Business.Concrete.PLC.MachineOverview
                 }
             }
 
-            return new SuccessDataResult<long>(transportTwoTensionSet,PLCMachineOverviewMessages.Read);
+            return new SuccessDataResult<long>(transportTwoTensionSet, PLCMachineOverviewMessages.Read);
         }
         public async Task<IResult> WriteTransportTwoTensionSet(long transportTwoTensionSet)///Name:Transport2TensionSet,Adress:DB 91 DBW 560,Data Type:Int
         {
@@ -360,7 +360,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         TransportTwoTensionSet = transportTwoTensionSet,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -382,7 +382,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         TransportTwoTensionSet = transportTwoTensionSet,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -425,7 +425,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneTensionLaySetScaled = rewinderOneTensionLaySetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -447,7 +447,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneTensionLaySetScaled = rewinderOneTensionLaySetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -461,7 +461,7 @@ namespace Business.Concrete.PLC.MachineOverview
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderOneTensionLaySetScaled,PLCMachineOverviewMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderOneTensionLaySetScaled, PLCMachineOverviewMessages.Read);
         }
         public async Task<IResult> WriteRewinderOneTensionLaySetScaled(decimal rewinderOneTensionLaySetScaled)//Name:Rew1TensionLaySetScaled,Addres:DB 91 DBW 372,Data Type:Int
         {
@@ -485,7 +485,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneTensionLaySetScaled = rewinderOneTensionLaySetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -507,7 +507,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneTensionLaySetScaled = rewinderOneTensionLaySetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -550,7 +550,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneTensionCalculateCharScaled = rewinderOneTensionCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -572,7 +572,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneTensionCalculateCharScaled = rewinderOneTensionCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -586,7 +586,7 @@ namespace Business.Concrete.PLC.MachineOverview
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderOneTensionCalculateCharScaled,PLCMachineOverviewMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderOneTensionCalculateCharScaled, PLCMachineOverviewMessages.Read);
         }
         public async Task<IResult> WriteRewinderOneTensionCalculateCharScaled(decimal rewinderOneTensionCalculateCharScaled)//Name:Rew1TensionCalcCharScaled,Addres:DB 90 DBW 316,Data Type:Int
         {
@@ -610,7 +610,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneTensionCalculateCharScaled = rewinderOneTensionCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -632,7 +632,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneTensionCalculateCharScaled = rewinderOneTensionCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -675,7 +675,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneLengthActuel = rewinderOneLengthActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -697,7 +697,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneLengthActuel = rewinderOneLengthActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -711,7 +711,7 @@ namespace Business.Concrete.PLC.MachineOverview
                 }
             }
 
-            return new SuccessDataResult<long>(rewinderOneLengthActuel,PLCMachineOverviewMessages.Read);
+            return new SuccessDataResult<long>(rewinderOneLengthActuel, PLCMachineOverviewMessages.Read);
         }
         public async Task<IResult> WriteRewinderOneLengthActuel(long rewinderOneLengthActuel)//Name:Rew1LengthAct,Adress:DB 90 DBD 306,Data Type:Int
         {
@@ -735,7 +735,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneLengthActuel = rewinderOneLengthActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -757,7 +757,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneLengthActuel = rewinderOneLengthActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -800,7 +800,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneDiameterActuel = rewinderOneDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -822,7 +822,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneDiameterActuel = rewinderOneDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -836,7 +836,7 @@ namespace Business.Concrete.PLC.MachineOverview
                 }
             }
 
-            return new SuccessDataResult<long>(rewinderOneDiameterActuel,PLCMachineOverviewMessages.Read);
+            return new SuccessDataResult<long>(rewinderOneDiameterActuel, PLCMachineOverviewMessages.Read);
         }
         public async Task<IResult> WriteRewinderOneDiameterActuel(long rewinderOneDiameterActuel)//Name:Rew1DiaAct,Adress:DB 90 DBW 300,Data Type:Int
         {
@@ -860,7 +860,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneDiameterActuel = rewinderOneDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -882,7 +882,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneDiameterActuel = rewinderOneDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -925,7 +925,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         ContactOneTensionActuel = contactOneTensionActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -947,7 +947,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         ContactOneTensionActuel = contactOneTensionActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -961,7 +961,7 @@ namespace Business.Concrete.PLC.MachineOverview
                 }
             }
 
-            return new SuccessDataResult<decimal>(contactOneTensionActuel,PLCMachineOverviewMessages.Read);
+            return new SuccessDataResult<decimal>(contactOneTensionActuel, PLCMachineOverviewMessages.Read);
         }
         public async Task<IResult> WriteContactOneTensionActuel(decimal contactOneTensionActuel)//Name:Cont1TensionAct,Addres:DB 90 DBW 580,Data Type:Int
         {
@@ -985,7 +985,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         ContactOneTensionActuel = contactOneTensionActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1007,7 +1007,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         ContactOneTensionActuel = contactOneTensionActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1050,7 +1050,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         ContactTwoTensionActuel = contactTwoTensionActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1072,7 +1072,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         ContactTwoTensionActuel = contactTwoTensionActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1086,7 +1086,7 @@ namespace Business.Concrete.PLC.MachineOverview
                 }
             }
 
-            return new SuccessDataResult<decimal>(contactTwoTensionActuel,PLCMachineOverviewMessages.Read);
+            return new SuccessDataResult<decimal>(contactTwoTensionActuel, PLCMachineOverviewMessages.Read);
         }
         public async Task<IResult> WriteContactTwoTensionActuel(decimal contactTwoTensionActuel)//Name:Cont2TensionAct,Addres:DB 90 DBW 590,Data Type:Int
         {
@@ -1110,7 +1110,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         ContactTwoTensionActuel = contactTwoTensionActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1132,7 +1132,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         ContactTwoTensionActuel = contactTwoTensionActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1175,7 +1175,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoTensionCalculateCharScaled = rewinderTwoTensionCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1197,7 +1197,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoTensionCalculateCharScaled = rewinderTwoTensionCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1211,7 +1211,7 @@ namespace Business.Concrete.PLC.MachineOverview
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderTwoTensionCalculateCharScaled,PLCMachineOverviewMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderTwoTensionCalculateCharScaled, PLCMachineOverviewMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoTensionCalculateCharScaled(decimal rewinderTwoTensionCalculateCharScaled)//Name:Rew2TensionCalcCharScaled,Adress:DB 90 DBW 416,Data Type:Int
         {
@@ -1235,7 +1235,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoTensionCalculateCharScaled = rewinderTwoTensionCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1257,7 +1257,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoTensionCalculateCharScaled = rewinderTwoTensionCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1300,7 +1300,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoLengthActuel = rewinderTwoLengthActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1322,7 +1322,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoLengthActuel = rewinderTwoLengthActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1336,7 +1336,7 @@ namespace Business.Concrete.PLC.MachineOverview
                 }
             }
 
-            return new SuccessDataResult<long>(rewinderTwoLengthActuel,PLCMachineOverviewMessages.Read);
+            return new SuccessDataResult<long>(rewinderTwoLengthActuel, PLCMachineOverviewMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoLengthActuel(long rewinderTwoLengthActuel)//Name:Rew2LengthAct,Adress:DB 90 DBD 406,Data Type:Int
         {
@@ -1360,7 +1360,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoLengthActuel = rewinderTwoLengthActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1382,7 +1382,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoLengthActuel = rewinderTwoLengthActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1425,7 +1425,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoDiameterActuel = rewinderTwoDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1447,7 +1447,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoDiameterActuel = rewinderTwoDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1461,7 +1461,7 @@ namespace Business.Concrete.PLC.MachineOverview
                 }
             }
 
-            return new SuccessDataResult<long>(rewinderTwoDiameterActuel,PLCMachineOverviewMessages .Read);
+            return new SuccessDataResult<long>(rewinderTwoDiameterActuel, PLCMachineOverviewMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoDiameterActuel(long rewinderTwoDiameterActuel)//Name:Rew2DiaAct,Adress:DB 90 DBW 400,Data Type:Int
         {
@@ -1485,7 +1485,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoDiameterActuel = rewinderTwoDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1507,7 +1507,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoDiameterActuel = rewinderTwoDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1550,7 +1550,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoTensionSupportSetScaled = rewinderTwoTensionSupportSetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1572,7 +1572,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoTensionSupportSetScaled = rewinderTwoTensionSupportSetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1586,7 +1586,7 @@ namespace Business.Concrete.PLC.MachineOverview
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderTwoTensionSupportSetScaled,PLCMachineOverviewMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderTwoTensionSupportSetScaled, PLCMachineOverviewMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoTensionSupportSetScaled(decimal rewinderTwoTensionSupportSetScaled)//Name:Rew2TensionSupSetScaled,Addres:DB 91 DBW 472,Data Type:Int
         {
@@ -1610,7 +1610,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoTensionSupportSetScaled = rewinderTwoTensionSupportSetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1632,7 +1632,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoTensionSupportSetScaled = rewinderTwoTensionSupportSetScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1675,7 +1675,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureLayCalculateCharScaled = rewinderOnePressureLayCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1697,7 +1697,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureLayCalculateCharScaled = rewinderOnePressureLayCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1711,7 +1711,7 @@ namespace Business.Concrete.PLC.MachineOverview
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderOnePressureLayCalculateCharScaled,PLCMachineOverviewMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderOnePressureLayCalculateCharScaled, PLCMachineOverviewMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureLayCalculateCharScaled(decimal rewinderOnePressureLayCalculateCharScaled)//Name:Rew1PresLayCalcCharScaled,Adress:DB 90 DBW 356,Data Type:I
         {
@@ -1735,7 +1735,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureLayCalculateCharScaled = rewinderOnePressureLayCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1757,7 +1757,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureLayCalculateCharScaled = rewinderOnePressureLayCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1800,7 +1800,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureContactCalculateCharScaled = rewinderOnePressureContactCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1822,7 +1822,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureContactCalculateCharScaled = rewinderOnePressureContactCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1836,7 +1836,7 @@ namespace Business.Concrete.PLC.MachineOverview
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderOnePressureContactCalculateCharScaled,PLCMachineOverviewMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderOnePressureContactCalculateCharScaled, PLCMachineOverviewMessages.Read);
         }
         public async Task<IResult> WriteRewinderOnePressureContactCalculateCharScaled(decimal rewinderOnePressureContactCalculateCharScaled)//Name:Rew1PresContCalcCharScaled,Adress:DB 90 DBW 326,Data Type:Int
         {
@@ -1860,7 +1860,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOnePressureContactCalculateCharScaled = rewinderOnePressureContactCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1882,7 +1882,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOnePressureContactCalculateCharScaled = rewinderOnePressureContactCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1925,7 +1925,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureContactCalculateCharScaled = rewinderTwoPressureContactCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1947,7 +1947,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureContactCalculateCharScaled = rewinderTwoPressureContactCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1961,7 +1961,7 @@ namespace Business.Concrete.PLC.MachineOverview
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderTwoPressureContactCalculateCharScaled,PLCMachineOverviewMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderTwoPressureContactCalculateCharScaled, PLCMachineOverviewMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureContactCalculateCharScaled(decimal rewinderTwoPressureContactCalculateCharScaled)//Name:Rew2PresContCalcCharScaled,Adress:DB 90 DBW 426,Data Type:Int
         {
@@ -1985,7 +1985,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureContactCalculateCharScaled = rewinderTwoPressureContactCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2007,7 +2007,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureContactCalculateCharScaled = rewinderTwoPressureContactCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2050,7 +2050,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureSupportCalculateCharScaled = rewinderTwoPressureSupportCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2072,7 +2072,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureSupportCalculateCharScaled = rewinderTwoPressureSupportCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2086,7 +2086,7 @@ namespace Business.Concrete.PLC.MachineOverview
                 }
             }
 
-            return new SuccessDataResult<decimal>(rewinderTwoPressureSupportCalculateCharScaled,PLCMachineOverviewMessages.Read);
+            return new SuccessDataResult<decimal>(rewinderTwoPressureSupportCalculateCharScaled, PLCMachineOverviewMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoPressureSupportCalculateCharScaled(decimal rewinderTwoPressureSupportCalculateCharScaled)//Name:Rew2PresSupCalcCharScaled,Adress:DB 90 DBW 456,Data Type:Int
         {
@@ -2110,7 +2110,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoPressureSupportCalculateCharScaled = rewinderTwoPressureSupportCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2132,7 +2132,7 @@ namespace Business.Concrete.PLC.MachineOverview
                     plcMachineOverview = new PLCMachineOverview
                     {
                         Id = plcMachineOverviewId,
-                        PLCGeneralId = plcMachineOverviewId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoPressureSupportCalculateCharScaled = rewinderTwoPressureSupportCalculateCharScaled,
                         Optime = DateTime.Now,
                         IsActive = true

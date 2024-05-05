@@ -43,14 +43,14 @@ namespace Business.Concrete.PLC.Machine
                 };
                 await _plcGeneralDal.Add(plcGeneral);
 
-                var plcDensity= await _plcDensityDal.Get(x => x.PLCGeneralId == plcGeneralId);
-                if (plcDensity== null)
+                var plcDensity = await _plcDensityDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                if (plcDensity == null)
                 {
                     var plcDensityId = Guid.NewGuid();
-                    plcDensity= new PLCDensity
+                    plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneDensityGraph = rewinderOneDensityGraph,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -65,14 +65,14 @@ namespace Business.Concrete.PLC.Machine
             }
             else
             {
-                var plcDensity= await _plcDensityDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
-                if (plcDensity== null)
+                var plcDensity = await _plcDensityDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                if (plcDensity == null)
                 {
                     var plcDensityId = Guid.NewGuid();
-                    plcDensity= new PLCDensity
+                    plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneDensityGraph = rewinderOneDensityGraph,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -86,7 +86,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<int>(rewinderOneDensityGraph,PLCDensityMessages.Read);
+            return new SuccessDataResult<int>(rewinderOneDensityGraph, PLCDensityMessages.Read);
         }
         public async Task<IResult> WriteRewinderOneDensityGraph(int rewinderOneDensityGraph)//Name:Rew1DensityGraph,Adress:DB 43 DBW 48,Data Type:Int
         {
@@ -110,7 +110,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneDensityGraph = rewinderOneDensityGraph,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -132,7 +132,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneDensityGraph = rewinderOneDensityGraph,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -175,7 +175,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoDensityGraph = rewinderTwoDensityGraph,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -197,7 +197,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoDensityGraph = rewinderTwoDensityGraph,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -211,7 +211,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<int>(rewinderTwoDensityGraph,PLCDensityMessages.Read);
+            return new SuccessDataResult<int>(rewinderTwoDensityGraph, PLCDensityMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoDensityGraph(int rewinderTwoDensityGraph)//Name:Rew2DensityGraph,Adress:DB 53 DBW 48,Data Type:Int
         {
@@ -235,7 +235,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoDensityGraph = rewinderTwoDensityGraph,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -257,7 +257,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoDensityGraph = rewinderTwoDensityGraph,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -278,7 +278,7 @@ namespace Business.Concrete.PLC.Machine
         //Read Only
         public async Task<IDataResult<int>> ReadMachineSpeedActuelArchive()//Name:MachineSpeedActArchive,Adress:DB 304 DBW 20,Data Type:Int
         {
-            var machineSpeedActuelArchive = (int)_plcDal.Read(DataType.DataBlock, 304,20, VarType.Int, 1);
+            var machineSpeedActuelArchive = (int)_plcDal.Read(DataType.DataBlock, 304, 20, VarType.Int, 1);
 
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
             if (plcGeneral == null)
@@ -300,7 +300,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneralId,
                         MachineSpeedActuelArchive = machineSpeedActuelArchive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -322,7 +322,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineSpeedActuelArchive = machineSpeedActuelArchive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -336,7 +336,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<int>(machineSpeedActuelArchive,PLCDensityMessages.Read);
+            return new SuccessDataResult<int>(machineSpeedActuelArchive, PLCDensityMessages.Read);
         }
         public async Task<IResult> WriteMachineSpeedActuelArchive(int machineSpeedActuelArchive)//Name:MachineSpeedActArchive,Adress:DB 304 DBW 20,Data Type:Int
         {
@@ -360,7 +360,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneralId,
                         MachineSpeedActuelArchive = machineSpeedActuelArchive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -382,7 +382,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineSpeedActuelArchive = machineSpeedActuelArchive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -425,7 +425,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneralId,
                         MaterialThickness = materialThickness,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -447,7 +447,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneral.Id,
                         MaterialThickness = materialThickness,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -461,7 +461,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<decimal>(materialThickness,PLCDensityMessages.Read);
+            return new SuccessDataResult<decimal>(materialThickness, PLCDensityMessages.Read);
         }
         public async Task<IResult> WriteMaterialThickness(decimal materialThickness)//Name:MaterialThickness,Adress:DB 91 DBW 36,Data Type:Int
         {
@@ -485,7 +485,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneralId,
                         MaterialThickness = materialThickness,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -507,7 +507,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneral.Id,
                         MaterialThickness = materialThickness,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -550,7 +550,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneDiameterActuel = rewinderOneDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -572,7 +572,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneDiameterActuel = rewinderOneDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -586,7 +586,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<long>(rewinderOneDiameterActuel,PLCDensityMessages.Read);
+            return new SuccessDataResult<long>(rewinderOneDiameterActuel, PLCDensityMessages.Read);
         }
         public async Task<IResult> WriteRewinderOneDiameterActuel(long rewinderOneDiameterActuel)//Name:Rew1DiaAct,Addres:DB 90 DBW 300,Data Type:Int
         {
@@ -610,7 +610,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneDiameterActuel = rewinderOneDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -632,7 +632,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneDiameterActuel = rewinderOneDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -675,7 +675,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneLengthActuel = rewinderOneLengthActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -697,7 +697,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneLengthActuel = rewinderOneLengthActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -711,7 +711,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<long>(rewinderOneLengthActuel,PLCDensityMessages.Read);
+            return new SuccessDataResult<long>(rewinderOneLengthActuel, PLCDensityMessages.Read);
         }
         public async Task<IResult> WriteRewinderOneLengthActuel(long rewinderOneLengthActuel)//Name:Rew1LengthAct,Adress:DB 90 DBD 306,Data Type:Int
         {
@@ -735,7 +735,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneLengthActuel = rewinderOneLengthActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -757,7 +757,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneLengthActuel = rewinderOneLengthActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -800,7 +800,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoDiameterActuel = rewinderTwoDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -822,7 +822,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoDiameterActuel = rewinderTwoDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -836,7 +836,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<long>(rewinderTwoDiameterActuel,PLCDensityMessages.Read);
+            return new SuccessDataResult<long>(rewinderTwoDiameterActuel, PLCDensityMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoDiameterActuel(long rewinderTwoDiameterActuel)//Name:Rew2DiaAct,Adress:DB 90 DBW 400,Data Type:Int
         {
@@ -860,7 +860,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoDiameterActuel = rewinderTwoDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -882,7 +882,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoDiameterActuel = rewinderTwoDiameterActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -925,7 +925,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoLengthActuel = rewinderTwoLengthActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -947,7 +947,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoLengthActuel = rewinderTwoLengthActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -961,7 +961,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<long>(rewinderTwoLengthActuel,PLCDensityMessages.Read);
+            return new SuccessDataResult<long>(rewinderTwoLengthActuel, PLCDensityMessages.Read);
         }
         public async Task<IResult> WriteRewinderTwoLengthActuel(long rewinderTwoLengthActuel)//Name:Rew2LengthAct,Adress:DB 90 DBD 406,Data Type:DInt
         {
@@ -985,7 +985,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoLengthActuel = rewinderTwoLengthActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1007,7 +1007,7 @@ namespace Business.Concrete.PLC.Machine
                     plcDensity = new PLCDensity
                     {
                         Id = plcDensityId,
-                        PLCGeneralId = plcDensityId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoLengthActuel = rewinderTwoLengthActuel,
                         Optime = DateTime.Now,
                         IsActive = true

@@ -8,11 +8,11 @@ namespace Business.Constants.Messages.PLC.General
 {
     public static class PLCGeneralMessages
     {
-        public static string Added = " PLCRecipe eklendi";
-        public static string Updated = " PLCRecipe güncellendi";
-        public static string Deleted = " PLCRecipe silindi";
+        public static string Added = " Makine Genel Bilgisi eklendi";
+        public static string Updated = " Makine Genel Bilgisi  güncellendi";
+        public static string Deleted = " Makine Genel Bilgisi  silindi";
         public static string OperationFailed = "İşlem Başarısız";
-        public static string Read = " PLCRecipe PLC den okundu";
-        public static string Write = " PLCRecipe PLC ye yazıldı";
+        public static string Read = " Makine Genel Bilgisi Bileşeni PLC den okundu";
+        public static string Write = " Makine Genel Bilgisi Bileşeni PLC ye yazıldı";
     }
 }

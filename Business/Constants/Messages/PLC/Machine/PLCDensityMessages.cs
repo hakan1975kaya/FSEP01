@@ -8,11 +8,11 @@ namespace Business.Constants.Messages.PLC.Machine
 {
     public static class PLCDensityMessages
     {
-        public static string Added = " PLCRecipe eklendi";
-        public static string Updated = " PLCRecipe güncellendi";
-        public static string Deleted = " PLCRecipe silindi";
+        public static string Added = " Yoğunluk eklendi";
+        public static string Updated = " Yoğunluk güncellendi";
+        public static string Deleted = " Yoğunluk silindi";
         public static string OperationFailed = "İşlem Başarısız";
-        public static string Read = " PLCRecipe PLC den okundu";
-        public static string Write = " PLCRecipe PLC ye yazıldı";
+        public static string Read = " Yoğunluk Bileşeni PLC den okundu";
+        public static string Write = "  Yoğunluk Bileşeni PLC ye yazıldı";
     }
 }

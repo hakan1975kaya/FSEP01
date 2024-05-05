@@ -50,7 +50,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         PositionHandling = positionHandling,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -72,7 +72,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         PositionHandling = positionHandling,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -110,7 +110,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         PositionHandling = positionHandling,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -132,7 +132,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         PositionHandling = positionHandling,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -175,7 +175,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         PositionHandlingLiftOne = positionHandlingLiftOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -197,7 +197,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         PositionHandlingLiftOne = positionHandlingLiftOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -235,7 +235,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         PositionHandlingLiftOne = positionHandlingLiftOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -257,7 +257,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         PositionHandlingLiftOne = positionHandlingLiftOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -300,7 +300,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         PositionHandlingLiftTwo = positionHandlingLiftTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -322,7 +322,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         PositionHandlingLiftTwo = positionHandlingLiftTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -360,7 +360,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         PositionHandlingLiftTwo = positionHandlingLiftTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -382,7 +382,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         PositionHandlingLiftTwo = positionHandlingLiftTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -425,7 +425,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         HandlingPositionOne = handlingPositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -447,7 +447,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         HandlingPositionOne = handlingPositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -485,7 +485,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         HandlingPositionOne = handlingPositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -507,7 +507,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         HandlingPositionOne = handlingPositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -550,7 +550,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         HandlingPositionTwo = handlingPositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -572,7 +572,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         HandlingPositionTwo = handlingPositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -610,7 +610,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         HandlingPositionTwo = handlingPositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -632,7 +632,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         HandlingPositionTwo = handlingPositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -675,7 +675,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         HandlingPositionThree = handlingPositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -697,7 +697,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         HandlingPositionThree = handlingPositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -735,7 +735,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         HandlingPositionThree = handlingPositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -757,7 +757,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         HandlingPositionThree = handlingPositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -800,7 +800,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         HandlingPositionFour = handlingPositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -822,7 +822,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         HandlingPositionFour = handlingPositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -860,7 +860,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         HandlingPositionFour = handlingPositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -882,7 +882,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         HandlingPositionFour = handlingPositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -925,7 +925,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         HandlingPositionFive = handlingPositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -947,7 +947,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         HandlingPositionFive = handlingPositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -985,7 +985,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         HandlingPositionFive = handlingPositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1007,7 +1007,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         HandlingPositionFive = handlingPositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1050,7 +1050,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOnePositionOne = liftOnePositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1072,7 +1072,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOnePositionOne = liftOnePositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1110,7 +1110,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOnePositionOne = liftOnePositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1132,7 +1132,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOnePositionOne = liftOnePositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1175,7 +1175,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOnePositionTwo = liftOnePositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1197,7 +1197,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOnePositionTwo = liftOnePositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1235,7 +1235,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOnePositionTwo = liftOnePositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1257,7 +1257,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOnePositionTwo = liftOnePositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1300,7 +1300,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOnePositionThree = liftOnePositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1322,7 +1322,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOnePositionThree = liftOnePositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1360,7 +1360,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOnePositionThree = liftOnePositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1382,7 +1382,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOnePositionThree = liftOnePositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1425,7 +1425,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOnePositionFour = liftOnePositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1447,7 +1447,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOnePositionFour = liftOnePositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1485,7 +1485,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOnePositionFour = liftOnePositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1507,7 +1507,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOnePositionFour = liftOnePositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1550,7 +1550,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOnePositionFive = liftOnePositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1572,7 +1572,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOnePositionFive = liftOnePositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1610,7 +1610,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOnePositionFive = liftOnePositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1632,7 +1632,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOnePositionFive = liftOnePositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1675,7 +1675,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOnePositionSix = liftOnePositionSix,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1697,7 +1697,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOnePositionSix = liftOnePositionSix,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1735,7 +1735,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOnePositionSix = liftOnePositionSix,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1757,7 +1757,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOnePositionSix = liftOnePositionSix,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1800,7 +1800,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOnePositionSeven = liftOnePositionSeven,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1822,7 +1822,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOnePositionSeven = liftOnePositionSeven,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1860,7 +1860,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOnePositionSeven = liftOnePositionSeven,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1882,7 +1882,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOnePositionSeven = liftOnePositionSeven,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1925,7 +1925,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOnePositionEight = liftOnePositionEight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1947,7 +1947,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOnePositionEight = liftOnePositionEight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1985,7 +1985,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOnePositionEight = liftOnePositionEight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2007,7 +2007,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOnePositionEight = liftOnePositionEight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2050,7 +2050,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoPositionOne = liftTwoPositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2072,7 +2072,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoPositionOne = liftTwoPositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2110,7 +2110,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoPositionOne = liftTwoPositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2132,7 +2132,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoPositionOne = liftTwoPositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2174,7 +2174,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoPositionTwo = liftTwoPositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2196,7 +2196,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoPositionTwo = liftTwoPositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2235,7 +2235,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoPositionTwo = liftTwoPositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2257,7 +2257,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoPositionTwo = liftTwoPositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2301,7 +2301,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoPositionThree = liftTwoPositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2323,7 +2323,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoPositionThree = liftTwoPositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2361,7 +2361,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoPositionThree = liftTwoPositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2383,7 +2383,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoPositionThree = liftTwoPositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2426,7 +2426,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoPositionFour = liftTwoPositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2448,7 +2448,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoPositionFour = liftTwoPositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2486,7 +2486,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoPositionFour = liftTwoPositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2508,7 +2508,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoPositionFour = liftTwoPositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2551,7 +2551,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoPositionFive = liftTwoPositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2573,7 +2573,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoPositionFive = liftTwoPositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2611,7 +2611,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoPositionFive = liftTwoPositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2633,7 +2633,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoPositionFive = liftTwoPositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2676,7 +2676,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoPositionSix = liftTwoPositionSix,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2698,7 +2698,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoPositionSix = liftTwoPositionSix,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2736,7 +2736,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoPositionSix = liftTwoPositionSix,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2758,7 +2758,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoPositionSix = liftTwoPositionSix,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2801,7 +2801,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoPositionSeven = liftTwoPositionSeven,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2823,7 +2823,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoPositionSeven = liftTwoPositionSeven,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2861,7 +2861,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoPositionSeven = liftTwoPositionSeven,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2883,7 +2883,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoPositionSeven = liftTwoPositionSeven,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2926,7 +2926,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoPositionEight = liftTwoPositionEight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2948,7 +2948,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoPositionEight = liftTwoPositionEight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2986,7 +2986,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoPositionEight = liftTwoPositionEight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3008,7 +3008,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoPositionEight = liftTwoPositionEight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3051,7 +3051,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOneSetPositionOne = liftOneSetPositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3073,7 +3073,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOneSetPositionOne = liftOneSetPositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3111,7 +3111,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOneSetPositionOne = liftOneSetPositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3133,7 +3133,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOneSetPositionOne = liftOneSetPositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3176,7 +3176,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOneSetPositionTwo = liftOneSetPositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3198,7 +3198,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOneSetPositionTwo = liftOneSetPositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3236,7 +3236,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOneSetPositionTwo = liftOneSetPositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3258,7 +3258,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOneSetPositionTwo = liftOneSetPositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3301,7 +3301,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOneSetPositionThree = liftOneSetPositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3323,7 +3323,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOneSetPositionThree = liftOneSetPositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3361,7 +3361,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOneSetPositionThree = liftOneSetPositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3383,7 +3383,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOneSetPositionThree = liftOneSetPositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3426,7 +3426,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOneSetPositionFour = liftOneSetPositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3448,7 +3448,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOneSetPositionFour = liftOneSetPositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3486,7 +3486,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOneSetPositionFour = liftOneSetPositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3508,7 +3508,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOneSetPositionFour = liftOneSetPositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3551,7 +3551,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOneSetPositionFive = liftOneSetPositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3573,7 +3573,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOneSetPositionFive = liftOneSetPositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3611,7 +3611,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOneSetPositionFive = liftOneSetPositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3633,7 +3633,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOneSetPositionFive = liftOneSetPositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3676,7 +3676,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOneSetPositionSix = liftOneSetPositionSix,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3698,7 +3698,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOneSetPositionSix = liftOneSetPositionSix,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3736,7 +3736,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOneSetPositionSix = liftOneSetPositionSix,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3758,7 +3758,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOneSetPositionSix = liftOneSetPositionSix,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3801,7 +3801,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOneSetPositionSeven = liftOneSetPositionSeven,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3823,7 +3823,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOneSetPositionSeven = liftOneSetPositionSeven,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3861,7 +3861,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOneSetPositionSeven = liftOneSetPositionSeven,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3883,7 +3883,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOneSetPositionSeven = liftOneSetPositionSeven,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3926,7 +3926,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOneSetPositionEight = liftOneSetPositionEight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3948,7 +3948,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOneSetPositionEight = liftOneSetPositionEight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -3986,7 +3986,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftOneSetPositionEight = liftOneSetPositionEight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4008,7 +4008,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftOneSetPositionEight = liftOneSetPositionEight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4051,7 +4051,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoSetPositionOne = liftTwoSetPositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4073,7 +4073,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoSetPositionOne = liftTwoSetPositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4111,7 +4111,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoSetPositionOne = liftTwoSetPositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4133,7 +4133,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoSetPositionOne = liftTwoSetPositionOne,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4176,7 +4176,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoSetPositionTwo = liftTwoSetPositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4198,7 +4198,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoSetPositionTwo = liftTwoSetPositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4236,7 +4236,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoSetPositionTwo = liftTwoSetPositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4258,7 +4258,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoSetPositionTwo = liftTwoSetPositionTwo,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4301,7 +4301,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoSetPositionThree = liftTwoSetPositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4323,7 +4323,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoSetPositionThree = liftTwoSetPositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4361,7 +4361,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoSetPositionThree = liftTwoSetPositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4383,7 +4383,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoSetPositionThree = liftTwoSetPositionThree,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4426,7 +4426,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoSetPositionFour = liftTwoSetPositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4448,7 +4448,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoSetPositionFour = liftTwoSetPositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4486,7 +4486,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoSetPositionFour = liftTwoSetPositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4508,7 +4508,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoSetPositionFour = liftTwoSetPositionFour,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4551,7 +4551,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoSetPositionFive = liftTwoSetPositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4573,7 +4573,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoSetPositionFive = liftTwoSetPositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4611,7 +4611,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoSetPositionFive = liftTwoSetPositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4633,7 +4633,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoSetPositionFive = liftTwoSetPositionFive,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4676,7 +4676,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoSetPositionSix = liftTwoSetPositionSix,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4698,7 +4698,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoSetPositionSix = liftTwoSetPositionSix,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4736,7 +4736,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoSetPositionSix = liftTwoSetPositionSix,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4758,7 +4758,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoSetPositionSix = liftTwoSetPositionSix,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4801,7 +4801,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoSetPositionSeven = liftTwoSetPositionSeven,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4823,7 +4823,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoSetPositionSeven = liftTwoSetPositionSeven,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4861,7 +4861,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoSetPositionSeven = liftTwoSetPositionSeven,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4883,7 +4883,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoSetPositionSeven = liftTwoSetPositionSeven,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4926,7 +4926,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoSetPositionEight = liftTwoSetPositionEight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4948,7 +4948,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoSetPositionEight = liftTwoSetPositionEight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -4962,7 +4962,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<long>(liftTwoSetPositionEight,PLCHandlingMessages.Read);
+            return new SuccessDataResult<long>(liftTwoSetPositionEight, PLCHandlingMessages.Read);
         }
         public async Task<IResult> WriteLiftTwoSetPositionEight(long liftTwoSetPositionEight)//Name:Lift1_2Set_Pos1,Adress:DB 231 DBD 96,Data Type:Real
         {
@@ -4986,7 +4986,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneralId,
                         LiftTwoSetPositionEight = liftTwoSetPositionEight,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -5008,7 +5008,7 @@ namespace Business.Concrete.PLC.Machine
                     plcHandling = new PLCHandling
                     {
                         Id = plcHandlingId,
-                        PLCGeneralId = plcHandlingId,
+                        PLCGeneralId = plcGeneral.Id,
                         LiftTwoSetPositionEight = liftTwoSetPositionEight,
                         Optime = DateTime.Now,
                         IsActive = true

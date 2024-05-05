@@ -13,7 +13,7 @@ namespace Entities.Concrete.Entities.PLC.Machine
         public Guid Id { get; set; }
         public Guid PLCGeneralId { get; set; }
         public decimal? RewinderOneTensionSetScaled { get; set; }//Name:Rew1TensionSetScaled,Adress:DB 91 DBW 312,Data Type:Int
-        public decimal? RewinderOneTensionCalculateCharScale { get; set; }//Name:Rew1TensionCalcCharScaled,Adress:DB 90 DBW 316,Data Type:Int
+        public decimal? RewinderOneTensionCalculateCharScaled { get; set; }//Name:Rew1TensionCalcCharScaled,Adress:DB 90 DBW 316,Data Type:Int
         public decimal? RewinderOneTensionActuelMeasureScaled { get; set; }//Name:Rew1TensionActMeasScaled,Adress:DB 90 DBW 312,Data Type:Int
         public decimal? RewinderOneTensionCalculateCharNewton { get; set; }//Name:Rew1TensionCalcCharNewton,Adress:DB 90 DBW 318,Data Type:Int
         public decimal? RewinderOneTensionActuelMeasureNewton { get; set; }//Name:Rew1TensionActMeasNewton,AdressDB 90 DBW 314,Data Type:Int

@@ -49,7 +49,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneDiameterLayRoll = rewinderOneDiameterLayRoll,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -71,7 +71,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneDiameterLayRoll = rewinderOneDiameterLayRoll,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -109,7 +109,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneDiameterLayRoll = rewinderOneDiameterLayRoll,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -131,7 +131,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneDiameterLayRoll = rewinderOneDiameterLayRoll,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -173,7 +173,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneDiameterContactRoll = rewinderOneDiameterContactRoll,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -195,7 +195,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneDiameterContactRoll = rewinderOneDiameterContactRoll,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -233,7 +233,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderOneDiameterContactRoll = rewinderOneDiameterContactRoll,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -255,7 +255,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderOneDiameterContactRoll = rewinderOneDiameterContactRoll,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -297,7 +297,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoDiameterContactRoll = rewinderTwoDiameterContactRoll,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -319,7 +319,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoDiameterContactRoll = rewinderTwoDiameterContactRoll,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -357,7 +357,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoDiameterContactRoll = rewinderTwoDiameterContactRoll,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -379,7 +379,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoDiameterContactRoll = rewinderTwoDiameterContactRoll,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -421,7 +421,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoDiameterSupportRoll = rewinderTwoDiameterSupportRoll,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -443,7 +443,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoDiameterSupportRoll = rewinderTwoDiameterSupportRoll,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -481,7 +481,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         RewinderTwoDiameterSupportRoll = rewinderTwoDiameterSupportRoll,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -503,7 +503,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         RewinderTwoDiameterSupportRoll = rewinderTwoDiameterSupportRoll,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -545,7 +545,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MaterialSpecGravity = materialSpecGravity,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -567,7 +567,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MaterialSpecGravity = materialSpecGravity,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -605,7 +605,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MaterialSpecGravity = materialSpecGravity,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -627,7 +627,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MaterialSpecGravity = materialSpecGravity,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -669,7 +669,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         UnwinderOneMaterialWidth = unwinderOneMaterialWidth,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -691,7 +691,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         UnwinderOneMaterialWidth = unwinderOneMaterialWidth,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -729,7 +729,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         UnwinderOneMaterialWidth = unwinderOneMaterialWidth,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -751,7 +751,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         UnwinderOneMaterialWidth = unwinderOneMaterialWidth,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -793,7 +793,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MaterialThickness = materialThickness,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -815,7 +815,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MaterialThickness = materialThickness,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -853,7 +853,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MaterialThickness = materialThickness,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -875,7 +875,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MaterialThickness = materialThickness,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -918,7 +918,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MaterialThicknessCalculatedValueActuel = materialThicknessCalculatedValueActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -940,7 +940,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MaterialThicknessCalculatedValueActuel = materialThicknessCalculatedValueActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -978,7 +978,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MaterialThicknessCalculatedValueActuel = materialThicknessCalculatedValueActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1000,7 +1000,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MaterialThicknessCalculatedValueActuel = materialThicknessCalculatedValueActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1042,7 +1042,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MaterialThicknessCalculatedValueMinimum = materialThicknessCalculatedValueMinimum,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1064,7 +1064,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MaterialThicknessCalculatedValueMinimum = materialThicknessCalculatedValueMinimum,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1102,7 +1102,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MaterialThicknessCalculatedValueMinimum = materialThicknessCalculatedValueMinimum,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1124,7 +1124,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MaterialThicknessCalculatedValueMinimum = materialThicknessCalculatedValueMinimum,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1166,7 +1166,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MaterialThicknessCalculatedValueMaximum = materialThicknessCalculatedValueMaximum,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1188,7 +1188,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MaterialThicknessCalculatedValueMaximum = materialThicknessCalculatedValueMaximum,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1226,7 +1226,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MaterialThicknessCalculatedValueMaximum = materialThicknessCalculatedValueMaximum,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1248,7 +1248,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MaterialThicknessCalculatedValueMaximum = materialThicknessCalculatedValueMaximum,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1290,7 +1290,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MachineWeldingSpeedSet = machineWeldingSpeedSet,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1312,7 +1312,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineWeldingSpeedSet = machineWeldingSpeedSet,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1326,7 +1326,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<short>(machineWeldingSpeedSet,PLCBasicDataMessages.Read);
+            return new SuccessDataResult<short>(machineWeldingSpeedSet, PLCBasicDataMessages.Read);
         }
         public async Task<IResult> WriteMachineWeldingSpeedSet(short machineWeldingSpeedSet)//Name:MachineWeldingSpeedSet_0,Adress:DB 91 DBW 80,Data Type:Int
         {
@@ -1350,7 +1350,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MachineWeldingSpeedSet = machineWeldingSpeedSet,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1372,7 +1372,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineWeldingSpeedSet = machineWeldingSpeedSet,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1414,7 +1414,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MachineWeldingAmplitudeSet = machineWeldingAmplitudeSet,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1436,7 +1436,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineWeldingAmplitudeSet = machineWeldingAmplitudeSet,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1474,7 +1474,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MachineWeldingAmplitudeSet = machineWeldingAmplitudeSet,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1496,7 +1496,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineWeldingAmplitudeSet = machineWeldingAmplitudeSet,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1539,7 +1539,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MachineWeldingPowerActuel = machineWeldingPowerActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1561,7 +1561,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineWeldingPowerActuel = machineWeldingPowerActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1599,7 +1599,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MachineWeldingPowerActuel = machineWeldingPowerActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1621,7 +1621,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineWeldingPowerActuel = machineWeldingPowerActuel,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1663,7 +1663,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MachineTimeAcceleration = machineTimeAcceleration,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1685,7 +1685,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineTimeAcceleration = machineTimeAcceleration,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1723,7 +1723,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MachineTimeAcceleration = machineTimeAcceleration,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1745,7 +1745,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineTimeAcceleration = machineTimeAcceleration,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1787,7 +1787,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MachineTimeDecelaration = machineTimeDecelaration,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1809,7 +1809,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineTimeDecelaration = machineTimeDecelaration,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1847,7 +1847,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MachineTimeDecelaration = machineTimeDecelaration,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1869,7 +1869,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineTimeDecelaration = machineTimeDecelaration,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1911,7 +1911,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MachineTimeFastStop = machineTimeFastStop,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1933,7 +1933,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineTimeFastStop = machineTimeFastStop,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1971,7 +1971,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MachineTimeFastStop = machineTimeFastStop,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -1993,7 +1993,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineTimeFastStop = machineTimeFastStop,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2035,7 +2035,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MachineSpeedJog = machineSpeedJog,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2057,7 +2057,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineSpeedJog = machineSpeedJog,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2071,7 +2071,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<short>(machineSpeedJog,PLCBasicDataMessages.Read);
+            return new SuccessDataResult<short>(machineSpeedJog, PLCBasicDataMessages.Read);
         }
         public async Task<IResult> WriteMachineSpeedJog(short machineSpeedJog)//Name:MachineSpeedJog,Addres:DB 91 DBW 4
         {
@@ -2095,7 +2095,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MachineSpeedJog = machineSpeedJog,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2117,7 +2117,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineSpeedJog = machineSpeedJog,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2160,7 +2160,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MachineLengthTotal = machineLengthTotal,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2182,7 +2182,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineLengthTotal = machineLengthTotal,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2220,7 +2220,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneralId,
                         MachineLengthTotal = machineLengthTotal,
                         Optime = DateTime.Now,
                         IsActive = true
@@ -2242,7 +2242,7 @@ namespace Business.Concrete.PLC.Machine
                     plcBasicData = new PLCBasicData
                     {
                         Id = plcBasicDataId,
-                        PLCGeneralId = plcBasicDataId,
+                        PLCGeneralId = plcGeneral.Id,
                         MachineLengthTotal = machineLengthTotal,
                         Optime = DateTime.Now,
                         IsActive = true
