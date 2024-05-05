@@ -4,16 +4,10 @@ using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract.PLC.General;
 using DataAccess.Abstract.PLC.Machine;
-using DataAccess.Concrete.EntityFramework.PLC.Machine;
 using Entities.Concrete.Entities.PLC.General;
 using Entities.Concrete.Entities.PLC.Machine;
 using PLC.Abstract;
 using S7.Net;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concrete.PLC.Machine
 {

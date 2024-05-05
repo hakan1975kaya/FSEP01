@@ -20,7 +20,7 @@ namespace Entities.Concrete.Entities.PLC.Machine
         public long? RewinderOneDiameterSet { get; set; }//Name:Rew1DiaSet,Adress:DB 91 DBW 300,Data Type:Int
         public long? RewinderOneDiameterActuel { get; set; }//Name:Rew1DiaAct,Adress:DB 90 DBW 300,Data Type:Int
         public long? RewinderOneLengthSet { get; set; }//Name:Rew1LengthSet,Adress:DB 91 DBD 306,Data Type:Int
-        public long? RewinderOneLengthActue { get; set; }//Name:Rew1LengthAct,Adress:DB 90 DBD 306,Data Type:Int
+        public long? RewinderOneLengthActuel { get; set; }//Name:Rew1LengthAct,Adress:DB 90 DBD 306,Data Type:Int
         public long? RewinderTwoDiameterSet { get; set; }//Name:Rew2DiaSet,Adress:DB 91 DBW 400,Data Type:Int
         public long? RewinderTwoDiameterActuel { get; set; }//Name:Rew2DiaAct,Adress:DB 90 DBW 400,Data Type:Int
         public long? RewinderTwoLengthSet { get; set; }//Name:Rew2LengthSet,Adress:DB 91 DBD 406,Data Type:Int
