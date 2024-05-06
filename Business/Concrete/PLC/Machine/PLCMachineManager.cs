@@ -1,4 +1,5 @@
 ﻿using Business.Abstract.PLC.Machine;
+using Business.BusinessAspect.Autofac;
 using Business.Constants.Messages.PLC.Machine;
 using Core.Aspects.Autofac.Logging;
 using Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
@@ -27,6 +28,8 @@ namespace Business.Concrete.PLC.Machine
             _plcMachineDal = plcMachineDal;
             _recipeNameLast = (string)_plcDal.Read(DataType.DataBlock, 90, 40, VarType.String, 1);
         }
+
+        [SecurityAspect("PLCMachine.ReadMachineSpeedSet", Priority = 2)]
         public async Task<IDataResult<long>> ReadMachineSpeedSet()//Name:MachineSpeedSet,Addres:DB 91 DBW 2,Data Type:long
         {
             var machineSpeedSet = (long)_plcDal.Read(DataType.DataBlock, 91, 2, VarType.Int, 1);
@@ -89,6 +92,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<long>(machineSpeedSet, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteMachineSpeedSet", Priority = 2)]
         public async Task<IResult> WriteMachineSpeedSet(long machineSpeedSet)//Name:MachineSpeedSet,Addres:DB 91 DBW 2,Data Type:long
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -151,6 +156,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCMachineMessages.Write);
         }
 
+
+        [SecurityAspect("PLCMachine.ReadTransportOneTensionSet", Priority = 2)]
         public async Task<IDataResult<long>> ReadTransportOneTensionSet()//Name:Transport1TensionSet,Addres:DB 91 DBW 550,Data Type:long
         {
             var transportOneTensionSet = (long)_plcDal.Read(DataType.DataBlock, 91, 550, VarType.Int, 1);
@@ -213,6 +220,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<long>(transportOneTensionSet, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteTransportOneTensionSet", Priority = 2)]
         public async Task<IResult> WriteTransportOneTensionSet(long transportOneTensionSet)//Name:Transport1TensionSet,Addres:DB 91 DBW 550,Data Type:long
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -275,6 +284,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCMachineMessages.Write);
         }
 
+
+        [SecurityAspect("PLCMachine.ReadTransportTwoTensionSet", Priority = 2)]
         public async Task<IDataResult<long>> ReadTransportTwoTensionSet()//Name:Transport2TensionSet,Addres:DB 91 DBW 560,Data Type:long
         {
             var transportTwoTensionSet = (long)_plcDal.Read(DataType.DataBlock, 91, 560, VarType.Int, 1);
@@ -337,6 +348,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<long>(transportTwoTensionSet, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteTransportTwoTensionSet", Priority = 2)]
         public async Task<IResult> WriteTransportTwoTensionSet(long transportTwoTensionSet)//Name:Transport2TensionSet,Addres:DB 91 DBW 560,Data Type:long
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -399,6 +412,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCMachineMessages.Write);
         }
 
+
+        [SecurityAspect("PLCMachine.ReadWeightRewinderOne", Priority = 2)]
         public async Task<IDataResult<long>> ReadWeightRewinderOne()//Name:Weight_Rew_1,Addres:DB 1 DBD 2384,Data Type:long
         {
             var weightRewinderOne = (long)_plcDal.Read(DataType.DataBlock, 1, 2384, VarType.Real, 1);
@@ -461,6 +476,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<long>(weightRewinderOne, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteWeightRewinderOne", Priority = 2)]
         public async Task<IResult> WriteWeightRewinderOne(long weightRewinderOne)//Name:Weight_Rew_1,Addres:DB 1 DBD 2384,Data Type:long
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -523,6 +540,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCMachineMessages.Write);
         }
 
+
+        [SecurityAspect("PLCMachine.ReadWeightRewinderTwo", Priority = 2)]
         public async Task<IDataResult<long>> ReadWeightRewinderTwo()//Name:Weight_Rew_2,Addres:DB 1 DBD 2380,Data Type:long
         {
             var weightRewinderTwo = (long)_plcDal.Read(DataType.DataBlock, 1, 2380, VarType.Real, 1);
@@ -585,6 +604,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<long>(weightRewinderTwo, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteWeightRewinderTwo", Priority = 2)]
         public async Task<IResult> WriteWeightRewinderTwo(long weightRewinderTwo)//Name:Weight_Rew_2,Addres:DB 1 DBD 2380,Data Type:long
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -647,6 +668,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCMachineMessages.Write);
         }
 
+
+        [SecurityAspect("PLCMachine.ReadRewinderOneDiameterSet", Priority = 2)]
         public async Task<IDataResult<long>> ReadRewinderOneDiameterSet()//Name:Rew1DiaSet,Addres:DB 91 DBW 300,Data Type:long
         {
             var rewinderOneDiameterSet = (long)_plcDal.Read(DataType.DataBlock, 91, 300, VarType.Int, 1);
@@ -709,6 +732,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<long>(rewinderOneDiameterSet, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteRewinderOneDiameterSet", Priority = 2)]
         public async Task<IResult> WriteRewinderOneDiameterSet(long rewinderOneDiameterSet)//Name:Rew1DiaSet,Addres:DB 91 DBW 300,Data Type:long
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -771,7 +796,9 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCMachineMessages.Write);
         }
 
+
         //Read Only
+        [SecurityAspect("PLCMachine.ReadRewinderOneDiameterActuel", Priority = 2)]
         public async Task<IDataResult<long>> ReadRewinderOneDiameterActuel()//Name:Rew1DiaAct,Adress:DB 90 DBW 300,Data Type:long
         {
             var rewinderOneDiameterActuel = (long)_plcDal.Read(DataType.DataBlock, 90, 300, VarType.Int, 1);
@@ -834,6 +861,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<long>(rewinderOneDiameterActuel, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteRewinderOneDiameterActuel", Priority = 2)]
         public async Task<IResult> WriteRewinderOneDiameterActuel(long rewinderOneDiameterActuel)//Name:Rew1DiaAct,Adress:DB 90 DBW 300,Data Type:long
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -896,6 +925,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCMachineMessages.Write);
         }
 
+
+        [SecurityAspect("PLCMachine.ReadRewinderOneLengthSet", Priority = 2)]
         public async Task<IDataResult<long>> ReadRewinderOneLengthSet()//Name:Rew1LengthSet,Addres:DB 91 DBD 306,Data Type:Dlong
         {
             var rewinderOneLengthSet = (long)_plcDal.Read(DataType.DataBlock, 91, 306, VarType.DInt, 1);
@@ -958,6 +989,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<long>(rewinderOneLengthSet, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteRewinderOneLengthSet", Priority = 2)]
         public async Task<IResult> WriteRewinderOneLengthSet(long rewinderOneLengthSet)//Name:Rew1LengthSet,Addres:DB 91 DBD 306,Data Type:Dlong
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -1020,7 +1053,9 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCMachineMessages.Write);
         }
 
+
         //Read Only
+        [SecurityAspect("PLCMachine.ReadRewinderOneLengthActuel", Priority = 2)]
         public async Task<IDataResult<long>> ReadRewinderOneLengthActuel()//Name:Rew1LengthAct,Addres:DB 90 DBD 306,Data Type:DInt
         {
             var rewinderOneLengthActuel = (long)_plcDal.Read(DataType.DataBlock, 90, 306, VarType.DInt, 1);
@@ -1083,6 +1118,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<long>(rewinderOneLengthActuel, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteRewinderOneLengthActuel", Priority = 2)]
         public async Task<IResult> WriteRewinderOneLengthActuel(long rewinderOneLengthActuel)//Name:Rew1LengthAct,Addres:DB 90 DBD 306,Data Type:Dlong
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -1145,6 +1182,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCMachineMessages.Write);
         }
 
+
+        [SecurityAspect("PLCMachine.ReadRewinderTwoDiameterSet", Priority = 2)]
         public async Task<IDataResult<long>> ReadRewinderTwoDiameterSet()//Name:Rew1DiaSet,Addres:DB 91 DBW 400,Data Type:long
         {
             var rewinderTwoDiameterSet = (long)_plcDal.Read(DataType.DataBlock, 91, 400, VarType.Int, 1);
@@ -1207,6 +1246,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<long>(rewinderTwoDiameterSet, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteRewinderTwoDiameterSet", Priority = 2)]
         public async Task<IResult> WriteRewinderTwoDiameterSet(long rewinderTwoDiameterSet)//Name:Rew1DiaSet,Addres:DB 91 DBW 400,Data Type:long
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -1269,7 +1310,9 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCMachineMessages.Write);
         }
 
+
         //Read Only
+        [SecurityAspect("PLCMachine.ReadRewinderTwoDiameterActuel", Priority = 2)]
         public async Task<IDataResult<long>> ReadRewinderTwoDiameterActuel()//Name:Rew1DiaAct,Addres:DB 90 DBW 400,Data Type:long
         {
             var rewinderTwoDiameterActuel = (long)_plcDal.Read(DataType.DataBlock, 90, 400, VarType.Int, 1);
@@ -1332,6 +1375,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<long>(rewinderTwoDiameterActuel, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteRewinderTwoDiameterActuel", Priority = 2)]
         public async Task<IResult> WriteRewinderTwoDiameterActuel(long rewinderTwoDiameterActuel)//Name:Rew1DiaAct,Addres:DB 90 DBW 400,Data Type:long
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -1394,6 +1439,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCMachineMessages.Write);
         }
 
+
+        [SecurityAspect("PLCMachine.ReadRewinderTwoLengthSet", Priority = 2)]
         public async Task<IDataResult<long>> ReadRewinderTwoLengthSet()//Name:Rew1LengthSet,Addres:DB 91 DBD 406,Data Type:Dlong
         {
             var rewinderTwoLengthSet = (long)_plcDal.Read(DataType.DataBlock, 91, 406, VarType.DInt, 1);
@@ -1456,6 +1503,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<long>(rewinderTwoLengthSet, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteRewinderTwoLengthSet", Priority = 2)]
         public async Task<IResult> WriteRewinderTwoLengthSet(long rewinderTwoLengthSet)//Name:Rew1LengthSet,Addres:DB 91 DBD 406,Data Type:Dlong
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -1518,7 +1567,9 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCMachineMessages.Write);
         }
 
+
         //Read Only
+        [SecurityAspect("PLCMachine.ReadRewinderTwoLengthActuel", Priority = 2)]
         public async Task<IDataResult<long>> ReadRewinderTwoLengthActuel()//Name:Rew2LengthAct,Addres:DB 90 DBD 406,Data Type:Dlong
         {
             var rewinderTwoLengthActuel = (long)_plcDal.Read(DataType.DataBlock, 90, 406, VarType.DInt, 1);
@@ -1581,6 +1632,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<long>(rewinderTwoLengthActuel, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteRewinderTwoLengthActuel", Priority = 2)]
         public async Task<IResult> WriteRewinderTwoLengthActuel(long rewinderTwoLengthActuel)//Name:Rew2LengthAct,Addres:DB 90 DBD 406,Data Type:Dlong
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -1643,6 +1696,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCMachineMessages.Write);
         }
 
+
+        [SecurityAspect("PLCMachine.ReadUnwinderOneDiameterSet", Priority = 2)]
         public async Task<IDataResult<long>> ReadUnwinderOneDiameterSet()//Name:Unw1DiaSet,Addres:DB 91 DBW 100,Data Type:long
         {
             var unwinderOneDiameterSet = (long)_plcDal.Read(DataType.DataBlock, 91, 100, VarType.Int, 1);
@@ -1705,6 +1760,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<long>(unwinderOneDiameterSet, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteUnwinderOneDiameterSet", Priority = 2)]
         public async Task<IResult> WriteUnwinderOneDiameterSet(long unwinderOneDiameterSet)//Name:Unw1DiaSet,Addres:DB 91 DBW 100,Data Type:long
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -1767,7 +1824,9 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCMachineMessages.Write);
         }
 
+
         //Read Only
+        [SecurityAspect("PLCMachine.ReadUnwinderOneDiameterActuel", Priority = 2)]
         public async Task<IDataResult<long>> ReadUnwinderOneDiameterActuel()//Name:Unw1DiaAct,Addres:DB 90 DBW 100,Data Type:long
         {
             var unwinderOneDiameterActuel = (long)_plcDal.Read(DataType.DataBlock, 90, 100, VarType.Int, 1);
@@ -1830,6 +1889,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<long>(unwinderOneDiameterActuel, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteUnwinderOneDiameterActuel", Priority = 2)]
         public async Task<IResult> WriteUnwinderOneDiameterActuel(long unwinderOneDiameterActuel)//Name:Unw1DiaAct,Addres:DB 90 DBW 100,Data Type:long
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -1892,6 +1953,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCMachineMessages.Write);
         }
 
+
+        [SecurityAspect("PLCMachine.ReadRewinderOneResetLength", Priority = 2)]
         public async Task<IDataResult<bool>> ReadRewinderOneResetLength()//Name:MachineFunctFlag1,Adress:DB 91 DBW 28,Data Type:Int,ResetLength:91.28.2
         {
             var rewinderOneResetLength = (bool)_plcDal.Read(DataType.DataBlock, 91, 28, VarType.Bit, 1, 2);
@@ -1954,6 +2017,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<bool>(rewinderOneResetLength, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteRewinderOneResetLength", Priority = 2)]
         public async Task<IResult> WriteRewinderOneResetLength(bool rewinderOneResetLength)//Name:MachineFunctFlag1,Adress:DB 91 DBW 28,Data Type:Int,ResetLength:91.28.2
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -2016,6 +2081,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCMachineMessages.Write);
         }
 
+
+        [SecurityAspect("PLCMachine.ReadRewinderTwoResetLength", Priority = 2)]
         public async Task<IDataResult<bool>> ReadRewinderTwoResetLength()//Name:MachineFunctFlag1,Adress:DB 91 DBW 28,Data Type:Int,ResetLength:91.28.3
         {
             var rewinderTwoResetLength = (bool)_plcDal.Read(DataType.DataBlock, 91, 28, VarType.Bit, 1, 3);
@@ -2078,6 +2145,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<bool>(rewinderTwoResetLength, PLCMachineMessages.Read);
         }
+
+        [SecurityAspect("PLCMachine.WriteRewinderTwoResetLength", Priority = 2)]
         public async Task<IResult> WriteRewinderTwoResetLength(bool rewinderTwoResetLength)//Name:MachineFunctFlag1,Adress:DB 91 DBW 28,Data Type:Int,ResetLength:91.28.3
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);

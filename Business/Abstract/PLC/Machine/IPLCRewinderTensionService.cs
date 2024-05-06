@@ -10,7 +10,7 @@ namespace Business.Abstract.PLC.Machine
     public interface IPLCRewinderTensionService
     {
         public Task<IDataResult<decimal>> ReadRewinderOneTensionSetScaled();
-        public Task<IResult> WriteRewinderOneTensionSetScaled(decimal rewinderOneTensionSetScale);
+        public Task<IResult> WriteRewinderOneTensionSetScaled(decimal rewinderOneTensionSetScaled);
 
         public Task<IDataResult<decimal>> ReadRewinderOneTensionCalculateCharScaled();
         public Task<IResult> WriteRewinderOneTensionCalculateCharScaled(decimal rewinderOneTensionCalculateCharScaled);

@@ -1,5 +1,8 @@
 ﻿using Business.Abstract.PLC.Machine;
+using Business.BusinessAspect.Autofac;
 using Business.Constants.Messages.PLC.Machine;
+using Core.Aspects.Autofac.Logging;
+using Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract.PLC.General;
@@ -11,6 +14,7 @@ using S7.Net;
 
 namespace Business.Concrete.PLC.Machine
 {
+    [LogAspect(typeof(DatabaseLogger), Priority = 1)]
     public class PLCSuctionHydraulicManager : IPLCSuctionHydraulicService
     {
         private IPLCDal _plcDal;
@@ -25,6 +29,7 @@ namespace Business.Concrete.PLC.Machine
             _recipeNameLast = (string)_plcDal.Read(DataType.DataBlock, 90, 40, VarType.String, 1);
         }
 
+        [SecurityAspect("PLCSuctionHydraulic.ReadStartCycleCentralLubrication", Priority = 2)]
         public async Task<IDataResult<bool>> ReadStartCycleCentralLubrication()//Name:MachineFunctFlag1,Adress:DB 91 DBW 28,Data Type:short,Note:91.28.6 StartCycleCentrallubrication
         {
             var startCycleCentralLubrication = (bool)_plcDal.Read(DataType.DataBlock, 91, 28, VarType.Bit, 1, 6);
@@ -87,6 +92,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<bool>(startCycleCentralLubrication, PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteStartCycleCentralLubrication", Priority = 2)]
         public async Task<IResult> WriteStartCycleCentralLubrication(bool startCycleCentralLubrication)//Name:MachineFunctFlag1,Adress:DB 91 DBW 28,Data Type:short,Note:91.28.6 StartCycleCentrallubrication
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -149,6 +156,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadStartCycleCentralLubricationIsRunning", Priority = 2)]
         public async Task<IDataResult<bool>> ReadStartCycleCentralLubricationIsRunning()//Name:MachineFunctFlag1,Adress:DB 91 DBW 28,Data Type:short,Note:91.28.15 StartLubrication
         {
             var startCycleCentralLubricationIsRunning = (bool)_plcDal.Read(DataType.DataBlock, 91, 28, VarType.Bit, 1, 15);
@@ -211,6 +220,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<bool>(startCycleCentralLubricationIsRunning, PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteStartCycleCentralLubricationIsRunning", Priority = 2)]
         public async Task<IResult> WriteStartCycleCentralLubricationIsRunning(bool startCycleCentralLubricationIsRunning)//Name:MachineFunctFlag1,Adress:DB 91 DBW 28,Data Type:short,Note:91.28.15 StartLubrication
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -273,6 +284,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadHydraulicTemperature", Priority = 2)]
         public async Task<IDataResult<short>> ReadHydraulicTemperature()//Name:HydraulicTemperature,Addres:DB 90 DBW 28,Data Type:short,Note:90.28.6 :Start Cycle Central lubrication Button,90.28.15 :Cycle Central lubrication Lamp
         {
             var hydraulicTemperature = (short)_plcDal.Read(DataType.DataBlock, 90, 28, VarType.Int, 1);
@@ -335,6 +348,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<short>(hydraulicTemperature, PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteHydraulicTemperature", Priority = 2)]
         public async Task<IResult> WriteHydraulicTemperature(short hydraulicTemperature)//Name:HydraulicTemperature,Addres:DB 90 DBW 28,Data Type:short
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -397,6 +412,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadHydraulicLevel", Priority = 2)]
         public async Task<IDataResult<short>> ReadHydraulicLevel()//Name:HydraulicLevel,Addres:DB 90 DBW 662,Data Type:short
         {
             var hydraulicLevel = (short)_plcDal.Read(DataType.DataBlock, 90, 662, VarType.Int, 1);
@@ -459,6 +476,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<short>(hydraulicLevel, PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteHydraulicLevel", Priority = 2)]
         public async Task<IResult> WriteHydraulicLevel(short hydraulicLevel)//Name:HydraulicLevel,Addres:DB 90 DBW 662,Data Type:short
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -521,6 +540,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadHydraulicPressure", Priority = 2)]
         public async Task<IDataResult<short>> ReadHydraulicPressure()//Name:HydraulicPressure,Addres:DB 90 DBW 664, Data Type:short
         {
             var hydraulicPressure = (short)_plcDal.Read(DataType.DataBlock, 90, 664, VarType.Int, 1);
@@ -583,6 +604,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<short>(hydraulicPressure, PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteHydraulicPressure", Priority = 2)]
         public async Task<IResult> WriteHydraulicPressure(short hydraulicPressure)//Name:HydraulicPressure,Addres:DB 90 DBW 664, Data Type:short
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -645,6 +668,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadSuctionRPMSet", Priority = 2)]
         public async Task<IDataResult<short>> ReadSuctionRPMSet()//Name:SuctionRPMSet,Addres:DB 91 DBW 690, Data Type:short
         {
             var suctionRPMSet = (short)_plcDal.Read(DataType.DataBlock, 91, 690, VarType.Int, 1);
@@ -707,6 +732,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<short>(suctionRPMSet, PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteSuctionRPMSet", Priority = 2)]
         public async Task<IResult> WriteSuctionRPMSet(short suctionRPMSet)//Name:SuctionRPMSet,Addres:DB 91 DBW 690, Data Type:short
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -769,6 +796,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadSuctionRPMActuel", Priority = 2)]
         public async Task<IDataResult<short>> ReadSuctionRPMActuel()//Name:SuctionRPMSet,Addres:DB 90 DBW 690, Data Type:short
         {
             var suctionRPMActuel = (short)_plcDal.Read(DataType.DataBlock, 90, 690, VarType.Int, 1);
@@ -831,6 +860,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<short>(suctionRPMActuel, PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteSuctionRPMActuel", Priority = 2)]
         public async Task<IResult> WriteSuctionRPMActuel(short suctionRPMActuel)//Name:SuctionRPMSet,Addres:DB 90 DBW 690, Data Type:short
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -893,6 +924,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadSuctionSpeedForMaximumRPM", Priority = 2)]
         public async Task<IDataResult<short>> ReadSuctionSpeedForMaximumRPM()//Name:SuctionSpeedForMaxRPM,Addres:DB 91 DBW 694, Data Type:short
         {
             var suctionSpeedForMaximumRPM = (short)_plcDal.Read(DataType.DataBlock, 91, 694, VarType.Int, 1);
@@ -955,6 +988,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<short>(suctionSpeedForMaximumRPM, PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteSuctionSpeedForMaximumRPM", Priority = 2)]
         public async Task<IResult> WriteSuctionSpeedForMaximumRPM(short suctionSpeedForMaximumRPM)//Name:SuctionSpeedForMaxRPM,Addres:DB 91 DBW 694, Data Type:short
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -1017,6 +1052,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadMachineSpeedActuel", Priority = 2)]
         public async Task<IDataResult<short>> ReadMachineSpeedActuel()//Name:SuctionSpeedForMaxRPM,Addres:DB 90 DBW 2, Data Type:short
         {
             var machineSpeedActuel = (short)_plcDal.Read(DataType.DataBlock, 90, 2, VarType.Int, 1);
@@ -1079,6 +1116,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<short>(machineSpeedActuel, PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteMachineSpeedActuel", Priority = 2)]
         public async Task<IResult> WriteMachineSpeedActuel(short machineSpeedActuel)//Name:SuctionSpeedForMaxRPM,Addres:DB 90 DBW 2, Data Type:short
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -1141,6 +1180,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadBoosterIsRaedy", Priority = 2)]
         public async Task<IDataResult<bool>> ReadBoosterIsRaedy()//Name:suction externFunktionFlag,Adress:DB 91 DBW 702,Data Type:short,Note:91.702.0
         {
             var boosterIsRaedy = (bool)_plcDal.Read(DataType.DataBlock, 91, 702, VarType.Bit, 1, 0);
@@ -1203,6 +1244,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<bool>(boosterIsRaedy,PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteBoosterIsRaedy", Priority = 2)]
         public async Task<IResult> WriteBoosterIsRaedy(bool boosterIsRaedy)//Name:suction externFunktionFlag,Adress:DB 91 DBW 702,Data Type:short,Note:91.702.0
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -1265,6 +1308,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadBoosterIsRunning", Priority = 2)]
         public async Task<IDataResult<bool>> ReadBoosterIsRunning()//Name:suction externFunktionFlag,Adress:DB 91 DBW 702,Data Type:short,Note:91.702.1
         {
             var boosterIsRunning = (bool)_plcDal.Read(DataType.DataBlock, 91, 702, VarType.Bit, 1, 1);
@@ -1327,6 +1372,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<bool>(boosterIsRunning,PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteBoosterIsRunning", Priority = 2)]
         public async Task<IResult> WriteBoosterIsRunning(bool boosterIsRunning)//Name:suction externFunktionFlag,Adress:DB 91 DBW 702,Data Type:short,Note:91.702.1
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -1389,6 +1436,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadSuctionExternFunctionSetOne", Priority = 2)]
         public async Task<IDataResult<bool>> ReadSuctionExternFunctionSetOne()//Name:suction externFunktionFlag,Adress:DB 91 DBW 702,Data Type:short,Note:91.702.2
         {
             var suctionExternFunctionSetOne = (bool)_plcDal.Read(DataType.DataBlock, 91, 702, VarType.Bit, 1, 2);
@@ -1451,6 +1500,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<bool>(suctionExternFunctionSetOne,PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteSuctionExternFunctionSetOne", Priority = 2)]
         public async Task<IResult> WriteSuctionExternFunctionSetOne(bool suctionExternFunctionSetOne)//Name:suction externFunktionFlag,Adress:DB 91 DBW 702,Data Type:short,Note:91.702.2
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -1513,6 +1564,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadSuctionExternFunctionSetTwo", Priority = 2)]
         public async Task<IDataResult<bool>> ReadSuctionExternFunctionSetTwo()//Name:suction externFunktionFlag,Adress:DB 91 DBW 702,Data Type:short,Note:91.702.3
         {
             var suctionExternFunctionSetTwo = (bool)_plcDal.Read(DataType.DataBlock, 91, 702, VarType.Bit, 1, 3);
@@ -1575,6 +1628,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<bool>(suctionExternFunctionSetTwo,PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteSuctionExternFunctionSetTwo", Priority = 2)]
         public async Task<IResult> WriteSuctionExternFunctionSetTwo(bool suctionExternFunctionSetTwo)//Name:suction externFunktionFlag,Adress:DB 91 DBW 702,Data Type:short,Note:91.702.3
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -1637,6 +1692,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadSuctionExternFunctionSetThree", Priority = 2)]
         public async Task<IDataResult<bool>> ReadSuctionExternFunctionSetThree()//Name:suction externFunktionFlag,Adress:DB 91 DBW 702,Data Type:short,Note:91.702.4
         {
             var suctionExternFunctionSetThree = (bool)_plcDal.Read(DataType.DataBlock, 91, 702, VarType.Bit, 1, 4);
@@ -1699,6 +1756,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<bool>(suctionExternFunctionSetThree,PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteSuctionExternFunctionSetThree", Priority = 2)]
         public async Task<IResult> WriteSuctionExternFunctionSetThree(bool suctionExternFunctionSetThree)//Name:suction externFunktionFlag,Adress:DB 91 DBW 702,Data Type:short,Note:91.702.4
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -1761,6 +1820,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadSuctionExternFunctionReady", Priority = 2)]
         public async Task<IDataResult<bool>> ReadSuctionExternFunctionReady()//Name:suction externFunktionFlag,Adress:DB 91 DBW 702,Data Type:short,Note:91.702.5
         {
             var suctionExternFunctionReady = (bool)_plcDal.Read(DataType.DataBlock, 91, 702, VarType.Bit, 1, 5);
@@ -1823,6 +1884,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<bool>(suctionExternFunctionReady,PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteSuctionExternFunctionReady", Priority = 2)]
         public async Task<IResult> WriteSuctionExternFunctionReady(bool suctionExternFunctionReady)//Name:suction externFunktionFlag,Adress:DB 91 DBW 702,Data Type:short,Note:91.702.5
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -1885,6 +1948,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadSuctionExternFunctionIsRunning", Priority = 2)]
         public async Task<IDataResult<bool>> ReadSuctionExternFunctionIsRunning()//Name:suction externFunktionFlag,Adress:DB 91 DBW 702,Data Type:short,Note:91.702.6
         {
             var suctionExternFunctionIsRunning = (bool)_plcDal.Read(DataType.DataBlock, 91, 702, VarType.Bit, 1, 6);
@@ -1947,6 +2012,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<bool>(suctionExternFunctionIsRunning,PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteSuctionExternFunctionIsRunning", Priority = 2)]
         public async Task<IResult> WriteSuctionExternFunctionIsRunning(bool suctionExternFunctionIsRunning)//Name:suction externFunktionFlag,Adress:DB 91 DBW 702,Data Type:short,Note:91.702.6
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -2009,6 +2076,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadSuctionExternFunctionIsFault", Priority = 2)]
         public async Task<IDataResult<bool>> ReadSuctionExternFunctionIsFault()//Name:suction externFunktionFlag,Adress:DB 91 DBW 702,Data Type:short,Note:91.702.6
         {
             var suctionExternFunctionIsFault = (bool)_plcDal.Read(DataType.DataBlock, 91, 702, VarType.Bit, 1, 7);
@@ -2071,6 +2140,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<bool>(suctionExternFunctionIsFault,PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteSuctionExternFunctionIsFault", Priority = 2)]
         public async Task<IResult> WriteSuctionExternFunctionIsFault(bool suctionExternFunctionIsFault)//Name:suction externFunktionFlag,Adress:DB 91 DBW 702,Data Type:short,Note:91.702.6
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -2133,6 +2204,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadSuctionLeakAirFlapOneSet", Priority = 2)]
         public async Task<IDataResult<short>> ReadSuctionLeakAirFlapOneSet()//Name:suction externFunktionFlag,Addres:DB 91 DBW 698, Data Type:short
         {
             var suctionLeakAirFlapOneSet = (short)_plcDal.Read(DataType.DataBlock, 91, 698, VarType.Int, 1);
@@ -2195,6 +2268,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<short>(suctionLeakAirFlapOneSet,PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteSuctionLeakAirFlapOneSet", Priority = 2)]
         public async Task<IResult> WriteSuctionLeakAirFlapOneSet(short suctionLeakAirFlapOneSet)//Name:suction externFunktionFlag,Addres:DB 91 DBW 698, Data Type:short
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -2257,6 +2332,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadSuctionLeakAirFlapOneActuel", Priority = 2)]
         public async Task<IDataResult<short>> ReadSuctionLeakAirFlapOneActuel()//Name:SuctionLeakAirFlap1Act,Addres:DB 91 DBW 698, Data Type:short
         {
             var suctionLeakAirFlapOneActuel = (short)_plcDal.Read(DataType.DataBlock, 91, 698, VarType.Int, 1);
@@ -2319,6 +2396,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<short>(suctionLeakAirFlapOneActuel,PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteSuctionLeakAirFlapOneActuel", Priority = 2)]
         public async Task<IResult> WriteSuctionLeakAirFlapOneActuel(short suctionLeakAirFlapOneActuel)//Name:SuctionLeakAirFlap1Act,Addres:DB 91 DBW 698, Data Type:short
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -2381,6 +2460,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadSuctionLeakAirFlapTwoSet", Priority = 2)]
         public async Task<IDataResult<short>> ReadSuctionLeakAirFlapTwoSet()//Name:SuctionLeakAirFlap2Set,Addres:DB 91 DBW 700, Data Type:short
         {
             var suctionLeakAirFlapTwoSet = (short)_plcDal.Read(DataType.DataBlock, 91, 700, VarType.Int, 1);
@@ -2443,6 +2524,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<short>(suctionLeakAirFlapTwoSet,PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteSuctionLeakAirFlapTwoSet", Priority = 2)]
         public async Task<IResult> WriteSuctionLeakAirFlapTwoSet(short suctionLeakAirFlapTwoSet)//Name:SuctionLeakAirFlap2Set,Addres:DB 91 DBW 700, Data Type:short
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
@@ -2505,6 +2588,8 @@ namespace Business.Concrete.PLC.Machine
             return new SuccessResult(PLCSuctionHydraulicMessages.Write);
         }
 
+
+        [SecurityAspect("PLCSuctionHydraulic.ReadSuctionLeakAirFlapTwoActuel", Priority = 2)]
         public async Task<IDataResult<short>> ReadSuctionLeakAirFlapTwoActuel()//Name:SuctionLeakAirFlap2Act,Addres:DB 90 DBW 700, Data Type:short
         {
             var suctionLeakAirFlapTwoActuel = (short)_plcDal.Read(DataType.DataBlock, 90, 700, VarType.Int, 1);
@@ -2567,6 +2652,8 @@ namespace Business.Concrete.PLC.Machine
 
             return new SuccessDataResult<short>(suctionLeakAirFlapTwoActuel,PLCSuctionHydraulicMessages.Read);
         }
+
+        [SecurityAspect("PLCSuctionHydraulic.WriteSuctionLeakAirFlapTwoActuel", Priority = 2)]
         public async Task<IResult> WriteSuctionLeakAirFlapTwoActuel(short suctionLeakAirFlapTwoActuel)//Name:SuctionLeakAirFlap2Act,Addres:DB 90 DBW 700, Data Type:short
         {
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);

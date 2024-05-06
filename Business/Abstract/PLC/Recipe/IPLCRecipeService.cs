@@ -5,7 +5,7 @@ namespace Business.Abstract.PLC.Machine
 {
     public interface IPLCRecipeService
     {
-        public Task<IDataResult<PLCRecipe>> Read();
-        public Task<IResult> Write(PLCRecipe plcCRecipe);
+        public Task<IDataResult<PLCRecipe>> ReadRecipe();
+        public Task<IResult> WriteRecipe(PLCRecipe plcCRecipe);
     }
 }

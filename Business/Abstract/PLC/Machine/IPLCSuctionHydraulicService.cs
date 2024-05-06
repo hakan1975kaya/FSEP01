@@ -35,7 +35,7 @@ namespace Business.Abstract.PLC.Machine
         public Task<IResult> WriteSuctionSpeedForMaximumRPM(short suctionSpeedForMaximumRPM);
 
         public Task<IDataResult<short>> ReadMachineSpeedActuel();
-        public Task<IResult> WriteMachineSpeedActuel(short machineSpeedAct);
+        public Task<IResult> WriteMachineSpeedActuel(short machineSpeedActuel);
 
         public Task<IDataResult<bool>> ReadBoosterIsRaedy();
         public Task<IResult> WriteBoosterIsRaedy(bool boosterIsRaedy);

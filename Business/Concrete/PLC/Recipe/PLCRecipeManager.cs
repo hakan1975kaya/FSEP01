@@ -15,7 +15,7 @@ namespace Business.Concrete.PLC
         {
             _plcDal = plcDal;
         }
-        public async Task<IDataResult<PLCRecipe>> Read()
+        public async Task<IDataResult<PLCRecipe>> ReadRecipe()
         {
             var plcRecipe = new PLCRecipe();
 
@@ -127,7 +127,7 @@ namespace Business.Concrete.PLC
 
             return new SuccessDataResult<PLCRecipe>(plcRecipe, PLCRecipeMessages.Read);
         }
-        public async Task<IResult> Write(PLCRecipe plcRecipe)
+        public async Task<IResult> WriteRecipe(PLCRecipe plcRecipe)
         {
 
             _plcDal.Write(DataType.DataBlock, 96, 40, plcRecipe.RecipeNumber);//TagName:RecipeNumber,TagValue:DB 96 DBW 40
