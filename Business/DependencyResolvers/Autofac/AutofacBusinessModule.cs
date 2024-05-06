@@ -1,10 +1,16 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Business.Abstract.General.General;
+using Business.Abstract.PLC.General;
+using Business.Abstract.PLC.Machine;
 using Business.Abstract.PSI.Telegrams;
 using Business.Abstract.PSI.Transfers;
 using Business.Abstract.PSI.Types;
 using Business.Concrete.General.General;
+using Business.Concrete.PLC;
+using Business.Concrete.PLC.General;
+using Business.Concrete.PLC.Machine;
+using Business.Concrete.PLC.MachineOverview;
 using Business.Concrete.PSI.Telegrams;
 using Business.Concrete.PSI.Transfers;
 using Core.Utilities.Interceptors;
@@ -15,6 +21,9 @@ using DataAccess.Abstract.General.Machine.General;
 using DataAccess.Abstract.General.Machine.InputCoils;
 using DataAccess.Abstract.General.Machine.OutputCoils;
 using DataAccess.Abstract.General.Machine.ProcessCoils;
+using DataAccess.Abstract.PLC.General;
+using DataAccess.Abstract.PLC.Machine;
+using DataAccess.Abstract.PLC.Recipe;
 using DataAccess.Abstract.PSI.Telegrams;
 using DataAccess.Abstract.PSI.Types;
 using DataAccess.Concrete.EntityFramework.General.General;
@@ -22,6 +31,9 @@ using DataAccess.Concrete.EntityFramework.General.Machine.General;
 using DataAccess.Concrete.EntityFramework.General.Machine.InputCoils;
 using DataAccess.Concrete.EntityFramework.General.Machine.OutputCoils;
 using DataAccess.Concrete.EntityFramework.General.Machine.ProcessCoils;
+using DataAccess.Concrete.EntityFramework.PLC.General;
+using DataAccess.Concrete.EntityFramework.PLC.Machine;
+using DataAccess.Concrete.EntityFramework.PLC.Recipe;
 using DataAccess.Concrete.EntityFramework.PSI.Telegrams;
 using DataAccess.Concrete.EntityFramework.PSI.Types;
 using PLC.Abstract;
@@ -83,7 +95,6 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EFSlitPatternDetailDal>().As<ISlitPatternDetailDal>();
             builder.RegisterType<SlitPatternDetailManager>().As<ISlitPatternDetailService>();
 
-
             //General
             //Machine
             //InputCoilS
@@ -99,7 +110,6 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EFInputCoilRemarkDal>().As<IInputCoilRemarkDal>();
             builder.RegisterType<InputCoilRemarkManager>().As<IInputCoilRemarkService>();
 
-
             //General
             //Machine
             //OutputCoilS
@@ -114,10 +124,6 @@ namespace Business.DependencyResolvers.Autofac
             //Parameters
             builder.RegisterType<EFProcessCoilDal>().As<IProcessCoilDal>();
             builder.RegisterType<ProcessCoilManager>().As<IProcessCoilService>();
-
-            //PLC
-            builder.RegisterType<PLCHelper>().As<IPLCHelper>();
-            builder.RegisterType<PLCDal>().As<IPLCDal>();
 
             //PSI
             //Telegrams
@@ -189,6 +195,46 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<EFPSITypeTimeStampDal>().As<IPSITypeTimeStampDal>();
             builder.RegisterType<PSITypeTimeStampManager>().As<IPSITypeTimeStampService>();
+
+            //PLC
+            builder.RegisterType<PLCHelper>().As<IPLCHelper>();
+            builder.RegisterType<PLCDal>().As<IPLCDal>();
+
+            //PLC
+            //General
+            builder.RegisterType<EFPLCGeneralDal>().As<IPLCGeneralDal>();
+            builder.RegisterType<PLCGeneralManager>().As<IPLCGeneralService>();
+
+            //PLC
+            //Machine
+            builder.RegisterType<EFPLCBasicDataDal>().As<IPLCBasicDataDal>();
+            builder.RegisterType<PLCBasicDataManager>().As<IPLCBasicDataService>();
+
+            builder.RegisterType<EFPLCDensityDal>().As<IPLCDensityDal>();
+            builder.RegisterType<PLCDensityManager>().As<IPLCDensityService>();
+
+            builder.RegisterType<EFPLCHandlingDal>().As<IPLCHandlingDal>();
+            builder.RegisterType<PLCHandlingManager>().As<IPLCHandlingService>();
+
+            builder.RegisterType<EFPLCMachineOverviewDal>().As<IPLCMachineOverviewDal>();
+            builder.RegisterType<PLCMachineOverviewManager>().As<IPLCMachineOverviewService>();
+
+            builder.RegisterType<EFPLCMachineDal>().As<IPLCMachineDal>();
+            builder.RegisterType<PLCMachineManager>().As<IPLCMachineService>();
+
+            builder.RegisterType<EFPLCRewinderPressureDal>().As<IPLCRewinderPressureDal>();
+            builder.RegisterType<PLCRewinderPressureManager>().As<IPLCRewinderPressureService>();
+
+            builder.RegisterType<EFPLCRewinderTensionDal>().As<IPLCRewinderTensionDal>();
+            builder.RegisterType<PLCRewinderTensionManager>().As<IPLCRewinderTensionService>();
+
+            builder.RegisterType<EFPLCSuctionHydraulicDal>().As<IPLCSuctionHydraulicDal>();
+            builder.RegisterType<PLCSuctionHydraulicManager>().As<IPLCSuctionHydraulicService>();
+
+            //PLC
+            //Recipe
+            builder.RegisterType<EFPLCRecipeDal>().As<IPLCRecipeDal>();
+            builder.RegisterType<PLCRecipeManager>().As<IPLCRecipeService>();
 
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
