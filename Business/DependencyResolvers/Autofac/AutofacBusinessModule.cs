@@ -78,20 +78,6 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<Stopwatch>();
 
-            //General
-            //Machine
-            //General
-
-            //General
-            //Machine
-            //OutputCoilS
-
-
-            //General
-            //Machine
-            //Parameters
-
-
             //PSI
             //Telegrams
             builder.RegisterType<EFPSIGeneralAckPES2L2Dal>().As<IPSIGeneralAckPES2L2Dal>();
