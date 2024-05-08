@@ -36,14 +36,14 @@ namespace Business.Concrete.General.General
         [CacheRemoveAspect("IExitCoilService.Get", Priority = 3)]
         public async Task<IResult> Delete(Guid id)
         {
-            var ExitCoilDataResult = await GetById(id);
-            if (ExitCoilDataResult != null)
+            var exitCoilDataResult = await GetById(id);
+            if (exitCoilDataResult != null)
             {
-                if (ExitCoilDataResult.Success)
+                if (exitCoilDataResult.Success)
                 {
-                    var ExitCoil = ExitCoilDataResult.Data;
-                    ExitCoil.IsActive = false;
-                    await _exitCoilDal.Update(ExitCoil);
+                    var exitCoil = exitCoilDataResult.Data;
+                    exitCoil.IsActive = false;
+                    await _exitCoilDal.Update(exitCoil);
                     return new SuccessResult(ExitCoilMessages.Deleted);
                 }
             }
@@ -54,9 +54,9 @@ namespace Business.Concrete.General.General
         [CacheAspect(Priority = 3)]
         public async Task<IDataResult<List<ExitCoil>>> GetAll()
         {
-            var ExitCoils = await _exitCoilDal.GetList(x => x.IsActive == true);
-            ExitCoils = ExitCoils.OrderBy(x => x.OperatorName).ToList();
-            return new SuccessDataResult<List<ExitCoil>>(ExitCoils);
+            var exitCoils = await _exitCoilDal.GetList(x => x.IsActive == true);
+            exitCoils = exitCoils.OrderBy(x => x.OperatorName).ToList();
+            return new SuccessDataResult<List<ExitCoil>>(exitCoils);
         }
 
         [SecurityAspect("ExitCoil.GetById", Priority = 2)]

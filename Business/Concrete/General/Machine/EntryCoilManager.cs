@@ -26,9 +26,9 @@ namespace Business.Concrete.General.General
         [SecurityAspect("EntryCoil.Add", Priority = 2)]
         [ValidationAspect(typeof(EntryCoilValidator), Priority = 3)]
         [CacheRemoveAspect("IEntryCoilService.Get", Priority = 4)]
-        public async Task<IResult> Add(EntryCoil EntryCoil)
+        public async Task<IResult> Add(EntryCoil entryCoil)
         {
-            await _entryCoilDal.Add(EntryCoil);
+            await _entryCoilDal.Add(entryCoil);
             return new SuccessResult(EntryCoilMessages.Added);
         }
 
@@ -36,14 +36,14 @@ namespace Business.Concrete.General.General
         [CacheRemoveAspect("IEntryCoilService.Get", Priority = 3)]
         public async Task<IResult> Delete(Guid id)
         {
-            var EntryCoilDataResult = await GetById(id);
-            if (EntryCoilDataResult != null)
+            var entryCoilDataResult = await GetById(id);
+            if (entryCoilDataResult != null)
             {
-                if (EntryCoilDataResult.Success)
+                if (entryCoilDataResult.Success)
                 {
-                    var EntryCoil = EntryCoilDataResult.Data;
-                    EntryCoil.IsActive = false;
-                    await _entryCoilDal.Update(EntryCoil);
+                    var entryCoil = entryCoilDataResult.Data;
+                    entryCoil.IsActive = false;
+                    await _entryCoilDal.Update(entryCoil);
                     return new SuccessResult(EntryCoilMessages.Deleted);
                 }
             }
@@ -54,9 +54,9 @@ namespace Business.Concrete.General.General
         [CacheAspect(Priority = 3)]
         public async Task<IDataResult<List<EntryCoil>>> GetAll()
         {
-            var EntryCoils = await _entryCoilDal.GetList(x => x.IsActive == true);
-            EntryCoils = EntryCoils.OrderBy(x => x.CustomerName).ToList();
-            return new SuccessDataResult<List<EntryCoil>>(EntryCoils);
+            var entryCoils = await _entryCoilDal.GetList(x => x.IsActive == true);
+            entryCoils = entryCoils.OrderBy(x => x.CustomerName).ToList();
+            return new SuccessDataResult<List<EntryCoil>>(entryCoils);
         }
 
         [SecurityAspect("EntryCoil.GetById", Priority = 2)]
@@ -74,9 +74,9 @@ namespace Business.Concrete.General.General
         [SecurityAspect("EntryCoil.Update", Priority = 2)]
         [ValidationAspect(typeof(EntryCoilValidator), Priority = 3)]
         [CacheRemoveAspect("IEntryCoilService.Get", Priority = 4)]
-        public async Task<IResult> Update(EntryCoil EntryCoil)
+        public async Task<IResult> Update(EntryCoil entryCoil)
         {
-            await _entryCoilDal.Update(EntryCoil);
+            await _entryCoilDal.Update(entryCoil);
             return new SuccessResult(EntryCoilMessages.Updated);
         }
     }
