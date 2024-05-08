@@ -20,10 +20,4 @@
     <ProjectReference Include="..\Entities\Entities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Abstract\General\Machine\Recipes\" />
-    <Folder Include="Concrete\EntityFramework\General\Machine\Parameters\" />
-    <Folder Include="Concrete\EntityFramework\General\Machine\Recipes\" />
-  </ItemGroup>
-
 </Project>

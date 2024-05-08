@@ -1,10 +1,7 @@
 ﻿using Core.Entities.Concrete;
 using Core.Utilities.Service;
 using Entities.Concrete.Entities.General.General;
-using Entities.Concrete.Entities.General.Machine.General;
-using Entities.Concrete.Entities.General.Machine.InputCoils;
-using Entities.Concrete.Entities.General.Machine.OutputCoils;
-using Entities.Concrete.Entities.General.Machine.ProcessCoils;
+using Entities.Concrete.Entities.General.Machine;
 using Entities.Concrete.Entities.PLC.General;
 using Entities.Concrete.Entities.PLC.Machine;
 using Entities.Concrete.Entities.PLC.Recipe;
@@ -39,31 +36,13 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
 
         //General
         //Machine
-        //General
-
-        public DbSet<SlitPattern> SlitPatterns { get; set; }
-        public DbSet<SlitPatternDetail> SlitPatternDetails { get; set; }
-
-        //General
-        //Machine
-        //InputCoils
-        public DbSet<InputCoil> InputCoils { get; set; }
-        public DbSet<InputCoilAttachment> InputCoilAttachments { get; set; }
-        public DbSet<InputCoilDefect> InputCoilDefects { get; set; }
-        public DbSet<InputCoilRemark> InputCoilRemarks { get; set; }
+        //EntryCoil
+        public DbSet<EntryCoil> EntryCoils { get; set; }
 
         //General
         //Machine
         //OutputCoils
-        public DbSet<OutputCoil> OutputCoils { get; set; }
-        public DbSet<OutputCoilOther> OutputCoilOthers { get; set; }
-
-
-        //General
-        //Machine
-        //ProcessCoils
-        public DbSet<ProcessCoil> ProcessCoils { get; set; }
-
+        public DbSet<ExitCoil> ExitCoils { get; set; }
 
         //PSI
         //Telegrams
@@ -93,8 +72,8 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<PSITypeTimeStamp> TypeTimeStamps { get; set; }
 
         //PLC
-        //Recipe
-        public DbSet<PLCRecipe> PLCRecipes { get; set; }
+        //General
+        public DbSet<PLCGeneral> PLCGenerals { get; set; }
 
         //PLC
         //Machine
@@ -108,7 +87,8 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<PLCSuctionHydraulic> PLCSuctionHydraulics { get; set; }
 
         //PLC
-        //General
-        public DbSet<PLCGeneral> PLCGenerals { get; set; }
+        //Recipe
+        public DbSet<PLCRecipe> PLCRecipes { get; set; }
+
     }
 }

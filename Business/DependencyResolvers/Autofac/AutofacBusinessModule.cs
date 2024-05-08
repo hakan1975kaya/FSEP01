@@ -17,20 +17,12 @@ using Core.Utilities.Interceptors;
 using Core.Utilities.Security.Abstract;
 using Core.Utilities.Security.Concrete.Jwt;
 using DataAccess.Abstract.General.General;
-using DataAccess.Abstract.General.Machine.General;
-using DataAccess.Abstract.General.Machine.InputCoils;
-using DataAccess.Abstract.General.Machine.OutputCoils;
-using DataAccess.Abstract.General.Machine.ProcessCoils;
 using DataAccess.Abstract.PLC.General;
 using DataAccess.Abstract.PLC.Machine;
 using DataAccess.Abstract.PLC.Recipe;
 using DataAccess.Abstract.PSI.Telegrams;
 using DataAccess.Abstract.PSI.Types;
 using DataAccess.Concrete.EntityFramework.General.General;
-using DataAccess.Concrete.EntityFramework.General.Machine.General;
-using DataAccess.Concrete.EntityFramework.General.Machine.InputCoils;
-using DataAccess.Concrete.EntityFramework.General.Machine.OutputCoils;
-using DataAccess.Concrete.EntityFramework.General.Machine.ProcessCoils;
 using DataAccess.Concrete.EntityFramework.PLC.General;
 using DataAccess.Concrete.EntityFramework.PLC.Machine;
 using DataAccess.Concrete.EntityFramework.PLC.Recipe;
@@ -89,41 +81,16 @@ namespace Business.DependencyResolvers.Autofac
             //General
             //Machine
             //General
-            builder.RegisterType<EFSlitPatternDal>().As<ISlitPatternDal>();
-            builder.RegisterType<SlitPatternManager>().As<ISlitPatternService>();
-
-            builder.RegisterType<EFSlitPatternDetailDal>().As<ISlitPatternDetailDal>();
-            builder.RegisterType<SlitPatternDetailManager>().As<ISlitPatternDetailService>();
-
-            //General
-            //Machine
-            //InputCoilS
-            builder.RegisterType<EFInputCoilAttachmentDal>().As<IInputCoilAttachmentDal>();
-            builder.RegisterType<InputCoilAttachmentManager>().As<IInputCoilAttachmentService>();
-
-            builder.RegisterType<EFInputCoilDal>().As<IInputCoilDal>();
-            builder.RegisterType<InputCoilManager>().As<IInputCoilService>();
-
-            builder.RegisterType<EFInputCoilDefectDal>().As<IInputCoilDefectDal>();
-            builder.RegisterType<InputCoilDefectManager>().As<IInputCoilDefectService>();
-
-            builder.RegisterType<EFInputCoilRemarkDal>().As<IInputCoilRemarkDal>();
-            builder.RegisterType<InputCoilRemarkManager>().As<IInputCoilRemarkService>();
 
             //General
             //Machine
             //OutputCoilS
-            builder.RegisterType<EFOutputCoilDal>().As<IOutputCoilDal>();
-            builder.RegisterType<OutputCoilManager>().As<IOutputCoilService>();
 
-            builder.RegisterType<EFOutputCoilOtherDal>().As<IOutputCoilOtherDal>();
-            builder.RegisterType<OutputCoilOtherManager>().As<IOutputCoilOtherService>();
 
             //General
             //Machine
             //Parameters
-            builder.RegisterType<EFProcessCoilDal>().As<IProcessCoilDal>();
-            builder.RegisterType<ProcessCoilManager>().As<IProcessCoilService>();
+
 
             //PSI
             //Telegrams
