@@ -25,7 +25,6 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { DemandPipe } from './pipes/demand/demand.pipe';
 import { OrderService } from './services/general/order.service';
 import { MenuService } from './services/menu/menu.service';
-import { RecipeComponent } from './pages/recipe/recipe.component';
 import { AuthorizationGuard } from './guards/authorization-guard';
 import { MenuComponent } from './pages/menu/menu.component';
 import { RoleComponent } from './pages/role/role.component';
@@ -35,14 +34,6 @@ import { UserRoleComponent } from './pages/user-role/user-role.component';
 import { RoleDemandComponent } from './pages/role-demand/role-demand.component';
 import { RoleMenuComponent } from './pages/role-menu/role-menu.component';
 import { PasswordChangeComponent } from './pages/password-change/password-change.component';
-import { ContactRollComponent } from './pages/contact-roll/contact-roll.component';
-import { DefinationComponent } from './pages/defination/defination.component';
-import { DensityComponent } from './pages/density/density.component';
-import { EventComponent } from './pages/event/event.component';
-import { HeadTailScrapComponent } from './pages/head-tail-scrap/head-tail-scrap.component';
-import { LubracationRollComponent } from './pages/lubracation-roll/lubracation-roll.component';
-import { TramRollComponent } from './pages/tram-roll/tram-roll.component';
-import { UsageAreaComponent } from './pages/usage-area/usage-area.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +42,6 @@ import { UsageAreaComponent } from './pages/usage-area/usage-area.component';
     DemandComponent,
     UserProfileComponent,
     DemandPipe,
-    RecipeComponent,
     MenuComponent,
     RoleComponent,
     UserComponent,
@@ -59,15 +49,7 @@ import { UsageAreaComponent } from './pages/usage-area/usage-area.component';
     UserRoleComponent,
     RoleDemandComponent,
     RoleMenuComponent,
-    PasswordChangeComponent,
-    ContactRollComponent,
-    DefinationComponent,
-    DensityComponent,
-    EventComponent,
-    HeadTailScrapComponent,
-    LubracationRollComponent,
-    TramRollComponent,
-    UsageAreaComponent
+    PasswordChangeComponent
   ],
   imports: [
     AppRoutingModule,
