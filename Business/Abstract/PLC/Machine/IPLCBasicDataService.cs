@@ -58,11 +58,11 @@ namespace Business.Abstract.PLC.Machine
         //public Task<IDataResult<short>> ReadMachineTimeFastStop();
         //public Task<IResult> WriteMachineTimeFastStop(short machineTimeFastStop);
 
-        public Task<IDataResult<short>> ReadMachineSpeedJog();
-        public Task<IResult> WriteMachineSpeedJog(short machineSpeedJog);
+        //public Task<IDataResult<short>> ReadMachineSpeedJog();
+        //public Task<IResult> WriteMachineSpeedJog(short machineSpeedJog);
 
-        public Task<IDataResult<long>> ReadMachineLengthTotal();
-        public Task<IResult> WriteMachineLengthTotal(long machineLengthTotal);
+        public Task<IDataResult<PLCBasicData>> ReadPLCBasicData();
+        public Task<IResult> WritePLCBasicData(PLCBasicData plcBasicData);
 
 
     }

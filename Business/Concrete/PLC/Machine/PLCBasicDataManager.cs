@@ -2336,7 +2336,7 @@ namespace Business.Concrete.PLC.Machine
         //}
 
         [SecurityAspect("PLCBasicData.ReadPLCBasicData", Priority = 2)]
-        public async Task<IDataResult<long>> ReadPLCBasicData()
+        public async Task<IDataResult<PLCBasicData>> ReadPLCBasicData()
         {
             var rewinderOneDiameterLayRoll = (decimal)_plcDal.Read(DataType.DataBlock, 91, 368, VarType.DInt, 1);
             var rewinderOneDiameterContactRoll = (decimal)_plcDal.Read(DataType.DataBlock, 91, 368, VarType.DInt, 1);
@@ -2357,6 +2357,8 @@ namespace Business.Concrete.PLC.Machine
             var machineLengthTotal = (long)_plcDal.Read(DataType.DataBlock, 90, 16, VarType.DInt, 1);
 
 
+            var plcBasicData = new PLCBasicData();
+
             var plcGeneral = await _plcGeneralDal.Get(x => x.RecipeNameLast == _recipeNameLast);
             if (plcGeneral == null)
             {
@@ -2370,7 +2372,7 @@ namespace Business.Concrete.PLC.Machine
                 };
                 await _plcGeneralDal.Add(plcGeneral);
 
-                var plcBasicData = await _plcBasicDataDal.Get(x => x.PLCGeneralId == plcGeneralId);
+                 plcBasicData = await _plcBasicDataDal.Get(x => x.PLCGeneralId == plcGeneralId);
                 if (plcBasicData == null)
                 {
                     var plcBasicDataId = Guid.NewGuid();
@@ -2424,7 +2426,7 @@ namespace Business.Concrete.PLC.Machine
             }
             else
             {
-                var plcBasicData = await _plcBasicDataDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
+                 plcBasicData = await _plcBasicDataDal.Get(x => x.PLCGeneralId == plcGeneral.Id);
                 if (plcBasicData == null)
                 {
                     var plcBasicDataId = Guid.NewGuid();
@@ -2477,7 +2479,7 @@ namespace Business.Concrete.PLC.Machine
                 }
             }
 
-            return new SuccessDataResult<long>(machineLengthTotal, PLCBasicDataMessages.Read);
+            return new SuccessDataResult<PLCBasicData>(plcBasicData, PLCBasicDataMessages.Read);
         }
 
         [SecurityAspect("PLCBasicData.WritePLCBasicData", Priority = 2)]
@@ -2570,7 +2572,7 @@ namespace Business.Concrete.PLC.Machine
                         plcBasicDataCurrent.RewinderTwoDiameterSupportRoll = plcBasicData.RewinderTwoDiameterSupportRoll;
                     }
 
-                    if (plcBasicDataCurrent.MaterialSpecGravity != plcBasicData.MaterialSpecGravity;)
+                    if (plcBasicDataCurrent.MaterialSpecGravity != plcBasicData.MaterialSpecGravity)
                     {
                         _plcDal.Write(DataType.DataBlock, 91, 38, plcBasicData.MaterialSpecGravity);
                         plcBasicDataCurrent.MaterialSpecGravity = plcBasicData.MaterialSpecGravity;
@@ -2728,7 +2730,7 @@ namespace Business.Concrete.PLC.Machine
                         plcBasicDataCurrent.RewinderTwoDiameterSupportRoll = plcBasicData.RewinderTwoDiameterSupportRoll;
                     }
 
-                    if (plcBasicDataCurrent.MaterialSpecGravity != plcBasicData.MaterialSpecGravity;)
+                    if (plcBasicDataCurrent.MaterialSpecGravity != plcBasicData.MaterialSpecGravity)
                     {
                         _plcDal.Write(DataType.DataBlock, 91, 38, plcBasicData.MaterialSpecGravity);
                         plcBasicDataCurrent.MaterialSpecGravity = plcBasicData.MaterialSpecGravity;
